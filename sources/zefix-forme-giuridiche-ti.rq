@@ -1,0 +1,11 @@
+# Active legal entities in the Swiss commercial register (Zefix, open data on LINDAS),
+# counted by registered office (municipality, BFS number) and legal form (eCH-0097), for Ticino.
+# Endpoint: https://ld.admin.ch/query  (graph https://lindas.admin.ch/foj/zefix)
+SELECT ?bfs ?form (COUNT(DISTINCT ?c) AS ?n) WHERE {
+  GRAPH <https://lindas.admin.ch/foj/zefix> {
+    ?c <https://schema.ld.admin.ch/municipality> ?m ; <http://schema.org/additionalType> ?f .
+  }
+  BIND(xsd:integer(STRAFTER(STR(?m), "municipality/")) AS ?bfs)
+  BIND(STRAFTER(STR(?f), "legalforms/") AS ?form)
+  FILTER(?bfs >= 5001 && ?bfs <= 5399)
+} GROUP BY ?bfs ?form ORDER BY ?bfs ?form

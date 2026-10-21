@@ -1,0 +1,36 @@
+{
+  "name": "stato-finanziario-di-lugano",
+  "version": "1.0.0",
+  "description": "The City of Lugano's 2025 spending against its budget, line by line, with every figure traced to its source document",
+  "private": true,
+  "license": "MIT",
+  "author": "nslotus",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nslotus/stato-finanziario-di-lugano.git"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsx src/build.ts",
+    "staff": "tsx src/personale.ts",
+    "site": "tsx src/site.ts",
+    "docs": "tsx src/docs.ts",
+    "all": "npm run build && npm run staff && npm run site && npm run docs",
+    "verify": "tsx src/verify.ts",
+    "verify:quick": "tsx src/verify.ts --quick",
+    "typecheck": "tsc --noEmit",
+    "serve": "node scripts/serve.js"
+  },
+  "dependencies": {
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "pdf-parse": "^1.1.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

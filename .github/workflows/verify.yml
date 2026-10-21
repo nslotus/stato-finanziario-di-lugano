@@ -1,0 +1,23 @@
+# Runs every check of npm run verify on each push and pull request: source fingerprints, citations, sums, ranks,
+# printed values, translations, a full rebuild from the archived sources and the generated docs. No keys, no network
+# beyond installing the locked dependencies. Actions are pinned to a commit.
+name: verify
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run verify
+      - name: The committed files are the ones the build produces
+        run: git diff --exit-code

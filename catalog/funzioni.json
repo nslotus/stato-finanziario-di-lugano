@@ -1,0 +1,990 @@
+{
+ "series": {
+  "f0": {
+   "c23": 48.327152740100004,
+   "c24": 45.71205004,
+   "p25": 48.25389582,
+   "c25": 44.17202096,
+   "p27": 48.045601,
+   "diff": -4.081874859999999,
+   "pct": -8.459161256588462
+  },
+  "f1": {
+   "c23": 45.29959178349999,
+   "c24": 45.82240002,
+   "p25": 48.032135100000005,
+   "c25": 46.543644119999996,
+   "p27": 49.3678971,
+   "diff": -1.4884909800000088,
+   "pct": -3.098948187293903
+  },
+  "f2": {
+   "c23": 56.8461658387,
+   "c24": 53.9584715,
+   "p25": 55.9872607,
+   "c25": 54.12078966,
+   "p27": 55.0613933,
+   "diff": -1.8664710400000004,
+   "pct": -3.333742384720745
+  },
+  "f3": {
+   "c23": 51.551345096999995,
+   "c24": 53.61541458000001,
+   "p25": 54.9266062,
+   "c25": 52.718710200000004,
+   "p27": 53.795654899999995,
+   "diff": -2.207895999999998,
+   "pct": -4.019720410106092
+  },
+  "f4": {
+   "c23": 59.275649624,
+   "c24": 60.77868982000001,
+   "p25": 61.577439,
+   "c25": 62.95671943,
+   "p27": 66.222227,
+   "diff": 1.3792804300000014,
+   "pct": 2.239911974903668
+  },
+  "f5": {
+   "c23": 53.961500453,
+   "c24": 54.001559439999994,
+   "p25": 55.1612535,
+   "c25": 57.17702851,
+   "p27": 56.0673845,
+   "diff": 2.0157750099999987,
+   "pct": 3.6543314049235645
+  },
+  "f6": {
+   "c23": 57.92871674710002,
+   "c24": 58.994749600000006,
+   "p25": 59.6114746,
+   "c25": 59.1653708,
+   "p27": 63.470706,
+   "diff": -0.44610380000000305,
+   "pct": -0.7483522308304097
+  },
+  "f7": {
+   "c23": 29.9858153096,
+   "c24": 29.651955129999997,
+   "p25": 31.35518308,
+   "c25": 32.79031596,
+   "p27": 31.1367662,
+   "diff": 1.4351328800000012,
+   "pct": 4.577019615348395
+  },
+  "f8": {
+   "c23": 3.890618237,
+   "c24": 4.5458539700000005,
+   "p25": 5.371345,
+   "c25": 4.601386219999999,
+   "p27": 4.94492,
+   "diff": -0.7699587800000005,
+   "pct": -14.3345620137973
+  },
+  "f9": {
+   "c23": 74.04356804,
+   "c24": 78.05045372000001,
+   "p25": 77.12261,
+   "c25": 76.44442401,
+   "p27": 87.08188,
+   "diff": -0.6781859899999887,
+   "pct": -0.8793607866746066
+  }
+ },
+ "totals": {
+  "c23": 481.11012387000005,
+  "c24": 485.1315964,
+  "p25": 497.399203,
+  "approved25": 497.499203,
+  "c25": 490.69040987,
+  "p27": 515.19443
+ },
+ "amend": {
+  "it": "Il preventivo per funzione è quello proposto dal Municipio; il Consiglio comunale lo ha modificato di CHF 100 mila nel dicastero Formazione, Socialità e Sostegno, che la tabella per funzione non ripartisce.",
+  "en": "The budget by function is the Municipio's proposal; the Council changed it by CHF 100 thousand in the department Formazione, Socialità e Sostegno, which the functional table does not allocate."
+ },
+ "source": [
+  {
+   "file": "sources/sel-2023-appendice.xlsx",
+   "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/StatisticaFinanziaria/2023-appendice.xlsx",
+   "publisher": "Cantone Ticino, Sezione degli enti locali – statistica finanziaria dei comuni 2023, appendice",
+   "locator": "sheet TabA, row 'Lugano', two-digit columns summed by function (2023)"
+  },
+  {
+   "file": "sources/sel-2024-appendice.xlsx",
+   "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/StatisticaFinanziaria/2024-appendice.xlsx",
+   "publisher": "Cantone Ticino, Sezione degli enti locali",
+   "locator": "sheet TabA, row 'Lugano', two-digit columns summed by function (2024)"
+  },
+  {
+   "file": "sources/city-preventivo-2025-messaggio.pdf",
+   "url": "https://www.lugano.ch/dam/jcr:e41cc168-7d55-48fe-ae68-48517ff418aa/messaggio-preventivo-2025.pdf",
+   "publisher": "Città di Lugano, Messaggio municipale no. 12068, Preventivo 2025",
+   "locator": "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale', column COSTI"
+  },
+  {
+   "file": "sources/city-consuntivo-2025-messaggio.pdf",
+   "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+   "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+   "locator": "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale', column COSTI"
+  },
+  {
+   "file": "sources/city-preventivo-2027-messaggio.pdf",
+   "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
+   "publisher": "Città di Lugano, Preventivo 2027 municipal message",
+   "locator": "pp. 214–215–216: 'Preventivo 2027 Gestione corrente – Ripartizione funzionale', column COSTI"
+  }
+ ],
+ "lines25": [
+  {
+   "code": "011",
+   "label": "Legislativo",
+   "p25": 0.9783955,
+   "c25": 0.9272756999999999,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "012",
+   "label": "Esecutivo",
+   "p25": 1.70106,
+   "c25": 1.4015398000000001,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "021",
+   "label": "Amministrazione delle finanze e delle contribuzioni",
+   "p25": 5.59608,
+   "c25": 5.26567366,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "022",
+   "label": "Servizi generali, altro",
+   "p25": 32.50728902,
+   "c25": 29.3133864,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "029",
+   "label": "Immobili amministrativi, non menzionati altrove (n. m. a.)",
+   "p25": 7.4710713,
+   "c25": 7.26414541,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "111",
+   "label": "Polizia",
+   "p25": 26.7494945,
+   "c25": 25.36260984,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "120",
+   "label": "Potere giudiziario",
+   "p25": 0.042,
+   "c25": 0.04057065,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "140",
+   "label": "Diritto generale",
+   "p25": 12.2222556,
+   "c25": 12.70940304,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "150",
+   "label": "Vigili del fuoco",
+   "p25": 6.558385,
+   "c25": 6.2600158,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "161",
+   "label": "Difesa militare",
+   "p25": 0.28,
+   "c25": 0.20898235,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "162",
+   "label": "Protezione civile",
+   "p25": 2.18,
+   "c25": 1.96206243,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "211",
+   "label": "Scuola dell'infanzia",
+   "p25": 9.249262,
+   "c25": 9.1066128,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "212",
+   "label": "Scuola elementare",
+   "p25": 19.803980600000003,
+   "c25": 19.402312379999998,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "213",
+   "label": "Scuola media",
+   "p25": 0.17,
+   "c25": 0.12084,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "217",
+   "label": "Edifici scolastici",
+   "p25": 12.7689935,
+   "c25": 12.24486059,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "219",
+   "label": "Scuola dell'obbligo, n. m. a.",
+   "p25": 13.1341896,
+   "c25": 12.39189942,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "271",
+   "label": "Scuole universitarie",
+   "p25": 0.63,
+   "c25": 0.63,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "299",
+   "label": "Formazione, n. m. a.",
+   "p25": 0.230835,
+   "c25": 0.22426447,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "311",
+   "label": "Musei e arti figurative",
+   "p25": 9.1405788,
+   "c25": 8.911127550000002,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "312",
+   "label": "Patrimonio storico e culturale",
+   "p25": 0.3683141,
+   "c25": 0.35787967,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "321",
+   "label": "Biblioteche",
+   "p25": 0.081335,
+   "c25": 0.07984621,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "322",
+   "label": "Concerti e teatri",
+   "p25": 10.9487221,
+   "c25": 10.49205924,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "329",
+   "label": "Cultura, n. m. a.",
+   "p25": 11.21725,
+   "c25": 10.9236302,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "331",
+   "label": "Film e cinema",
+   "p25": 0.083835,
+   "c25": 0.08341447,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "341",
+   "label": "Sport",
+   "p25": 12.969034,
+   "c25": 12.24028568,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "342",
+   "label": "Tempo libero",
+   "p25": 9.6927772,
+   "c25": 9.20895919,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "350",
+   "label": "Chiese e affari religiosi",
+   "p25": 0.42476,
+   "c25": 0.421508,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "412",
+   "label": "Case medicalizzate, di riposo e di cura",
+   "p25": 38.7736125,
+   "c25": 39.44588409000001,
+   "pagesP": 221,
+   "pagesC": 238
+  },
+  {
+   "code": "421",
+   "label": "Cure ambulatoriali",
+   "p25": 20.5287925,
+   "c25": 21.31315709,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "422",
+   "label": "Servizi di salvataggio",
+   "p25": 1.27,
+   "c25": 1.25686145,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "431",
+   "label": "Prevenzione di alcool e di droghe",
+   "p25": 0.360584,
+   "c25": 0.34929090999999995,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "433",
+   "label": "Servizio medico scolastico",
+   "p25": 0.64445,
+   "c25": 0.59152589,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "512",
+   "label": "Riduzioni dei premi",
+   "p25": 23.01,
+   "c25": 25.35362395,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "522",
+   "label": "Prestazioni complementari all'AI",
+   "p25": 5.31,
+   "c25": 5.8508363,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "531",
+   "label": "Assicurazione per la vecchiaia e per i superstiti AVS",
+   "p25": 0.594744,
+   "c25": 0.59946076,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "532",
+   "label": "Prestazioni complementari AVS",
+   "p25": 7.08,
+   "c25": 7.80111506,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "533",
+   "label": "Prestazioni per pensionati",
+   "p25": 0.48429,
+   "c25": 0.4534712,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "535",
+   "label": "Altre prestazioni per gli anziani",
+   "p25": 0.05,
+   "c25": 0.05,
+   "pagesP": 222,
+   "pagesC": 238
+  },
+  {
+   "code": "544",
+   "label": "Protezione dei giovani",
+   "p25": 1.20325,
+   "c25": 1.10042092,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "545",
+   "label": "Prestazioni a famiglie",
+   "p25": 6.2292325,
+   "c25": 6.11472339,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "572",
+   "label": "Aiuto economico",
+   "p25": 6.62981,
+   "c25": 6.1394588,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "579",
+   "label": "Assistenza, n. m. a.",
+   "p25": 4.499927,
+   "c25": 3.6489181299999998,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "592",
+   "label": "Azioni d'aiuto in Svizzera",
+   "p25": 0.03,
+   "c25": 0.025,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "593",
+   "label": "Azioni d'aiuto all'estero",
+   "p25": 0.04,
+   "c25": 0.04,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "613",
+   "label": "Strade cantonali",
+   "p25": 0.053,
+   "c25": 0.0536426,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "615",
+   "label": "Strade comunali",
+   "p25": 26.324498600000002,
+   "c25": 24.94598435,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "618",
+   "label": "Strade private",
+   "p25": 0.102,
+   "c25": 0.10759802,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "622",
+   "label": "Traffico regionale e d'agglomerato",
+   "p25": 17.4153,
+   "c25": 16.6817395,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "629",
+   "label": "Trasporti pubblici, n. m. a.",
+   "p25": 1.136,
+   "c25": 1.3085552,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "631",
+   "label": "Navigazione",
+   "p25": 0.654266,
+   "c25": 0.62653644,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "632",
+   "label": "Aviazione e astronautica",
+   "p25": 13.50141,
+   "c25": 15.024314689999999,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "633",
+   "label": "Altri sistemi di trasporto",
+   "p25": 0.425,
+   "c25": 0.417,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "710",
+   "label": "Approvvigionamento idrico",
+   "p25": 0.29524,
+   "c25": 4.4395162,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "720",
+   "label": "Eliminazione delle acque di scarico",
+   "p25": 10.49558,
+   "c25": 8.82326272,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "730",
+   "label": "Gestione dei rifiuti",
+   "p25": 9.54572,
+   "c25": 9.27904213,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "741",
+   "label": "Opere di sistemazione dei corsi d'acqua",
+   "p25": 1.412,
+   "c25": 1.34554258,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "761",
+   "label": "Protezione dell'aria e del clima",
+   "p25": 0.54600218,
+   "c25": 0.46226282,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "769",
+   "label": "Altri tipi di lotta contro l'inqui",
+   "p25": 3.23461,
+   "c25": 3.0589063199999997,
+   "pagesP": 222,
+   "pagesC": 239
+  },
+  {
+   "code": "771",
+   "label": "Cimitero e sepoltura",
+   "p25": 1.090262,
+   "c25": 1.02903805,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "779",
+   "label": "Protezione dell'ambiente",
+   "p25": 1.6120929,
+   "c25": 1.5192869599999999,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "790",
+   "label": "Pianificazione del territorio",
+   "p25": 3.123676,
+   "c25": 2.83345818,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "840",
+   "label": "Turismo",
+   "p25": 2.266969,
+   "c25": 2.2232811,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "850",
+   "label": "Industria, artigianato e commercio",
+   "p25": 3.104376,
+   "c25": 2.3781051200000003,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "871",
+   "label": "Elettricità",
+   "p25": 0,
+   "c25": 0,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "910",
+   "label": "Imposte",
+   "p25": 4.7,
+   "c25": 3.83899539,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "930",
+   "label": "Perequazione finanziaria e compensazione degli oneri",
+   "p25": 29.6,
+   "c25": 31.989963,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "950",
+   "label": "Partecipazioni ad entrate del Cantone",
+   "p25": 0,
+   "c25": 0,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "961",
+   "label": "Interessi",
+   "p25": 12.17088,
+   "c25": 12.20736299,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "963",
+   "label": "Immobili dei beni patrimoniali",
+   "p25": 1.88449,
+   "c25": 1.5290557,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "969",
+   "label": "Beni patrimoniali, n. m. a.",
+   "p25": 0.002,
+   "c25": 0.0062121400000000005,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "970",
+   "label": "Ridistribuzioni di tasse legate al CO2",
+   "p25": 0,
+   "c25": 0,
+   "pagesP": 223,
+   "pagesC": 239
+  },
+  {
+   "code": "990",
+   "label": "Voci non ripartite",
+   "p25": 28.76524,
+   "c25": 26.87283479,
+   "pagesP": 223,
+   "pagesC": 239
+  }
+ ],
+ "groups25": [
+  {
+   "code": "01",
+   "label": "Legislativo ed Esecutivo",
+   "p25": 2.6794555,
+   "c25": 2.3288155
+  },
+  {
+   "code": "02",
+   "label": "Servizi generali",
+   "p25": 45.57444032,
+   "c25": 41.84320547
+  },
+  {
+   "code": "11",
+   "label": "Sicurezza pubblica",
+   "p25": 26.7494945,
+   "c25": 25.36260984
+  },
+  {
+   "code": "12",
+   "label": "Giustizia",
+   "p25": 0.042,
+   "c25": 0.04057065
+  },
+  {
+   "code": "14",
+   "label": "Altre questioni giuridiche",
+   "p25": 12.2222556,
+   "c25": 12.70940304
+  },
+  {
+   "code": "15",
+   "label": "Vigili del fuoco",
+   "p25": 6.558385,
+   "c25": 6.2600158
+  },
+  {
+   "code": "16",
+   "label": "Difesa",
+   "p25": 2.46,
+   "c25": 2.17104478
+  },
+  {
+   "code": "21",
+   "label": "Scuola dell'obbligo",
+   "p25": 55.126425700000006,
+   "c25": 53.266525189999996
+  },
+  {
+   "code": "27",
+   "label": "Università",
+   "p25": 0.63,
+   "c25": 0.63
+  },
+  {
+   "code": "29",
+   "label": "Rimanente settore della formazione",
+   "p25": 0.230835,
+   "c25": 0.22426447
+  },
+  {
+   "code": "31",
+   "label": "Patrimonio culturale",
+   "p25": 9.508892900000001,
+   "c25": 9.26900722
+  },
+  {
+   "code": "32",
+   "label": "Cultura, altro",
+   "p25": 22.2473071,
+   "c25": 21.49553564
+  },
+  {
+   "code": "33",
+   "label": "Media",
+   "p25": 0.083835,
+   "c25": 0.08341447
+  },
+  {
+   "code": "34",
+   "label": "Sport e tempo libero",
+   "p25": 22.6618112,
+   "c25": 21.44924488
+  },
+  {
+   "code": "35",
+   "label": "Chiese e affari religiosi",
+   "p25": 0.42476,
+   "c25": 0.421508
+  },
+  {
+   "code": "41",
+   "label": "Ospedali e case di cura",
+   "p25": 38.7736125,
+   "c25": 39.44588409000001
+  },
+  {
+   "code": "42",
+   "label": "Cure ambulatoriali",
+   "p25": 21.7987925,
+   "c25": 22.57001854
+  },
+  {
+   "code": "43",
+   "label": "Prevenzione della salute",
+   "p25": 1.005034,
+   "c25": 0.9408168
+  },
+  {
+   "code": "51",
+   "label": "Malattia e infortunio",
+   "p25": 23.01,
+   "c25": 25.35362395
+  },
+  {
+   "code": "52",
+   "label": "Invalidità",
+   "p25": 5.31,
+   "c25": 5.8508363
+  },
+  {
+   "code": "53",
+   "label": "Vecchiaia + Superstiti",
+   "p25": 8.209034,
+   "c25": 8.90404702
+  },
+  {
+   "code": "54",
+   "label": "Famiglia e gioventù",
+   "p25": 7.4324825,
+   "c25": 7.21514432
+  },
+  {
+   "code": "57",
+   "label": "Aiuto sociale e settore dell'asilo",
+   "p25": 11.129737,
+   "c25": 9.78837693
+  },
+  {
+   "code": "59",
+   "label": "Previdenza sociale, n. m. a.",
+   "p25": 0.07,
+   "c25": 0.065
+  },
+  {
+   "code": "61",
+   "label": "Circolazione stradale",
+   "p25": 26.479498600000003,
+   "c25": 25.107224969999997
+  },
+  {
+   "code": "62",
+   "label": "Trasporti pubblici",
+   "p25": 18.5513,
+   "c25": 17.9902947
+  },
+  {
+   "code": "63",
+   "label": "Trasporti, altro",
+   "p25": 14.580676,
+   "c25": 16.06785113
+  },
+  {
+   "code": "71",
+   "label": "Approvvigionamento idrico",
+   "p25": 0.29524,
+   "c25": 4.4395162
+  },
+  {
+   "code": "72",
+   "label": "Eliminazione delle acque di scarico",
+   "p25": 10.49558,
+   "c25": 8.82326272
+  },
+  {
+   "code": "73",
+   "label": "Gestione dei rifiuti",
+   "p25": 9.54572,
+   "c25": 9.27904213
+  },
+  {
+   "code": "74",
+   "label": "Ripari",
+   "p25": 1.412,
+   "c25": 1.34554258
+  },
+  {
+   "code": "76",
+   "label": "Lotta contro l'inquinamento ambientale",
+   "p25": 3.7806121800000003,
+   "c25": 3.52116914
+  },
+  {
+   "code": "77",
+   "label": "Altri tipi di protezione dell'ambiente",
+   "p25": 2.7023549,
+   "c25": 2.5483250099999997
+  },
+  {
+   "code": "79",
+   "label": "Pianificazione del territorio",
+   "p25": 3.123676,
+   "c25": 2.83345818
+  },
+  {
+   "code": "84",
+   "label": "Turismo",
+   "p25": 2.266969,
+   "c25": 2.2232811
+  },
+  {
+   "code": "85",
+   "label": "Industria, artigianato e commercio",
+   "p25": 3.104376,
+   "c25": 2.3781051200000003
+  },
+  {
+   "code": "87",
+   "label": "Combustibili ed energia",
+   "p25": 0,
+   "c25": 0
+  },
+  {
+   "code": "91",
+   "label": "Imposte",
+   "p25": 4.7,
+   "c25": 3.83899539
+  },
+  {
+   "code": "93",
+   "label": "Perequazione finanziaria e compensazione degli oneri",
+   "p25": 29.6,
+   "c25": 31.989963
+  },
+  {
+   "code": "95",
+   "label": "Altre partecipazioni",
+   "p25": 0,
+   "c25": 0
+  },
+  {
+   "code": "96",
+   "label": "Gestione del patrimonio e del debito",
+   "p25": 14.05737,
+   "c25": 13.74263083
+  },
+  {
+   "code": "97",
+   "label": "Ridistribuzioni",
+   "p25": 0,
+   "c25": 0
+  },
+  {
+   "code": "99",
+   "label": "Voci non ripartite",
+   "p25": 28.76524,
+   "c25": 26.87283479
+  }
+ ],
+ "linesSource": [
+  {
+   "file": "sources/city-preventivo-2025-messaggio.pdf",
+   "url": "https://www.lugano.ch/dam/jcr:e41cc168-7d55-48fe-ae68-48517ff418aa/messaggio-preventivo-2025.pdf",
+   "publisher": "Città di Lugano, Messaggio municipale no. 12068, Preventivo 2025",
+   "locator": "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', column COSTI, row by code"
+  },
+  {
+   "file": "sources/city-consuntivo-2025-messaggio.pdf",
+   "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+   "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+   "locator": "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', column COSTI, row by code"
+  }
+ ]
+}

@@ -1,0 +1,1842 @@
+{
+ "year": 2025,
+ "budgetYear": 2027,
+ "nature": {
+  "total": 156714392.71,
+  "spend": 490690409.87,
+  "lines": [
+   {
+    "code": "300",
+    "label": {
+     "it": "Autorità e commissioni",
+     "en": "Authorities and commissions"
+    },
+    "value": 1276923
+   },
+   {
+    "code": "301",
+    "label": {
+     "it": "Stipendi del personale amministrativo e d'esercizio",
+     "en": "Salaries of administrative and operational staff"
+    },
+    "value": 104671289.15
+   },
+   {
+    "code": "302",
+    "label": {
+     "it": "Stipendi dei docenti",
+     "en": "Teachers' salaries"
+    },
+    "value": 22291481
+   },
+   {
+    "code": "303",
+    "label": {
+     "it": "Personale temporaneo",
+     "en": "Temporary staff"
+    },
+    "value": 2413.49
+   },
+   {
+    "code": "304",
+    "label": {
+     "it": "Assegni e indennità",
+     "en": "Allowances"
+    },
+    "value": 1624165.8
+   },
+   {
+    "code": "305",
+    "label": {
+     "it": "Contributi del datore di lavoro",
+     "en": "Employer contributions"
+    },
+    "value": 25710074.8
+   },
+   {
+    "code": "306",
+    "label": {
+     "it": "Prestazioni di previdenza del datore di lavoro",
+     "en": "Employer pension benefits"
+    },
+    "value": 453471.2
+   },
+   {
+    "code": "309",
+    "label": {
+     "it": "Altre spese per il personale",
+     "en": "Other personnel costs"
+    },
+    "value": 684574.27
+   }
+  ],
+  "source": [
+   {
+    "file": "sources/city-preventivo-2027-messaggio.pdf",
+    "locator": "p.28, §4.3.2 '30 Spese per il personale', column 'Consuntivo 2025' (lines 300–309; group 3 'SPESE' for total spending)"
+   }
+  ]
+ },
+ "perm": {
+  "depts": [
+   {
+    "name": "ISTITUZIONI",
+    "groups": [
+     {
+      "name": "Controllo finanze",
+      "centres": [
+       {
+        "code": "11000",
+        "name": "Controllo finanze",
+        "u27": 4.6,
+        "s27": 602470,
+        "u26": 4.6,
+        "s26": 594200,
+        "u25": 4.6,
+        "s25": 588567
+       }
+      ]
+     },
+     {
+      "name": "Amministrazione generale",
+      "centres": [
+       {
+        "code": "12000",
+        "name": "Supporto autorità, servizi postali e di custodia",
+        "u27": 14.5,
+        "s27": 1499260,
+        "u26": 14.5,
+        "s26": 1502800,
+        "u25": 13.4,
+        "s25": 1390814.3
+       },
+       {
+        "code": "12010",
+        "name": "Archivio amministrativo",
+        "u27": 1.85,
+        "s27": 192550,
+        "u26": 1.85,
+        "s26": 189430,
+        "u25": 2,
+        "s25": 201185.1
+       },
+       {
+        "code": "12100",
+        "name": "Punto Città",
+        "u27": 10,
+        "s27": 814920,
+        "u26": 10,
+        "s26": 814320,
+        "u25": 10,
+        "s25": 802858.2
+       },
+       {
+        "code": "12130",
+        "name": "Ufficio quartieri",
+        "u27": 3,
+        "s27": 312660,
+        "u26": 3,
+        "s26": 312460,
+        "u25": 2.94,
+        "s25": 382809.7
+       },
+       {
+        "code": "12140",
+        "name": "Controllo abitanti",
+        "u27": 15.81,
+        "s27": 1326910,
+        "u26": 15.81,
+        "s26": 1316420,
+        "u25": 15.51,
+        "s25": 1243980.25
+       },
+       {
+        "code": "12300",
+        "name": "Lugano Living Lab",
+        "u27": 4.75,
+        "s27": 516260,
+        "u26": 4.75,
+        "s26": 501770,
+        "u25": 2.9,
+        "s25": 295740.1
+       },
+       {
+        "code": "12310",
+        "name": "Comunicazione e marketing",
+        "u27": 4.5,
+        "s27": 412420,
+        "u26": 4.4,
+        "s26": 399400,
+        "u25": 4.45,
+        "s25": 397325.25
+       },
+       {
+        "code": "12320",
+        "name": "Ufficio stampa e relazioni istituzionali",
+        "u27": 4.8,
+        "s27": 514540,
+        "u26": 4.9,
+        "s26": 518000,
+        "u25": 3.9,
+        "s25": 420605.95
+       },
+       {
+        "code": "12400",
+        "name": "Sviluppo economico",
+        "u27": 5.3,
+        "s27": 525210,
+        "u26": 5.3,
+        "s26": 553090
+       }
+      ]
+     },
+     {
+      "name": "Risorse umane",
+      "centres": [
+       {
+        "code": "14000",
+        "name": "Risorse umane",
+        "u27": 22.7,
+        "s27": 2329030,
+        "u26": 22.7,
+        "s26": 2303280,
+        "u25": 22.77,
+        "s25": 2298088.4
+       },
+       {
+        "code": "14010",
+        "name": "Servizio sicurezza e salute",
+        "u27": 8.2,
+        "s27": 833580,
+        "u26": 5.1,
+        "s26": 488730,
+        "u25": 3.9,
+        "s25": 368123.4
+       }
+      ]
+     },
+     {
+      "name": "Sviluppo economico",
+      "centres": [
+       {
+        "code": "15000",
+        "name": "Sviluppo economico",
+        "u25": 3.09,
+        "s25": 408906.35
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 100.01,
+     "s27": 9879810,
+     "u26": 96.91,
+     "s26": 9493900,
+     "u25": 89.46,
+     "s25": 8799004
+    }
+   },
+   {
+    "name": "CONSULENZA E GESTIONE",
+    "groups": [
+     {
+      "name": "Finanze",
+      "centres": [
+       {
+        "code": "20000",
+        "name": "Servizi finanziari",
+        "u27": 22.3,
+        "s27": 2386310,
+        "u26": 18.3,
+        "s26": 1991220,
+        "u25": 17.27,
+        "s25": 1883584.8
+       },
+       {
+        "code": "20010",
+        "name": "Contribuzioni",
+        "u27": 12.35,
+        "s27": 1138020,
+        "u26": 12.35,
+        "s26": 1134630,
+        "u25": 12.23,
+        "s25": 1083066.15
+       },
+       {
+        "code": "20300",
+        "name": "Gestione transitoria Aeroporto",
+        "u27": 1,
+        "s27": 71400
+       }
+      ]
+     },
+     {
+      "name": "Affari Giuridici",
+      "centres": [
+       {
+        "code": "21000",
+        "name": "Affari Giuridici",
+        "u27": 8.73,
+        "s27": 1063560,
+        "u26": 8.73,
+        "s26": 1088530,
+        "u25": 8.64,
+        "s25": 1060371.65
+       }
+      ]
+     },
+     {
+      "name": "Informatica",
+      "centres": [
+       {
+        "code": "22000",
+        "name": "Informatica",
+        "u27": 35.1,
+        "s27": 4080510,
+        "u26": 35.1,
+        "s26": 4056770,
+        "u25": 33.96,
+        "s25": 3945419.6
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 79.48,
+     "s27": 8739800,
+     "u26": 74.48,
+     "s26": 8271150,
+     "u25": 72.1,
+     "s25": 7972442.2
+    }
+   },
+   {
+    "name": "IMMOBILI",
+    "groups": [
+     {
+      "name": "Edilizia pubblica",
+      "centres": [
+       {
+        "code": "30000",
+        "name": "Progettazione",
+        "u26": 6.2,
+        "s26": 706350,
+        "u25": 6.28,
+        "s25": 681843.6
+       },
+       {
+        "code": "30010",
+        "name": "Realizzazione",
+        "u26": 7.3,
+        "s26": 896230,
+        "u25": 6.76,
+        "s25": 798482.85
+       },
+       {
+        "code": "30020",
+        "name": "Edilizia pubblica",
+        "u27": 11.95,
+        "s27": 1412950
+       }
+      ]
+     },
+     {
+      "name": "Gestione e manutenzione immobili",
+      "centres": [
+       {
+        "code": "31000",
+        "name": "Gestione",
+        "u27": 16.02,
+        "s27": 1122390,
+        "u26": 16.02,
+        "s26": 1110370,
+        "u25": 14.59,
+        "s25": 1025209.2
+       },
+       {
+        "code": "31010",
+        "name": "Manutenzione edifici",
+        "u27": 22.25,
+        "s27": 2005360,
+        "u26": 21.25,
+        "s26": 1896800,
+        "u25": 21.3,
+        "s25": 1870057.95
+       },
+       {
+        "code": "31011",
+        "name": "Supporto e logistica manifestazioni",
+        "u27": 5.5,
+        "s27": 440790,
+        "u26": 5.5,
+        "s26": 436540,
+        "u25": 5.5,
+        "s25": 431722
+       },
+       {
+        "code": "31020",
+        "name": "Cimiteri",
+        "u27": 7,
+        "s27": 518260,
+        "u26": 7,
+        "s26": 512220,
+        "u25": 7,
+        "s25": 503424
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 62.72,
+     "s27": 5499750,
+     "u26": 63.27,
+     "s26": 5558510,
+     "u25": 61.43,
+     "s25": 5310739.6
+    }
+   },
+   {
+    "name": "SICUREZZA E SPAZI URBANI",
+    "groups": [
+     {
+      "name": "Spazi urbani",
+      "centres": [
+       {
+        "code": "40000",
+        "name": "Direzione e amministrazione",
+        "u27": 9.1,
+        "s27": 1156610,
+        "u26": 9.6,
+        "s26": 1208440,
+        "u25": 9.22,
+        "s25": 1158855.8
+       },
+       {
+        "code": "40011",
+        "name": "Logistica",
+        "u26": 3.5,
+        "s26": 260690,
+        "u25": 4.25,
+        "s25": 323982
+       },
+       {
+        "code": "40020",
+        "name": "Spazi pubblici",
+        "u27": 2,
+        "s27": 214050,
+        "u26": 2,
+        "s26": 211250,
+        "u25": 2,
+        "s25": 206431.3
+       },
+       {
+        "code": "40100",
+        "name": "Genio civile",
+        "u27": 12.6,
+        "s27": 1391770,
+        "u26": 12.1,
+        "s26": 1322670,
+        "u25": 11.6,
+        "s25": 1244406.65
+       },
+       {
+        "code": "40110",
+        "name": "Strade",
+        "u27": 27.5,
+        "s27": 2281700,
+        "u26": 28,
+        "s26": 2314730,
+        "u25": 26.1,
+        "s25": 2157326.15
+       },
+       {
+        "code": "40111",
+        "name": "Zone collinari",
+        "u27": 44,
+        "s27": 3149370,
+        "u26": 44,
+        "s26": 3157680,
+        "u25": 43.74,
+        "s25": 3094328.85
+       },
+       {
+        "code": "40112",
+        "name": "Canalizzazioni",
+        "u27": 2.5,
+        "s27": 216480,
+        "u26": 2.5,
+        "s26": 216280,
+        "u25": 3,
+        "s25": 250111.95
+       },
+       {
+        "code": "40200",
+        "name": "Produzione",
+        "u27": 4.8,
+        "s27": 368690,
+        "u26": 3.8,
+        "s26": 297160,
+        "u25": 4.55,
+        "s25": 339343.2
+       },
+       {
+        "code": "40201",
+        "name": "Parchi e giardini",
+        "u27": 55.5,
+        "s27": 4293360,
+        "u26": 56.5,
+        "s26": 4361110,
+        "u25": 45.83,
+        "s25": 3535364.65
+       },
+       {
+        "code": "40300",
+        "name": "Pulizia",
+        "u27": 50.42,
+        "s27": 3564360,
+        "u26": 51,
+        "s26": 3613160,
+        "u25": 50,
+        "s25": 3454081.05
+       },
+       {
+        "code": "40310",
+        "name": "Rifiuti",
+        "u27": 26.31,
+        "s27": 1965630,
+        "u26": 25,
+        "s26": 1881630,
+        "u25": 23.16,
+        "s25": 1699509.8
+       },
+       {
+        "code": "40320",
+        "name": "Parco veicoli",
+        "u27": 6,
+        "s27": 481770,
+        "u26": 5.5,
+        "s26": 426130,
+        "u25": 7.92,
+        "s25": 606640.1
+       },
+       {
+        "code": "40321",
+        "name": "Attrezzature",
+        "u27": 2.5,
+        "s27": 192300
+       }
+      ]
+     },
+     {
+      "name": "Polizia",
+      "centres": [
+       {
+        "code": "41000",
+        "name": "Comando e staff",
+        "u27": 7.4,
+        "s27": 969690,
+        "u26": 7.4,
+        "s26": 1001990,
+        "u25": 7.52,
+        "s25": 966510.4
+       },
+       {
+        "code": "41011",
+        "name": "Servizi generali",
+        "u27": 7,
+        "s27": 628750,
+        "u26": 7,
+        "s26": 634980,
+        "u25": 7,
+        "s25": 625261
+       },
+       {
+        "code": "41020",
+        "name": "Centrale operativa",
+        "u27": 19,
+        "s27": 1729710,
+        "u26": 19,
+        "s26": 1698990,
+        "u25": 18.24,
+        "s25": 1588312.7
+       },
+       {
+        "code": "41100",
+        "name": "Polizia traffico",
+        "u27": 29,
+        "s27": 2697930,
+        "u26": 28,
+        "s26": 2560170,
+        "u25": 28.42,
+        "s25": 2566332.3
+       },
+       {
+        "code": "41101",
+        "name": "Polizia ordine pubblico",
+        "u27": 55,
+        "s27": 4842920,
+        "u26": 56,
+        "s26": 4875920,
+        "u25": 53.16,
+        "s25": 4480450.65
+       },
+       {
+        "code": "41102",
+        "name": "Polizia quartieri",
+        "u27": 33.5,
+        "s27": 3362060,
+        "u26": 33.5,
+        "s26": 3401400,
+        "u25": 29.65,
+        "s25": 2991608.15
+       },
+       {
+        "code": "41103",
+        "name": "Polizia specializzata",
+        "u27": 16.8,
+        "s27": 1804550,
+        "u26": 16.8,
+        "s26": 1815720,
+        "u25": 15.63,
+        "s25": 1678859.5
+       },
+       {
+        "code": "41200",
+        "name": "Sezione amministrativa",
+        "u27": 13.6,
+        "s27": 1270860,
+        "u26": 13.6,
+        "s26": 1264100,
+        "u25": 13.06,
+        "s25": 1180095.05
+       },
+       {
+        "code": "41201",
+        "name": "Servizio mobilità",
+        "u27": 7,
+        "s27": 649790,
+        "u26": 7,
+        "s26": 641690,
+        "u25": 5,
+        "s25": 455377.9
+       }
+      ]
+     },
+     {
+      "name": "Corpo civici pompieri",
+      "centres": [
+       {
+        "code": "42000",
+        "name": "Corpo civici pompieri",
+        "u27": 46,
+        "s27": 3722840,
+        "u26": 46,
+        "s26": 3656230,
+        "u25": 43.41,
+        "s25": 3451640.55
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 477.53,
+     "s27": 40955190,
+     "u26": 477.8,
+     "s26": 40822120,
+     "u25": 452.46,
+     "s25": 38054829.7
+    }
+   },
+   {
+    "name": "FORMAZIONE, SOSTEGNO E SOCIALITA'",
+    "groups": [
+     {
+      "name": "Istituto scolastico",
+      "centres": [
+       {
+        "code": "50000",
+        "name": "Direzione, segreteria e amministrazione",
+        "u27": 33.08,
+        "s27": 3313520,
+        "u26": 31.08,
+        "s26": 3122890,
+        "u25": 29.29,
+        "s25": 2941752.55
+       },
+       {
+        "code": "50100",
+        "name": "Scuola dell'infanzia",
+        "u27": 151.69,
+        "s27": 12184880,
+        "u26": 153.1,
+        "s26": 12215640,
+        "u25": 147.46,
+        "s25": 11722761.85
+       },
+       {
+        "code": "50110",
+        "name": "Scuola elementare",
+        "u27": 180.05,
+        "s27": 16270390,
+        "u26": 184.77,
+        "s26": 16569910,
+        "u25": 178.85,
+        "s25": 16240188.05
+       },
+       {
+        "code": "50120",
+        "name": "Nante",
+        "u27": 4.02,
+        "s27": 312870,
+        "u26": 4.02,
+        "s26": 312250,
+        "u25": 3.85,
+        "s25": 291969.5
+       },
+       {
+        "code": "50121",
+        "name": "Breno",
+        "u27": 1.59,
+        "s27": 130680,
+        "u26": 1.59,
+        "s26": 130560,
+        "u25": 1.59,
+        "s25": 123706.2
+       },
+       {
+        "code": "50123",
+        "name": "Campo Blenio",
+        "u27": 0.83,
+        "s27": 86140,
+        "u26": 0.83,
+        "s26": 86400,
+        "u25": 1,
+        "s25": 102604.65
+       }
+      ]
+     },
+     {
+      "name": "Socialità",
+      "centres": [
+       {
+        "code": "51000",
+        "name": "Direzione, segreteria e amministrazione",
+        "u27": 1.5,
+        "s27": 206050,
+        "u26": 1.5,
+        "s26": 204380,
+        "u25": 1.5,
+        "s25": 200658.8
+       },
+       {
+        "code": "51100",
+        "name": "SI orario prolungato e altre attività extrascolastiche SI",
+        "u27": 8.75,
+        "s27": 764750,
+        "u26": 8.59,
+        "s26": 758810,
+        "u25": 11.89,
+        "s25": 925435.3
+       },
+       {
+        "code": "51110",
+        "name": "Mense, doposcuola e altre attività extrascolastiche SE",
+        "u27": 13.4,
+        "s27": 1156700,
+        "u26": 13.74,
+        "s26": 1194650,
+        "u25": 22.73,
+        "s25": 1685482.4
+       },
+       {
+        "code": "51111",
+        "name": "Attività estive e per la gioventù",
+        "u27": 0.56,
+        "s27": 50450,
+        "u26": 0.56,
+        "s26": 50090,
+        "u25": 0.55,
+        "s25": 47763.55
+       },
+       {
+        "code": "51200",
+        "name": "Prevenzione, promozione sociale e integrazione",
+        "u27": 1.7,
+        "s27": 148540,
+        "u26": 1.7,
+        "s26": 147600,
+        "u25": 1.47,
+        "s25": 123038.2
+       },
+       {
+        "code": "51201",
+        "name": "Servizio dentario e sanitario",
+        "u27": 0.2,
+        "s27": 18760,
+        "u26": 0.2,
+        "s26": 18750,
+        "u25": 0.2,
+        "s25": 18551.5
+       },
+       {
+        "code": "51210",
+        "name": "Prossimità e lavoro",
+        "u27": 7.4,
+        "s27": 636280,
+        "u26": 7.4,
+        "s26": 632490,
+        "u25": 7.14,
+        "s25": 593564.3
+       },
+       {
+        "code": "51220",
+        "name": "Centri giovanili",
+        "u27": 2,
+        "s27": 175050,
+        "u26": 2,
+        "s26": 173670,
+        "u25": 2.25,
+        "s25": 183010.35
+       },
+       {
+        "code": "51300",
+        "name": "Ufficio intervento sociale e agenzia AVS",
+        "u27": 12.6,
+        "s27": 1086840,
+        "u26": 12.6,
+        "s26": 1042440,
+        "u25": 12.75,
+        "s25": 1043607.3
+       },
+       {
+        "code": "51310",
+        "name": "Servizio accompagnamento sociale",
+        "u27": 19.1,
+        "s27": 1738620,
+        "u26": 19.1,
+        "s26": 1737590,
+        "u25": 19.45,
+        "s25": 1822281.9
+       }
+      ]
+     },
+     {
+      "name": "Autorità regionali di protezione",
+      "centres": [
+       {
+        "code": "52000",
+        "name": "Autorità regionali di protezione",
+        "u27": 18.53,
+        "s27": 1813950,
+        "u26": 18.53,
+        "s26": 1787750,
+        "u25": 15.11,
+        "s25": 1451751.55
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 457,
+     "s27": 40094470,
+     "u26": 461.31,
+     "s26": 40185870,
+     "u25": 457.08,
+     "s25": 39518127.95
+    }
+   },
+   {
+    "name": "CULTURA, SPORT ED EVENTI",
+    "groups": [
+     {
+      "name": "Cultura",
+      "centres": [
+       {
+        "code": "60600",
+        "name": "Direzione",
+        "u27": 7.3,
+        "s27": 774370,
+        "u26": 11.3,
+        "s26": 1148240,
+        "u25": 10.76,
+        "s25": 1085248.55
+       }
+      ]
+     },
+     {
+      "name": "Sport",
+      "centres": [
+       {
+        "code": "61000",
+        "name": "Direzione, segreteria e amministrazione",
+        "u27": 3.75,
+        "s27": 395160,
+        "u26": 3.75,
+        "s26": 394800,
+        "u25": 3.35,
+        "s25": 364248.45
+       },
+       {
+        "code": "61100",
+        "name": "Centro sportivo di Cornaredo",
+        "u25": 13,
+        "s25": 923008.5
+       },
+       {
+        "code": "61101",
+        "name": "Centro sportivo del Pradello",
+        "u25": 2.6,
+        "s25": 195154.45
+       },
+       {
+        "code": "61200",
+        "name": "Piste del ghiaccio",
+        "u27": 10.41,
+        "s27": 751300,
+        "u26": 10.41,
+        "s26": 742260,
+        "u25": 10.41,
+        "s25": 727245.6
+       },
+       {
+        "code": "61300",
+        "name": "Piscina coperta",
+        "u27": 7.34,
+        "s27": 509940,
+        "u26": 7.34,
+        "s26": 506440,
+        "u25": 6.82,
+        "s25": 459802.6
+       },
+       {
+        "code": "61301",
+        "name": "Lido di Lugano",
+        "u27": 16.67,
+        "s27": 1128870,
+        "u26": 16.67,
+        "s26": 1124700,
+        "u25": 17.36,
+        "s25": 1172631.6
+       },
+       {
+        "code": "61500",
+        "name": "Centri sportivi nord",
+        "u27": 11.5,
+        "s27": 815590,
+        "u26": 11.5,
+        "s26": 819760
+       },
+       {
+        "code": "61501",
+        "name": "Centri sportivi sud",
+        "u27": 4.1,
+        "s27": 315590,
+        "u26": 4.1,
+        "s26": 314690
+       },
+       {
+        "code": "61600",
+        "name": "Palazzetto dello sport",
+        "u27": 1,
+        "s27": 76310
+       }
+      ]
+     },
+     {
+      "name": "Eventi e congressi",
+      "centres": [
+       {
+        "code": "62000",
+        "name": "Direzione segreteria amministrazione e marketing",
+        "u27": 6.8,
+        "s27": 662050,
+        "u26": 7.8,
+        "s26": 738590,
+        "u25": 7.8,
+        "s25": 727709.4
+       },
+       {
+        "code": "62100",
+        "name": "Eventi e tempo libero",
+        "u27": 34.43,
+        "s27": 2791950,
+        "u26": 33.43,
+        "s26": 2677400,
+        "u25": 33.62,
+        "s25": 2650158.4
+       },
+       {
+        "code": "62110",
+        "name": "Bike sharing",
+        "u27": 3,
+        "s27": 225120,
+        "u26": 3,
+        "s26": 223870,
+        "u25": 3,
+        "s25": 217791.6
+       },
+       {
+        "code": "62120",
+        "name": "Porti e pontili",
+        "u27": 1,
+        "s27": 79980,
+        "u26": 2,
+        "s26": 168460,
+        "u25": 2,
+        "s25": 165535.75
+       },
+       {
+        "code": "62200",
+        "name": "Gestione fiere e congressi",
+        "u27": 15.5,
+        "s27": 1242770,
+        "u26": 14,
+        "s26": 1123520,
+        "u25": 14.75,
+        "s25": 1190860.05
+       },
+       {
+        "code": "62201",
+        "name": "Acquisizione e organizzazione fiere e congressi",
+        "u27": 1,
+        "s27": 92550,
+        "u26": 1.5,
+        "s26": 134910,
+        "u25": 1.5,
+        "s25": 130433.95
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 123.8,
+     "s27": 9861550,
+     "u26": 126.8,
+     "s26": 10117640,
+     "u25": 126.97,
+     "s25": 10009828.9
+    }
+   },
+   {
+    "name": "SVILUPPO TERRITORIALE",
+    "groups": [
+     {
+      "name": "Pianificazione, ambiente e energia, mobilità",
+      "centres": [
+       {
+        "code": "70000",
+        "name": "Pianificazione, ambiente e energia, mobilità",
+        "u27": 18.6,
+        "s27": 2102540,
+        "u26": 18.6,
+        "s26": 2092740,
+        "u25": 17.02,
+        "s25": 1892687
+       }
+      ]
+     },
+     {
+      "name": "Edilizia privata",
+      "centres": [
+       {
+        "code": "71000",
+        "name": "Segretariato",
+        "u27": 3.5,
+        "s27": 296750,
+        "u26": 3.5,
+        "s26": 313370,
+        "u25": 2.17,
+        "s25": 207497.55
+       },
+       {
+        "code": "71010",
+        "name": "Edilizia privata",
+        "u27": 24,
+        "s27": 2858760,
+        "u26": 24,
+        "s26": 2836620,
+        "u25": 22.73,
+        "s25": 2652052.3
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 46.1,
+     "s27": 5258050,
+     "u26": 46.1,
+     "s26": 5242730,
+     "u25": 41.92,
+     "s25": 4752236.85
+    }
+   }
+  ],
+  "comune": {
+   "u27": 1346.64,
+   "s27": 120288620,
+   "u26": 1346.67,
+   "s26": 119691920,
+   "u25": 1301.42,
+   "s25": 114417209.2
+  },
+  "source": [
+   {
+    "file": "sources/city-preventivo-2027-messaggio.pdf",
+    "locator": "pp.58–59, Tabella 1 'dettaglio personale di ruolo (unità e stipendi lordi) suddiviso secondo dicastero e centro di costo'"
+   }
+  ]
+ },
+ "temp": {
+  "depts": [
+   {
+    "name": "ISTITUZIONI",
+    "groups": [
+     {
+      "name": "Amministrazione generale",
+      "centres": [
+       {
+        "code": "12000",
+        "name": "Supporto autorità, servizi postali e di custodia",
+        "u27": 0.09,
+        "s27": 5200,
+        "u26": 0.09,
+        "s26": 5200,
+        "u25": 0.1,
+        "s25": 6278.95
+       },
+       {
+        "code": "12010",
+        "name": "Archivio amministrativo",
+        "u27": 1,
+        "s27": 10080,
+        "u26": 1,
+        "s26": 7330,
+        "u25": 1.01,
+        "s25": 10327.5
+       },
+       {
+        "code": "12140",
+        "name": "Controllo abitanti",
+        "u25": 0.17,
+        "s25": 9208.3
+       },
+       {
+        "code": "12300",
+        "name": "Lugano Living Lab",
+        "u25": 1.49,
+        "s25": 90513.55
+       },
+       {
+        "code": "12310",
+        "name": "Comunicazione e marketing",
+        "u25": 0.02,
+        "s25": 1000
+       },
+       {
+        "code": "12320",
+        "name": "Ufficio stampa e relazioni istituzionali",
+        "u25": 0.03,
+        "s25": 1500
+       }
+      ]
+     },
+     {
+      "name": "Risorse umane",
+      "centres": [
+       {
+        "code": "14000",
+        "name": "Risorse umane",
+        "u27": 26.53,
+        "s27": 394060,
+        "u26": 26.69,
+        "s26": 394800,
+        "u25": 28.67,
+        "s25": 433142.85
+       },
+       {
+        "code": "14010",
+        "name": "Servizio sicurezza e salute",
+        "u25": 0.17,
+        "s25": 6240
+       }
+      ]
+     },
+     {
+      "name": "Sviluppo economico",
+      "centres": [
+       {
+        "code": "15000",
+        "name": "Sviluppo economico",
+        "u25": 2,
+        "s25": 118737.65
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 27.62,
+     "s27": 409340,
+     "u26": 27.78,
+     "s26": 407330,
+     "u25": 33.66,
+     "s25": 676948.8
+    }
+   },
+   {
+    "name": "CONSULENZA E GESTIONE",
+    "groups": [
+     {
+      "name": "Finanze",
+      "centres": [
+       {
+        "code": "20000",
+        "name": "Servizi finanziari",
+        "u25": 0.67,
+        "s25": 33926.95
+       },
+       {
+        "code": "20240",
+        "name": "Programmi occupaz. e impieghi a carattere sociale e suppl.",
+        "u27": 40.98,
+        "s27": 507720,
+        "u26": 40.98,
+        "s26": 506000,
+        "u25": 28.18,
+        "s25": 387245.95
+       },
+       {
+        "code": "20300",
+        "name": "Gestione transitoria Aeroporto",
+        "u27": 26.9,
+        "s27": 2300430,
+        "u26": 27.9,
+        "s26": 2391460,
+        "u25": 27.99,
+        "s25": 2328295.15
+       }
+      ]
+     },
+     {
+      "name": "Affari Giuridici",
+      "centres": [
+       {
+        "code": "21000",
+        "name": "Affari Giuridici",
+        "u27": 1,
+        "s27": 25200,
+        "u26": 1,
+        "s26": 31200,
+        "u25": 1.99,
+        "s25": 133781.3
+       }
+      ]
+     },
+     {
+      "name": "Informatica",
+      "centres": [
+       {
+        "code": "22000",
+        "name": "Informatica",
+        "u27": 2.88,
+        "s27": 34190,
+        "u26": 3,
+        "s26": 34020,
+        "u25": 3.35,
+        "s25": 69529.35
+       },
+       {
+        "code": "29100",
+        "name": "Altri contributi",
+        "u26": 0.64,
+        "s26": 38260,
+        "u25": 0.64,
+        "s25": 38504.7
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 71.76,
+     "s27": 2867540,
+     "u26": 73.52,
+     "s26": 3000940,
+     "u25": 62.82,
+     "s25": 2991283.4
+    }
+   },
+   {
+    "name": "IMMOBILI",
+    "groups": [
+     {
+      "name": "Ediliziapubblica",
+      "centres": [
+       {
+        "code": "30000",
+        "name": "Progettazione",
+        "u25": 0.46,
+        "s25": 80072.55
+       },
+       {
+        "code": "30010",
+        "name": "Realizzazione",
+        "u25": 0.46,
+        "s25": 80072.6
+       },
+       {
+        "code": "30020",
+        "name": "Edilizia pubblica",
+        "u27": 0.25,
+        "s27": 32850
+       }
+      ]
+     },
+     {
+      "name": "Gestione e manutenzione immobili",
+      "centres": [
+       {
+        "code": "31000",
+        "name": "Gestione",
+        "u27": 0.68,
+        "s27": 30500,
+        "u26": 0.68,
+        "s26": 30500,
+        "u25": 2.83,
+        "s25": 127981.4
+       },
+       {
+        "code": "31010",
+        "name": "Manutenzione edifici",
+        "u27": 2,
+        "s27": 35280,
+        "u26": 2,
+        "s26": 22820,
+        "u25": 1.84,
+        "s25": 28210.5
+       },
+       {
+        "code": "31011",
+        "name": "Supporto e logistica manifestazioni",
+        "u27": 1,
+        "s27": 14300,
+        "u26": 1,
+        "s26": 11270,
+        "u25": 0.35,
+        "s25": 3578.5
+       },
+       {
+        "code": "31020",
+        "name": "Cimiteri",
+        "u27": 0.19,
+        "s27": 11470,
+        "u26": 0.19,
+        "s26": 11440,
+        "u25": 0.15,
+        "s25": 8750.5
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 4.12,
+     "s27": 124400,
+     "u26": 3.87,
+     "s26": 76030,
+     "u25": 6.09,
+     "s25": 328666.05
+    }
+   },
+   {
+    "name": "SICUREZZA E SPAZI URBANI",
+    "groups": [
+     {
+      "name": "Spazi urbani",
+      "centres": [
+       {
+        "code": "40000",
+        "name": "Direzione e amministrazione",
+        "u27": 1,
+        "s27": 11860
+       },
+       {
+        "code": "40100",
+        "name": "Genio civile",
+        "u25": 0.04,
+        "s25": 2600
+       },
+       {
+        "code": "40110",
+        "name": "Strade",
+        "u25": 0.04,
+        "s25": 2395.85
+       },
+       {
+        "code": "40111",
+        "name": "Zone collinari",
+        "u27": 0.25,
+        "s27": 15000,
+        "u26": 0.25,
+        "s26": 15000,
+        "u25": 0.76,
+        "s25": 45365.8
+       },
+       {
+        "code": "40200",
+        "name": "Produzione",
+        "u27": 1,
+        "s27": 13870,
+        "u26": 1,
+        "s26": 10620
+       },
+       {
+        "code": "40201",
+        "name": "Parchi e giardini",
+        "u27": 4.03,
+        "s27": 55020,
+        "u26": 3.03,
+        "s26": 40720,
+        "u25": 3.86,
+        "s25": 41242.15
+       },
+       {
+        "code": "40310",
+        "name": "Rifiuti",
+        "u26": 0.33,
+        "s26": 20000,
+        "u25": 0.33,
+        "s25": 18109.3
+       },
+       {
+        "code": "40320",
+        "name": "Parco veicoli",
+        "u27": 1,
+        "s27": 13460,
+        "u26": 1,
+        "s26": 10430,
+        "u25": 1.01,
+        "s25": 13851.4
+       }
+      ]
+     },
+     {
+      "name": "Polizia",
+      "centres": [
+       {
+        "code": "41000",
+        "name": "Comando e staff",
+        "u25": 0.01,
+        "s25": 418.8
+       },
+       {
+        "code": "41020",
+        "name": "Centrale operativa",
+        "u25": 0.67,
+        "s25": 52198.65
+       }
+      ]
+     },
+     {
+      "name": "Corpo civici pompieri",
+      "centres": [
+       {
+        "code": "42000",
+        "name": "Corpo civici pompieri",
+        "u26": 0.04,
+        "s26": 2500,
+        "u25": 0.08,
+        "s25": 4825.5
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 7.28,
+     "s27": 109210,
+     "u26": 5.65,
+     "s26": 99270,
+     "u25": 6.8,
+     "s25": 181007.45
+    }
+   },
+   {
+    "name": "FORMAZIONE, SOSTEGNO E SOCIALITA'",
+    "groups": [
+     {
+      "name": "Istituto scolastico",
+      "centres": [
+       {
+        "code": "50000",
+        "name": "Direzione, segreteria e amministrazione",
+        "u27": 1.9,
+        "s27": 94270,
+        "u26": 1.23,
+        "s26": 86470,
+        "u25": 2.06,
+        "s25": 165672.25
+       },
+       {
+        "code": "50100",
+        "name": "Scuola dell'infanzia",
+        "u27": 5.48,
+        "s27": 400000,
+        "u26": 5.48,
+        "s26": 400000,
+        "u25": 10.09,
+        "s25": 588082.15
+       },
+       {
+        "code": "50110",
+        "name": "Scuola elementare",
+        "u27": 8.11,
+        "s27": 545000,
+        "u26": 8.11,
+        "s26": 545000,
+        "u25": 10.87,
+        "s25": 778131.7
+       },
+       {
+        "code": "50120",
+        "name": "Nante",
+        "u27": 1.65,
+        "s27": 78020,
+        "u26": 1.47,
+        "s26": 78000,
+        "u25": 0.53,
+        "s25": 24859.75
+       },
+       {
+        "code": "50121",
+        "name": "Breno",
+        "u27": 0.82,
+        "s27": 22020,
+        "u26": 0.64,
+        "s26": 22000,
+        "u25": 0.94,
+        "s25": 37590
+       },
+       {
+        "code": "50122",
+        "name": "Mascengo",
+        "u25": 0.63,
+        "s25": 40903.45
+       },
+       {
+        "code": "50123",
+        "name": "Campo Blenio",
+        "u27": 0.75,
+        "s27": 13980,
+        "u26": 0.49,
+        "s26": 14000,
+        "u25": 0.45,
+        "s25": 17664.25
+       }
+      ]
+     },
+     {
+      "name": "Socialità",
+      "centres": [
+       {
+        "code": "51000",
+        "name": "Direzione, segreteria e amministrazione",
+        "u27": 0.06,
+        "s27": 3300,
+        "u26": 0.06,
+        "s26": 3300,
+        "u25": 0.36,
+        "s25": 29785.25
+       },
+       {
+        "code": "51100",
+        "name": "SI orario prolungato e altre attività extrascolastiche SI",
+        "u27": 9.97,
+        "s27": 365200,
+        "u26": 8.54,
+        "s26": 355000,
+        "u25": 11.2,
+        "s25": 478711
+       },
+       {
+        "code": "51110",
+        "name": "Mense, doposcuola e altre attività extrascolastiche SE",
+        "u27": 3.75,
+        "s27": 225000,
+        "u26": 5,
+        "s26": 237000,
+        "u25": 4.82,
+        "s25": 222675.15
+       },
+       {
+        "code": "51111",
+        "name": "Attività estive e per la gioventù",
+        "u27": 5.41,
+        "s27": 245000,
+        "u26": 5.41,
+        "s26": 245000,
+        "u25": 4.51,
+        "s25": 263328.95
+       },
+       {
+        "code": "51200",
+        "name": "Prevenzione, promozione sociale e integrazione",
+        "u27": 0.57,
+        "s27": 46750,
+        "u26": 0.57,
+        "s26": 45470,
+        "u25": 1.27,
+        "s25": 75835.95
+       },
+       {
+        "code": "51201",
+        "name": "Servizio dentario e sanitario",
+        "u27": 0.92,
+        "s27": 55000,
+        "u26": 0.92,
+        "s26": 55000,
+        "u25": 0.75,
+        "s25": 44858.95
+       },
+       {
+        "code": "51210",
+        "name": "Prossimità e lavoro",
+        "u27": 0.5,
+        "s27": 12000,
+        "u26": 0.5,
+        "s26": 12000,
+        "u25": 7.21,
+        "s25": 358969.95
+       },
+       {
+        "code": "51220",
+        "name": "Centri giovanili",
+        "u25": 0.04,
+        "s25": 2301.1
+       },
+       {
+        "code": "51300",
+        "name": "Ufficio intervento sociale e agenzia AVS",
+        "u27": 0.9,
+        "s27": 74830,
+        "u26": 0.85,
+        "s26": 78600,
+        "u25": 1.75,
+        "s25": 147155.05
+       },
+       {
+        "code": "51310",
+        "name": "Servizio accompagnamento sociale",
+        "u27": 1,
+        "s27": 24000,
+        "u26": 1,
+        "s26": 24000,
+        "u25": 0.38,
+        "s25": 9174.2
+       }
+      ]
+     },
+     {
+      "name": "Autorità regionali di protezione",
+      "centres": [
+       {
+        "code": "52000",
+        "name": "Autorità regionali di protezione",
+        "u27": 29.5,
+        "s27": 1752000,
+        "u26": 29.5,
+        "s26": 1752000,
+        "u25": 36.77,
+        "s25": 2335602
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 71.29,
+     "s27": 3956370,
+     "u26": 69.77,
+     "s26": 3952840,
+     "u25": 94.63,
+     "s25": 5621301.1
+    }
+   },
+   {
+    "name": "CULTURA, SPORT ED EVENTI",
+    "groups": [
+     {
+      "name": "Cultura",
+      "centres": [
+       {
+        "code": "60600",
+        "name": "Direzione",
+        "u27": 1.17,
+        "s27": 52200,
+        "u26": 1.17,
+        "s26": 52170,
+        "u25": 0.86,
+        "s25": 54411.65
+       }
+      ]
+     },
+     {
+      "name": "Sport",
+      "centres": [
+       {
+        "code": "61100",
+        "name": "Centro sportivo di Cornaredo",
+        "u25": 1.01,
+        "s25": 14534.65
+       },
+       {
+        "code": "61200",
+        "name": "Piste del ghiaccio",
+        "u27": 0.59,
+        "s27": 31090,
+        "u26": 0.59,
+        "s26": 31090,
+        "u25": 0.49,
+        "s25": 32670
+       },
+       {
+        "code": "61300",
+        "name": "Piscina coperta",
+        "u27": 0.51,
+        "s27": 26800,
+        "u26": 0.51,
+        "s26": 26800,
+        "u25": 0.23,
+        "s25": 13807.35
+       },
+       {
+        "code": "61301",
+        "name": "Lido di Lugano",
+        "u27": 9.46,
+        "s27": 455850,
+        "u26": 9.46,
+        "s26": 455850,
+        "u25": 11.46,
+        "s25": 603614.25
+       },
+       {
+        "code": "61303",
+        "name": "Lido SanDomenico",
+        "u27": 0.5,
+        "s27": 29910,
+        "u26": 0.5,
+        "s26": 29910,
+        "u25": 0.56,
+        "s25": 33942
+       },
+       {
+        "code": "61304",
+        "name": "Lido Riva Caccia",
+        "u27": 1.22,
+        "s27": 73620,
+        "u26": 1.22,
+        "s26": 73620,
+        "u25": 1.23,
+        "s25": 75403.5
+       },
+       {
+        "code": "61500",
+        "name": "Centri sportivi nord",
+        "u27": 1,
+        "s27": 9970,
+        "u26": 1,
+        "s26": 9970
+       }
+      ]
+     },
+     {
+      "name": "Eventie congressi",
+      "centres": [
+       {
+        "code": "62000",
+        "name": "Direzione segreteria amministrazione e marketing",
+        "u25": 3.4,
+        "s25": 109262.75
+       },
+       {
+        "code": "62100",
+        "name": "Eventi e tempo libero",
+        "u27": 1.7,
+        "s27": 53740,
+        "u26": 1.7,
+        "s26": 53300,
+        "u25": 3.35,
+        "s25": 142802.25
+       },
+       {
+        "code": "62110",
+        "name": "Bike sharing",
+        "u27": 2,
+        "s27": 21240,
+        "u26": 3,
+        "s26": 87200,
+        "u25": 0.08,
+        "s25": 5020.6
+       },
+       {
+        "code": "62120",
+        "name": "Porti e pontili",
+        "u25": 6.02,
+        "s25": 319762.9
+       },
+       {
+        "code": "62200",
+        "name": "Gestione fiere e congressi",
+        "u27": 3.71,
+        "s27": 176940,
+        "u26": 3.71,
+        "s26": 172820
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 21.86,
+     "s27": 931360,
+     "u26": 22.86,
+     "s26": 992730,
+     "u25": 28.69,
+     "s25": 1405231.9
+    }
+   },
+   {
+    "name": "SVILUPPO TERRITORIALE",
+    "groups": [
+     {
+      "name": "Edilizia privata",
+      "centres": [
+       {
+        "code": "71000",
+        "name": "Segretariato",
+        "u25": 1.17,
+        "s25": 74264.95
+       }
+      ]
+     }
+    ],
+    "total": {
+     "u27": 0,
+     "s27": 0,
+     "u26": 0,
+     "s26": 0,
+     "u25": 1.17,
+     "s25": 74264.95
+    }
+   }
+  ],
+  "comune": {
+   "u27": 203.93,
+   "s27": 8398220,
+   "u26": 203.45,
+   "s26": 8529140,
+   "u25": 233.86,
+   "s25": 11278703.65
+  },
+  "source": [
+   {
+    "file": "sources/city-preventivo-2027-messaggio.pdf",
+    "locator": "pp.61–62, Tabella 1a 'dettaglio personale non di ruolo (unità e stipendi lordi) suddiviso secondo dicastero e centro di costo'"
+   }
+  ]
+ }
+}

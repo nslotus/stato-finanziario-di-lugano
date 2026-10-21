@@ -1,0 +1,594 @@
+[
+  {
+    "file": "sources/sel-2024-allegato.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/StatisticaFinanziaria/2024-allegato.xlsx",
+    "publisher": "Cantone Ticino, Sezione degli enti locali",
+    "retrieved": "2026-10-14T23:15:44.146Z",
+    "bytes": 472332,
+    "sha256": "51b46683fcc10e4a7c75ff9e8394063997d3c15a04e589491989bac3060236c9"
+  },
+  {
+    "file": "sources/sel-2024-appendice.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/StatisticaFinanziaria/2024-appendice.xlsx",
+    "publisher": "Cantone Ticino, Sezione degli enti locali",
+    "retrieved": "2026-10-14T23:15:44.084Z",
+    "bytes": 385530,
+    "sha256": "c9b6c6bff7e249b690c790db6abed849d9bcfba8bc541ce2dbb6ae4678fe31d8"
+  },
+  {
+    "file": "sources/ustat-T_010202_020.xlsx",
+    "url": "https://www3.ti.ch/DFE/DR/USTAT/allegati/tabella/T_010202_020.xlsx",
+    "publisher": "Ufficio di statistica del Cantone Ticino (USTAT)",
+    "retrieved": "2026-10-14T23:15:06.760Z",
+    "bytes": 1008847,
+    "sha256": "971bb8ed57a35d644d378157eda4bae44ba31011d7e626ffb8ef4c367fecbbd3"
+  },
+  {
+    "file": "sources/ustat-14-salute.pdf",
+    "url": "https://www3.ti.ch/DFE/DR/USTAT/allegati/prodima/5314_salute.pdf",
+    "publisher": "Ufficio di statistica del Cantone Ticino (USTAT), Annuario statistico ticinese, cap. 14 Salute",
+    "retrieved": "2026-10-14T23:17:51.913Z",
+    "bytes": 335122,
+    "sha256": "31f4eb6879d3b553b21b1967ba2d8fa4170551b9f6632228ccb9e4c8f39c1873"
+  },
+  {
+    "file": "sources/dati-di-lugano@8c1fd28-debt-profile.json",
+    "url": "https://github.com/nslotus/dati-di-lugano/blob/8c1fd28/out/debt-profile.json",
+    "publisher": "Dati di Lugano (from City of Lugano final accounts 2025, p. 2)",
+    "retrieved": "2026-10-14T23:18:10.611Z",
+    "bytes": 7214,
+    "sha256": "161db2e84318140e5f67380904ae3cdbb4aac3e3ef62d02a35aae17d13ce18dc"
+  },
+  {
+    "file": "sources/dati-di-lugano@a90ca4a-debt-service.json",
+    "url": "https://github.com/nslotus/dati-di-lugano/blob/a90ca4a/out/debt-service.json",
+    "publisher": "Dati di Lugano (bond interest and repayments computed from the bond terms)",
+    "retrieved": "2026-10-15T20:16:46.882Z",
+    "bytes": 26059,
+    "sha256": "4ddd37eceee9e1bde4e1b2a4e029d85e5abfc2940f29c1bc7f2d9a57a9c06985"
+  },
+  {
+    "file": "sources/dati-di-lugano@61e3dbe-city-figures.json",
+    "url": "https://github.com/nslotus/dati-di-lugano/blob/61e3dbe/out/city-figures.json",
+    "publisher": "Dati di Lugano (figures extracted from the City of Lugano's PDFs)",
+    "retrieved": "2026-10-15T21:50:38.127Z",
+    "bytes": 26291,
+    "sha256": "181d88a2bf7e74d70efa23468a0bc6db4c5d26e8e9e9c77c2b92f042c200af98"
+  },
+  {
+    "file": "sources/dati-di-lugano@8c1fd28-lugano-indicators.json",
+    "url": "https://github.com/nslotus/dati-di-lugano/blob/8c1fd28/out/lugano-indicators.json",
+    "publisher": "Dati di Lugano (from the Canton of Ticino municipal statistics)",
+    "retrieved": "2026-10-14T23:18:10.668Z",
+    "bytes": 17764,
+    "sha256": "f8754c650ad314086131eba96081e76ecf94ecd13eb893b1dc0ab783ac9214c1"
+  },
+  {
+    "file": "sources/dati-di-lugano@6627e5f-budget-vs-actual.json",
+    "url": "https://github.com/nslotus/dati-di-lugano/blob/6627e5f/out/budget-vs-actual.json",
+    "publisher": "Dati di Lugano (budget vs actual from the City's recap tables)",
+    "retrieved": "2026-10-15T10:31:56.322Z",
+    "bytes": 11418,
+    "sha256": "c823cb5f7adbc631f5e018e6291503c60a90caae04fad330a5fd33677b6b915a"
+  },
+  {
+    "file": "sources/20251027-moodys-rating.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:f659385e-ceef-4a3b-b14f-c776dcbf239d/20251027-cs-conferma-rating-moodys.pdf",
+    "publisher": "Città di Lugano, Moody's rating announcement",
+    "retrieved": "2026-10-15T09:21:19.357Z",
+    "bytes": 29287,
+    "sha256": "2c41a02076c097b8daeefca0632261ab6c41f9b1e243305ccbc9727baee0f931"
+  },
+  {
+    "file": "sources/city-preventivo-2027-comunicato.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:3252b132-7bd9-4f5b-84af-f03a9a61c763/15%2010%202026_Comunicato_Preventivo%202027.pdf",
+    "publisher": "Città di Lugano, Preventivo 2027 press release (15 October 2026)",
+    "retrieved": "2026-10-15T21:50:38.051Z",
+    "bytes": 87913,
+    "sha256": "4d1b5a2ccaabf47dbc631ee0b496a87a2b0d5102eca0255038f65fb82b728670"
+  },
+  {
+    "file": "sources/city-preventivo-2027-slides.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:3f7967db-a4c6-4d4b-8570-c0ddf97179db/Presentazione_Preventivo%202027.pdf",
+    "publisher": "Città di Lugano, Preventivo 2027 press presentation",
+    "retrieved": "2026-10-15T21:50:38.073Z",
+    "bytes": 339572,
+    "sha256": "0d22428265c249d956e6961bc3c16854b8332012e9f5723106d3dca176b6f87b"
+  },
+  {
+    "file": "sources/city-preventivo-2027-messaggio.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
+    "publisher": "Città di Lugano, Preventivo 2027 municipal message",
+    "retrieved": "2026-10-15T21:50:38.066Z",
+    "bytes": 6671967,
+    "sha256": "121f955a5bd9a56e483a3273a8d691913bbcbc25f01a75a1c770032c74a10149"
+  },
+  {
+    "file": "sources/city-preventivo-2026-comunicato.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:0a793cce-fba0-4c83-b596-e65560732832/20251023-cs-preventivo-2026-piano-finanziario-2026-2033.pdf",
+    "publisher": "Città di Lugano, Preventivo 2026 press release",
+    "retrieved": "2026-10-15T09:18:19.454Z",
+    "bytes": 51799,
+    "sha256": "23c09304e1902f33c7fb100b11cf73234a19a426385f5e0a338d36a042aaa415"
+  },
+  {
+    "file": "sources/decs-B110-infanzia.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/B110Allievi_e_sezioni_delle_scuole_dell_infanzia_pubbliche_secondo_il_circondario_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (B110)",
+    "retrieved": "2026-10-15T10:40:33.861Z",
+    "bytes": 39258,
+    "sha256": "7df635e736e1a9bd0c1d6be77a0ba509bf87951dfebad56d9cc1542f569c9413"
+  },
+  {
+    "file": "sources/decs-B210-elementari.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/B210Allievi_e_sezioni_delle_scuole_elementari_pubbliche_secondo_il_circondario_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (B210)",
+    "retrieved": "2026-10-15T10:40:34.167Z",
+    "bytes": 41314,
+    "sha256": "29f40323a7088362a85163a6ff970f5386f8d585757baf196f59f61a4c590a9d"
+  },
+  {
+    "file": "sources/dati-di-lugano@74c57b7-schools.json",
+    "url": "https://github.com/nslotus/dati-di-lugano/blob/74c57b7/out/schools.json",
+    "publisher": "Dati di Lugano (school figures extracted from the City's releases)",
+    "retrieved": "2026-10-15T10:57:33.826Z",
+    "bytes": 9459,
+    "sha256": "00d3bc7a53cabbeda1e42bfa34340f56fde7d2975350f4e25af0d34d9415dc25"
+  },
+  {
+    "file": "sources/sbb-passagierfrequenz.csv",
+    "url": "https://data.sbb.ch/api/explore/v2.1/catalog/datasets/passagierfrequenz/exports/csv?delimiter=%3B",
+    "publisher": "FFS / SBB open data, Ein- und Aussteigende an Bahnhöfen",
+    "retrieved": "2026-10-15T22:26:15.386Z",
+    "bytes": 966391,
+    "sha256": "e6360f2a87252c3cc10031928c30202171cc84092f3c4aee78d65b4a5d4a03b3"
+  },
+  {
+    "file": "sources/dati-di-lugano@969fe8d-mobility.json",
+    "url": "https://github.com/nslotus/dati-di-lugano/blob/969fe8d/out/mobility.json",
+    "publisher": "Dati di Lugano (TPL and PubliBike figures extracted from the releases)",
+    "retrieved": "2026-10-15T15:00:25.649Z",
+    "bytes": 5376,
+    "sha256": "f2502dc63549f6dd1cf88e4e31c520495a0f3f58e19f033ae030d9ee3252484e"
+  },
+  {
+    "file": "sources/estv-dbst-np-gden-2022-normalfall.xlsx",
+    "url": "https://www.estv.admin.ch/dam/de/sd-web/wum7OKVNOOwl/statistik-dbst-np-gden-2022-normalfall.xlsx",
+    "publisher": "Amministrazione federale delle contribuzioni (ESTV)",
+    "retrieved": "2026-10-15T19:58:50.167Z",
+    "bytes": 1654641,
+    "sha256": "57834c7b70abc2d10ad947005bafdc0b56152665372c373b9c937564ebfb5960"
+  },
+  {
+    "file": "sources/estv-dbst-np-gden-2022-sonderfall.xlsx",
+    "url": "https://www.estv.admin.ch/dam/de/sd-web/n8d5HdPSEkzk/statistik-dbst-np-gden-2022-sonderfall.xlsx",
+    "publisher": "Amministrazione federale delle contribuzioni (ESTV)",
+    "retrieved": "2026-10-15T19:58:50.795Z",
+    "bytes": 1489729,
+    "sha256": "a7ab851fd9332cde402e33277b82ee222c724379b61131d84d94c6d42b3de4b9"
+  },
+  {
+    "file": "sources/decs-B310-scuole-medie.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/B310Allievi_e_sezioni_delle_scuole_medie_pubbliche_secondo_la_sede_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (B310)",
+    "retrieved": "2026-10-16T00:22:20.454Z",
+    "bytes": 96801,
+    "sha256": "4c8ee6568d838b033fa5f3b9e85bb404d6f89e6dbec81ec6aa0ebb06569ee02f"
+  },
+  {
+    "file": "sources/decs-C210.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/C210Allievi_e_sezioni_dei_licei_cantonali_secondo_la_sede_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (C210)",
+    "retrieved": "2026-10-16T00:22:20.495Z",
+    "bytes": 56255,
+    "sha256": "343954a4b9bb8d7d7cdf6dd25cf8ed30c31876c29ee276820858cc0fbf0c7e2b"
+  },
+  {
+    "file": "sources/decs-C310.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/C310Allievi_e_sezioni_delle_Scuole_d_arti_e_mestieri_secondo_la_sede_la_formazione_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (C310)",
+    "retrieved": "2026-10-16T00:22:20.544Z",
+    "bytes": 67236,
+    "sha256": "2ed6c739c5da489fb6c6c359ebb7a378c0d5ad8e9d508764089523cb3cf89b45"
+  },
+  {
+    "file": "sources/decs-C320.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/C320Allievi_e_sezioni_della_Scuola_d_arte_applicata_secondo_la_formazione_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (C320)",
+    "retrieved": "2026-10-16T00:22:20.585Z",
+    "bytes": 57667,
+    "sha256": "b8abb0c30a1407ff71d408c9aed1a51423d02aa847bd5cdbee3a58a973855dae"
+  },
+  {
+    "file": "sources/decs-C330.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/C330Allievi_e_sezioni_della_Scuola_cantonale_d_arte_secondo_la_formazione_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (C330)",
+    "retrieved": "2026-10-16T00:22:20.624Z",
+    "bytes": 50453,
+    "sha256": "36f2221cd20a89eb6ee472278c88d1a3a0337d504143ab4d70ee8d74e9f6a018"
+  },
+  {
+    "file": "sources/decs-C340.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/C340Allievi_e_sezioni_delle_Scuole_medie_di_commercio_secondo_la_sede_la_formazione_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (C340)",
+    "retrieved": "2026-10-16T00:22:20.665Z",
+    "bytes": 65316,
+    "sha256": "6872e9b11d7f893fd368f64c8914c8929e1b7ab8cef1d95c0ad2a55104640afc"
+  },
+  {
+    "file": "sources/decs-C370.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/C370Allievi_e_sezioni_della_della_maturita_professionale_post-tirocinio_o_post-diploma_secondo_il_tipo_di_maturita_la_sede_l_anno_e_il_sesso_dal_2015_16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (C370)",
+    "retrieved": "2026-10-16T00:22:20.713Z",
+    "bytes": 64849,
+    "sha256": "83a460b5ec175badb457576bc863499f4c9cc2004ced7403418eb802203cc7c0"
+  },
+  {
+    "file": "sources/decs-C420.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/C420Allievi_e_sezioni_delle_SPAI_secondo_la_sede_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (C420)",
+    "retrieved": "2026-10-16T00:22:20.754Z",
+    "bytes": 73837,
+    "sha256": "d6010fef10d36fd8ab1e1587b5c28ae3cf6bec47b3169b09cae0efa81fea9c8e"
+  },
+  {
+    "file": "sources/decs-C440.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/C440Allievi_e_sezioni_delle_Scuole_professionali_commerciali_secondo_la_sede_la_formazione_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (C440)",
+    "retrieved": "2026-10-16T00:22:20.797Z",
+    "bytes": 73792,
+    "sha256": "39d9bb3bc297ff8443b806dfecd53e6ef24706072da5c4a3e52030a27d1b28c3"
+  },
+  {
+    "file": "sources/decs-C470.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/C470Allievi_e_sezioni_delle_Scuole_medico-tecniche_secondo_la_sede_la_formazione_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
+    "publisher": "Cantone Ticino, DECS – Statistica allievi (C470)",
+    "retrieved": "2026-10-16T00:22:20.838Z",
+    "bytes": 67503,
+    "sha256": "16cf902efe691e0383f8c7500b571bca153babbe35a966f04820f10b90f86e2f"
+  },
+  {
+    "file": "sources/usi-students-total.html",
+    "url": "https://data.usi.ch/tables/dati-cifre-universita/students-total",
+    "publisher": "USI – Università della Svizzera italiana, data.usi.ch",
+    "retrieved": "2026-10-16T00:22:08.382Z",
+    "bytes": 3298,
+    "sha256": "660106f1aaf2cc06c4c3530b5e349b8ca2aad1a750abc04459b847c31872d51d"
+  },
+  {
+    "file": "sources/supsi-dti-fatti-cifre-2025.html",
+    "url": "https://www.dti.supsi.ch/fatti-e-cifre-2025",
+    "publisher": "SUPSI – Dipartimento tecnologie innovative, Fatti e cifre 2025",
+    "retrieved": "2026-10-16T00:22:08.819Z",
+    "bytes": 228296,
+    "sha256": "95963e4b114fc8f077c92645a2eebc04be5107d4293f004d8338abfb829ce2be"
+  },
+  {
+    "file": "sources/conservatorio-rapporto-2025.pdf",
+    "url": "https://www.conservatorio.ch/media/839740/fondazione_conservatorio_rapporto_annuale_2025_web.pdf",
+    "publisher": "Fondazione Conservatorio della Svizzera italiana, Rapporto annuale 2025",
+    "retrieved": "2026-10-16T08:58:31.903Z",
+    "bytes": 3999966,
+    "sha256": "a1b54ae5760174842c6cc186c05d8604b23fb8409f0a016d1dcbbbfdd9e14ea1"
+  },
+  {
+    "file": "sources/sel-riparto-lifd196-2026-gettito2023.pdf",
+    "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/TAB20260811-Riparto_9.0_mio_x_anno_2026-Gettito_2023.pdf",
+    "publisher": "Cantone Ticino, Sezione degli enti locali – riparto art. 196 cpv. 1bis LIFD (gettito PG 2023)",
+    "retrieved": "2026-10-16T11:39:54.379Z",
+    "bytes": 428823,
+    "sha256": "4b22045a39dc1f4025c6f3b78299277cb644c0982fa158812a2edf1d82a531db"
+  },
+  {
+    "file": "sources/ustat-T_030203_040.xlsx",
+    "url": "https://www3.ti.ch/DFE/DR/USTAT/allegati/tabella/T_030203_040.xlsx",
+    "publisher": "Ufficio di statistica del Cantone Ticino (USTAT) – aziende e addetti (STATENT)",
+    "retrieved": "2026-10-17T13:07:56.492Z",
+    "bytes": 284365,
+    "sha256": "9085d32ff4375e61c87b3da7f2caa3e6b217a5cdf4823082c6f1d951c23c87fa"
+  },
+  {
+    "file": "sources/ustat-T_030204_040.xlsx",
+    "url": "https://www3.ti.ch/DFE/DR/USTAT/allegati/tabella/T_030204_040.xlsx",
+    "publisher": "Ufficio di statistica del Cantone Ticino (USTAT) – frontalieri (STAF)",
+    "retrieved": "2026-10-17T13:07:56.538Z",
+    "bytes": 71948,
+    "sha256": "5eb656ea56dc7673ba1290a5d16189d5c2eefedf3bd5a50f340ccdf1d5eb4ae7"
+  },
+  {
+    "file": "sources/ustat-T_090203_020.xls",
+    "url": "https://www3.ti.ch/DFE/DR/USTAT/allegati/tabella/T_090203_020.xls",
+    "publisher": "Ufficio di statistica del Cantone Ticino (USTAT) – abitazioni vuote",
+    "retrieved": "2026-10-17T13:07:56.583Z",
+    "bytes": 764416,
+    "sha256": "0ce3e981b948dcdc88430a61a08dc0208521a3cd0944f5876447860a5fcd330c"
+  },
+  {
+    "file": "sources/ustat-T_090203_030.xls",
+    "url": "https://www3.ti.ch/DFE/DR/USTAT/allegati/tabella/T_090203_030.xls",
+    "publisher": "Ufficio di statistica del Cantone Ticino (USTAT) – abitazioni",
+    "retrieved": "2026-10-17T13:07:56.629Z",
+    "bytes": 462336,
+    "sha256": "b7be9a1c5a537f9619945cf579525ba7067d24679a803e9af30c8ad56e248900"
+  },
+  {
+    "file": "sources/ustat-T_090502_010.xlsx",
+    "url": "https://www3.ti.ch/DFE/DR/USTAT/allegati/tabella/T_090502_010.xlsx",
+    "publisher": "Ufficio di statistica del Cantone Ticino (USTAT) – transazioni immobiliari",
+    "retrieved": "2026-10-17T13:07:56.673Z",
+    "bytes": 79945,
+    "sha256": "5f0b6afcf667fc3531cc880022370e0e5c38e993d263df0132549ea4a58fa565"
+  },
+  {
+    "file": "sources/ustat-T_100301_010.xls",
+    "url": "https://www3.ti.ch/DFE/DR/USTAT/allegati/tabella/T_100301_010.xls",
+    "publisher": "Ufficio di statistica del Cantone Ticino (USTAT) – offerta e domanda alberghiera (HESTA)",
+    "retrieved": "2026-10-17T13:07:56.717Z",
+    "bytes": 870400,
+    "sha256": "6dd5acf2da276d590020b509d711c2b7018f93e708b8b3d9f765bc4efb758064"
+  },
+  {
+    "file": "sources/ustat-T_100301_040.xls",
+    "url": "https://www3.ti.ch/DFE/DR/USTAT/allegati/tabella/T_100301_040.xls",
+    "publisher": "Ufficio di statistica del Cantone Ticino (USTAT) – pernottamenti alberghieri (HESTA)",
+    "retrieved": "2026-10-17T13:07:56.758Z",
+    "bytes": 236544,
+    "sha256": "73e49d8cb9153d59369c7e23d512b058686d1cce4d018f0a7328bb0ad640f9e7"
+  },
+  {
+    "file": "sources/20260129-dati-statistici-citta-lugano-2025-rapporto.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:5370eb7f-b2f8-4dca-98d3-db45e9c7b6cc/20260129-dati-statistici-citta-lugano-2025-rapporto.pdf",
+    "publisher": "Città di Lugano, Dati statistici al 31 dicembre 2025 (29 gennaio 2026)",
+    "retrieved": "2026-10-17T21:39:53.085Z",
+    "bytes": 3331016,
+    "sha256": "a98813b06fc6bff284d476f71d809054b99787060aabb69e4dfe5230436825fc"
+  },
+  {
+    "file": "sources/20260213-analisi-disoccupazione-lugano-2025-comunicato.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:2eed6771-7f80-45bd-a130-3df0ff0838eb/20260213-analisi-disoccupazione-lugano-2025-comunicato.pdf",
+    "publisher": "Città di Lugano, comunicato: la disoccupazione a Lugano nel 2025 (13 febbraio 2026)",
+    "retrieved": "2026-10-17T21:39:55.048Z",
+    "bytes": 96153,
+    "sha256": "c2aec1a2a778fb3adc56971446e80cacf44b8d13edc7edb39ccef2a655a5bf3a"
+  },
+  {
+    "file": "sources/ail-rapporto-integrato-2025.pdf",
+    "url": "https://de.ail.ch/dam/jcr:ef45a429-fe78-4b5d-b9b2-08f904b4afb4/Rapporto%20integrato%202025.pdf",
+    "publisher": "AIL SA, Rapporto annuale integrato 2025",
+    "retrieved": "2026-10-17T21:40:06.332Z",
+    "bytes": 34652373,
+    "sha256": "6b05c70c005497106c38ffd9dd860188d608a7c0b4f534ccfcc8ad1603dbbb3c"
+  },
+  {
+    "file": "sources/lugano-in-cifre-2026.pdf",
+    "url": "https://statistica.lugano.ch/site/wp-content/uploads/2026/06/A5_LiC_2026_Web_def.pdf",
+    "publisher": "Città di Lugano, Lugano in cifre 2026 (giugno 2026)",
+    "retrieved": "2026-10-17T22:05:36.194Z",
+    "bytes": 19899726,
+    "sha256": "f2bf52a38f2263fa349f72aa07eab1305e93eb38cb1d2e7c16af2da09b2c1fb8"
+  },
+  {
+    "file": "sources/bfs-ssv-social-2026.csv",
+    "url": "https://disseminate.stats.swiss/rest/data/CH1.SSV,DF_SSV_SOCIAL,/all?format=csvfilewithlabels",
+    "publisher": "Ufficio federale di statistica / Unione delle città svizzere – Statistica delle città svizzere 2026, beneficiari dell'aiuto sociale (DF_SSV_SOCIAL)",
+    "retrieved": "2026-10-17T22:06:58.207Z",
+    "bytes": 7363361,
+    "sha256": "c0ae5f81380600de284908fdb96729af0aa2e233517884ba4d73740a92e8b958"
+  },
+  {
+    "file": "sources/mm-interrogazione-1426-nidi.pdf",
+    "url": "https://www.lugano.ch/downloadCc?name=RispostaInterrogazione_1426.pdf&type=risposte&unid=6AE9B8E9477E45FFC1258B6A0030C1D3",
+    "publisher": "Città di Lugano, risposta del Municipio all'interrogazione n. 1426 sugli asili nido (30 luglio 2024)",
+    "retrieved": "2026-10-17T22:05:36.597Z",
+    "bytes": 121783,
+    "sha256": "f7c3e0c4bf12af0b3bb468fb1bf722dbb96d6ff1824451f4fdba30cf385df134"
+  },
+  {
+    "file": "sources/ti-lalpc-851200.pdf",
+    "url": "https://www3.ti.ch/CAN/RLeggi/public/index.php/raccolta-leggi/pdfatto/atto/12083",
+    "publisher": "Cantone Ticino, Legge di applicazione della LPC (LaLPC, RL 851.200), stato 1° gennaio 2026",
+    "retrieved": "2026-10-17T22:26:06.262Z",
+    "bytes": 89288,
+    "sha256": "621455f6717ae73322bed46b933f1f77767771af73e436b7aed04ef14b4ac0ac"
+  },
+  {
+    "file": "sources/zefix-forme-giuridiche-ti-20261018.csv",
+    "url": "https://ld.admin.ch/query",
+    "publisher": "Ufficio federale del registro di commercio – Zefix, Indice centrale delle ditte (dati aperti LINDAS, enti attivi): risultato dell'interrogazione del 18.10.2026",
+    "retrieved": "2026-10-17T22:55:06.518Z",
+    "bytes": 10118,
+    "sha256": "e1f344f8cf6ab72cd2e3b517f16b4c5f786f026415bf8ebb6dc8a868e917766e"
+  },
+  {
+    "file": "sources/zefix-forme-giuridiche-ti.rq",
+    "url": "https://ld.admin.ch/query",
+    "publisher": "Interrogazione SPARQL usata per contare gli enti per sede e forma giuridica (Zefix su LINDAS)",
+    "retrieved": "2026-10-17T22:54:51.471Z",
+    "bytes": 657,
+    "sha256": "0d08ec38a6d88374326d4fd7fe5b2b1fc1129337b2ac52807df6dc0eb5fd9d6d"
+  },
+  {
+    "file": "sources/estv-dbst-jp-gden-2022.xlsx",
+    "url": "https://www.estv.admin.ch/dam/fr/sd-web/hcCkKiHbJFvJ/statistik-dbst-jp-gemeinden-2022.xlsx",
+    "publisher": "Amministrazione federale delle contribuzioni (AFC) – Statistica dell'imposta federale diretta, persone giuridiche per comune, 2022",
+    "retrieved": "2026-10-17T22:47:33.441Z",
+    "bytes": 355606,
+    "sha256": "85dedee6ec9562abe1ee95b8d408c1d684b7e3e59de16ccbf35d54577ea76bd2"
+  },
+  {
+    "file": "sources/lugano-commesse-2025.xlsx",
+    "url": "https://www.lugano.ch/dam/jcr:dd115cd0-f784-4e0f-9cc2-62ee95e004ce/Lista%20commesse%20pubbliche%202025.xlsx",
+    "publisher": "Città di Lugano, lista delle commesse 2025 aggiudicate su invito o incarico diretto (LCPubb art. 7 cpv. 5), pubblicata il 2 aprile 2026",
+    "retrieved": "2026-10-19T11:17:27.628Z",
+    "bytes": 167198,
+    "sha256": "17dea6503a6ab3cefe1613b65b0c6483c59ef9cefe91b21abf1247b8723d5895"
+  },
+  {
+    "file": "sources/risposta-interrogazione-1503.pdf",
+    "url": "https://www.lugano.ch/downloadCc?name=RispostaInterrogazione_1503.pdf&type=risposte&unid=D8ED6C70716F73D6C1258CE600426E51",
+    "publisher": "Città di Lugano, risposta del Municipio all'interrogazione 1503 (risoluzione del 14 agosto 2025)",
+    "retrieved": "2026-10-19T11:17:28.064Z",
+    "bytes": 122159,
+    "sha256": "8a33fe5335e5ac9fddf4ad4fc838d67b29c1711491e4600e09eda9d2c0017a3b"
+  },
+  {
+    "file": "sources/lnw-rapporto-2025.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:f89681db-6cca-4833-8346-7c3de4735f8a/LNW%20Rapporto%20di%20attivit%C3%A0%202025.pdf",
+    "publisher": "Città di Lugano, LuganoNetWork – Rapporto di attività 2025",
+    "retrieved": "2026-10-19T11:16:59.905Z",
+    "bytes": 2788748,
+    "sha256": "9aaa2dcf2d32111294ff591873b485c9fcc877d0d18afed422025e222fae756b"
+  },
+  {
+    "file": "sources/lnw-rapporto-2024.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:cdf5df49-9d2d-4cd3-a14a-0b485c1e111b/LNW%20Rapporto%20di%20attivit%C3%A0%202024.pdf",
+    "publisher": "Città di Lugano, LuganoNetWork – Rapporto di attività 2024",
+    "retrieved": "2026-10-19T11:17:01.453Z",
+    "bytes": 7690335,
+    "sha256": "1c33eee0de860145cfab875ab57a2082762e464a2f60152e9eac4dd5c9812c32"
+  },
+  {
+    "file": "sources/lnw-rapporto-2023.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:9af2cf7e-cb73-4e1f-b1b3-ea0ce74a988c/rapp-attivita-lnw-2023.pdf",
+    "publisher": "Città di Lugano, LuganoNetWork – Rapporto di attività 2023",
+    "retrieved": "2026-10-19T11:17:01.746Z",
+    "bytes": 82784,
+    "sha256": "a6773591195c5d2a3ae9ac8c3af25f4ba705f56cde92fd10486f976f27acbf93"
+  },
+  {
+    "file": "sources/lnw-rapporto-2022.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:51f2aadd-2a77-4620-9869-48d6bae41a5c/rapp-attivita-lnw-2022.pdf",
+    "publisher": "Città di Lugano, LuganoNetWork – Rapporto di attività 2022",
+    "retrieved": "2026-10-19T11:17:01.970Z",
+    "bytes": 66558,
+    "sha256": "0ca5d6003b8bc0cfcb274ca6b8e633489c473cebb9cd041467c53018d105cbd2"
+  },
+  {
+    "file": "sources/planb-mou-phase2-en.pdf",
+    "url": "https://planb.lugano.ch/wp-content/uploads/2026/06/LVGA_Tether_Mou_EN.pdf",
+    "publisher": "Città di Lugano e Tether, Memorandum of Understanding – Plan ₿ Phase II (3 marzo 2026)",
+    "retrieved": "2026-10-19T11:17:02.366Z",
+    "bytes": 288234,
+    "sha256": "361647822d6fd8c4a053b1a7ec3ca42f658c08a56cba9895e39714a5d562673a"
+  },
+  {
+    "file": "sources/20260303-planb-fase2-comunicato.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:aacbaac3-79b4-42ac-b859-4f2a269aaa85/20260303-seconda-fase-lugano-plan-b-comunicato.pdf",
+    "publisher": "Città di Lugano, comunicato stampa: Plan ₿ Fase II (3 marzo 2026)",
+    "retrieved": "2026-10-19T11:17:28.320Z",
+    "bytes": 75573,
+    "sha256": "4b1ae485d43a33f78c25c65a507492ad420d2d2403406a1a81921f9451ba5324"
+  },
+  {
+    "file": "sources/city-consuntivo-2025-messaggio.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+    "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+    "retrieved": "2026-10-19T11:56:13.399Z",
+    "bytes": 11693088,
+    "sha256": "26ca55555c0d4bf98060187af9d287d680da9404cbf25ec96e840e701578e8ab"
+  },
+  {
+    "file": "sources/city-preventivo-2025-messaggio.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:e41cc168-7d55-48fe-ae68-48517ff418aa/messaggio-preventivo-2025.pdf",
+    "publisher": "Città di Lugano, Messaggio municipale no. 12068, Preventivo 2025",
+    "retrieved": "2026-10-19T11:56:34.807Z",
+    "bytes": 4703814,
+    "sha256": "e0f4f50e5e4bd833c3365da8f143dae3e83b7002549b08f662397724dbb362c9"
+  },
+  {
+    "file": "sources/sel-2023-appendice.xlsx",
+    "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/StatisticaFinanziaria/2023-appendice.xlsx",
+    "publisher": "Cantone Ticino, Sezione degli enti locali – statistica finanziaria dei comuni 2023, appendice",
+    "retrieved": "2026-10-19T11:57:23.299Z",
+    "bytes": 385563,
+    "sha256": "b889abb6bc99c31d272d3569f2cecd9f6d13b33922a133714c29efeaca2806eb"
+  },
+  {
+    "file": "sources/city-piano-finanziario-2026-2033.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:0ed3bd5e-4927-4a75-9ec0-3956cc7d090d",
+    "publisher": "Città di Lugano, Messaggio municipale no. 12521, Piano Finanziario 2026–2033 (23 ottobre 2025)",
+    "retrieved": "2026-10-19T12:42:22.661Z",
+    "bytes": 1168377,
+    "sha256": "d3cff9a65b6c12c03685fe576379ec76bd93babf08cea9ab5bfb3d3e27d71d45"
+  },
+  {
+    "file": "sources/lac-risultati-stagione-2024-25.pdf",
+    "url": "https://www.luganolac.ch/dam/jcr:997824ea-e678-4784-9887-c2b8b0974f20/LAC_Risultati%20stagione%202024-25_comunicato%20stampa.pdf",
+    "publisher": "LAC Lugano Arte e Cultura, comunicato: risultati della stagione 2024/25 (17 dicembre 2025)",
+    "retrieved": "2026-10-18T06:40:26.263Z",
+    "bytes": 106941,
+    "sha256": "fbe2a1cc949f9cd01de870a4a933f4709d18696e7a74c87e769bdf781dbd53b9"
+  },
+  {
+    "file": "sources/ti-messaggio-8488-masi.pdf",
+    "url": "https://m4.ti.ch/user_librerie/php/GC/allegato.php?allid=171683",
+    "publisher": "Cantone Ticino, Messaggio n. 8488 sulla convenzione con la Fondazione MASI 2025–2028 (25 settembre 2024)",
+    "retrieved": "2026-10-18T06:40:14.326Z",
+    "bytes": 189407,
+    "sha256": "0372afdc13187505439291dd9da2a15f142b018ac088398d0f90942ab5bb4ee8"
+  },
+  {
+    "file": "sources/20250117-cs-acquisto-arena-pse.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:08157107-aac6-46c8-982e-266ec47a0120/20250117-cs-acquisto-arena-sportiva-pse.pdf",
+    "publisher": "Città di Lugano, comunicato: credito per l'acquisto dell'Arena sportiva (17 gennaio 2025)",
+    "retrieved": "2026-10-18T06:40:14.823Z",
+    "bytes": 94042,
+    "sha256": "73f2bfef9f0220e2ef79eb93c41aa7f0b4899ac97b60b8dc778284a4f5f748b6"
+  },
+  {
+    "file": "sources/20250814-cs-locazione-arena-pse.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:1ca2d4b7-a914-4d0c-99d6-7278c32a3f89/20250814-cs-contratto-locazione-arena-sportiva-pse.pdf",
+    "publisher": "Città di Lugano, comunicato: contratto di locazione dell'Arena sportiva (14 agosto 2025)",
+    "retrieved": "2026-10-18T06:40:14.654Z",
+    "bytes": 91989,
+    "sha256": "4737ec2b25fa6a72b1adb7598b2938464bca9f0314e348a9152e73256f8ae3ed"
+  },
+  {
+    "file": "sources/20251113-cs-acquisto-palazzetto-pse.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:7db7b5f7-c9b7-41f0-8122-a64d8a23ea8a/20251113-cs-acquisto-palazzetto-sport-pse.pdf",
+    "publisher": "Città di Lugano, comunicato: acquisto del Palazzetto dello Sport (13 novembre 2025)",
+    "retrieved": "2026-10-18T12:28:00.093Z",
+    "bytes": 93526,
+    "sha256": "d30aeb7dca91a4d43570070071aea6db060bfa0be8ebbc5e569a996516365736"
+  },
+  {
+    "file": "sources/mm-12253-maglio.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:73f6676d-6727-46fa-937c-089385325744/Messaggio%20Municipale_12253.pdf",
+    "publisher": "Città di Lugano, Messaggio municipale n. 12253, credito suppletorio per il Centro sportivo al Maglio (20 marzo 2025)",
+    "retrieved": "2026-10-18T12:28:00.548Z",
+    "bytes": 907272,
+    "sha256": "0f30ba428e6e53143ab20db29c8d5b74caa39058c8727052d6cc9cfcb018f0f7"
+  },
+  {
+    "file": "sources/pse-infopoint.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:4f929b4f-4f61-4bbd-821c-f62911887ee6",
+    "publisher": "Città di Lugano, Infopoint Polo sportivo e degli eventi (presentazione)",
+    "retrieved": "2026-10-18T06:40:15.941Z",
+    "bytes": 3442335,
+    "sha256": "791dd184ff1c62ffa29da6f914e30a7eb8b1872297a7d82e84f12017b1f0473d"
+  },
+  {
+    "file": "sources/ti-statistica-criminale-2025.pdf",
+    "url": "https://www4.ti.ch/fileadmin/DI/POLIZIA/documentazione/statistica/rapportiAttivita/statistica_criminale_2025.pdf",
+    "publisher": "Polizia cantonale / Ufficio federale di statistica – Statistica criminale di polizia (SCP) 2025, Cantone Ticino",
+    "retrieved": "2026-10-18T18:51:59.306Z",
+    "bytes": 7427686,
+    "sha256": "69baa31e2a298df7b79d511133289b8a599e914451fa17a4baf9c2bcc105ec42"
+  },
+  {
+    "file": "sources/polizia-lugano-rapporto-2025.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:420edcd4-ec4f-4526-9d73-7888d440f6f0/Presentazione%20conferenza%20stampa%20dati%202025_11%2005%202026_V1.pdf",
+    "publisher": "Città di Lugano, Polizia Città di Lugano – Rapporto d'attività 2025 (conferenza stampa, 11 maggio 2026)",
+    "retrieved": "2026-10-18T18:52:42.342Z",
+    "bytes": 4431719,
+    "sha256": "63ade88e140222147bf4c9fa09e8f1e44e9336a2493d59fd0781a3a3e87cebeb"
+  },
+  {
+    "file": "sources/lugano-peco-2026.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:e6231a39-ee28-4066-92c9-3f62e5f5da89/PECo.pdf",
+    "publisher": "Città di Lugano, Piano energetico comunale (PECo), adottato nel luglio 2026",
+    "retrieved": "2026-10-18T19:37:08.865Z",
+    "bytes": 242831,
+    "sha256": "e05f89f6da110db1329af3b456e3e893303e1ab5d5382b2601e534db131ea68e"
+  }
+]

@@ -1,0 +1,6 @@
+# Text files are stored with LF line endings everywhere, so rebuilt files compare byte for byte on every system.
+* text=auto eol=lf
+# Archived source documents must stay byte-identical so their SHA-256 values in MANIFEST.json match.
+sources/** -text
+sources/MANIFEST.json text eol=lf
+*.woff2 binary
