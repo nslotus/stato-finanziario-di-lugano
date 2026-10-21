@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Phones: a two-column header. Left: the title, "Il quadro" and "Tabella", the view by functions or departments. Right,
+  right-justified: IT/EN, "▶ Tour" and "?", CHF/%. Nothing scrolls sideways any more.
 - Phones: a star opened with a long name no longer runs into the first card; the name wraps in its own space, the top bar
   keeps a background while scrolling, and "Torna al cielo" stays on one line.
 - "▶ Tour" and "?" moved under the title and subtitle, where a first-time visitor starts reading.

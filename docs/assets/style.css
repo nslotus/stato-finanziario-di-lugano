@@ -30,6 +30,7 @@ img { max-width: 100%; }
   /* the tour and the instructions sit under the title, where a first-time visitor starts reading */
   .title-acts { display: flex; gap: 6px; margin-top: 10px; }
   .title-acts button { padding: 7px 13px; }
+  .title-links { display: none; }
   .tools { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
   .seg { display: flex; align-items: center; gap: 4px; padding: 3px 3px 3px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(8, 11, 22, 0.55); backdrop-filter: blur(8px); font-size: 12.5px; color: var(--muted); }
   .seg span { margin-right: 4px; }
@@ -306,6 +307,16 @@ img { max-width: 100%; }
     .intro-card h2 { font-size: 1.9rem; }
     .top { left: 14px; right: 14px; flex-direction: column; gap: 8px; }
     .title h1 { font-size: 1.6rem; }
+    /* phones: two columns, the right one right-justified: title | IT EN · Il quadro Tabella | Tour ? · Funzioni Dicasteri | CHF % */
+    .title { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "h1 lang" "links acts" "view mode"; align-items: center; gap: 8px; width: 100%; }
+    .title h1 { grid-area: h1; }
+    .title-lang { grid-area: lang; display: flex; gap: 6px; justify-self: end; }
+    .title-links { grid-area: links; display: flex; gap: 6px; }
+    .title-acts { grid-area: acts; margin-top: 0; justify-self: end; }
+    .title .seg[aria-labelledby="v-l"] { grid-area: view; justify-self: start; }
+    .title .seg[aria-labelledby="m-l"] { grid-area: mode; justify-self: end; }
+    .title-links button, .title-lang button { padding: 7px 13px; }
+    .tools { display: none; }
     .title p { display: none; }
     .tools { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; max-width: 100%; scrollbar-width: none; padding-bottom: 2px; }
     .tools::-webkit-scrollbar { display: none; }

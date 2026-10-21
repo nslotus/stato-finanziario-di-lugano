@@ -701,6 +701,21 @@ function writeOverview() {
 function showOverview(on) { const was = !ovEl.hidden; ovEl.hidden = !on; if (!on && was && !tour) document.getElementById("b-ov").focus(); syncRoute(); document.getElementById("b-ov").setAttribute("aria-pressed", String(on)); if (on) { writeOverview(); ovEl.scrollTop = 0; ovEl.querySelector("#ov-x").focus(); } }
 function openOverview(id) { if (focus) closeFocus(); toggleTable(false); showOverview(true); if (id) setTimeout(() => ovEl.querySelector(`#ov-${id}`)?.scrollIntoView({ block: "start" }), 50); }
 document.getElementById("b-ov").onclick = () => (ovEl.hidden ? openOverview() : showOverview(false));
+// phones: the header becomes two columns, the right one right-justified:
+//   title             IT EN
+//   Il quadro Tabella Tour ?
+//   Funzioni Dicasteri CHF %
+// on wider screens everything goes back to the tools row
+function placeTopButtons() {
+  const narrow = innerWidth < 720, title = document.querySelector(".title"), tools = document.querySelector(".tools");
+  const links = document.getElementById("title-links"), langs = document.getElementById("title-lang");
+  const [ov, table, it, en] = ["b-ov", "b-table", "l-it", "l-en"].map((id) => document.getElementById(id));
+  const segView = document.getElementById("v-fn").parentElement, segMode = document.getElementById("m-chf").parentElement;
+  if (narrow && ov.parentElement !== links) { links.append(ov, table); langs.append(it, en); title.append(segView, segMode); }
+  else if (!narrow && ov.parentElement !== tools) tools.append(segView, segMode, table, ov, it, en);
+}
+placeTopButtons();
+addEventListener("resize", () => { placeTopButtons(); redraw(); });
 addEventListener("keydown", (e) => { if (e.key === "Escape" && !ovEl.hidden && !tour) showOverview(false); });
 
 function sourcesCard(code, withTrend) {
