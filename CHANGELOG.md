@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- "▶ Tour" and "?" moved under the title and subtitle, where a first-time visitor starts reading.
 - The "Il quadro / Big picture" button is outlined in gold with a slow glow, so the overview is easy to find (no animation
   when the system asks for reduced motion).
 - The card of a selected star can be dragged anywhere on the sky (or moved with the arrow keys), so it no longer hides
