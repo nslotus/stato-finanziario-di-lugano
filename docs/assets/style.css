@@ -109,7 +109,8 @@ img { max-width: 100%; }
   #focus .f-dim { position: absolute; left: 0; top: 0; width: 100%; height: 100%; min-height: 100%; background: radial-gradient(60% 70% at 46% 53%, rgba(10, 14, 30, 0.6), rgba(3, 5, 12, 0.92)); backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.35s; }
   #focus.on .f-dim { opacity: 1; }
   .f-bar { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 18px); left: 22px; right: 22px; display: flex; justify-content: space-between; gap: 12px; align-items: center; z-index: 3; }
-  .crumbs { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+  .crumbs { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; flex: 1; min-width: 0; font-size: 13px; color: var(--muted); }
+  .f-bar > button { flex: none; white-space: nowrap; }
   .crumbs button { padding: 6px 11px; font-size: 12.5px; }
   .crumbs b { font-weight: 500; color: var(--ink); }
   .f-line { position: absolute; left: 0; right: 0; height: 0; border-top: 1px solid rgba(255, 226, 185, 0.55); box-shadow: 0 0 18px 2px rgba(255, 217, 160, 0.18); opacity: 0; transition: opacity 0.5s 0.2s; }
@@ -177,9 +178,14 @@ img { max-width: 100%; }
   /* one column below 1180px: ordered from most above budget to most below */
   #focus.stack { overflow-y: auto; }
   #focus.stack .f-line, #focus.stack .f-tag, #focus.stack .f-links { display: none; }
-  #focus.stack .orb { position: relative; left: auto !important; top: auto !important; margin: calc(env(safe-area-inset-top, 0px) + 96px) auto 0; width: 100%; height: calc(var(--r) * 2 + 150px); }
+  /* one column: the top bar scrolls with a background of its own; the orb's text is in the flow, so a long name makes
+     the block taller instead of running into the first card */
+  #focus.stack .f-bar { position: sticky; top: 0; left: auto; right: auto; margin: 0; padding: calc(env(safe-area-inset-top, 0px) + 12px) 14px 10px;
+    background: linear-gradient(rgba(4, 6, 13, 0.96) 75%, rgba(4, 6, 13, 0)); align-items: flex-start; }
+  #focus.stack .orb { position: relative; left: auto !important; top: auto !important; margin: 8px auto 0; width: 100%; height: auto; padding-top: calc(var(--r) * 2 + 12px); }
   #focus.stack .orb .ball { left: calc(50% - var(--r)); top: 0; }
-  #focus.stack .orb-text { top: calc(var(--r) * 2 + 12px); }
+  #focus.stack .orb-text { position: relative; left: auto; top: auto; transform: none; width: min(100% - 28px, 24rem); margin: 0 auto; }
+  #focus.stack .orb-text h2 { font-size: clamp(1.3rem, 6vw, 1.6rem); overflow-wrap: anywhere; }
   #focus.stack .cards { position: relative; inset: auto; display: grid; gap: 10px; justify-items: center; padding: 10px 14px 40px; pointer-events: auto; }
   #focus.stack .card { position: relative; transform: none !important; opacity: 1; width: min(100%, 30rem); }
   .f-divider { width: min(100%, 30rem); border-top: 1px solid rgba(255, 226, 185, 0.55); position: relative; margin-block: 12px; }
