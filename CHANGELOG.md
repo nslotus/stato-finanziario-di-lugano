@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- The card of a selected star can be dragged anywhere on the sky (or moved with the arrow keys), so it no longer hides
+  the stars and links behind it. It stays where it was put, also for the next star, until ↺ puts it back beside its star.
+
 ## 1.0.0 — unreleased
 
 First public version.

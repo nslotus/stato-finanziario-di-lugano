@@ -66,7 +66,7 @@ const T = {
     go: "Esplora da soli", example: "▶ Fate il tour guidato",
     controlsH: "Come muoversi",
     controls: ["<kbd>Trascinate</kbd> per scorrere il cielo", "<kbd>Rotella</kbd>, pizzico o <kbd>−</kbd> <kbd>+</kbd> in basso per lo zoom", "<kbd>Clic</kbd> su una stella: le sue cifre", "<kbd>Secondo clic</kbd> o clic sulla scheda: la apre",
-      "<kbd>Doppio clic</kbd>: vi avvicina alla stella", "<kbd>⤢</kbd> o <kbd>0</kbd>: vista d'insieme", "<kbd>←</kbd> <kbd>→</kbd> scorrono, <kbd>+</kbd> <kbd>−</kbd> ingrandiscono", "<kbd>Esc</kbd> chiude; <kbd>?</kbd> riapre questa pagina", "<kbd>Il quadro</kbd>: entrate, debito, obbligazioni, personale e dati mancanti"],
+      "<kbd>Doppio clic</kbd>: vi avvicina alla stella", "<kbd>⤢</kbd> o <kbd>0</kbd>: vista d'insieme", "<kbd>←</kbd> <kbd>→</kbd> scorrono, <kbd>+</kbd> <kbd>−</kbd> ingrandiscono", "<kbd>Trascinate la scheda</kbd> dove non copre nulla; <kbd>↺</kbd> la riporta accanto alla stella", "<kbd>Esc</kbd> chiude; <kbd>?</kbd> riapre questa pagina", "<kbd>Il quadro</kbd>: entrate, debito, obbligazioni, personale e dati mancanti"],
     lede: "Siete al centro della cupola. Ogni stella è una voce di spesa della Città nel 2025. <b>L'orizzonte è il preventivo</b>: le voci che hanno speso più del previsto salgono, quelle che hanno speso meno scendono, tanto più quanto più grande è lo scarto (in franchi o in percentuale). Più è luminosa, più è grande la spesa.",
     legendBtn: "Legenda", zoomIn: "Ingrandisci", zoomOut: "Rimpicciolisci",
     table: "Tabella", sky: "Cielo", close: "Chiudi", horizon: "preventivo 2025", over: "sopra il preventivo", under: "sotto il preventivo",
@@ -95,6 +95,7 @@ const T = {
     missHave: "Che cosa c'è:", missNeed: "Che cosa manca:", missHolder: "Chi detiene i dati", missLink: "discussione",
     extrasT: "Altre cifre sul debito",
     tableCap: "Tutte le voci di spesa 2025: preventivo, consuntivo e scarto, in milioni di franchi. Le intestazioni ordinano la tabella; una riga porta alla sua stella.", noSpend: "nessuna spesa",
+    peekBack: "Riporta la scheda accanto alla stella",
     factsTip: "Toccate una cifra per la spiegazione e le fonti.", factsAll: "Apri tutte", factsNone: "Chiudi tutte",
     pagesFn: (l) => `Messaggi municipali: preventivo p. ${l.pagesP}, consuntivo p. ${l.pagesC}`, pagesOrg: (l) => `Messaggio sul consuntivo, p. ${l.page}`,
     sources: "Fonti", how: "Come leggerla", doc: "documento", row: "riga", facts: "Altre cifre del settore", trend: "Spesa 2023–2027 (mio CHF)", trendKey: "Pieno: consuntivo. Tratteggio: preventivo.",
@@ -115,7 +116,7 @@ const T = {
     go: "Explore on my own", example: "▶ Take the guided tour",
     controlsH: "Getting around",
     controls: ["<kbd>Drag</kbd> to scroll the sky", "<kbd>Wheel</kbd>, pinch or the <kbd>−</kbd> <kbd>+</kbd> buttons to zoom", "<kbd>Click</kbd> a star: its figures", "<kbd>Click again</kbd> or click the card: open it",
-      "<kbd>Double-click</kbd>: move closer to a star", "<kbd>⤢</kbd> or <kbd>0</kbd>: overview", "<kbd>←</kbd> <kbd>→</kbd> scroll, <kbd>+</kbd> <kbd>−</kbd> zoom", "<kbd>Esc</kbd> closes; <kbd>?</kbd> reopens this page", "<kbd>Big picture</kbd>: revenue, debt, bonds, staff and missing data"],
+      "<kbd>Double-click</kbd>: move closer to a star", "<kbd>⤢</kbd> or <kbd>0</kbd>: overview", "<kbd>←</kbd> <kbd>→</kbd> scroll, <kbd>+</kbd> <kbd>−</kbd> zoom", "<kbd>Drag the card</kbd> where it hides nothing; <kbd>↺</kbd> puts it back beside its star", "<kbd>Esc</kbd> closes; <kbd>?</kbd> reopens this page", "<kbd>Big picture</kbd>: revenue, debt, bonds, staff and missing data"],
     lede: "You stand at the centre of the dome. Every star is one of the City's spending lines in 2025. <b>The horizon is the budget</b>: lines that spent more than planned rise, lines that spent less sink, the further the larger the gap (in francs or in percent). The brighter the star, the larger the spending.",
     legendBtn: "Legend", zoomIn: "Zoom in", zoomOut: "Zoom out",
     table: "Table", sky: "Sky", close: "Close", horizon: "2025 budget", over: "above budget", under: "below budget",
@@ -144,6 +145,7 @@ const T = {
     missHave: "What exists:", missNeed: "What is missing:", missHolder: "Who holds the data", missLink: "discussion",
     extrasT: "More figures on the debt",
     tableCap: "Every 2025 spending line: budget, actual and gap, in CHF million. The headings sort the table; a row takes you to its star.", noSpend: "no spending",
+    peekBack: "Put the card back beside its star",
     factsTip: "Tap a figure for its explanation and sources.", factsAll: "Open all", factsNone: "Close all",
     pagesFn: (l) => `Municipal messages: budget p. ${l.pagesP}, accounts p. ${l.pagesC}`, pagesOrg: (l) => `Message on the accounts, p. ${l.page}`,
     sources: "Sources", how: "How to read it", doc: "document", row: "row", facts: "Other figures in this sector", trend: "Spending 2023–2027 (CHF million)", trendKey: "Solid: actual. Dashed: budget.",
@@ -406,7 +408,7 @@ function select(s, center) {
   const t = T[lang], g = s.kind === "line" ? groupOf(s.code) : null;
   peek.style.setProperty("--hue", s.f.hue);
   const said = s.kind === "line" ? (s.text?.length ? [t.say, s.text[0]] : g?.text?.length ? [t.sayDiv, g.text[0]] : null) : null;
-  peek.innerHTML = `<button class="p-x" aria-label="${t.close}">×</button><div class="eyebrow">${Wd().slice} ${s.f.code} · ${esc(L(s.f.name))}${g && g.code !== s.code ? ` · ${g.code} ${esc(tr(g.label))}` : ""}</div>
+  peek.innerHTML = `<button class="p-x" aria-label="${t.close}">×</button><button class="p-back" aria-label="${t.peekBack}" title="${t.peekBack}"${peekPinned ? "" : " hidden"}>↺</button><div class="eyebrow">${Wd().slice} ${s.f.code} · ${esc(L(s.f.name))}${g && g.code !== s.code ? ` · ${g.code} ${esc(tr(g.label))}` : ""}</div>
     <h2>${s.kind === "line" ? `<i>${s.code}</i> ` : ""}${esc(titleOf(s))}</h2>
     <div class="dev ${side(s.p)}">${devText(s)}<small>${s.p == null || s.only ? "" : onBudget(s) ? (mode === "chf" ? t.onLineChf : t.onLine) : s.p >= 0 ? t.over : t.under}</small></div>
     ${bars(s.b, s.c)}${nums(s.b, s.c)}
@@ -414,10 +416,16 @@ function select(s, center) {
     <div class="open">${s.kind === "fn" ? Wd().open(V.groups.filter((x) => x.code[0] === s.f.code).length) : t.openLine} <span aria-hidden="true">→</span></div>`;
   peek.hidden = false; placePeek();
 }
+// the card can be dragged anywhere on the sky; once moved it stays there (also for the next star) until ↺ puts it back
+let peekPinned = null, peekDrag = null, peekDragged = false;
+const clampPeek = (x, y) => ({ x: Math.max(8, Math.min(innerWidth - peek.offsetWidth - 8, x)), y: Math.max(8, Math.min(innerHeight - peek.offsetHeight - 8, y)) });
 function placePeek() {
   if (!sel || peek.hidden) return;
   if (innerWidth < 720) { peek.style.left = peek.style.top = ""; peek.style.bottom = `${BOTM + 4}px`; peek.style.opacity = "1"; return; }
   peek.style.bottom = "";
+  peek.classList.toggle("pinned", !!peekPinned);
+  const back = peek.querySelector(".p-back"); if (back) back.hidden = !peekPinned;
+  if (peekPinned) { const c = clampPeek(peekPinned.x, peekPinned.y); peek.style.opacity = "1"; peek.style.left = `${c.x}px`; peek.style.top = `${c.y}px`; return; }
   const p = sel._p, w = peek.offsetWidth, h = peek.offsetHeight;
   if (!p || p.z < 0.05) { peek.style.opacity = "0"; return; }
   peek.style.opacity = "1";
@@ -426,8 +434,39 @@ function placePeek() {
   y = Math.max(96, Math.min(innerHeight - h - 80, y));
   peek.style.left = `${x}px`; peek.style.top = `${y}px`;
 }
-peek.addEventListener("click", (e) => { if (e.target.closest(".p-x")) { e.stopPropagation(); select(null); cv.focus(); return; } sel && openFocus(sel); });
-peek.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sel && openFocus(sel); } });
+// once the card is pressed, the pointer is followed over the whole window: a quick drag may leave the card before moving it
+const movePeekDrag = (e) => {
+  if (!peekDrag || e.pointerId !== peekDrag.id) return;
+  const dx = e.clientX - peekDrag.x0, dy = e.clientY - peekDrag.y0;
+  if (!peekDrag.moved) { if (Math.hypot(dx, dy) < 5) return; peekDrag.moved = true; peek.classList.add("dragging"); }
+  peekPinned = clampPeek(peekDrag.l + dx, peekDrag.t + dy); placePeek();
+};
+const endPeekDrag = (e) => {
+  if (!peekDrag || e.pointerId !== peekDrag.id) return;
+  if (peekDrag.moved) { peekDragged = true; setTimeout(() => (peekDragged = false), 0); }  // swallow only the click that ends this drag
+  peekDrag = null; peek.classList.remove("dragging"); redraw();
+  removeEventListener("pointermove", movePeekDrag); removeEventListener("pointerup", endPeekDrag); removeEventListener("pointercancel", endPeekDrag);
+};
+peek.addEventListener("pointerdown", (e) => {
+  if (innerWidth < 720 || e.button !== 0 || e.target.closest("button, a")) return;
+  e.preventDefault();  // no text selection while dragging
+  peekDrag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, l: peek.offsetLeft, t: peek.offsetTop, moved: false };
+  addEventListener("pointermove", movePeekDrag); addEventListener("pointerup", endPeekDrag); addEventListener("pointercancel", endPeekDrag);
+});
+peek.addEventListener("click", (e) => {
+  if (peekDragged) { peekDragged = false; return; }  // the end of a drag is not a click
+  if (e.target.closest(".p-x")) { e.stopPropagation(); select(null); cv.focus(); return; }
+  if (e.target.closest(".p-back")) { e.stopPropagation(); peekPinned = null; placePeek(); redraw(); return; }
+  sel && openFocus(sel);
+});
+peek.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sel && openFocus(sel); return; }
+  // arrows move the card from the keyboard (shift: further); Backspace puts it back beside its star
+  const step = e.shiftKey ? 60 : 20, m = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] }[e.key];
+  if (m && innerWidth >= 720) { e.preventDefault(); peekPinned = clampPeek(peek.offsetLeft + m[0], peek.offsetTop + m[1]); placePeek(); redraw(); }
+  if (e.key === "Backspace" && peekPinned) { e.preventDefault(); peekPinned = null; placePeek(); redraw(); }
+});
+addEventListener("resize", () => { if (peekPinned) placePeek(); });
 
 // cards above the budget line spent more than planned, cards below spent less: the same rule as the sky
 function openFocus(s) {

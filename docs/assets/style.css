@@ -82,7 +82,9 @@ img { max-width: 100%; }
     display: grid; gap: 8px; cursor: pointer; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55); transition: opacity 0.2s, border-color 0.2s; }
   #peek:hover { border-color: color-mix(in srgb, var(--hue) 60%, transparent); }
   #peek .p-x { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; padding: 0; font-size: 16px; line-height: 1; background: none; }
-  #peek .eyebrow { padding-right: 30px; }
+  #peek .p-back { position: absolute; top: 8px; right: 40px; width: 28px; height: 28px; padding: 0; font-size: 15px; line-height: 1; background: none; }
+  @media (min-width: 721px) { #peek { cursor: grab; user-select: none; } #peek.dragging { cursor: grabbing; user-select: none; transition: none; box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7); } #peek.pinned { border-style: dashed; } }
+  #peek .eyebrow { padding-right: 62px; }
   #peek h2 { margin: 0; font: 400 1.45rem/1.12 var(--serif); }
   #peek h2 i { font-style: normal; font: 500 13px/1 var(--sans); color: var(--muted); vertical-align: 3px; }
   #peek .open { display: flex; justify-content: space-between; font: 500 12.5px/1.2 var(--sans); color: var(--accent); padding-top: 8px; border-top: 1px solid var(--line); }
