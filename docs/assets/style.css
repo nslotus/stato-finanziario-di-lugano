@@ -310,3 +310,12 @@ img { max-width: 100%; }
     #table { inset: calc(env(safe-area-inset-top, 0px) + 100px) 10px calc(env(safe-area-inset-bottom, 0px) + 64px); }
   }
 .noscript { position: fixed; inset: auto 16px 16px; z-index: 30; padding: 14px 16px; border-radius: 12px; background: #0b0f1e; border: 1px solid rgba(190, 205, 255, 0.3); color: #eef1fa; font: 15px/1.5 system-ui, sans-serif; }
+/* "Il quadro / Big picture": the way into the overview, outlined in the accent colour with a slow, soft glow */
+#b-ov { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 70%, transparent); background: rgba(255, 217, 160, 0.08); animation: ov-glow 2.8s ease-in-out infinite; }
+#b-ov:hover { background: rgba(255, 217, 160, 0.16); border-color: var(--accent); }
+#b-ov[aria-pressed="true"] { animation: none; background: var(--accent); color: var(--night); border-color: var(--accent); }
+@keyframes ov-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 217, 160, 0), 0 0 6px rgba(255, 217, 160, 0.15); }
+  50% { box-shadow: 0 0 0 3px rgba(255, 217, 160, 0.12), 0 0 16px rgba(255, 217, 160, 0.45); }
+}
+@media (prefers-reduced-motion: reduce) { #b-ov { animation: none; box-shadow: 0 0 10px rgba(255, 217, 160, 0.3); } }
