@@ -75,12 +75,13 @@ docs/index.html      the page; docs/assets/app.js only reads docs/data/data.js a
 SOURCES.md, FIGURES.md   generated tables
 ```
 
-Six files come from a separate public project, [`nslotus/dati-di-lugano`](https://github.com/nslotus/dati-di-lugano),
+Seven files come from a separate public project, [`nslotus/dati-di-lugano`](https://github.com/nslotus/dati-di-lugano),
 which reads the City's financial PDFs (debt, results, bonds, schools, mobility). They are archived here under names that
 carry the commit they were taken from (for example `dati-di-lugano@8c1fd28-debt-profile.json`), so they cannot change.
 How they were made is documented in that project's
 [`METHODOLOGY.md`](https://github.com/nslotus/dati-di-lugano/blob/main/METHODOLOGY.md) and
-[`TRACE.md`](https://github.com/nslotus/dati-di-lugano/blob/main/TRACE.md).
+[`TRACE.md`](https://github.com/nslotus/dati-di-lugano/blob/main/TRACE.md). That project is archived (read-only) since
+22 October 2026, so the pinned links keep working; its open questions about missing data are now this repository's issues.
 
 Vocabulary in the code: a **star** is one figure record; a **constellation** is a sector; the **anchor** of a sector is
 its spending per resident; the **ledger** is the set of overview chapters; in the staff tables, a **planet** is a

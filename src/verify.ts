@@ -75,6 +75,9 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
     if (unknown.length) fail(`cited but not in the manifest: ${unknown.join(", ")}`);
     const orphans = [...listed].filter((f) => !cited.has(f));
     if (orphans.length) fail(`archived but cited by no figure: ${orphans.join(", ")}`);
+    // and nothing lies in sources/ that the manifest does not list
+    const strays = readdirSync("sources").filter((f) => !["MANIFEST.json", "README.md"].includes(f) && !listed.has(`sources/${f}`));
+    if (strays.length) fail(`in sources/ but not in the manifest: ${strays.join(", ")}`);
     return `${cited.size} files cited ${[...cited.values()].reduce((a, b) => a + b, 0)} times`;
   });
 

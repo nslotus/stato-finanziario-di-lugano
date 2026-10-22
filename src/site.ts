@@ -170,7 +170,7 @@ console.log(`staff: ${staffPlanets.length} planets, ${staffMoons.length} moons, 
 
 const debt = star("finanze.debito-lordo");
 // datasets residents and businesses ask for that are not published yet; each one is an open issue on the public repo
-const missing = JSON.parse(readFileSync("src/missing.json", "utf8")).map((m: any) => ({ ...m, url: `https://github.com/nslotus/dati-di-lugano/issues/${m.issue}` }));
+const missing = JSON.parse(readFileSync("src/missing.json", "utf8")).map((m: any) => ({ ...m, url: `https://github.com/nslotus/stato-finanziario-di-lugano/issues/${m.issue}` }));
 // spending by function over time and budget against actual 2025 (BUDGET-SOURCES.md), built by npm run build
 const FUN = JSON.parse(readFileSync("catalog/funzioni.json", "utf8"));
 const base = JSON.parse(data);

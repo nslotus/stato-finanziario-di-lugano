@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- The "Data wanted" questions (missing datasets) moved from `dati-di-lugano` to this repository's issues #1–#7, and the
+  page links there. `dati-di-lugano` is archived.
+- Removed `sources/dati-di-lugano@8c1fd28-city-figures.json`, an older copy that nothing cited (the figures use
+  `61e3dbe`). Check 2 now also fails on any file in `sources/` that the manifest does not list.
+- Checked by hand before going public: all 72 lines' budget and actual are printed on their row of the cited page, in
+  the COSTI column of the 2025 budget and of the 2025 accounts.
 - Phones: screen readers hear each line's budget, actual and gap in a sector's list. SECURITY.md now names what a phone
   keeps (whether the tour was offered) and that typed amounts and searches are sent nowhere.
 - The page is now called "Cielo del preventivo, Lugano" in Italian and "Sky budget, Lugano" in English (was "Il cielo del preventivo" /
