@@ -2,6 +2,25 @@
 
 ## Unreleased
 
+- Phones: screen readers hear each line's budget, actual and gap in a sector's list. SECURITY.md now names what a phone
+  keeps (whether the tour was offered) and that typed amounts and searches are sent nowhere.
+- The page is now called "Cielo del preventivo, Lugano" in Italian and "Sky budget, Lugano" in English (was "Il cielo del preventivo" /
+  "The budget sky").
+- Phones: a five-step guided tour, opened from "?" in the header (first-time visitors are offered it once). Each
+  step outlines what it explains; it never plays by itself, and moving elsewhere ends it.
+- Phones: the text in each tile is fitted to its space (smaller type, then a shortened name) without splitting words,
+  and is dark or light by whichever has more contrast with the tile.
+- Phones: a sector whose tile is too small for its label (8 Economia) is listed under the tiles with its spending and gap.
+- "Il quadro", money out by sector: 0 General administration and 9 Finance and taxes now open their sector's card
+  like the other eight (they have no per-resident figure of their own, so they were plain text).
+- Phones get their own layout instead of the sky: the sectors as tiles sized by spending and coloured by their gap, a
+  sector as a list of its lines' gaps around the budget, a line's card sliding up from the bottom, "Il tuo franco" and a
+  searchable table, with a tab bar for these and "Il quadro". The full cards and the overview are the same as on a
+  computer; the overview's charts are drawn at the phone's width. The addresses are shared with the sky (#settore/2,
+  #settore/212, #settore/212/scheda, #quadro), and the Back button steps back one screen at a time. "Il tuo franco"
+  shows each sector's share and spending, how the split is calculated with a worked example, the source document and
+  the data file. Drawn without any
+  added library, so the page's security rules are unchanged.
 - Phones: a two-column header. Left: the title, "Il quadro" and "Tabella", the view by functions or departments. Right,
   right-justified: IT/EN, "▶ Tour" and "?", CHF/%. Nothing scrolls sideways any more.
 - Phones: a star opened with a long name no longer runs into the first card; the name wraps in its own space, the top bar

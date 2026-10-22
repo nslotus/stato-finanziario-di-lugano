@@ -1,4 +1,4 @@
-// Builds the data of the public page "Il cielo del preventivo" (docs/) from the catalogue (catalog/*.json), which
+// Builds the data of the public page "Cielo del preventivo, Lugano" (docs/) from the catalogue (catalog/*.json), which
 // npm run build makes from the archived sources. Every number on the page comes from here; none is typed by hand.
 // Each step checks its sums and stops on the first failure.
 //   npm run site   -> docs/data/data.js
@@ -203,7 +203,7 @@ for (const [k, v] of Object.entries({ sun: story.sun.source, revenue: story.revC
 const flowIn = story.revPlanets.reduce((t: number, r: any) => t + r.value, 0), flowOut = story.fn.reduce((t: number, f: any) => t + f.value, 0);
 if (Math.abs(flowIn - story.revAll) > 0.01 || Math.abs(flowOut - story.total) > 0.05 || Math.abs(flowIn - flowOut - story.result) > 0.06) throw new Error(`site: flow in ${flowIn} − out ${flowOut} is not the result ${story.result}`);
 
-// ---- Il cielo del preventivo: a planetarium dome. Every 2025 spending line (three digits, or two without children) is a
+// ---- Cielo del preventivo, Lugano: a planetarium dome. Every 2025 spending line (three digits, or two without children) is a
 // star; the horizon is the 2025 budget, height is the gap between actual and budget, direction is the function.
 let cupola: any;
 {

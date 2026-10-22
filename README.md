@@ -1,12 +1,17 @@
 # Stato finanziario di Lugano
 
-**The financial state of the City of Lugano: its 2025 spending against its budget, line by line, with every figure traced to the document it comes from. The page is called *Il cielo del preventivo* (the budget sky).**
+**The financial state of the City of Lugano: its 2025 spending against its budget, line by line, with every figure traced to the document it comes from. The page is called *Cielo del preventivo, Lugano* (in English, *Sky budget, Lugano*).**
 
 Each of the City's 72 spending lines of 2025 is a star in a planetarium sky. The horizon is the budget: lines that spent
 more than planned rise above it, lines that spent less sink below it, and the brighter the star, the more the line spent.
 Open a sector to see what it is made of, the City's own explanations, and figures on schools, safety, transport, the
 economy, debt and more, each with its source. An overview brings together revenue, the debt to 2033, the bonds, staff and
 the datasets that are not published. In Italian and English.
+
+On a phone the sky gives way to a layout made for small screens: the sectors as tiles sized by what they spent, each
+sector as a list of its lines' gaps around the budget, a card for each line with its pages and sources, "Il tuo franco"
+(how an amount splits in the proportions of 2025 spending) and a searchable table. Same data, same addresses: a link
+shared from a phone opens the same line on a computer.
 
 **View it:** https://nslotus.github.io/stato-finanziario-di-lugano/ · locally: `npm ci && npm run serve`
 
@@ -31,7 +36,7 @@ the datasets that are not published. In Italian and English.
 
 | Path | What it is |
 |---|---|
-| [`docs/`](docs/) | The page (served by GitHub Pages). `data/data.js` is generated; `assets/app.js` contains no numbers |
+| [`docs/`](docs/) | The page (served by GitHub Pages). `data/data.js` is generated; `assets/app.js` (the sky) and `assets/phone.js` (phones) contain no numbers |
 | [`sources/`](sources/) | The archived documents and [`MANIFEST.json`](sources/MANIFEST.json) |
 | [`src/`](src/) | The readers (`adapters/`), one module per sector, the builders (`build.ts`, `personale.ts`, `site.ts`, `docs.ts`) and `verify.ts` |
 | [`catalog/`](catalog/) | The figures read from the sources: the machine-readable data of this project |

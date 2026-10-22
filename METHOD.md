@@ -37,6 +37,22 @@ sources. In the department view, each department shows its staff and gross salar
 operating result, investment and self-financing, the debt to 2033, the bonds, interest and repayments, how Lugano
 compares with Ticino's municipalities, staff costs, and the datasets that are not published.
 
+**On phones** (screens up to 720 px wide) the same data is shown without the sky:
+
+- **The sectors as tiles.** Each function (or department) is a rectangle whose area is its 2025 spending (a squarified
+  treemap). Its colour is its gap in percent: grey on budget, warmer below, cooler above, at full strength from ±6%.
+  The number in the tile is what it spent, in CHF million. A tile too small for its label is also listed under the map.
+- **A sector** lists its lines from the largest gap to the smallest, each as a bar left (spent less) or right (spent
+  more) of a line that stands for the budget, in francs or in percent. Lines with no budget are listed with what they
+  spent and "not budgeted". For functions, the sector's figure per resident (2024) and its rank in Ticino are shown.
+- **A line's card** gives budget, actual and gap, the City's explanation where there is one, the pages of the two
+  messages and the sources, and opens the same full card as on a computer.
+- **Il tuo franco** splits an amount typed by the reader in the proportions of 2025 spending by function (or
+  department): amount × spending of the sector ÷ total spending. Each square is one franc in a hundred, rounded, so the
+  squares may not add up to exactly 100. It shows proportions only: the City's spending is not paid for by taxes alone,
+  and the amount is the reader's, not a tax bill.
+- **The table** lists every line with spending or a budget, searchable by name or code, sorted by gap, spending or code.
+
 Every figure is listed in [`FIGURES.md`](FIGURES.md).
 
 ## 2. From documents to page

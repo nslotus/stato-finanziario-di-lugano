@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>Il cielo del preventivo</title>
+<title>Cielo del preventivo, Lugano</title>
 <meta name="description" content="Un planetario dei conti di Lugano: al centro della cupola, ogni voce di spesa del 2025 è una stella. L'orizzonte è il preventivo; le voci che hanno speso di più salgono, quelle che hanno speso di meno scendono.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/style.css">
@@ -41,8 +41,18 @@
   <div class="corner"><div class="zoom" role="group"><button id="z-out">−</button><button id="z-in">+</button></div><button id="b-leg" aria-expanded="false" aria-controls="legend"></button>
     <div class="legend" id="legend" hidden><canvas id="leg" width="260" height="46"></canvas><div class="hint ud" id="ud"></div><div class="hint" id="hint"></div><div class="hint" id="scale"></div></div></div>
 </div>
+<div id="phone" hidden>
+  <header class="ph-top"><h1 id="ph-h1"></h1><div class="ph-lang"><button id="ph-tour" class="ph-q">?</button><button id="ph-it" aria-pressed="true">IT</button><button id="ph-en" aria-pressed="false">EN</button></div></header>
+  <main id="ph-main"></main>
+</div>
+<div id="ph-sheet" hidden></div>
+<nav id="ph-tabs" class="ph-tabs" hidden></nav>
+<div id="ph-hint" hidden></div>
+<div id="ph-ring" hidden aria-hidden="true"></div>
+<div id="ph-tourbox" hidden role="dialog" aria-label=""></div>
 
 <script src="data/data.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/phone.js"></script>
 </body>
 </html>
