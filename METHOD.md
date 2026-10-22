@@ -69,8 +69,10 @@ catalog/dicasteri.json  2025 budget and actual by department, division and cost 
 catalog/personale.json  staff units and gross salaries by department and cost centre (2025 actual)
    │  npm run site    src/site.ts
    ▼
-docs/data/data.js    everything the page shows, in one file
-docs/index.html      the page; docs/assets/app.js only reads docs/data/data.js and never contains a number
+docs/data/data.js       every number the tiles, lists, sky and table are drawn from (read first)
+docs/data/data-more.js  what only a card or the overview shows: explanations, methods, sources, comparisons, the City's
+                        texts (read right after the first screen; src/sitedata.ts splits and joins the two exactly)
+docs/index.html         the page; docs/assets/app.js and phone.js only read the two data files and contain no number
    │  npm run docs    src/docs.ts
    ▼
 SOURCES.md, FIGURES.md   generated tables

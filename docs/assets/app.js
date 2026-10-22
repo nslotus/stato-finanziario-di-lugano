@@ -44,6 +44,11 @@ const fmt = (v, u, digits) => {
 const unitText = (u) => (UNIT[u] ? UNIT[u][lang] : u);
 let lang = "it";
 const L = (o) => (o ? o[lang] ?? o.it : "");
+// What only a card or the overview shows comes in a second file (data/data-more.js, see src/sitedata.ts), so that the
+// first screen does not wait for it. Until it has arrived, opening a card or the overview waits for it.
+let moreReady = false;
+const morePending = [];
+const whenMore = (fn) => { if (moreReady) fn(); else morePending.push(fn); };
 // English names for the accounts' groups, lines and the City's departments (the sources give them in Italian only)
 const EN = window.CIELO.EN;
 const tr = (it) => (lang === "en" ? EN[it] ?? it : it);
@@ -69,6 +74,7 @@ const T = {
       "<kbd>Doppio clic</kbd>: vi avvicina alla stella", "<kbd>⤢</kbd> o <kbd>0</kbd>: vista d'insieme", "<kbd>←</kbd> <kbd>→</kbd> scorrono, <kbd>+</kbd> <kbd>−</kbd> ingrandiscono", "<kbd>Trascinate la scheda</kbd> dove non copre nulla; <kbd>↺</kbd> la riporta accanto alla stella", "<kbd>Esc</kbd> chiude; <kbd>?</kbd> riapre questa pagina", "<kbd>Il quadro</kbd>: entrate, debito, obbligazioni, personale e dati mancanti"],
     lede: "Siete al centro della cupola. Ogni stella è una voce di spesa della Città nel 2025. <b>L'orizzonte è il preventivo</b>: le voci che hanno speso più del previsto salgono, quelle che hanno speso meno scendono, tanto più quanto più grande è lo scarto (in franchi o in percentuale). Più è luminosa, più è grande la spesa.",
     legendBtn: "Legenda", zoomIn: "Ingrandisci", zoomOut: "Rimpicciolisci",
+    moreFail: "Una parte dei dati non si è caricata: ricaricate la pagina per aprire le schede e il quadro.",
     tilesBtn: "Riquadri", tilesTip: "La stessa spesa in riquadri e barre, al posto del cielo",
     table: "Tabella", sky: "Cielo", close: "Chiudi", horizon: "preventivo 2025", over: "sopra il preventivo", under: "sotto il preventivo",
     notBudget: "non a preventivo", notSpent: "non spesa",
@@ -143,6 +149,7 @@ const T = {
       "<kbd>Double-click</kbd>: move closer to a star", "<kbd>⤢</kbd> or <kbd>0</kbd>: overview", "<kbd>←</kbd> <kbd>→</kbd> scroll, <kbd>+</kbd> <kbd>−</kbd> zoom", "<kbd>Drag the card</kbd> where it hides nothing; <kbd>↺</kbd> puts it back beside its star", "<kbd>Esc</kbd> closes; <kbd>?</kbd> reopens this page", "<kbd>Big picture</kbd>: revenue, debt, bonds, staff and missing data"],
     lede: "You stand at the centre of the dome. Every star is one of the City's spending lines in 2025. <b>The horizon is the budget</b>: lines that spent more than planned rise, lines that spent less sink, the further the larger the gap (in francs or in percent). The brighter the star, the larger the spending.",
     legendBtn: "Legend", zoomIn: "Zoom in", zoomOut: "Zoom out",
+    moreFail: "Part of the data did not load: reload the page to open the cards and the big picture.",
     tilesBtn: "Tiles", tilesTip: "The same spending as tiles and bars, instead of the sky",
     table: "Table", sky: "Sky", close: "Close", horizon: "2025 budget", over: "above budget", under: "below budget",
     notBudget: "not in the budget", notSpent: "not spent",
@@ -518,6 +525,7 @@ addEventListener("resize", () => { if (peekPinned) placePeek(); });
 
 // cards above the budget line spent more than planned, cards below spent less: the same rule as the sky
 function openFocus(s) {
+  if (!moreReady) return whenMore(() => openFocus(s));
   const from = s._p ? { x: s._p.x, y: s._p.y } : { x: innerWidth / 2, y: innerHeight / 2 };
   focus = { s, open: new Set(s.kind === "line" ? [s.code.slice(0, 2)] : []) }; lastPos = new Map();
   peek.hidden = true;
@@ -701,6 +709,7 @@ function factsCard(f) {
 }
 // a related figure: open its sector and unfold it there
 function openStar(id) {
+  if (!moreReady) return whenMore(() => openStar(id));
   if (!XS[id]) return;
   if (id === "bilancio.spesa") { openOverview("bilancio"); return; }
   if (view !== "fn") setView("fn");
@@ -755,8 +764,8 @@ function writeOverview() {
   ovEl.querySelector("#ov-x").onclick = () => showOverview(false);
   ovEl.querySelectorAll("[data-ov]").forEach((b) => (b.onclick = () => { ovEl.querySelector(`#ov-${b.dataset.ov}`)?.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" }); history.replaceState(history.state, "", `#quadro/${b.dataset.ov}`); }));
 }
-function showOverview(on) { const was = !ovEl.hidden; ovEl.hidden = !on; if (!on && was && !tour) document.getElementById("b-ov").focus(); syncRoute(); document.getElementById("b-ov").setAttribute("aria-pressed", String(on)); if (on) { writeOverview(); ovEl.scrollTop = 0; ovEl.querySelector("#ov-x").focus(); } }
-function openOverview(id) { if (focus) closeFocus(); toggleTable(false); showOverview(true); if (id) setTimeout(() => ovEl.querySelector(`#ov-${id}`)?.scrollIntoView({ block: "start" }), 50); }
+function showOverview(on) { if (on && !moreReady) return whenMore(() => showOverview(true)); const was = !ovEl.hidden; ovEl.hidden = !on; if (!on && was && !tour) document.getElementById("b-ov").focus(); syncRoute(); document.getElementById("b-ov").setAttribute("aria-pressed", String(on)); if (on) { writeOverview(); ovEl.scrollTop = 0; ovEl.querySelector("#ov-x").focus(); } }
+function openOverview(id) { if (!moreReady) return whenMore(() => openOverview(id)); if (focus) closeFocus(); toggleTable(false); showOverview(true); if (id) setTimeout(() => ovEl.querySelector(`#ov-${id}`)?.scrollIntoView({ block: "start" }), 50); }
 document.getElementById("b-ov").onclick = () => (ovEl.hidden ? openOverview() : showOverview(false));
 // phones: the header becomes two columns, the right one right-justified:
 //   title             IT EN
@@ -1123,6 +1132,25 @@ document.getElementById("m-chf").onclick = () => setMode("chf");
 document.getElementById("m-pct").onclick = () => setMode("pct");
 placeStars();
 resize(); writeText(); watchSlice();
+// ---------- the second data file ----------
+function joinMore(M) {
+  for (const [id, v] of Object.entries(M.stars)) Object.assign(XS[id], v);
+  const by = (list, v) => { for (const o of list) if (v[o.code]) Object.assign(o, v[o.code]); };
+  by(D.fns, M.fns); by(D.org.slices, M.slices); by(D.org.groups, M.orgGroups); by(D.org.lines, M.orgLines);
+  for (const s of stars) if (s.kind === "line") s.text = V.lines.find((l) => l.code === s.code)?.text ?? [];   // stars kept the empty lists
+  moreReady = true;
+  for (const fn of morePending.splice(0)) fn();
+  if (sel && !focus && !peek.hidden) select(sel);
+  phoneUI?.refresh();
+}
+if (window.CIELO_MORE) joinMore(window.CIELO_MORE);
+else {
+  const more = document.createElement("script");
+  more.src = "data/data-more.js";
+  more.onload = () => joinMore(window.CIELO_MORE);
+  more.onerror = () => document.body.insertAdjacentHTML("beforeend", `<p class="noscript" role="alert">${T[lang].moreFail}</p>`);
+  document.body.append(more);
+}
 let seen = false; try { seen = localStorage.getItem("cupola-intro") === "1"; } catch {}
 // after every script has run, so that the phone layout can take over first
 document.addEventListener("DOMContentLoaded", () => { started = true; if (phoneUI?.active()) phoneUI.start(); else if (location.hash.length > 1) applyRoute(); else if (!seen) showIntro(true); });

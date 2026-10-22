@@ -37,7 +37,7 @@ shared from a phone opens the same line on a computer. On a computer the same vi
 
 | Path | What it is |
 |---|---|
-| [`docs/`](docs/) | The page (served by GitHub Pages). `data/data.js` is generated; `assets/app.js` (the sky) and `assets/phone.js` (phones) contain no numbers |
+| [`docs/`](docs/) | The page (served by GitHub Pages). `data/data.js` and `data/data-more.js` are generated; `assets/app.js` (the sky) and `assets/phone.js` (phones, tiles) contain no numbers |
 | [`sources/`](sources/) | The archived documents and [`MANIFEST.json`](sources/MANIFEST.json) |
 | [`src/`](src/) | The readers (`adapters/`), one module per sector, the builders (`build.ts`, `personale.ts`, `site.ts`, `docs.ts`) and `verify.ts` |
 | [`catalog/`](catalog/) | The figures read from the sources: the machine-readable data of this project |

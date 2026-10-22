@@ -19,6 +19,7 @@ import { execSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { readPdf } from "./adapters/pdf";
+import { loadSite } from "./sitedata";
 
 const quick = process.argv.includes("--quick");
 const results: { n: number; name: string; ok: boolean; detail: string }[] = [];
@@ -33,8 +34,7 @@ const sha = (file: string) => createHash("sha256").update(readFileSync(file)).di
 const close = (a: number, b: number, tol: number) => Math.abs(a - b) <= tol;
 
 const manifest: any[] = JSON.parse(readFileSync("sources/MANIFEST.json", "utf8"));
-const loadSite = () => { const s = readFileSync("docs/data/data.js", "utf8"); return JSON.parse(s.slice(s.indexOf("window.CIELO = ") + 15).replace(/;\s*$/, "")); };
-const site = loadSite();
+const site = loadSite();                                 // both data files, joined (src/sitedata.ts)
 const { D, X, EN } = site;
 const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
 
@@ -224,7 +224,7 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
 
   if (quick) { results.push({ n: ++n, name: "rebuild is byte-identical", ok: true, detail: "skipped (--quick)" }); results.push({ n: ++n, name: "generated docs are current", ok: true, detail: "skipped (--quick)" }); }
   else {
-    const outputs = ["catalog/stars.json", "catalog/funzioni.json", "catalog/dicasteri.json", "catalog/personale.json", "sources/MANIFEST.json", "docs/data/data.js"];
+    const outputs = ["catalog/stars.json", "catalog/funzioni.json", "catalog/dicasteri.json", "catalog/personale.json", "sources/MANIFEST.json", "docs/data/data.js", "docs/data/data-more.js"];
     await check("rebuild is byte-identical", () => {
       const before = Object.fromEntries(outputs.map((f) => [f, sha(f)]));
       execSync("npx tsx src/build.ts", { stdio: "ignore" });

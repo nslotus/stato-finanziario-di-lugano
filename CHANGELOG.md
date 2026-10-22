@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Lighter first load: the page's data is split in two. `data/data.js` (37 KB compressed, was 294 KB) holds every number
+  the tiles, lists, sky and table are drawn from; `data/data-more.js` holds what only a card or the overview shows and is
+  read right after the first screen. Opening a card before it has arrived waits for it; if it cannot be read, the page
+  says so. `src/sitedata.ts` splits and joins the two; joined, they are identical to the single file they replace, and
+  `npm run docs` and `npm run verify` read them joined.
 - Computers: a "Riquadri / Tiles" view beside the sky ("▦ Riquadri" in the sky's toolbar, "✦ Cielo" to go back). The
   tiles sit on the left; on the right, the sectors' own gaps, or once one is chosen, its lines; a line's card opens from
   the right. The same addresses, full cards, overview, table and tour as on phones. The browser remembers the choice.

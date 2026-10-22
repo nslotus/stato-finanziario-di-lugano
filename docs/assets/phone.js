@@ -405,5 +405,7 @@
   addEventListener("resize", swap);
   function setTiles(on) { tiles = on; try { localStorage.setItem("cielo-layout", on ? "tiles" : "sky"); } catch {} swap(); }
   document.getElementById("ph-sky").onclick = () => setTiles(false);
-  phoneUI = { active: () => shown, start, sync, route, setTiles };
+  // when the second data file arrives, a line's card open on screen gets the City's explanation
+  const refresh = () => { sheetCode = null; render(); };
+  phoneUI = { active: () => shown, start, sync, route, setTiles, refresh };
 }
