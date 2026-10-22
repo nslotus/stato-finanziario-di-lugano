@@ -461,4 +461,25 @@ body.phone #focus { background: var(--night); }
 .pt-nav { display: flex; justify-content: flex-end; gap: 6px; }
 .pt-go { border-color: var(--accent); color: var(--accent); }
 .pt-x { position: absolute; top: 6px; right: 6px; width: 30px; height: 30px; padding: 0; border: 0; background: none; color: var(--faint); font-size: 17px; }
+/* "Riquadri" on a wide screen: tabs under the header, the tiles beside the chosen sector, a line's card from the right */
+#ph-sky { display: none; }
+body.wide #ph-sky { display: inline-block; padding: 6px 12px; color: var(--accent); border-color: rgba(255, 217, 160, 0.4); }
+body.wide #phone { padding: 0 28px 48px; }
+body.wide .ph-top { margin-inline: -28px; padding-inline: 28px; }
+body.wide #ph-main { padding-top: 46px; }
+body.wide .ph-tabs { top: calc(env(safe-area-inset-top, 0px) + 48px); bottom: auto; display: flex; justify-content: center; gap: 4px; padding: 4px 12px; border-top: 0; border-bottom: 1px solid var(--line); background: rgba(4, 6, 13, 0.94); }
+body.wide .ph-tabs button { display: flex; align-items: center; gap: 7px; padding: 7px 14px; font-size: 13px; }
+body.wide .ph-tabs svg { width: 18px; height: 18px; }
+body.wide .ph-screen { max-width: 760px; }
+body.wide .ph-cols { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 44px; max-width: 1280px; margin: 0 auto; align-items: start; }
+body.wide .ph-cols > .ph-screen { max-width: none; margin: 0; }
+body.wide .ph-back[data-back], body.wide .ph-wide { display: none; }
+body.wide .ph-tile.on { box-shadow: inset 0 0 0 2.5px var(--accent); }
+body.wide .ph-tile b { font-size: 13px; } body.wide .ph-tile.lg b { font-size: 14.5px; } body.wide .ph-tile.lg .v { font-size: 2.3rem; }
+body.wide .sh-dim { background: rgba(2, 3, 8, 0.35); }
+body.wide .sh-card { left: auto; top: 0; width: min(440px, 92vw); max-height: none; align-content: start; padding-top: 18px; border-top: 0; border-left: 1px solid var(--line); border-radius: 22px 0 0 22px; }
+body.wide .sh-card.in { animation-name: sh-left; }
+@keyframes sh-left { from { transform: translateX(100%); } }
+body.wide .sh-grip { display: none; }
+body.wide #ph-tourbox { left: auto; right: 24px; width: 380px; }
 @media (prefers-reduced-motion: reduce) { .sh-card.in { animation: none; } .sh-card { transition: none; } #ph-ring { transition: none; } }

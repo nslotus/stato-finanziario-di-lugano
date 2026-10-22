@@ -37,7 +37,8 @@ sources. In the department view, each department shows its staff and gross salar
 operating result, investment and self-financing, the debt to 2033, the bonds, interest and repayments, how Lugano
 compares with Ticino's municipalities, staff costs, and the datasets that are not published.
 
-**On phones** (screens up to 720 px wide) the same data is shown without the sky:
+**On phones** (screens up to 720 px wide), and on a computer in the **"Riquadri"** (Tiles) view, the same data is shown
+without the sky (on a computer the tiles and a sector's list sit side by side):
 
 - **The sectors as tiles.** Each function (or department) is a rectangle whose area is its 2025 spending (a squarified
   treemap). Its colour is its gap in percent: grey on budget, warmer below, cooler above, at full strength from ±6%.

@@ -69,6 +69,7 @@ const T = {
       "<kbd>Doppio clic</kbd>: vi avvicina alla stella", "<kbd>⤢</kbd> o <kbd>0</kbd>: vista d'insieme", "<kbd>←</kbd> <kbd>→</kbd> scorrono, <kbd>+</kbd> <kbd>−</kbd> ingrandiscono", "<kbd>Trascinate la scheda</kbd> dove non copre nulla; <kbd>↺</kbd> la riporta accanto alla stella", "<kbd>Esc</kbd> chiude; <kbd>?</kbd> riapre questa pagina", "<kbd>Il quadro</kbd>: entrate, debito, obbligazioni, personale e dati mancanti"],
     lede: "Siete al centro della cupola. Ogni stella è una voce di spesa della Città nel 2025. <b>L'orizzonte è il preventivo</b>: le voci che hanno speso più del previsto salgono, quelle che hanno speso meno scendono, tanto più quanto più grande è lo scarto (in franchi o in percentuale). Più è luminosa, più è grande la spesa.",
     legendBtn: "Legenda", zoomIn: "Ingrandisci", zoomOut: "Rimpicciolisci",
+    tilesBtn: "Riquadri", tilesTip: "La stessa spesa in riquadri e barre, al posto del cielo",
     table: "Tabella", sky: "Cielo", close: "Chiudi", horizon: "preventivo 2025", over: "sopra il preventivo", under: "sotto il preventivo",
     notBudget: "non a preventivo", notSpent: "non spesa",
     hint: "Trascinate per scorrere · rotella o pizzico per allargare uno spicchio · doppio clic su una stella per avvicinarvi · 0 per la vista d'insieme",
@@ -112,6 +113,7 @@ const T = {
       calcEx: (x) => `Esempio: ${x.name} ha speso ${x.c} milioni su ${x.tot} milioni, cioè il ${x.share}%. CHF ${x.amt} × ${x.share}% = CHF ${x.chf}.`,
       dataT: "I dati", dataFile: "Le cifre di ogni voce, in un file leggibile da una macchina", toTable: "Vedi ogni voce nella Tabella →",
       search: "Cerca una voce o un codice", sortBy: "Ordina", sorts: ["Scarto", "Spesa", "Codice"], none: "Nessuna voce corrisponde.",
+      against: "Rispetto al preventivo", pick: "Scegliete un riquadro o una riga per vederne le voci.",
       tour: { btn: "Giro guidato", hint: "Prima volta qui?", start: "Fate il giro", next: "Avanti", back: "Indietro", done: "Fine", count: (i, k) => `${i} di ${k}`,
         steps: ["Quanto ha speso la Città nel 2025, e la differenza dal preventivo.",
           "Ogni riquadro è un settore: più è grande, più ha speso. Blu: più del previsto; arancio: meno. Toccatene uno.",
@@ -141,6 +143,7 @@ const T = {
       "<kbd>Double-click</kbd>: move closer to a star", "<kbd>⤢</kbd> or <kbd>0</kbd>: overview", "<kbd>←</kbd> <kbd>→</kbd> scroll, <kbd>+</kbd> <kbd>−</kbd> zoom", "<kbd>Drag the card</kbd> where it hides nothing; <kbd>↺</kbd> puts it back beside its star", "<kbd>Esc</kbd> closes; <kbd>?</kbd> reopens this page", "<kbd>Big picture</kbd>: revenue, debt, bonds, staff and missing data"],
     lede: "You stand at the centre of the dome. Every star is one of the City's spending lines in 2025. <b>The horizon is the budget</b>: lines that spent more than planned rise, lines that spent less sink, the further the larger the gap (in francs or in percent). The brighter the star, the larger the spending.",
     legendBtn: "Legend", zoomIn: "Zoom in", zoomOut: "Zoom out",
+    tilesBtn: "Tiles", tilesTip: "The same spending as tiles and bars, instead of the sky",
     table: "Table", sky: "Sky", close: "Close", horizon: "2025 budget", over: "above budget", under: "below budget",
     notBudget: "not in the budget", notSpent: "not spent",
     hint: "Drag to scroll · wheel or pinch to widen a slice · double-click a star to get closer · 0 for the overview",
@@ -184,6 +187,7 @@ const T = {
       calcEx: (x) => `Example: ${x.name} spent ${x.c} million of ${x.tot} million, or ${x.share}%. CHF ${x.amt} × ${x.share}% = CHF ${x.chf}.`,
       dataT: "The data", dataFile: "The figures of every line, in a machine-readable file", toTable: "See every line in the Table →",
       search: "Search a line or a code", sortBy: "Sort", sorts: ["Gap", "Spending", "Code"], none: "No line matches.",
+      against: "Against the budget", pick: "Choose a tile or a row to see its lines.",
       tour: { btn: "Guided tour", hint: "First time here?", start: "Take the tour", next: "Next", back: "Back", done: "Done", count: (i, k) => `${i} of ${k}`,
         steps: ["What the City spent in 2025, and the difference from the budget.",
           "Each tile is a sector: the bigger it is, the more it spent. Blue: more than budgeted; orange: less. Tap one.",
@@ -725,7 +729,7 @@ document.addEventListener("click", (e) => { const b = e.target.closest("[data-op
 // ---------- the big picture: the accounts as a whole, staff, and what is not published ----------
 const ovEl = document.getElementById("ov");
 function writeOverview() {
-  const t = T[lang], W = phoneUI?.active() ? 340 : 600;      // phones draw the charts at their own width, so the text stays readable
+  const t = T[lang], W = phoneUI?.active() && innerWidth <= 720 ? 340 : 600;      // phones draw the charts at their own width, so the text stays readable
   const chapters = X.chapters.map((c) => `<section class="ov-s" id="ov-${c.id}"><h2>${esc(L(c.title))}</h2><p class="ov-lede">${esc(L(c.lede))}</p>
     <div class="ov-ch">${chartHtml(c.chart, W)}</div>${c.table ? tableHtml(c.table) : ""}
     ${c.id === "bilancio" && X.totals ? `<h3>${t.totalsT}</h3><div class="ov-ch">${chartHtml(X.totals, W)}</div><p class="small">${esc(L(X.totalsNote))}</p><details class="mini"><summary>${t.sources}</summary>${srcList(X.totalsSource)}</details>` : ""}
@@ -911,6 +915,7 @@ function writeTable() {
 }
 function toggleTable(on) { const el = document.getElementById("table"); el.hidden = !on; syncRoute(); document.getElementById("b-table").setAttribute("aria-pressed", String(on)); document.getElementById("b-table").textContent = on ? T[lang].sky : T[lang].table; if (on) writeTable(); }
 document.getElementById("b-table").onclick = () => toggleTable(document.getElementById("table").hidden);
+document.getElementById("b-tiles").onclick = () => phoneUI?.setTiles(true);
 
 function writeLegend() {
   const c = document.getElementById("leg"), x = c.getContext("2d"), k = 2; c.width = 260 * k; c.height = 46 * k; c.style.width = "260px"; c.style.height = "46px"; x.scale(k, k);
@@ -927,7 +932,8 @@ function writeText() {
   for (const l of ["it", "en"]) document.getElementById(`l-${l}`).setAttribute("aria-pressed", String(l === lang));
   toggleTable(!document.getElementById("table").hidden); writeSectors(); writeLegend(); if (sel && !focus) select(sel); if (focus) renderFocus(null); redraw();
   document.getElementById("b-tour").textContent = TOUR[lang].button; if (tour) renderTour();
-  document.getElementById("b-ov").textContent = t.ovBtn; ovEl.setAttribute("aria-label", t.ovTitle); if (!ovEl.hidden) writeOverview();
+  document.getElementById("b-ov").textContent = t.ovBtn;
+  document.getElementById("b-tiles").textContent = `▦ ${t.tilesBtn}`; document.getElementById("b-tiles").title = t.tilesTip; ovEl.setAttribute("aria-label", t.ovTitle); if (!ovEl.hidden) writeOverview();
 }
 addEventListener("keydown", (e) => { if (e.key === "Escape" && focus) closeFocus(); else if (e.key === "Escape" && !document.getElementById("table").hidden && !tour) { toggleTable(false); document.getElementById("b-table").focus(); } });
 const intro = document.getElementById("intro");

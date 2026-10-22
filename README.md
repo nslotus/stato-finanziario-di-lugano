@@ -11,7 +11,8 @@ the datasets that are not published. In Italian and English.
 On a phone the sky gives way to a layout made for small screens: the sectors as tiles sized by what they spent, each
 sector as a list of its lines' gaps around the budget, a card for each line with its pages and sources, "Il tuo franco"
 (how an amount splits in the proportions of 2025 spending) and a searchable table. Same data, same addresses: a link
-shared from a phone opens the same line on a computer.
+shared from a phone opens the same line on a computer. On a computer the same views are one click away: "Riquadri"
+(Tiles) shows the tiles beside the list of a sector's lines, for readers who prefer plain charts to the sky.
 
 **View it:** https://nslotus.github.io/stato-finanziario-di-lugano/ · locally: `npm ci && npm run serve`
 

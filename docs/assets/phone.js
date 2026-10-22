@@ -1,4 +1,5 @@
-// Cielo del preventivo, Lugano on a phone. Up to 720px wide the sky gives way to views that are read by scrolling and tapping:
+// Cielo del preventivo, Lugano on a phone, and the "Riquadri" view on a computer. Up to 720px wide (or on a wider
+// screen when the reader chooses "Riquadri" instead of the sky) the page is read by scrolling and tapping:
 // the sectors as tiles, a sector as its lines' gaps around the budget, a line as a card that slides up from the bottom,
 // "Il tuo franco" and a searchable table. It reads the same window.CIELO and uses the page's own wording, cards and
 // deep dive (assets/app.js, loaded first), and keeps the same addresses: #settore/2 is a sector, #settore/212 a line,
@@ -71,7 +72,8 @@
   let drawn = "", drawnTab = "", sheetCode = null, sheetFrom = null, amount = 1000, query = "", sortBy = 0;
   const scrolls = new Map();
   function render() {
-    if (!mq.matches) return;
+    if (!shown) return;
+    const wide = !mq.matches;
     const { k, a, deep } = parse(here());
     if (isSky(k)) { const v = k === "dicastero" ? "org" : "fn"; if (view !== v) setView(v); }
     const s = isSky(k) ? stars.find((x) => x.code === a) : null;
@@ -84,10 +86,12 @@
     const line = s?.kind === "line" ? s : null;
     // a line opened from the table keeps the table behind its card
     const behind = line && drawnTab === "tabella" ? "tabella" : tab;
-    const key = `${lang}|${view}|${mode}|${behind}|${behind === "settori" && s ? s.f.code : ""}`;
+    const key = `${lang}|${view}|${mode}|${wide}|${behind}|${behind === "settori" && s ? s.f.code : ""}`;
     if (tab !== "quadro" && key !== drawn) {
       if (drawn) scrolls.set(drawn, root.scrollTop);
-      main.innerHTML = behind === "franco" ? franco() : behind === "tabella" ? table() : s ? sector(s.f) : home();
+      // on a wide screen the tiles stay on the left and the chosen sector (or all sectors) is listed on the right
+      main.innerHTML = behind === "franco" ? franco() : behind === "tabella" ? table()
+        : wide ? `<div class="ph-cols">${home(s?.f.code)}${s ? sector(s.f) : sectors()}</div>` : s ? sector(s.f) : home();
       wire(behind);
       root.scrollTop = scrolls.get(key) ?? 0;
       drawn = key; drawnTab = behind;
@@ -97,6 +101,7 @@
     if (pt && !pt.moving && here() !== STEPS[pt.i].r) endPt();             // a move the tour did not make ends it
     document.getElementById("ph-tour").setAttribute("aria-label", P().tour.btn); document.getElementById("ph-tour").title = P().tour.btn;
     document.getElementById("ph-h1").textContent = T[lang].h1;
+    document.getElementById("ph-sky").textContent = `✦ ${T[lang].sky}`;
     for (const l of ["it", "en"]) document.getElementById(`ph-${l}`).setAttribute("aria-pressed", String(l === lang));
     title();
   }
@@ -120,15 +125,17 @@
     return out;
   }
 
-  function home() {
+  function home(chosen) {
     const t = T[lang], p = P(), sl = V.slices, c = sl.reduce((s, f) => s + f.c25, 0), b = sl.reduce((s, f) => s + f.p25, 0);
-    const WU = 100, HU = 120;
+    const WU = 100, HU = mq.matches ? 120 : 80;          // on a wide screen the map is lower, so it fits beside the list
+    // a tile's size in pixels decides how much text it gets: the map's width on a phone, or its column on a wide screen
+    const ppu = (mq.matches ? Math.min(innerWidth - 32, 560) : ((Math.min(innerWidth - 56, 1280) - 44) * 1.1) / 2.1) / WU;
     const small = [];                                   // tiles too small for their own label are listed under the map
     const tiles = squarify(sl.filter((f) => f.c25 > 0).sort((x, y) => y.c25 - x.c25).map((f) => ({ v: f.c25, f })), WU, HU).map(({ d: { f }, x, y, w, h }) => {
-      const rgb = gapRgb(f.pct), size = w < 17 || h < 13 ? "xs" : w > 34 && h > 30 ? "lg" : "";
+      const rgb = gapRgb(f.pct), pw = w * ppu, ph = h * ppu, size = pw < 60 || ph < 46 ? "xs" : pw > 122 && ph > 107 ? "lg" : "";
       if (size === "xs") small.push({ f, rgb });
       const label = `${Wd().slice} ${f.code}, ${L(f.name)}: ${n(f.c25)} ${t.mio}, ${sgn(f.pct)}%`;
-      return `<button class="ph-tile ${size}" data-go="${kOf()}/${f.code}" aria-label="${esc(label)}" style="left:${(x / WU) * 100}%;top:${(y / HU) * 100}%;width:${(w / WU) * 100}%;height:${(h / HU) * 100}%;--tf:rgb(${rgb});--tc:${inkOn(rgb)}">
+      return `<button class="ph-tile ${size}${f.code === chosen ? " on" : ""}"${f.code === chosen ? ' aria-current="true"' : ""} data-go="${kOf()}/${f.code}" aria-label="${esc(label)}" style="left:${(x / WU) * 100}%;top:${(y / HU) * 100}%;width:${(w / WU) * 100}%;height:${(h / HU) * 100}%;--tf:rgb(${rgb});--tc:${inkOn(rgb)}">
         ${size === "xs" ? (w >= 7 && h >= 7 ? `<b>${f.code}</b>` : "") : `<i class="c">${f.code}</i><b>${esc(L(f.name))}</b><span class="v">${n(f.c25)}</span><span class="g">${sgn(f.pct)}%</span>`}</button>`;
     }).join("");
     return `<section class="ph-screen">
@@ -136,7 +143,7 @@
       <div class="ph-big">${n(c)}<small>${p.spent}</small></div>
       <p class="ph-sub">${p.budgetWas(n(b))} · ${gapSpan(b, c)}</p>
       ${viewSeg()}
-      <div class="ph-tm">${tiles}</div>
+      <div class="ph-tm" style="aspect-ratio:${WU} / ${HU}">${tiles}</div>
       ${small.length ? `<div class="ph-small">${small.map(({ f, rgb }) => `<button data-go="${kOf()}/${f.code}"><i style="background:rgb(${rgb})"></i>${f.code} ${esc(L(f.name))} <b>${n(f.c25)}</b> <span class="${f.pct >= 0 ? "ph-up" : "ph-down"}">${sgn(f.pct)}%</span></button>`).join("")}</div>` : ""}
       <div class="ph-key" aria-hidden="true"><span class="ph-down">${p.less}</span><i></i><span class="ph-up">${p.more}</span><em>−${FULL}%</em><em>0</em><em>+${FULL}%</em></div>
       <p class="small">${p.tiles}</p>
@@ -146,13 +153,14 @@
   }
 
   const gapOf = (s) => (mode === "pct" ? s.p : s.c - s.b);
-  function sector(f) {
-    const t = T[lang], p = P(), name = L(f.name);
-    const lines = stars.filter((s) => s.kind === "line" && s.f === f && (s.b || s.c))
-      .sort((x, y) => (gapOf(x) == null) - (gapOf(y) == null) || Math.abs(gapOf(y)) - Math.abs(gapOf(x)));
-    const max = Math.max(...lines.map((s) => Math.abs(gapOf(s) ?? 0)), 1e-9), SPAN = 34;
-    const id = view === "fn" ? X.anchors[f.code] : null, st = id ? XS[id] : null;
-    const rows = lines.map((s) => {
+  const byGap = (x, y) => (gapOf(x) == null) - (gapOf(y) == null) || Math.abs(gapOf(y)) - Math.abs(gapOf(x));
+  const modeRow = (title) => { const t = T[lang]; return `<div class="ph-row"><p class="eyebrow">${title}</p>
+        <div class="seg ph-seg" role="group" aria-label="${esc(t.height)}">${["chf", "pct"].map((m) => `<button data-mode="${m}" aria-pressed="${m === mode}">${m === "chf" ? "CHF" : "%"}</button>`).join("")}</div></div>
+      <div class="g-axis" aria-hidden="true"><span>${P().less}</span><span class="g-h">${t.horizon}</span><span>${P().more}</span></div>`; };
+  // one row per star (a line, or a whole sector): its name, and a bar left or right of the budget line
+  function gapRows(list) {
+    const t = T[lang], max = Math.max(...list.map((s) => Math.abs(gapOf(s) ?? 0)), 1e-9), SPAN = 34;
+    return list.map((s) => {
       const v = gapOf(s);
       let bar;
       if (v == null) bar = `<span class="g-na">${t.notBudget} · ${n(s.c, 2)} ${t.mio}</span>`;
@@ -162,18 +170,35 @@
         bar = `<span class="g-bar ${cls}" style="left:${v >= 0 ? 50 : 50 - w}%;width:${w}%"></span><span class="g-val" style="left:calc(${v >= 0 ? 50 + w : 50}% + 6px)">${txt}</span>`;
       }
       // screen readers hear the line and its figures; the drawn bar is hidden from them
-      const said = `${s.code} ${L(s.label)}: ${t.budget} ${n(s.b, 2)}, ${t.actual} ${n(s.c, 2)} ${t.mio}, ${devText(s)}`;
-      return `<li><button class="ph-gap" data-go="${kOf()}/${s.code}" aria-label="${esc(said)}"><span class="g-lab"><i>${s.code}</i>${esc(L(s.label))}</span><span class="g-track" aria-hidden="true">${bar}</span></button></li>`;
+      const name = s.kind === "fn" ? L(s.f.name) : L(s.label);
+      const said = `${s.code} ${name}: ${t.budget} ${n(s.b, 2)}, ${t.actual} ${n(s.c, 2)} ${t.mio}, ${devText(s)}`;
+      return `<li><button class="ph-gap" data-go="${kOf()}/${s.code}" aria-label="${esc(said)}"><span class="g-lab"><i>${s.code}</i>${esc(name)}</span><span class="g-track" aria-hidden="true">${bar}</span></button></li>`;
     }).join("");
+  }
+  // wide screens, before a sector is chosen: the sectors themselves against their budget
+  function sectors() {
+    const t = T[lang], p = P();
+    const list = stars.filter((s) => s.kind === "fn" && (s.b || s.c)).sort(byGap);
+    return `<section class="ph-screen">
+      <p class="eyebrow">${p.against}</p>
+      <h2 class="ph-h">${t.W[view].tab}</h2>
+      <p class="ph-sub">${p.pick}</p>
+      ${modeRow(`${p.gapsT.split(" ")[0]} · ${p.gapsUnit[mode]}`)}
+      <ol class="ph-gaps">${gapRows(list)}</ol>
+    </section>`;
+  }
+  function sector(f) {
+    const t = T[lang], p = P(), name = L(f.name);
+    const lines = stars.filter((s) => s.kind === "line" && s.f === f && (s.b || s.c)).sort(byGap);
+    const id = view === "fn" ? X.anchors[f.code] : null, st = id ? XS[id] : null;
+    const rows = gapRows(lines);
     return `<section class="ph-screen">
       <button class="ph-back" data-back>‹ ${t.W[view].tab}</button>
       <p class="eyebrow">${Wd().slice} ${f.code}</p>
       <h2 class="ph-h">${esc(name)}</h2>
       <p class="ph-sub">${p.spentOf(n(f.c25), n(f.p25))} · ${gapSpan(f.p25, f.c25)}</p>
       ${st ? `<div class="ph-chips"><span class="ph-chip">${esc(L(st.label))}: <b>${p.perRes(val(st.value, st.unit, 0), esc(unitText(st.unit)), st.year)}</b></span>${st.rank ? `<span class="ph-chip">${esc(rankText(st.rank))}</span>` : ""}</div>` : ""}
-      <div class="ph-row"><p class="eyebrow">${p.gapsT}, ${p.gapsUnit[mode]}</p>
-        <div class="seg ph-seg" role="group" aria-label="${esc(t.height)}">${["chf", "pct"].map((m) => `<button data-mode="${m}" aria-pressed="${m === mode}">${m === "chf" ? "CHF" : "%"}</button>`).join("")}</div></div>
-      <div class="g-axis" aria-hidden="true"><span>${p.less}</span><span class="g-h">${t.horizon}</span><span>${p.more}</span></div>
+      ${modeRow(`${p.gapsT}, ${p.gapsUnit[mode]}`)}
       <ol class="ph-gaps">${rows}</ol>
       <p class="small">${p.tapLine}</p>
       <button class="ph-cta" data-go="${kOf()}/${f.code}/scheda">${esc(p.all(name))} →</button>
@@ -354,18 +379,22 @@
   addEventListener("keydown", (e) => { if (e.key === "Escape" && pt) endPt(); });
 
   // ---------- switching between the phone and the sky ----------
-  let shown = mq.matches;                                // which layout is on screen; after start() it changes only in apply()
+  // on a wide screen the reader may choose these views ("Riquadri") instead of the sky; the choice is kept in this browser
+  let tiles = false; try { tiles = localStorage.getItem("cielo-layout") === "tiles"; } catch {}
+  const want = () => mq.matches || tiles;
+  let shown = want();                                    // which layout is on screen; after start() it changes only in apply()
   function apply() {
-    shown = mq.matches;
+    shown = want();
     document.body.classList.toggle("phone", shown);
+    document.body.classList.toggle("wide", shown && !mq.matches);
     root.hidden = !shown; tabsEl.hidden = !shown;
     if (!shown) { closeSheet(); endPt(); hint.hidden = true; }
   }
-  function start() { apply(); stack = [here()]; render(); if (!seenTour() && !here()) { writeHint(); hint.hidden = false; } }
+  function start() { apply(); stack = [here()]; render(); if (mq.matches && !seenTour() && !here()) { writeHint(); hint.hidden = false; } }
   // turning a tablet or resizing a window across 720px swaps the layouts; resize is checked too, because the media
   // query's own change event does not always arrive
   function swap() {
-    if (mq.matches === shown) return;
+    if (want() === shown) { if (shown && document.body.classList.contains("wide") === mq.matches) { apply(); drawn = ""; render(); } return; }
     apply();
     if (shown) { if (tour) stopTour(); intro.hidden = true; peek.hidden = true; sel = null; drawn = ""; start(); }
     else { stack = [here()]; applyRoute(); placeTopButtons(); resize(); redraw(); }
@@ -374,5 +403,7 @@
   addEventListener("resize", () => { if (shown && main.querySelector(".ph-tm")) fitTiles(); });
   document.fonts?.ready.then(() => { if (shown && main.querySelector(".ph-tm")) fitTiles(); });
   addEventListener("resize", swap);
-  phoneUI = { active: () => shown, start, sync, route };
+  function setTiles(on) { tiles = on; try { localStorage.setItem("cielo-layout", on ? "tiles" : "sky"); } catch {} swap(); }
+  document.getElementById("ph-sky").onclick = () => setTiles(false);
+  phoneUI = { active: () => shown, start, sync, route, setTiles };
 }

@@ -1,7 +1,8 @@
 # Security
 
 This project is a static page: it has no accounts, no server code, no forms and no tracking, and it stores nothing about
-visitors (the browser keeps only whether the introduction, or on phones the offer of the tour, was already seen; an amount
+visitors (the browser keeps only whether the introduction, or on phones the offer of the tour, was already seen, and
+whether the sky or the tiles were chosen on a computer; an amount
 or a search typed on a phone stays on the phone and is sent nowhere). The page loads only its own files and sets a
 Content Security Policy that blocks everything else.
 

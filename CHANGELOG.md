@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Computers: a "Riquadri / Tiles" view beside the sky ("▦ Riquadri" in the sky's toolbar, "✦ Cielo" to go back). The
+  tiles sit on the left; on the right, the sectors' own gaps, or once one is chosen, its lines; a line's card opens from
+  the right. The same addresses, full cards, overview, table and tour as on phones. The browser remembers the choice.
 - Check 13: every one of the 72 lines' budget and actual is compared with the number printed on its row of the cited
   page, in the COSTI column found from its heading (144 values). A value read from the wrong row or column, or off by a
   franc, fails; tested by planting two such errors, which check 4's sums let through in one case.
