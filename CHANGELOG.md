@@ -2,12 +2,13 @@
 
 ## Unreleased
 
+- Check 13: every one of the 72 lines' budget and actual is compared with the number printed on its row of the cited
+  page, in the COSTI column found from its heading (144 values). A value read from the wrong row or column, or off by a
+  franc, fails; tested by planting two such errors, which check 4's sums let through in one case.
 - The "Data wanted" questions (missing datasets) moved from `dati-di-lugano` to this repository's issues #1–#7, and the
   page links there. `dati-di-lugano` is archived.
 - Removed `sources/dati-di-lugano@8c1fd28-city-figures.json`, an older copy that nothing cited (the figures use
   `61e3dbe`). Check 2 now also fails on any file in `sources/` that the manifest does not list.
-- Checked by hand before going public: all 72 lines' budget and actual are printed on their row of the cited page, in
-  the COSTI column of the 2025 budget and of the 2025 accounts.
 - Phones: screen readers hear each line's budget, actual and gap in a sector's list. SECURITY.md now names what a phone
   keeps (whether the tour was offered) and that typed amounts and searches are sent nowhere.
 - The page is now called "Cielo del preventivo, Lugano" in Italian and "Sky budget, Lugano" in English (was "Il cielo del preventivo" /
@@ -48,19 +49,20 @@ First public version.
 - 74 archived source documents with SHA-256 fingerprints; `npm run verify` with 12 checks, run by GitHub Actions.
 - Italian and English.
 
-Last `npm run verify`, 21 October 2026, all 12 checks passed:
+Last `npm run verify`, 23 October 2026, all 13 checks passed:
 
 ```
-PASS   1  sources match their fingerprints                                     74 files, 134.0 MB, all match, names exact
-PASS   2  every cited file is archived, every archived file is cited           74 files cited 1071 times
-PASS   3  files pinned from dati-di-lugano name the commit of their URL        7 files, 6 commits of github.com/nslotus/dati-di-lugano
-PASS   4  sums add up (recomputed here, not by the build)                      147 sums
-PASS   5  budget against actual: actual − budget = printed difference          18 rows
-PASS   6  ranks and medians among Ticino's municipalities                      29 figures, each against 106 municipalities
-PASS   7  canton indicator rank = 106 − page rank + 1 (net debt per resident)  canton 96/106 (1 = lowest debt), page 11th highest
-PASS   8  values read from PDF pages are printed on the cited page             20 of 20 single-page figures; 5 more read across pages or lists (sicurezza.incidenti, finanze.pg-cantone, finanze.ifd-quota, finanze.piano-rivalorizzazioni, finanze.piano-misure)
-PASS   9  every name has an English name, none unused                          189 names
-PASS  10  no keys, tokens, personal paths or addresses                         74 files scanned
-PASS  11  rebuild is byte-identical                                            6 files rebuilt from the archived sources, identical
-PASS  12  generated docs are current                                           SOURCES.md, FIGURES.md
+PASS   1  sources match their fingerprints                                         74 files, 134.0 MB, all match, names exact
+PASS   2  every cited file is archived, every archived file is cited               74 files cited 1071 times
+PASS   3  files pinned from dati-di-lugano name the commit of their URL            7 files, 6 commits of github.com/nslotus/dati-di-lugano
+PASS   4  sums add up (recomputed here, not by the build)                          147 sums
+PASS   5  budget against actual: actual − budget = printed difference              18 rows
+PASS   6  ranks and medians among Ticino's municipalities                          29 figures, each against 106 municipalities
+PASS   7  canton indicator rank = 106 − page rank + 1 (net debt per resident)      canton 96/106 (1 = lowest debt), page 11th highest
+PASS   8  values read from PDF pages are printed on the cited page                 20 of 20 single-page figures; 5 more read across pages or lists (sicurezza.incidenti, finanze.pg-cantone, finanze.ifd-quota, finanze.piano-rivalorizzazioni, finanze.piano-misure)
+PASS   9  every name has an English name, none unused                              189 names
+PASS  10  no keys, tokens, personal paths or addresses                             77 files scanned
+PASS  11  rebuild is byte-identical                                                6 files rebuilt from the archived sources, identical
+PASS  12  generated docs are current                                               SOURCES.md, FIGURES.md
+PASS  13  every line's budget and actual are printed on its row of the cited page  72 lines, 144 values: budget pp. 221–223, actual pp. 238–239, COSTI column
 ```

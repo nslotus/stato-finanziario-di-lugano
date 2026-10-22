@@ -243,6 +243,38 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
     });
   }
 
+  await check("every line's budget and actual are printed on its row of the cited page", async () => {
+    // The 72 lines of the page against the City's tables "ripartizione funzionale a 3 cifre": on the cited page, the row
+    // that starts with the line's code must show the line's value in the COSTI column (francs, two decimals). A line
+    // with no cost must have that column empty. The column is found from its heading, so a value read from RICAVI or
+    // SALDO, or from the wrong row, fails.
+    const docs = [
+      { file: "city-preventivo-2025-messaggio.pdf", key: "p25", page: "pagesP", what: "budget" },
+      { file: "city-consuntivo-2025-messaggio.pdf", key: "c25", page: "pagesC", what: "actual" },
+    ];
+    const francs = (parts: string[]) => { const t = parts.join("").replace(/[\s'’]/g, ""); return /^-?\d+(\.\d+)?$/.test(t) ? Number(t) : NaN; };
+    const bad: string[] = [], pages = { p25: new Set<number>(), c25: new Set<number>() };
+    let k = 0;
+    for (const l of D.lines) {
+      for (const d of docs) {
+        const page = l[d.page];
+        if (!page) { bad.push(`${l.code}: no ${d.what} page`); continue; }
+        const items = (await readPdf(d.file, [page])).items[page - 1] ?? [];
+        const head = (s: string) => items.find((i) => i.s === s) ?? fail(`${d.file} p. ${page}: no ${s} heading`);
+        const costs = head("COSTI"), revenue = head("RICAVI"), edge = (costs.x + revenue.x) / 2;
+        const rows = items.filter((i) => (i.s === l.code || i.s.startsWith(`${l.code} `)) && i.x < costs.x / 2);   // the code column, not a piece of a number
+        if (rows.length !== 1) { bad.push(`${l.code}: ${rows.length} rows on ${d.file} p. ${page}`); continue; }
+        const cells = items.filter((i) => Math.abs(i.y - rows[0].y) < 2.5 && i.x > rows[0].x && i.x >= costs.x - 30 && i.x < edge).sort((a, b) => a.x - b.x);
+        const printed = cells.length ? francs(cells.map((i) => i.s)) : 0;
+        if (!close(printed, l[d.key] * 1e6, 0.5)) bad.push(`${l.code} ${d.what}: ${l[d.key]} mio, printed ${cells.map((i) => i.s).join(" ") || "nothing"} on ${d.file} p. ${page}`);
+        else { k++; pages[d.key as "p25" | "c25"].add(page); }
+      }
+    }
+    if (bad.length) fail(bad.join("; "));
+    const span = (s: Set<number>) => { const v = [...s].sort((a, b) => a - b); return v.length > 1 ? `${v[0]}–${v[v.length - 1]}` : `${v[0]}`; };
+    return `${D.lines.length} lines, ${k} values: budget pp. ${span(pages.p25)}, actual pp. ${span(pages.c25)}, COSTI column`;
+  });
+
   const w = Math.max(...results.map((r) => r.name.length));
   for (const r of results) console.log(`${r.ok ? "PASS" : "FAIL"}  ${String(r.n).padStart(2)}  ${r.name.padEnd(w)}  ${r.detail}`);
   const failed = results.filter((r) => !r.ok).length;

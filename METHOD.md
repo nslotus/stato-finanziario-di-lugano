@@ -169,14 +169,15 @@ has an English name, and that every source cited is in the manifest.
 ### 6.3 `npm run verify` (also run on every change by GitHub Actions)
 
 Checks 4 to 7 and 9 recompute from the page's data with their own code, independently of the build, so a mistake in the
-build cannot hide itself. Check 8 reads the PDFs with the same reader as the build. Check 11 proves that the files can be
+build cannot hide itself. Checks 8 and 13 read the PDFs with the same reader as the build; check 13 finds the value by the
+line's code and the column heading on the page, not by the build's position rules. Check 11 proves that the files can be
 reproduced exactly from the archived sources; it does not by itself prove that they are correct, which is what the other
 checks are for. The committed files were generated with Node.js 25.9.0 (`.nvmrc`), and GitHub Actions uses the same version.
 
 | # | Check | What it compares | Tolerance |
 |---|---|---|---|
 | 1 | Sources match their fingerprints | size and SHA-256 of every archived file against the manifest; file names match exactly, including case | exact |
-| 2 | Citations | every file cited is archived; every archived file is cited | exact |
+| 2 | Citations | every file cited is archived; every archived file is cited; nothing else is in `sources/` | exact |
 | 3 | Upstream pins | each file from `dati-di-lugano` names the commit of its URL | exact |
 | 4 | Sums | lines → groups → functions, centres → divisions → departments, functions = departments, functions → yearly totals, percentages recomputed | CHF 100–10,000 depending on the level (rounding of CHF million values) |
 | 5 | Budget against actual | actual − budget = printed difference, 18 rows | CHF 10,000 |
@@ -187,6 +188,7 @@ checks are for. The committed files were generated with Node.js 25.9.0 (`.nvmrc`
 | 10 | Hygiene | no keys, tokens, personal paths or private addresses in the repository | — |
 | 11 | Rebuild | `build`, `staff` and `site` run again from the archived sources give byte-identical files | exact |
 | 12 | Docs | `SOURCES.md` and `FIGURES.md` are what `npm run docs` generates | exact |
+| 13 | Lines on the page | each of the 72 lines' budget (pp. 221–223 of the 2025 budget message) and actual (pp. 238–239 of the 2025 accounts message) is the number printed on the row with its code, in the COSTI column; a line without cost has that column empty | CHF 0.50 |
 
 The result of the last run is in [`CHANGELOG.md`](CHANGELOG.md).
 
