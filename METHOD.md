@@ -171,27 +171,61 @@ has an English name, and that every source cited is in the manifest.
 
 ### 6.3 `npm run verify` (also run on every change by GitHub Actions)
 
-Checks 4 to 7 and 9 recompute from the page's data with their own code, independently of the build, so a mistake in the
-build cannot hide itself. Checks 8 and 13 read the PDFs with the same reader as the build; check 13 finds the value by the
-line's code and the column heading on the page, not by the build's position rules. Check 11 proves that the files can be
-reproduced exactly from the archived sources; it does not by itself prove that they are correct, which is what the other
-checks are for. The committed files were generated with Node.js 25.9.0 (`.nvmrc`), and GitHub Actions uses the same version.
+**Independence.** Checks 4 to 7 and 9 recompute from the page's data with their own code, not the build's, so a mistake
+in the build cannot hide itself. Checks 8, 13 and 14 read the PDFs with pdf.js, the reader the build also uses, but
+with methods of their own: a value is found by its row's code and its column's heading, or by the arithmetic the City
+prints on the same row (difference = actual − budget, and the same against 2024), not by the build's position rules.
+Check 15 repeats checks 8 and 13 with **pypdf**, a separate PDF reader written in Python that shares no code with
+pdf.js, and for the table of 2025 spending it uses no column positions at all: in each row the costs are the amount
+that the row's own arithmetic (costs − revenue = −balance) allows. A fault in either reader would therefore have to
+produce the same wrong number in two unrelated programs to pass. Check 11 proves that the files can be reproduced
+exactly from the archived sources; it does not by itself prove that they are correct, which is what the other checks
+are for. The committed files were generated with Node.js 25.9.0 (`.nvmrc`), and GitHub Actions uses the same version.
+
+**Coverage.** Every official figure read from a PDF (25), every line, group and function of the 2025 table and the
+City's total in both messages (252 values), and every department, division and cost centre of the 2025 accounts (111
+units; the 9 divisions that have both a table of their own and a row in their department's overview are compared in
+both) is compared with its printed page. A number is found only as a whole number, never inside another ("675" does not
+match "1'675"). The only value of the department view not printed as such is `40··`, the
+part of division 40 Spazi urbani that its centres' tables do not cover: it is the division's printed total minus its
+centres, and check 4's sums cover it.
+
+**Tolerances** are set just above what rounding allows, and the largest difference actually found is given.
 
 | # | Check | What it compares | Tolerance |
 |---|---|---|---|
 | 1 | Sources match their fingerprints | size and SHA-256 of every archived file against the manifest; file names match exactly, including case | exact |
 | 2 | Citations | every file cited is archived; every archived file is cited; nothing else is in `sources/` | exact |
 | 3 | Upstream pins | each file from `dati-di-lugano` names the commit of its URL | exact |
-| 4 | Sums | lines → groups → functions, centres → divisions → departments, functions = departments, functions → yearly totals, percentages recomputed | CHF 100–10,000 depending on the level (rounding of CHF million values) |
-| 5 | Budget against actual | actual − budget = printed difference, 18 rows | CHF 10,000 |
+| 4 | Sums | lines → groups → functions, centres → divisions → departments (actual and budget), functions = departments (actual; the budget differs by the Council's CHF 100,000 change, allocated by department only), functions → yearly totals, percentages recomputed | CHF 0.05 (found: CHF 0.01); yearly totals printed in other documents CHF 2 (found: CHF 1.42) |
+| 5 | Budget against actual | actual − budget = printed difference, 18 rows | CHF 0.05 (found: 0) |
 | 6 | Ranks and medians | every rank and median recomputed from the 106 values; Lugano's value equals the figure | exact (median 1e-6) |
 | 7 | Canton indicator rank | canton rank = 106 − page rank + 1 for net debt per resident | exact |
-| 8 | Printed on the page | every official figure whose source is one PDF page is printed on that page (in francs, thousands or millions); figures read across several pages or summed from a list are named in the output and covered by the build's own sums | as printed |
+| 8 | Printed on the page | every official figure read from a PDF is printed on its cited page, within its cited pages, or anywhere in the document when the locator names no page (in francs, thousands or millions); a total the document does not print (planned asset sales, 306.1 mio) must equal the sum of a series of the record, each part printed on a cited page | as printed |
 | 9 | Names | every Italian name has an English name, and none is unused | exact |
 | 10 | Hygiene | no keys, tokens, personal paths or private addresses in the repository | — |
 | 11 | Rebuild | `build`, `staff` and `site` run again from the archived sources give byte-identical files | exact |
 | 12 | Docs | `SOURCES.md` and `FIGURES.md` are what `npm run docs` generates | exact |
-| 13 | Lines on the page | each of the 72 lines' budget (pp. 221–223 of the 2025 budget message) and actual (pp. 238–239 of the 2025 accounts message) is the number printed on the row with its code, in the COSTI column; a line without cost has that column empty | CHF 0.50 |
+| 13 | The table on the page | each of the 72 lines, 43 groups and 10 functions, and the City's total, in the 2025 budget (pp. 221–223) and the 2025 accounts (pp. 238–239): the number in the COSTI column of the row with its code; a row without cost has that column empty. With check 4, the lines are tied to the City's own printed totals | CHF 0.006 (to the centime) |
+| 14 | Departments on the page | each cost centre and division with a table of its own: row 3 (spending) of its table in the 2025 accounts, read through the row's printed arithmetic; each department and division: its row in the department's overview table, by the columns' headings | CHF 0.006; the row's arithmetic CHF 0.015 and 0.01 percentage points |
+| 15 | Second reader | checks 8 and 13 again with pypdf; for the table, the costs found by each row's arithmetic only | as checks 8 and 13 |
+
+Check 14 reports what it finds in the source as printed: in centre 4101 (Servizi generali, division 41 Polizia) the two printed
+differences do not recompute from the printed amounts (both are CHF 16.97 off, as if the actual were CHF 4'948'323.76
+rather than the CHF 4'948'306.79 printed); the page uses the printed actual. In six new centres without a 2024 column
+(1213, 1214, 1230, 1231, 1232, 1401) a row's arithmetic alone allows two readings; check 14 accepts either, and check 4
+decides: the centres' budgets must add up to their division's budget, which check 14 reads from the printed overview.
+
+**Would the checks fail?** `npm run verify:selftest`, also run by GitHub Actions, plants 17 known errors one at a time
+and requires the expected checks to fail: a line's budget off by CHF 1,000; a line's actual read from the revenue
+column; two lines' actuals swapped within a function (check 4's sums still pass; checks 13 and 15 fail); a cost
+centre off by CHF 10; a department's budget off by CHF 1,000; a new centre's budget read the other way its row allows
+(check 14 passes; check 4 fails); a figure off by one unit, on its page and across its pages (675 road accidents read as
+676); a part of a printed list misread with its total; a rank off by one; a printed difference, the canton's rank, an
+English name, a source's fingerprint and an upstream commit changed; a stray file in `sources/`; an API key in a file. The repository's files are restored after each case.
+
+Checks 15 and the self-test need Python 3 with pypdf, pinned by hash in
+[`requirements-verify.txt`](requirements-verify.txt).
 
 The result of the last run is in [`CHANGELOG.md`](CHANGELOG.md).
 

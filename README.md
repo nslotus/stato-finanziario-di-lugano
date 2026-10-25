@@ -30,8 +30,10 @@ shared from a phone opens the same line on a computer. On a computer the same vi
 4. **Checks stop the build** when parts do not add up to printed totals, when two sources disagree, or when a document
    does not say what is expected ([`METHOD.md`](METHOD.md#6-checks)).
 5. **Anyone can rerun everything**, offline and without any key: `npm run verify` rebuilds all the data from the archived
-   documents, confirms the files are byte-identical, recomputes every sum and rank, and confirms that each figure read from
-   a single PDF page is printed there. GitHub Actions runs it on every change.
+   documents, confirms the files are byte-identical, recomputes every sum and rank, and compares every figure, every line
+   of the 2025 table and every department and cost centre with its printed page, reading the PDFs a second time with an
+   independent reader. `npm run verify:selftest` plants known errors and confirms the checks catch them. GitHub Actions
+   runs both on every change.
 
 ## Repository
 
@@ -50,8 +52,10 @@ shared from a phone opens the same line on a computer. On a computer the same vi
 
 ```
 npm ci                 # install the locked dependencies (Node.js 25.9.0, see .nvmrc; CI uses the same)
+python -m pip install --require-hashes --only-binary=:all: -r requirements-verify.txt   # pypdf, for check 15
 npm run verify         # every check, including a full rebuild from the archived sources
 npm run verify:quick   # every check except the rebuild
+npm run verify:selftest  # plants known errors and requires the checks to catch them
 npm run all            # rebuild: build → staff → site → docs
 npm run serve          # view the page at http://127.0.0.1:8080/
 ```

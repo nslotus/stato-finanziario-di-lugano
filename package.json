@@ -18,6 +18,7 @@
     "all": "npm run build && npm run staff && npm run site && npm run docs",
     "verify": "tsx src/verify.ts",
     "verify:quick": "tsx src/verify.ts --quick",
+    "verify:selftest": "tsx src/selftest.ts",
     "typecheck": "tsc --noEmit",
     "serve": "node scripts/serve.js"
   },

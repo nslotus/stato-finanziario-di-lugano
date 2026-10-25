@@ -1,37 +1,48 @@
 // npm run verify — checks this repository end to end, offline and without any key. It exits with 1 if any check fails.
 //
 //   1. sources      every archived file matches the size and SHA-256 recorded in sources/MANIFEST.json
-//   2. citations    every file a figure cites is in the manifest, and every archived file is cited
+//   2. citations    every file a figure cites is in the manifest, every archived file is cited, nothing else in sources/
 //   3. upstream     files pinned from dati-di-lugano name the same commit as their URL
 //   4. sums         recomputed independently of the build code: lines → groups → functions → total, centres →
 //                   divisions → departments → total, functions → yearly totals, gaps and percentages
 //   5. budget       in the budget-against-actual table, actual − budget = the printed difference
 //   6. ranks        every rank and median among Ticino's municipalities, recomputed from the 106 values
 //   7. canton rank  the canton's indicator rank and the page's rank describe the same position
-//   8. printed      figures read from a PDF page: the value is printed on the page the source cites
+//   8. printed      official figures read from a PDF: printed on the cited page(s), or the sum of printed parts
 //   9. names        every Italian line, group and department name has an English name, and none is unused
 //  10. hygiene      no keys, tokens, personal paths or addresses in the files of the repository
 //  11. rebuild      npm run build and npm run site, run again, give byte-identical files   (skipped with --quick)
 //  12. docs         SOURCES.md and FIGURES.md are what npm run docs generates                (skipped with --quick)
+//  13. table        every line, group and function, and the total, on its row of the 2025 budget and accounts tables
+//  14. departments  every department, division and cost centre in the 2025 accounts, through the printed arithmetic
+//  15. second reader checks 8 and 13 again with pypdf, a separate PDF reader, finding columns by arithmetic alone
+// npm run verify:selftest plants known errors and requires the right checks to fail (src/selftest.ts).
 
 import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import { readPdf } from "./adapters/pdf";
+import { departments, figuresPrinted, functionalTable, pdfjs, pypdf } from "./pages";
 import { loadSite } from "./sitedata";
 
 const quick = process.argv.includes("--quick");
+// --only=4,13 runs only those checks (used by npm run verify:selftest); the others are listed as skipped
+const only = new Set((process.argv.find((a) => a.startsWith("--only="))?.slice(7).split(",") ?? []).map(Number));
 const results: { n: number; name: string; ok: boolean; detail: string }[] = [];
 let n = 0;
 async function check(name: string, fn: () => string | Promise<string>) {
   n++;
+  if (only.size && !only.has(n)) { results.push({ n, name, ok: true, detail: "skipped (--only)" }); return; }
   try { results.push({ n, name, ok: true, detail: await fn() }); }
   catch (e: any) { results.push({ n, name, ok: false, detail: e.message }); }
 }
 const fail = (msg: string): never => { throw new Error(msg); };
 const sha = (file: string) => createHash("sha256").update(readFileSync(file)).digest("hex");
 const close = (a: number, b: number, tol: number) => Math.abs(a - b) <= tol;
+// Tolerances, in CHF million. Amounts are printed to the centime, so sums of printed amounts agree to a few centimes;
+// set just above what rounding allows (the largest difference actually found is given for each).
+const CENTIMES = 0.05e-6;   // CHF 0.05: sums of lines, groups, centres, divisions; the budget table (found: CHF 0.01)
+const YEARLY = 2e-6;        // CHF 2: yearly totals printed in other documents (found: CHF 1.42, the 2024 accounts)
 
 const manifest: any[] = JSON.parse(readFileSync("sources/MANIFEST.json", "utf8"));
 const site = loadSite();                                 // both data files, joined (src/sitedata.ts)
@@ -94,30 +105,36 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
     let k = 0;
     for (const f of D.fns) {
       const mine = D.lines.filter((l: any) => l.code[0] === f.code);
-      for (const col of ["p25", "c25"]) { const s = mine.reduce((t: number, l: any) => t + l[col], 0); if (!close(s, f[col], 0.001)) fail(`function ${f.code}: lines ${col} add up to ${s}, not ${f[col]}`); k++; }
+      for (const col of ["p25", "c25"]) { const s = mine.reduce((t: number, l: any) => t + l[col], 0); if (!close(s, f[col], CENTIMES)) fail(`function ${f.code}: lines ${col} add up to ${s}, not ${f[col]}`); k++; }
       if (f.p25 && !close(((f.c25 - f.p25) / f.p25) * 100, f.pct, 1e-9)) fail(`function ${f.code}: percentage does not recompute`);
     }
     for (const g of D.groups) {
       const kids = D.lines.filter((l: any) => l.code.length === 3 && l.code.startsWith(g.code));
       if (!kids.length) continue;
-      for (const col of ["p25", "c25"]) { const s = kids.reduce((t: number, l: any) => t + l[col], 0); if (!close(s, g[col], 0.001)) fail(`group ${g.code}: lines ${col} add up to ${s}, not ${g[col]}`); k++; }
+      for (const col of ["p25", "c25"]) { const s = kids.reduce((t: number, l: any) => t + l[col], 0); if (!close(s, g[col], CENTIMES)) fail(`group ${g.code}: lines ${col} add up to ${s}, not ${g[col]}`); k++; }
     }
     const fnTotal = D.fns.reduce((t: number, f: any) => t + f.c25, 0);
     const orgTotal = D.org.lines.reduce((t: number, l: any) => t + l.c25, 0);
-    if (!close(fnTotal, orgTotal, 0.0001)) fail(`functions add up to ${fnTotal}, departments to ${orgTotal}`); k++;
+    if (!close(fnTotal, orgTotal, CENTIMES)) fail(`functions add up to ${fnTotal}, departments to ${orgTotal}`); k++;
     for (const sl of D.org.slices) {
       const mine = D.org.lines.filter((l: any) => l.code.startsWith(sl.code));
       const s = mine.reduce((t: number, l: any) => t + l.c25, 0);
-      if (!close(s, sl.c25, 0.0001)) fail(`department ${sl.code}: centres add up to ${s}, not ${sl.c25}`); k++;
+      if (!close(s, sl.c25, CENTIMES)) fail(`department ${sl.code}: centres add up to ${s}, not ${sl.c25}`); k++;
     }
     for (const g of D.org.groups) {
       const kids = D.org.lines.filter((l: any) => l.code.startsWith(g.code));
-      if (kids.length && !close(kids.reduce((t: number, l: any) => t + l.c25, 0), g.c25, 0.0001)) fail(`division ${g.code}: centres do not add up`); k++;
+      if (kids.length && !close(kids.reduce((t: number, l: any) => t + l.c25, 0), g.c25, CENTIMES)) fail(`division ${g.code}: centres do not add up`); k++;
+    }
+    // the budget side too (not functions = departments: the Council's CHF 100,000 change is allocated only by department)
+    for (const u of [...D.org.slices, ...D.org.groups]) {
+      const kids = D.org.lines.filter((l: any) => l.code.startsWith(u.code));
+      const s = kids.reduce((t: number, l: any) => t + l.p25, 0);
+      if (kids.length && !close(s, u.p25, CENTIMES)) fail(`${u.code}: centres' budgets add up to ${s}, not ${u.p25}`); k++;
     }
     const totals = Object.fromEntries(X.totals.series.flatMap((s: any) => s.data.map((d: any) => [d.key, d.value])));
     for (const [key, col] of [["a2023", "c23"], ["a2024", "c24"], ["a2025", "c25"], ["b2027", "p27"]]) {
       const s = D.fns.reduce((t: number, f: any) => t + f.trend[col], 0);
-      if (!close(s, totals[key], 0.01)) fail(`functions ${col} add up to ${s}, the yearly total says ${totals[key]}`); k++;
+      if (!close(s, totals[key], YEARLY)) fail(`functions ${col} add up to ${s}, the yearly total says ${totals[key]}`); k++;
     }
     return `${k} sums`;
   });
@@ -127,7 +144,7 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
     let k = 0;
     for (const r of tb.rows) for (const y of tb.years) {
       const c = r.cells[y]; if (!c || c.budget == null || c.actual == null || c.diff == null) continue;
-      if (!close(c.actual - c.budget, c.diff, 0.01)) fail(`${r.label.it} ${y}: ${c.actual} − ${c.budget} ≠ ${c.diff}`); k++;
+      if (!close(c.actual - c.budget, c.diff, CENTIMES)) fail(`${r.label.it} ${y}: ${c.actual} − ${c.budget} ≠ ${c.diff}`); k++;
     }
     return `${k} rows`;
   });
@@ -159,45 +176,13 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
   });
 
   await check("values read from PDF pages are printed on the cited page", async () => {
-    // a value in CHF million may be printed in francs or in thousands; every printing within its own rounding counts
-    const forms = (v0: number, unit: string) => {
-      const out = new Set<string>();
-      const scales = /^mio CHF/.test(unit) ? [1, 1e3, 1e6] : [1];
-      for (const sc of scales) for (const d of [0, 1, 2]) {
-        const v = v0 * sc;
-        if (Math.abs(v * 10 ** d - Math.round(v * 10 ** d)) > 1e-6 * sc) continue;
-        const fixed = Math.abs(v).toFixed(d);
-        const [i, f] = fixed.split(".");
-        for (const sep of ["'", "’", ".", " ", ""]) {
-          const g = i.replace(/\B(?=(\d{3})+(?!\d))/g, sep);
-          out.add(f ? `${g}.${f}` : g); if (f) out.add(`${g},${f}`);
-        }
-      }
-      return [...out].filter((x) => x.replace(/\D/g, "").length >= 2);
-    };
-    let checked = 0, found = 0;
-    const missed: string[] = [], ranges: string[] = [];
-    for (const s of catalog.stars) {
-      // official figures read from a PDF: their first source is that PDF
-      const src = s.source[0];
-      if (s.kind !== "official" || !/\.pdf$/.test(src.file)) continue;
-      // "p. 38", "p.28", "PDF p. 64 (book p. 116)"; a range such as "p. 5–6" or "pp. 65–66" is a sum over several pages
-      // or a list, checked by the build against the document's own totals, and is counted here but not searched
-      const page = src.locator?.match(/^(?:PDF )?p\.\s?(\d+)(?![–-]\d)/)?.[1];
-      if (!page) { ranges.push(s.id); continue; }
-      checked++;
-      const { pages, items } = await readPdf(src.file.replace(/^sources\//, ""), [+page]);
-      const text = (pages[+page - 1] ?? "").replace(/\s+/g, " ");
-      // chart labels are sometimes laid out with spaces inside the number ("1' 7 74"): also compare each text piece of
-      // the page with its spaces removed
-      const pieces = new Set((items[+page - 1] ?? []).map((i) => i.s.replace(/\s/g, "")));
-      const printed = forms(s.value, s.unit).some((x) => text.includes(x) || pieces.has(x));
-      if (printed) found++; else missed.push(`${s.id} (${s.value} ${s.unit}, ${src.file} p. ${page})`);
-    }
-    if (missed.length) fail(`${found} of ${checked} found; not printed as such: ${missed.join("; ")}`);
-    return `${found} of ${checked} single-page figures; ${ranges.length} more read across pages or lists (${ranges.join(", ")})`;
+    // every official figure whose source is a PDF: printed on its cited page or pages (the whole document when the
+    // locator gives none), in its unit, in thousands or in francs; a total the document does not print (a sum over a
+    // list) must equal the sum of one of its series, each part printed on a cited page
+    const r = await figuresPrinted(pdfjs, catalog.stars);
+    if (r.missed.length) fail(`not printed as such: ${r.missed.join("; ")}`);
+    return `${r.one + r.range + r.sum} figures: ${r.one} on their page, ${r.range} within their cited pages or document, ${r.sum} as the sum of its printed parts`;
   });
-
   await check("every name has an English name, none unused", () => {
     const need = new Set<string>([...D.lines.map((l: any) => l.label), ...D.groups.map((g: any) => g.label), ...D.org.groups.map((g: any) => g.label), ...D.org.lines.map((l: any) => l.label), ...D.org.slices.map((s: any) => s.name.it)]);
     const missing = [...need].filter((k) => !EN[k]), unused = Object.keys(EN).filter((k) => !need.has(k));
@@ -243,38 +228,37 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
     });
   }
 
-  await check("every line's budget and actual are printed on its row of the cited page", async () => {
-    // The 72 lines of the page against the City's tables "ripartizione funzionale a 3 cifre": on the cited page, the row
-    // that starts with the line's code must show the line's value in the COSTI column (francs, two decimals). A line
-    // with no cost must have that column empty. The column is found from its heading, so a value read from RICAVI or
-    // SALDO, or from the wrong row, fails.
-    const docs = [
-      { file: "city-preventivo-2025-messaggio.pdf", key: "p25", page: "pagesP", what: "budget" },
-      { file: "city-consuntivo-2025-messaggio.pdf", key: "c25", page: "pagesC", what: "actual" },
-    ];
-    const francs = (parts: string[]) => { const t = parts.join("").replace(/[\s'’]/g, ""); return /^-?\d+(\.\d+)?$/.test(t) ? Number(t) : NaN; };
-    const bad: string[] = [], pages = { p25: new Set<number>(), c25: new Set<number>() };
-    let k = 0;
-    for (const l of D.lines) {
-      for (const d of docs) {
-        const page = l[d.page];
-        if (!page) { bad.push(`${l.code}: no ${d.what} page`); continue; }
-        const items = (await readPdf(d.file, [page])).items[page - 1] ?? [];
-        const head = (s: string) => items.find((i) => i.s === s) ?? fail(`${d.file} p. ${page}: no ${s} heading`);
-        const costs = head("COSTI"), revenue = head("RICAVI"), edge = (costs.x + revenue.x) / 2;
-        const rows = items.filter((i) => (i.s === l.code || i.s.startsWith(`${l.code} `)) && i.x < costs.x / 2);   // the code column, not a piece of a number
-        if (rows.length !== 1) { bad.push(`${l.code}: ${rows.length} rows on ${d.file} p. ${page}`); continue; }
-        const cells = items.filter((i) => Math.abs(i.y - rows[0].y) < 2.5 && i.x > rows[0].x && i.x >= costs.x - 30 && i.x < edge).sort((a, b) => a.x - b.x);
-        const printed = cells.length ? francs(cells.map((i) => i.s)) : 0;
-        if (!close(printed, l[d.key] * 1e6, 0.5)) bad.push(`${l.code} ${d.what}: ${l[d.key]} mio, printed ${cells.map((i) => i.s).join(" ") || "nothing"} on ${d.file} p. ${page}`);
-        else { k++; pages[d.key as "p25" | "c25"].add(page); }
-      }
-    }
-    if (bad.length) fail(bad.join("; "));
-    const span = (s: Set<number>) => { const v = [...s].sort((a, b) => a - b); return v.length > 1 ? `${v[0]}–${v[v.length - 1]}` : `${v[0]}`; };
-    return `${D.lines.length} lines, ${k} values: budget pp. ${span(pages.p25)}, actual pp. ${span(pages.c25)}, COSTI column`;
+  await check("every line, group and function is printed on its row of the cited page", async () => {
+    // the 72 lines, 43 groups, 10 functions and the City's total, in the 2025 budget and in the 2025 accounts: the
+    // value in the COSTI column, found by the row's code and the column's heading; a row printed twice must read the same.
+    // Lines are checked against their printed values and, through check 4's sums, against the City's printed totals.
+    const r = await functionalTable(pdfjs, D, true);
+    if (r.bad.length) fail(r.bad.join("; "));
+    return `${r.k} values (${r.k / 2} rows × budget and actual): ${r.detail}, COSTI column`;
   });
 
+  await check("every department, division and cost centre is printed in the 2025 accounts", async () => {
+    // each centre's (or division's) own table, row 3 SPESE, read through the City's arithmetic on that row
+    // (difference = actual − budget, and against 2024); departments and divisions from each department's overview table,
+    // by the columns' headings
+    const r = await departments(D);
+    if (r.bad.length) fail(r.bad.join("; "));
+    const notes = [
+      r.notes.length ? `as printed: ${r.notes.join("; ")}` : "",
+      r.twoReadings.length ? `${r.twoReadings.length} rows read two ways by their arithmetic alone (${r.twoReadings.join(", ")}): their divisions' printed budgets decide, through check 4` : "",
+      r.derived.length ? `${r.derived.length} derived, not printed (${r.derived.join(", ")}: the rest of a division, check 4)` : "",
+    ].filter(Boolean);
+    return `${r.units} departments, divisions and centres (${r.nTables} from their own tables, ${r.nOverview} from the overview tables; divisions with both, in both)${notes.length ? `; ${notes.join("; ")}` : ""}`;
+  });
+
+  await check("a second, independent PDF reader (pypdf) finds the same values", async () => {
+    // checks 8 and 13 again with pypdf (src/pdftext.py) instead of pdf.js, and for the table without any column
+    // positions: the COSTI value of each row is the one its own arithmetic (costs − revenue = −balance) allows
+    const f = await figuresPrinted(pypdf, catalog.stars), t = await functionalTable(pypdf, D, false);
+    const bad = [...f.missed.map((x) => `figure ${x}`), ...t.bad];
+    if (bad.length) fail(bad.join("; "));
+    return `${f.one + f.range + f.sum} figures and ${t.k} table values, as with pdf.js`;
+  });
   const w = Math.max(...results.map((r) => r.name.length));
   for (const r of results) console.log(`${r.ok ? "PASS" : "FAIL"}  ${String(r.n).padStart(2)}  ${r.name.padEnd(w)}  ${r.detail}`);
   const failed = results.filter((r) => !r.ok).length;

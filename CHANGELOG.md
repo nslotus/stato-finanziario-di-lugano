@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+- Stronger checks, closing the gaps a review would find:
+  - Check 8 now covers all 25 figures read from PDFs: those read across pages or from a whole document are searched
+    there, and the planned asset sales (306.1 mio, not printed as one number) must equal the sum of their printed parts.
+  - Check 13 now covers the 43 groups, 10 functions and the City's total as well as the 72 lines, so the lines are tied
+    to the City's own printed totals (252 values).
+  - Check 8 matches whole numbers only ("675" no longer matches inside "1'675"), and reads thousands written with a
+    comma: the Plan B figure (CHF 5,000,000, an English document) had passed only by matching "5,00" inside it.
+  - Check 4 also sums the department side's budgets (centres → divisions → departments).
+  - New check 14: all 111 departments, divisions and cost centres of the 2025 accounts against their printed tables,
+    through the arithmetic printed on each row. It reports one inconsistency in the source (centre 4101's printed
+    differences); six rows that the arithmetic alone reads two ways are decided by check 4's budget sums.
+  - New check 15: checks 8 and 13 again with pypdf, a second PDF reader that shares no code with pdf.js, finding the
+    costs column by each row's arithmetic only. pypdf is pinned by hash in `requirements-verify.txt`.
+  - Tolerances tightened to what rounding allows: sums CHF 0.05 (were CHF 100–10,000), printed values to the centime.
+  - New `npm run verify:selftest`: 17 planted errors, each caught by the expected checks; GitHub Actions runs it.
 - Lighter first load: the page's data is split in two. `data/data.js` (37 KB compressed, was 294 KB) holds every number
   the tiles, lists, sky and table are drawn from; `data/data-more.js` holds what only a card or the overview shows and is
   read right after the first screen. Opening a card before it has arrived waits for it; if it cannot be read, the page
@@ -57,20 +72,22 @@ First public version.
 - 74 archived source documents with SHA-256 fingerprints; `npm run verify` with 12 checks, run by GitHub Actions.
 - Italian and English.
 
-Last `npm run verify`, 23 October 2026, all 13 checks passed:
+Last `npm run verify`, 25 October 2026, all 15 checks passed:
 
 ```
-PASS   1  sources match their fingerprints                                         74 files, 134.0 MB, all match, names exact
-PASS   2  every cited file is archived, every archived file is cited               74 files cited 1071 times
-PASS   3  files pinned from dati-di-lugano name the commit of their URL            7 files, 6 commits of github.com/nslotus/dati-di-lugano
-PASS   4  sums add up (recomputed here, not by the build)                          147 sums
-PASS   5  budget against actual: actual − budget = printed difference              18 rows
-PASS   6  ranks and medians among Ticino's municipalities                          29 figures, each against 106 municipalities
-PASS   7  canton indicator rank = 106 − page rank + 1 (net debt per resident)      canton 96/106 (1 = lowest debt), page 11th highest
-PASS   8  values read from PDF pages are printed on the cited page                 20 of 20 single-page figures; 5 more read across pages or lists (sicurezza.incidenti, finanze.pg-cantone, finanze.ifd-quota, finanze.piano-rivalorizzazioni, finanze.piano-misure)
-PASS   9  every name has an English name, none unused                              189 names
-PASS  10  no keys, tokens, personal paths or addresses                             77 files scanned
-PASS  11  rebuild is byte-identical                                                6 files rebuilt from the archived sources, identical
-PASS  12  generated docs are current                                               SOURCES.md, FIGURES.md
-PASS  13  every line's budget and actual are printed on its row of the cited page  72 lines, 144 values: budget pp. 221–223, actual pp. 238–239, COSTI column
+PASS   1  sources match their fingerprints                                            74 files, 134.0 MB, all match, names exact
+PASS   2  every cited file is archived, every archived file is cited                  74 files cited 1071 times
+PASS   3  files pinned from dati-di-lugano name the commit of their URL               7 files, 6 commits of github.com/nslotus/dati-di-lugano
+PASS   4  sums add up (recomputed here, not by the build)                             183 sums
+PASS   5  budget against actual: actual − budget = printed difference                 18 rows
+PASS   6  ranks and medians among Ticino's municipalities                             29 figures, each against 106 municipalities
+PASS   7  canton indicator rank = 106 − page rank + 1 (net debt per resident)         canton 96/106 (1 = lowest debt), page 11th highest
+PASS   8  values read from PDF pages are printed on the cited page                    25 figures: 20 on their page, 4 within their cited pages or document, 1 as the sum of its printed parts
+PASS   9  every name has an English name, none unused                                 189 names
+PASS  10  no keys, tokens, personal paths or addresses                                82 files scanned
+PASS  11  rebuild is byte-identical                                                   7 files rebuilt from the archived sources, identical
+PASS  12  generated docs are current                                                  SOURCES.md, FIGURES.md
+PASS  13  every line, group and function is printed on its row of the cited page      252 values (126 rows × budget and actual): budget pp. 221–223, actual pp. 238–239, COSTI column
+PASS  14  every department, division and cost centre is printed in the 2025 accounts  111 departments, divisions and centres (83 from their own tables, 37 from the overview tables; divisions with both, in both); as printed: 4101: printed differences 74903.76 and 46779.89 do not recompute from 4948306.79 − 4873420 and 4948306.79 − 4901543.87; 6 rows read two ways by their arithmetic alone (1213, 1214, 1230, 1231, 1232, 1401): their divisions' printed budgets decide, through check 4; 1 derived, not printed (40··: the rest of a division, check 4)
+PASS  15  a second, independent PDF reader (pypdf) finds the same values              25 figures and 252 table values, as with pdf.js
 ```

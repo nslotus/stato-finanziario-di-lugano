@@ -1,0 +1,5 @@
+# Used only by npm run verify, check 15: pypdf, a second PDF reader independent of the pdf.js the build uses.
+# Pinned by version and hash (pypdf has no dependencies; BSD-3-Clause licence):
+#   python -m pip install --require-hashes --only-binary=:all: -r requirements-verify.txt
+pypdf==6.15.0 \
+    --hash=sha256:14e001d6504822cb1ca9c7ed9a69bccb320f59b320730f55af804361abe4d5ee
