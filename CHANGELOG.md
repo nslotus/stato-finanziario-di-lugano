@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- From volunteer checkers:
+  - The source notes (sheet, row, column, page) were in English on the Italian page. They are now shown in Italian, from
+    `translations/sources-it.json` (266 notes, 72 publishers); check 9 requires one for every source the page shows.
+  - Net investment in the 2026 budget appeared as 262.4, 263.5 and 264. It is now 262.4 everywhere: the figure of the
+    financial plan and the 2027 budget message, the one the 2026 overall result agrees with (21.6 − 262.4 = −240.8). The
+    2026 press release's 263.5 is named in the overview's note; the chart shows one decimal so it no longer rounds to 264.
+    The build's check that self-financing − investment = overall result is tightened from 1.2 to 0.06 million.
 - Stronger checks, closing the gaps a review would find:
   - Check 8 now covers all 25 figures read from PDFs: those read across pages or from a whole document are searched
     there, and the planned asset sales (306.1 mio, not printed as one number) must equal the sum of their printed parts.
@@ -16,7 +23,7 @@
   - New check 15: checks 8 and 13 again with pypdf, a second PDF reader that shares no code with pdf.js, finding the
     costs column by each row's arithmetic only. pypdf is pinned by hash in `requirements-verify.txt`.
   - Tolerances tightened to what rounding allows: sums CHF 0.05 (were CHF 100–10,000), printed values to the centime.
-  - New `npm run verify:selftest`: 17 planted errors, each caught by the expected checks; GitHub Actions runs it.
+  - New `npm run verify:selftest`: 18 planted errors, each caught by the expected checks; GitHub Actions runs it.
 - Lighter first load: the page's data is split in two. `data/data.js` (37 KB compressed, was 294 KB) holds every number
   the tiles, lists, sky and table are drawn from; `data/data-more.js` holds what only a card or the overview shows and is
   read right after the first screen. Opening a card before it has arrived waits for it; if it cannot be read, the page
@@ -72,19 +79,19 @@ First public version.
 - 74 archived source documents with SHA-256 fingerprints; `npm run verify` with 12 checks, run by GitHub Actions.
 - Italian and English.
 
-Last `npm run verify`, 25 October 2026, all 15 checks passed:
+Last `npm run verify`, 26 October 2026, all 15 checks passed:
 
 ```
 PASS   1  sources match their fingerprints                                            74 files, 134.0 MB, all match, names exact
-PASS   2  every cited file is archived, every archived file is cited                  74 files cited 1071 times
+PASS   2  every cited file is archived, every archived file is cited                  74 files cited 1072 times
 PASS   3  files pinned from dati-di-lugano name the commit of their URL               7 files, 6 commits of github.com/nslotus/dati-di-lugano
 PASS   4  sums add up (recomputed here, not by the build)                             183 sums
 PASS   5  budget against actual: actual − budget = printed difference                 18 rows
 PASS   6  ranks and medians among Ticino's municipalities                             29 figures, each against 106 municipalities
 PASS   7  canton indicator rank = 106 − page rank + 1 (net debt per resident)         canton 96/106 (1 = lowest debt), page 11th highest
 PASS   8  values read from PDF pages are printed on the cited page                    25 figures: 20 on their page, 4 within their cited pages or document, 1 as the sum of its printed parts
-PASS   9  every name has an English name, none unused                                 189 names
-PASS  10  no keys, tokens, personal paths or addresses                                82 files scanned
+PASS   9  every name has an English name, every source an Italian one, none unused    189 names in English; 266 source locators and 72 publishers in Italian
+PASS  10  no keys, tokens, personal paths or addresses                                83 files scanned
 PASS  11  rebuild is byte-identical                                                   7 files rebuilt from the archived sources, identical
 PASS  12  generated docs are current                                                  SOURCES.md, FIGURES.md
 PASS  13  every line, group and function is printed on its row of the cited page      252 values (126 rows × budget and actual): budget pp. 221–223, actual pp. 238–239, COSTI column

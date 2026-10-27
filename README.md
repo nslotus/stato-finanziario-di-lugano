@@ -43,7 +43,7 @@ shared from a phone opens the same line on a computer. On a computer the same vi
 | [`sources/`](sources/) | The archived documents and [`MANIFEST.json`](sources/MANIFEST.json) |
 | [`src/`](src/) | The readers (`adapters/`), one module per sector, the builders (`build.ts`, `personale.ts`, `site.ts`, `docs.ts`) and `verify.ts` |
 | [`catalog/`](catalog/) | The figures read from the sources: the machine-readable data of this project |
-| [`translations/`](translations/) | English names of the accounts' lines and departments (unofficial) |
+| [`translations/`](translations/) | English names of the accounts' lines and departments, and the Italian version of each source note (both unofficial) |
 | [`method/`](method/) | The source map of each sector: what was looked for, found, read and rejected |
 | [`METHOD.md`](METHOD.md) | How numbers are read, defined, calculated and checked |
 | [`PROVENANCE.md`](PROVENANCE.md) | Where the code and data come from, and what changed |

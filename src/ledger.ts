@@ -159,7 +159,11 @@ export async function ledger(register: Municipality[], population: Map<number, n
   const inv = (k: "consuntivo" | "preventivo", y: number) => k === "consuntivo"
     ? { net: city(k, y, "onereNettoInvestimenti").value, self: city(k, y, "autofinanziamento").value }
     : { net: city(k, y, "investimentiNetti").value, self: city(k, y, "autofinanziamento").value };
-  const i24 = inv("consuntivo", 2024), i25 = inv("consuntivo", 2025), i26 = inv("preventivo", 2026), i27 = inv("preventivo", 2027);
+  const i24 = inv("consuntivo", 2024), i25 = inv("consuntivo", 2025), i27 = inv("preventivo", 2027);
+  // 2026: the 2027 message's restated figures (262.4), which the financial plan (262'398'000) and the 2026 overall result
+  // (21.6 − 262.4 = −240.8) agree with; the 2026 release's 263.5 does not, and is given in the note
+  const rel26 = inv("preventivo", 2026), i26 = { net: p27.inv2026.net, self: p27.inv2026.self };
+  if (Math.abs(rel26.self - i26.self) > 0.05) fail(`ledger: 2026 self-financing, release ${rel26.self} vs 2027 message ${i26.self}`);
   const pct = (a: number, b: number) => Math.round((a / b) * 100);
 
   const snap = (l: string) => debt.snapshots.find((s: any) => s.label === l);
@@ -255,7 +259,7 @@ export async function ledger(register: Municipality[], population: Map<number, n
     { id: "investire", n: 4, title: { it: "Investimenti e autofinanziamento", en: "Investment and self-financing" }, stars: ["bilancio.spesa", "finanze.debito-lordo"],
       lede: { it: `L'autofinanziamento ha coperto ${ilPct(pct(i24.self, i24.net))} degli investimenti netti nel 2024 e ${ilPct(pct(i25.self, i25.net))} nel 2025. Nel preventivo 2026, con l'acquisto di Arena Sportiva e Palazzetto dello Sport, scende ${alPct(pct(i26.self, i26.net))}; nel preventivo 2027 risale ${alPct(pct(i27.self, i27.net))}, su ${n(i27.net)} milioni di investimenti netti. Nel 2025 gli investimenti netti sono stati ${n(Math.abs(bva(2025, "onereNettoInvestimenti").diff))} milioni ${bva(2025, "onereNettoInvestimenti").diff < 0 ? "sotto" : "sopra"} il preventivo.`,
         en: `Self-financing covered ${pct(i24.self, i24.net)}% of net investment in 2024 and ${pct(i25.self, i25.net)}% in 2025. In the 2026 budget, which includes buying the Arena Sportiva and the Palazzetto dello Sport, it falls to ${pct(i26.self, i26.net)}%; in the 2027 budget it rises to ${pct(i27.self, i27.net)}%, on CHF ${n(i27.net)} million of net investment. In 2025 net investment was CHF ${n(Math.abs(bva(2025, "onereNettoInvestimenti").diff))} million ${bva(2025, "onereNettoInvestimenti").diff < 0 ? "below" : "above"} budget.` },
-      chart: { type: "columns", unit: "mio CHF", series: [
+      chart: { type: "columns", unit: "mio CHF", digits: 1, series: [
         { label: { it: "Investimenti netti", en: "Net investment" }, data: [
           { key: "n24", label: { it: "2024", en: "2024" }, value: i24.net, status: "actual" }, { key: "n25", label: { it: "2025", en: "2025" }, value: i25.net, status: "actual" },
           { key: "n26", label: { it: "2026 preventivo", en: "2026 budget" }, value: i26.net, status: "budget" },
@@ -264,10 +268,10 @@ export async function ledger(register: Municipality[], population: Map<number, n
           { key: "s24", label: { it: "2024", en: "2024" }, value: i24.self, status: "actual" }, { key: "s25", label: { it: "2025", en: "2025" }, value: i25.self, status: "actual" },
           { key: "s26", label: { it: "2026 preventivo", en: "2026 budget" }, value: i26.self, status: "budget" },
           { key: "s27", label: { it: "2027 preventivo", en: "2027 budget" }, value: i27.self, status: "budget" }] }] },
-      notes: [{ it: `Il messaggio sul preventivo 2027 riporta per il preventivo 2026 investimenti netti di 262.4 milioni; qui resta la cifra del comunicato 2026 (${n(i26.net)}).`,
-          en: `The 2027 budget message restates the 2026 budget's net investment as CHF 262.4 million; the figure from the 2026 release (${n(i26.net)}) is kept here.` }],
-      source: [cityPdfSrc("consuntivo", 2024), cityPdfSrc("consuntivo", 2025), cityPdfSrc("preventivo", 2026), cityPdfSrc("preventivo", 2027),
-        src(BUDGET27_MSG, "p. 14: 2026 budget restated, net investment CHF 262.4 mio")] },
+      notes: [{ it: `Per il preventivo 2026 gli investimenti netti sono ${n(i26.net)} milioni, come nel messaggio sul preventivo 2027 e nel piano finanziario; con l'autofinanziamento di ${n(i26.self)} milioni dà il risultato globale del preventivo 2026 (${n(i26.self)} − ${n(i26.net)} = −${n(i26.net - i26.self)}). Il comunicato sul preventivo 2026 indicava ${n(rel26.net)} milioni.`,
+          en: `For the 2026 budget, net investment is CHF ${n(i26.net)} million, as in the 2027 budget message and the financial plan; with CHF ${n(i26.self)} million of self-financing it gives the 2026 budget's overall result (${n(i26.self)} − ${n(i26.net)} = −${n(i26.net - i26.self)}). The 2026 budget release gave CHF ${n(rel26.net)} million.` }],
+      source: [cityPdfSrc("consuntivo", 2024), cityPdfSrc("consuntivo", 2025), src(BUDGET27_MSG, `p. ${p27.inv2026.page}: '${p27.inv2026.quote}'`), cityPdfSrc("preventivo", 2027),
+        cityPdfSrc("preventivo", 2026)] },
     { id: "debito", n: 5, title: { it: "Il debito", en: "Debt" }, stars: ["finanze.debito-lordo", "finanze.debito-pro-capite", "finanze.obbligazioni"],
       lede: { it: `Il debito finanziario lordo era di ${n(path[2].value)} milioni a fine marzo 2026. Il piano finanziario lo porta a un picco di ${n(peak.value)} milioni nel ${peak.date!.slice(0, 4)}, poi a ${n(last.value)} milioni nel ${last.date!.slice(0, 4)}.`,
         en: `Gross financial debt was CHF ${n(path[2].value)} million at the end of March 2026. The financial plan takes it to a peak of CHF ${n(peak.value)} million in ${peak.date!.slice(0, 4)}, then to CHF ${n(last.value)} million in ${last.date!.slice(0, 4)}.` },

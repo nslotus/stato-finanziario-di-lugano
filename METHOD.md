@@ -202,7 +202,7 @@ centres, and check 4's sums cover it.
 | 6 | Ranks and medians | every rank and median recomputed from the 106 values; Lugano's value equals the figure | exact (median 1e-6) |
 | 7 | Canton indicator rank | canton rank = 106 − page rank + 1 for net debt per resident | exact |
 | 8 | Printed on the page | every official figure read from a PDF is printed on its cited page, within its cited pages, or anywhere in the document when the locator names no page (in francs, thousands or millions); a total the document does not print (planned asset sales, 306.1 mio) must equal the sum of a series of the record, each part printed on a cited page | as printed |
-| 9 | Names | every Italian name has an English name, and none is unused | exact |
+| 9 | Names and sources | every Italian name has an English name; every source locator and publisher the page shows has an Italian version; none is unused | exact |
 | 10 | Hygiene | no keys, tokens, personal paths or private addresses in the repository | — |
 | 11 | Rebuild | `build`, `staff` and `site` run again from the archived sources give byte-identical files | exact |
 | 12 | Docs | `SOURCES.md` and `FIGURES.md` are what `npm run docs` generates | exact |
@@ -216,13 +216,13 @@ rather than the CHF 4'948'306.79 printed); the page uses the printed actual. In 
 (1213, 1214, 1230, 1231, 1232, 1401) a row's arithmetic alone allows two readings; check 14 accepts either, and check 4
 decides: the centres' budgets must add up to their division's budget, which check 14 reads from the printed overview.
 
-**Would the checks fail?** `npm run verify:selftest`, also run by GitHub Actions, plants 17 known errors one at a time
+**Would the checks fail?** `npm run verify:selftest`, also run by GitHub Actions, plants 18 known errors one at a time
 and requires the expected checks to fail: a line's budget off by CHF 1,000; a line's actual read from the revenue
 column; two lines' actuals swapped within a function (check 4's sums still pass; checks 13 and 15 fail); a cost
 centre off by CHF 10; a department's budget off by CHF 1,000; a new centre's budget read the other way its row allows
 (check 14 passes; check 4 fails); a figure off by one unit, on its page and across its pages (675 road accidents read as
 676); a part of a printed list misread with its total; a rank off by one; a printed difference, the canton's rank, an
-English name, a source's fingerprint and an upstream commit changed; a stray file in `sources/`; an API key in a file. The repository's files are restored after each case.
+English name or an Italian source note, a source's fingerprint and an upstream commit changed; a stray file in `sources/`; an API key in a file. The repository's files are restored after each case.
 
 Checks 15 and the self-test need Python 3 with pypdf, pinned by hash in
 [`requirements-verify.txt`](requirements-verify.txt).
@@ -237,6 +237,10 @@ The result of the last run is in [`CHANGELOG.md`](CHANGELOG.md).
 - **English names.** The accounts give the names of lines, groups and departments in Italian only. The English names in
   [`translations/labels-en.json`](translations/labels-en.json) were drafted with an AI assistant and are unofficial (see
   [`translations/README.md`](translations/README.md)). Italian remains the reference.
+- **Italian source notes.** Where each figure comes from (sheet, row, column, page) is recorded in English, the language of
+  this repository's documents. The Italian page shows those notes in Italian, from
+  [`translations/sources-it.json`](translations/sources-it.json), drafted with an AI assistant: the document's own words,
+  page numbers, codes and data field names are unchanged (every Italian note keeps the same numbers as its original).
 - **Code and texts.** The code and the explanatory texts were written with the help of an AI coding assistant. That is
   why no number is typed by hand: every number is read by code from an archived document, and the checks above, which
   anyone can run, are what the figures rest on.
@@ -252,6 +256,10 @@ The result of the last run is in [`CHANGELOG.md`](CHANGELOG.md).
 - Bond figures are the bonds' terms (ISIN, coupon, maturity, volume); no market prices are collected or shown.
 - Where two City documents round the same number differently, the figure uses the one it cites and the source map notes
   the difference (for example [`method/OUTLOOK-SOURCES.md`](method/OUTLOOK-SOURCES.md)).
+- Where two City documents give different figures for the same thing, the page uses the one the City's own arithmetic
+  supports and names the other. Net investment in the 2026 budget: the 2026 press release says CHF 263.5 million; the
+  financial plan (262'398'000) and the 2027 budget message (262.4) agree with each other and with the 2026 overall result
+  (self-financing 21.6 − 262.4 = −240.8). The page uses 262.4 everywhere and mentions the release's 263.5 in the overview.
 - The choices made while mapping each source (what was included, rejected and why) are recorded in the source maps in
   [`method/`](method/).
 

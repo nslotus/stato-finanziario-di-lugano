@@ -11,6 +11,7 @@ import { readFileSync } from "node:fs";
 const STAR_DETAIL = ["about", "method", "source", "detail", "context", "cmp"];
 
 type More = {
+  srcIt?: unknown;
   stars: Record<string, Record<string, unknown>>;
   fns: Record<string, Record<string, unknown>>;
   slices: Record<string, Record<string, unknown>>;
@@ -21,6 +22,7 @@ type More = {
 /** Moves the detail out of the page's data (which it changes) into a second object. */
 export function splitSite(site: any): More {
   const more: More = { stars: {}, fns: {}, slices: {}, orgGroups: {}, orgLines: {} };
+  if (site.X.srcIt) { more.srcIt = site.X.srcIt; delete site.X.srcIt; }   // Italian sources: shown only in cards
   const take = (o: any, keys: string[], empty: (k: string) => unknown) => {
     const out: Record<string, unknown> = {};
     for (const k of keys) if (k in o) { out[k] = o[k]; o[k] = empty(k); }
@@ -42,7 +44,8 @@ export function splitSite(site: any): More {
 /** Puts the second object back into the first. */
 export function joinSite(site: any, more: More) {
   for (const [id, v] of Object.entries(more.stars)) Object.assign(site.X.stars[id], v);
-  const by = (list: any[], v: More[keyof More]) => { for (const o of list) if (v[o.code]) Object.assign(o, v[o.code]); };
+  if (more.srcIt) site.X.srcIt = more.srcIt;
+  const by = (list: any[], v: Record<string, Record<string, unknown>>) => { for (const o of list) if (v[o.code]) Object.assign(o, v[o.code]); };
   by(site.D.fns, more.fns); by(site.D.org.slices, more.slices); by(site.D.org.groups, more.orgGroups); by(site.D.org.lines, more.orgLines);
   return site;
 }

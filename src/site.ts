@@ -319,7 +319,10 @@ const pct0 = (v: number) => Math.round(v * 100);
 const bondsM = (x: any) => x.publicBondsM + x.privatePlacementsM;
 const bonds = (x: any) => bondsM(x).toLocaleString("de-CH");
 for (const x of [s24, s25, q1]) if (Math.abs(bondsM(x) / x.grossDebt.M - x.bondShareOfGross) > 0.001) throw new Error(`site: bond share of ${x.label} does not recompute`);
-if (Math.abs(b26.autofinanziamento.M - b26.investimentiNetti.M - b26.risultatoGlobale.M) > 1.2) throw new Error("site: 2026 self-financing − investment is not the overall result");
+// 2026 net investment: the figure the overview uses (262.4, from the 2027 message), not the 2026 release's 263.5, which
+// does not give the overall result; with it, self-financing − investment = overall result to the rounding (0.1)
+const inv26 = ch("investire").chart.series[0].data.find((d: any) => d.key === "n26").value;
+if (Math.abs(b26.autofinanziamento.M - inv26 - b26.risultatoGlobale.M) > 0.06) throw new Error("site: 2026 self-financing − investment is not the overall result");
 const dpSrc = (loc: string) => [{ file: `sources/${DEBT_FILE}`, locator: loc }];
 const BUDGET26 = "city-preventivo-2026-comunicato.pdf";
 const netPerRes = star("finanze.debito-pro-capite"), netTotal = (netPerRes.value * pop) / 1e6;
@@ -337,9 +340,9 @@ async function debtNotes() {
     { text: { it: `Quota del debito in obbligazioni: ${pct0(s24.bondShareOfGross)}% a fine 2024 (${bonds(s24)} su ${it1(s24.grossDebt.M)} milioni), ${pct0(s25.bondShareOfGross)}% a fine 2025 (${bonds(s25)} su ${it1(s25.grossDebt.M)}), ${pct0(q1.bondShareOfGross)}% a fine marzo 2026 (${bonds(q1)} su ${it1(q1.grossDebt.M)}). Il resto non è ripartito nei documenti della Città; si presume debito bancario a breve termine (stima).`,
         en: `Share of the debt in bonds: ${pct0(s24.bondShareOfGross)}% at the end of 2024 (${bonds(s24)} of ${it1(s24.grossDebt.M)} million), ${pct0(s25.bondShareOfGross)}% at the end of 2025 (${bonds(s25)} of ${it1(s25.grossDebt.M)}), ${pct0(q1.bondShareOfGross)}% at the end of March 2026 (${bonds(q1)} of ${it1(q1.grossDebt.M)}). The City's documents do not break down the rest; it is presumed to be short-term bank debt (estimate).` },
       source: dpSrc("snapshots[*].bondShareOfGross = (publicBondsM + privatePlacementsM) / grossDebt, bond register × City debt figures") },
-    { text: { it: `Preventivo 2026: risultato globale di ${it1(b26.risultatoGlobale.M)} milioni (fabbisogno di finanziamento), autofinanziamento di ${it1(b26.autofinanziamento.M)} milioni, investimenti netti di ${it1(b26.investimentiNetti.M)} milioni; moltiplicatore comunale ${pf[1]}% per le persone fisiche e ${pg[1]}% per le aziende (+${pf[2]} punti).`,
-        en: `2026 budget: overall result of CHF ${it1(b26.risultatoGlobale.M)} million (borrowing need), self-financing CHF ${it1(b26.autofinanziamento.M)} million, net investment CHF ${it1(b26.investimentiNetti.M)} million; municipal tax multiplier ${pf[1]}% for individuals and ${pg[1]}% for companies (+${pf[2]} points).` },
-      source: [...dpSrc("plan.budget"), { file: `sources/${BUDGET26}`, locator: "p. 2: 'moltiplicatore all'80% (+3 punti)' (individuals), 'all'85% (+3 punti)' (companies)" }] },
+    { text: { it: `Preventivo 2026: risultato globale di ${it1(b26.risultatoGlobale.M)} milioni (fabbisogno di finanziamento), autofinanziamento di ${it1(b26.autofinanziamento.M)} milioni, investimenti netti di ${it1(inv26)} milioni; moltiplicatore comunale ${pf[1]}% per le persone fisiche e ${pg[1]}% per le aziende (+${pf[2]} punti).`,
+        en: `2026 budget: overall result of CHF ${it1(b26.risultatoGlobale.M)} million (borrowing need), self-financing CHF ${it1(b26.autofinanziamento.M)} million, net investment CHF ${it1(inv26)} million; municipal tax multiplier ${pf[1]}% for individuals and ${pg[1]}% for companies (+${pf[2]} points).` },
+      source: [...dpSrc("plan.budget"), ch("investire").source.find((s: any) => /preventivo-2027-messaggio/.test(s.file)), { file: `sources/${BUDGET26}`, locator: "p. 2: 'moltiplicatore all'80% (+3 punti)' (individuals), 'all'85% (+3 punti)' (companies)" }] },
     { text: { it: `Due misure del debito da non confondere: il debito finanziario lordo della Città (${it1(s25.grossDebt.M)} milioni a fine 2025) e il debito pubblico netto I del Cantone, debiti meno beni finanziari (${it1(netTotal)} milioni nel 2024, ${Math.round(netPerRes.value).toLocaleString("de-CH")} CHF per abitante).`,
         en: `Two debt measures not to confuse: the City's gross financial debt (CHF ${it1(s25.grossDebt.M)} million at the end of 2025) and the canton's net public debt I, debt minus financial assets (CHF ${it1(netTotal)} million in 2024, CHF ${Math.round(netPerRes.value).toLocaleString("de-CH")} per resident).` },
       source: [...dpSrc("snapshots['end 2025'].grossDebt"), ...netPerRes.source] },
@@ -359,6 +362,9 @@ if (unused.length) throw new Error(`site: translations/labels-en.json has names 
   X.extras = await debtNotes();
   // every source a record cites must be an archived file listed in sources/MANIFEST.json
   walk({ cupola, X }, "site");
+  // the Italian page shows each source in Italian; check 9 requires one for every locator and publisher, none unused
+  const it = JSON.parse(readFileSync("translations/sources-it.json", "utf8"));
+  X.srcIt = { locators: it.locators, publishers: it.publishers };
   const out = { D: cupola, X, EN };
   const stars = Object.keys(X.stars).length;
   const more = splitSite(out);                          // the detail goes to a second file, read after the first screen

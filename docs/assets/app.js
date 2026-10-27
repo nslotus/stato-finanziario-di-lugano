@@ -443,8 +443,12 @@ function flyTo(az, alt, f) {
 function overview() { flyTo(180, 0, fullSpan()); }
 
 // ---------- sources, sectors, table ----------
+// sources are recorded in English; on the Italian page they are shown in Italian (translations/sources-it.json, read with
+// the second data file; until it has arrived they show as recorded)
+const srcLoc = (l) => (lang === "it" ? X.srcIt?.locators?.[l] ?? l : l);
+const srcPub = (p) => (lang === "it" ? X.srcIt?.publishers?.[p] ?? p : p);
 const srcHtml = (list, code) => `<div class="src">${list.map((s) => { const m = D.manifest.find((x) => x.file === s.file);
-  return `<div>${esc(m ? m.publisher : s.file)} · ${esc(code ? s.locator.replace("row by code", `${T[lang].row} ${code}`) : s.locator)}${m?.url ? ` · <a href="${esc(m.url)}" target="_blank" rel="noopener">${T[lang].doc} ↗</a>` : ""}</div>`; }).join("")}</div>`;
+  return `<div>${esc(m ? srcPub(m.publisher) : s.file)} · ${esc(code ? srcLoc(s.locator).replace(/row by code|riga per codice/, `${T[lang].row} ${code}`) : srcLoc(s.locator))}${m?.url ? ` · <a href="${esc(m.url)}" target="_blank" rel="noopener">${T[lang].doc} ↗</a>` : ""}</div>`; }).join("")}</div>`;
 // ---------- the floating card, and the deep dive ----------
 const peek = document.getElementById("peek"), focusEl = document.getElementById("focus");
 let focus = null, lastPos = new Map();
@@ -574,7 +578,7 @@ const dig = (v, u, d) => d ?? (Number.isInteger(v) ? 0 : u === "%" ? 1 : Math.ab
 const val = (v, u, d) => n(v, dig(v, u, d));
 const srcList = (list) => `<div class="src">${(list ?? []).map((x) => { const m = D.manifest.find((y) => y.file === x.file);
   const pub = x.publisher ?? m?.publisher ?? x.file, url = x.url ?? m?.url;
-  return `<div>${esc(pub)}${x.locator ? ` · ${esc(x.locator)}` : ""}${url ? ` · <a href="${esc(url)}" target="_blank" rel="noopener">${T[lang].doc} ↗</a>` : ""}</div>`; }).join("")}</div>`;
+  return `<div>${esc(srcPub(pub))}${x.locator ? ` · ${esc(srcLoc(x.locator))}` : ""}${url ? ` · <a href="${esc(url)}" target="_blank" rel="noopener">${T[lang].doc} ↗</a>` : ""}</div>`; }).join("")}</div>`;
 const rankText = (r) => (r ? T[lang].rankOf(r.rank, r.of) : "");
 const pct = (arr, q) => { const s = [...arr].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.max(0, Math.round(q * (s.length - 1))))]; };
 
@@ -1137,6 +1141,7 @@ function joinMore(M) {
   for (const [id, v] of Object.entries(M.stars)) Object.assign(XS[id], v);
   const by = (list, v) => { for (const o of list) if (v[o.code]) Object.assign(o, v[o.code]); };
   by(D.fns, M.fns); by(D.org.slices, M.slices); by(D.org.groups, M.orgGroups); by(D.org.lines, M.orgLines);
+  X.srcIt = M.srcIt;
   for (const s of stars) if (s.kind === "line") s.text = V.lines.find((l) => l.code === s.code)?.text ?? [];   // stars kept the empty lists
   moreReady = true;
   for (const fn of morePending.splice(0)) fn();

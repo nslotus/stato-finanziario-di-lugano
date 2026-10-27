@@ -121,7 +121,15 @@ export async function budget2027Phrases() {
   const m = msg[iInt].match(re)!;
   const int = { p2027: chf(m[1]) / 1e6, p2026: chf(m[2]) / 1e6, c2025: chf(m[4]) / 1e6, page: iInt + 1, quote: m[0] };
   if (Math.abs(int.p2027 - int.p2026 - chf(m[3]) / 1e6) > 0.00001) fail("account 3401: 2027 − 2026 != printed difference");
-  return { pf: Number(mp[1]), pg: Number(mp[2]), mpQuote: mp[0], outlookPage: iOut + 1, interest3401: int };
+  // the 2026 budget's self-financing and net investment as the 2027 message restates them (the 2026 release says 263.5)
+  const reInv = /Nel 2026, questo rapporto era di CHF ([\d.]+) mio di autofinanziamento su CHF ([\d.]+) mio di investimenti netti \(([\d.]+)%\)/;
+  const flat = msg.map((p) => p.replace(/\s+/g, " "));
+  const iInv = flat.findIndex((p) => reInv.test(p));
+  if (iInv < 0) fail("budget 2027 message: the 2026 self-financing and net investment phrase not found");
+  const mi = flat[iInv].match(reInv)!;
+  const inv2026 = { self: Number(mi[1]), net: Number(mi[2]), page: iInv + 1, quote: mi[0] };
+  if (Math.abs((inv2026.self / inv2026.net) * 100 - Number(mi[3])) > 0.05) fail("budget 2027 message: 2026 self-financing ratio does not recompute");
+  return { pf: Number(mp[1]), pg: Number(mp[2]), mpQuote: mp[0], outlookPage: iOut + 1, interest3401: int, inv2026 };
 }
 
 type CityFigure = { valueCHF: number | null; status: string };

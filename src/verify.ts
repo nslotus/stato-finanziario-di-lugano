@@ -183,11 +183,19 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
     if (r.missed.length) fail(`not printed as such: ${r.missed.join("; ")}`);
     return `${r.one + r.range + r.sum} figures: ${r.one} on their page, ${r.range} within their cited pages or document, ${r.sum} as the sum of its printed parts`;
   });
-  await check("every name has an English name, none unused", () => {
+  await check("every name has an English name, every source an Italian one, none unused", () => {
     const need = new Set<string>([...D.lines.map((l: any) => l.label), ...D.groups.map((g: any) => g.label), ...D.org.groups.map((g: any) => g.label), ...D.org.lines.map((l: any) => l.label), ...D.org.slices.map((s: any) => s.name.it)]);
     const missing = [...need].filter((k) => !EN[k]), unused = Object.keys(EN).filter((k) => !need.has(k));
-    if (missing.length || unused.length) fail(`missing: ${missing.join(" | ")}; unused: ${unused.join(" | ")}`);
-    return `${need.size} names`;
+    if (missing.length || unused.length) fail(`English names missing: ${missing.join(" | ")}; unused: ${unused.join(" | ")}`);
+    // every source the page can show, in Italian (translations/sources-it.json): its locator and its publisher
+    const locs = new Set<string>(), pubs = new Set<string>(D.manifest.map((m: any) => m.publisher));
+    const walk = (o: any): void => { if (Array.isArray(o)) return o.forEach(walk); if (o && typeof o === "object") { if (typeof o.file === "string" && typeof o.locator === "string") locs.add(o.locator); if (typeof o.file === "string" && typeof o.publisher === "string") pubs.add(o.publisher); Object.values(o).forEach(walk); } };
+    walk(D); walk({ ...X, srcIt: null });
+    const it = X.srcIt ?? fail("the Italian sources are missing from the page's data");
+    const gaps = [...[...locs].filter((l) => !it.locators[l]).map((l) => `locator "${l}"`), ...[...pubs].filter((p) => !it.publishers[p]).map((p) => `publisher "${p}"`)];
+    const extra = [...Object.keys(it.locators).filter((l) => !locs.has(l)), ...Object.keys(it.publishers).filter((p) => !pubs.has(p))];
+    if (gaps.length || extra.length) fail(`Italian sources missing: ${gaps.join(" | ")}; unused: ${extra.join(" | ")}`);
+    return `${need.size} names in English; ${locs.size} source locators and ${pubs.size} publishers in Italian`;
   });
 
   await check("no keys, tokens, personal paths or addresses", () => {

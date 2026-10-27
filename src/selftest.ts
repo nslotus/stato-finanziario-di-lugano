@@ -33,6 +33,7 @@ const CASES: Case[] = [
   { what: "a rank among Ticino's municipalities off by one", touches: [MORE], fail: [6], plant: () => editJs(MORE, "CIELO_MORE", (o) => { const s: Json = Object.values(o.stars).find((x: Json) => x.cmp); s.cmp.rank += 1; }) },
   { what: "a printed difference in the budget table changed", touches: [DATA], fail: [5], plant: () => editJs(DATA, "CIELO", (o) => { const tb = o.X.chapters.find((c: Json) => c.id === "risultato").table; const y = tb.years[0]; tb.rows[0].cells[y].diff += 0.01; }) },
   { what: "the canton's indicator rank changed", touches: [DATA], fail: [7], plant: () => editJs(DATA, "CIELO", (o) => { const row = o.X.chapters.find((c: Json) => c.id === "confronto").chart.rows.find((r: Json) => /per abitante|pro capite/i.test(r.label.it)); row.rank = row.rank.replace(/^\s*(\d+)/, (_: string, r: string) => String(+r - 1)); }) },
+  { what: "a source shown on the Italian page without its Italian version", touches: [MORE], fail: [9], plant: () => editJs(MORE, "CIELO_MORE", (o) => { delete o.srcIt.locators[Object.keys(o.srcIt.locators)[0]]; }) },
   { what: "an English name missing", touches: [DATA], fail: [9], plant: () => editJs(DATA, "CIELO", (o) => { delete o.EN[Object.keys(o.EN)[0]]; }) },
   { what: "a source's fingerprint not matching the archived file", touches: [MANIFEST], fail: [1], plant: () => editJson(MANIFEST, (o) => { const a = Array.isArray(o) ? o : o.files; a[0].sha256 = "0".repeat(64); }) },
   { what: "a pinned upstream file whose URL names another commit", touches: [MANIFEST], fail: [3],

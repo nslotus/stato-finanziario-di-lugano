@@ -32871,6 +32871,7 @@
    "chart": {
     "type": "columns",
     "unit": "mio CHF",
+    "digits": 1,
     "series": [
      {
       "label": {
@@ -32902,7 +32903,7 @@
          "it": "2026 preventivo",
          "en": "2026 budget"
         },
-        "value": 263.5,
+        "value": 262.4,
         "status": "budget"
        },
        {
@@ -32964,8 +32965,8 @@
    },
    "notes": [
     {
-     "it": "Il messaggio sul preventivo 2027 riporta per il preventivo 2026 investimenti netti di 262.4 milioni; qui resta la cifra del comunicato 2026 (263.5).",
-     "en": "The 2027 budget message restates the 2026 budget's net investment as CHF 262.4 million; the figure from the 2026 release (263.5) is kept here."
+     "it": "Per il preventivo 2026 gli investimenti netti sono 262.4 milioni, come nel messaggio sul preventivo 2027 e nel piano finanziario; con l'autofinanziamento di 21.6 milioni dà il risultato globale del preventivo 2026 (21.6 − 262.4 = −240.8). Il comunicato sul preventivo 2026 indicava 263.5 milioni.",
+     "en": "For the 2026 budget, net investment is CHF 262.4 million, as in the 2027 budget message and the financial plan; with CHF 21.6 million of self-financing it gives the 2026 budget's overall result (21.6 − 262.4 = −240.8). The 2026 budget release gave CHF 263.5 million."
     }
    ],
    "source": [
@@ -32982,10 +32983,10 @@
      "locator": "results[consuntivo 2025] (extracted from the city's PDF; see Dati di Lugano TRACE.md)"
     },
     {
-     "file": "sources/city-preventivo-2026-comunicato.pdf",
-     "url": "https://www.lugano.ch/dam/jcr:0a793cce-fba0-4c83-b596-e65560732832/20251023-cs-preventivo-2026-piano-finanziario-2026-2033.pdf",
-     "publisher": "Città di Lugano, Preventivo 2026 press release",
-     "locator": "press release, p. 1–3"
+     "file": "sources/city-preventivo-2027-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
+     "publisher": "Città di Lugano, Preventivo 2027 municipal message",
+     "locator": "p. 14: 'Nel 2026, questo rapporto era di CHF 21.6 mio di autofinanziamento su CHF 262.4 mio di investimenti netti (8.2%)'"
     },
     {
      "file": "sources/city-preventivo-2027-comunicato.pdf",
@@ -32994,10 +32995,10 @@
      "locator": "press release, p. 1–3"
     },
     {
-     "file": "sources/city-preventivo-2027-messaggio.pdf",
-     "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
-     "publisher": "Città di Lugano, Preventivo 2027 municipal message",
-     "locator": "p. 14: 2026 budget restated, net investment CHF 262.4 mio"
+     "file": "sources/city-preventivo-2026-comunicato.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:0a793cce-fba0-4c83-b596-e65560732832/20251023-cs-preventivo-2026-piano-finanziario-2026-2033.pdf",
+     "publisher": "Città di Lugano, Preventivo 2026 press release",
+     "locator": "press release, p. 1–3"
     }
    ]
   },
