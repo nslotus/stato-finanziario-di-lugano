@@ -2,6 +2,9 @@
 
 How every number on the page is found, read, calculated and checked, and how you can check it yourself.
 
+> **Italiano:** [`METODO.md`](METODO.md). The two files must be updated together: `npm run verify` (check 12) fails if
+> their sections or the numbers they contain differ. Where in doubt, the code, which both describe, is the reference.
+
 - [1. What the page shows](#1-what-the-page-shows)
 - [2. From documents to page](#2-from-documents-to-page)
 - [3. Sources and archiving](#3-sources-and-archiving)
@@ -75,7 +78,7 @@ docs/data/data-more.js  what only a card or the overview shows: explanations, me
 docs/index.html         the page; docs/assets/app.js and phone.js only read the two data files and contain no number
    │  npm run docs    src/docs.ts
    ▼
-SOURCES.md, FIGURES.md   generated tables
+SOURCES.md, FIGURES.md   generated tables (and FONTI.md, CIFRE.md in Italian)
 ```
 
 Seven files come from a separate public project, [`nslotus/dati-di-lugano`](https://github.com/nslotus/dati-di-lugano),
@@ -205,7 +208,7 @@ centres, and check 4's sums cover it.
 | 9 | Names and sources | every Italian name has an English name; every source locator and publisher the page shows has an Italian version; none is unused | exact |
 | 10 | Hygiene | no keys, tokens, personal paths or private addresses in the repository | — |
 | 11 | Rebuild | `build`, `staff` and `site` run again from the archived sources give byte-identical files | exact |
-| 12 | Docs | `SOURCES.md` and `FIGURES.md` are what `npm run docs` generates | exact |
+| 12 | Docs | `SOURCES.md`, `FIGURES.md`, `FONTI.md` and `CIFRE.md` are what `npm run docs` generates; `METODO.md` and `LEGGIMI.md` have the same sections and numbers as `METHOD.md` and `README.md` | exact |
 | 13 | The table on the page | each of the 72 lines, 43 groups and 10 functions, and the City's total, in the 2025 budget (pp. 221–223) and the 2025 accounts (pp. 238–239): the number in the COSTI column of the row with its code; a row without cost has that column empty. With check 4, the lines are tied to the City's own printed totals | CHF 0.006 (to the centime) |
 | 14 | Departments on the page | each cost centre and division with a table of its own: row 3 (spending) of its table in the 2025 accounts, read through the row's printed arithmetic; each department and division: its row in the department's overview table, by the columns' headings | CHF 0.006; the row's arithmetic CHF 0.015 and 0.01 percentage points |
 | 15 | Second reader | checks 8 and 13 again with pypdf; for the table, the costs found by each row's arithmetic only | as checks 8 and 13 |
@@ -216,13 +219,13 @@ rather than the CHF 4'948'306.79 printed); the page uses the printed actual. In 
 (1213, 1214, 1230, 1231, 1232, 1401) a row's arithmetic alone allows two readings; check 14 accepts either, and check 4
 decides: the centres' budgets must add up to their division's budget, which check 14 reads from the printed overview.
 
-**Would the checks fail?** `npm run verify:selftest`, also run by GitHub Actions, plants 18 known errors one at a time
+**Would the checks fail?** `npm run verify:selftest`, also run by GitHub Actions, plants 19 known errors one at a time
 and requires the expected checks to fail: a line's budget off by CHF 1,000; a line's actual read from the revenue
 column; two lines' actuals swapped within a function (check 4's sums still pass; checks 13 and 15 fail); a cost
 centre off by CHF 10; a department's budget off by CHF 1,000; a new centre's budget read the other way its row allows
 (check 14 passes; check 4 fails); a figure off by one unit, on its page and across its pages (675 road accidents read as
 676); a part of a printed list misread with its total; a rank off by one; a printed difference, the canton's rank, an
-English name or an Italian source note, a source's fingerprint and an upstream commit changed; a stray file in `sources/`; an API key in a file. The repository's files are restored after each case.
+English name or an Italian source note, a source's fingerprint and an upstream commit changed; a stray file in `sources/`; an API key in a file; a number changed in this file but not in `METODO.md`. The repository's files are restored after each case.
 
 Checks 15 and the self-test need Python 3 with pypdf, pinned by hash in
 [`requirements-verify.txt`](requirements-verify.txt).
@@ -241,6 +244,8 @@ The result of the last run is in [`CHANGELOG.md`](CHANGELOG.md).
   this repository's documents. The Italian page shows those notes in Italian, from
   [`translations/sources-it.json`](translations/sources-it.json), drafted with an AI assistant: the document's own words,
   page numbers, codes and data field names are unchanged (every Italian note keeps the same numbers as its original).
+- **[`METODO.md`](METODO.md) and [`LEGGIMI.md`](LEGGIMI.md)** are translations of this file and of `README.md`, drafted
+  with an AI assistant, to be reviewed by a native speaker.
 - **Code and texts.** The code and the explanatory texts were written with the help of an AI coding assistant. That is
   why no number is typed by hand: every number is read by code from an archived document, and the checks above, which
   anyone can run, are what the figures rest on.

@@ -147,7 +147,7 @@
       ${small.length ? `<div class="ph-small">${small.map(({ f, rgb }) => `<button data-go="${kOf()}/${f.code}"><i style="background:rgb(${rgb})"></i>${f.code} ${esc(L(f.name))} <b>${n(f.c25)}</b> <span class="${f.pct >= 0 ? "ph-up" : "ph-down"}">${sgn(f.pct)}%</span></button>`).join("")}</div>` : ""}
       <div class="ph-key" aria-hidden="true"><span class="ph-down">${p.less}</span><i></i><span class="ph-up">${p.more}</span><em>−${FULL}%</em><em>0</em><em>+${FULL}%</em></div>
       <p class="small">${p.tiles}</p>
-      <details class="ph-how"><summary>${p.how}</summary>${p.howText.map((x) => `<p>${x}</p>`).join("")}<p>${t.neutral}</p></details>
+      <details class="ph-how"><summary>${p.how}</summary>${p.howText.map((x) => `<p>${x}</p>`).join("")}<p>${t.neutral}</p><p><a href="${methodUrl()}" target="_blank" rel="noopener">${t.method} ↗</a></p></details>
       <p class="small ph-wide">${p.wide}</p>
     </section>`;
   }

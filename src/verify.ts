@@ -215,7 +215,7 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
     return `${files.length} files scanned`;
   });
 
-  if (quick) { results.push({ n: ++n, name: "rebuild is byte-identical", ok: true, detail: "skipped (--quick)" }); results.push({ n: ++n, name: "generated docs are current", ok: true, detail: "skipped (--quick)" }); }
+  if (quick) results.push({ n: ++n, name: "rebuild is byte-identical", ok: true, detail: "skipped (--quick)" });
   else {
     const outputs = ["catalog/stars.json", "catalog/funzioni.json", "catalog/dicasteri.json", "catalog/personale.json", "sources/MANIFEST.json", "docs/data/data.js", "docs/data/data-more.js"];
     await check("rebuild is byte-identical", () => {
@@ -227,14 +227,27 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
       if (changed.length) fail(`rebuilt files differ: ${changed.join(", ")}`);
       return `${outputs.length} files rebuilt from the archived sources, identical`;
     });
-    await check("generated docs are current", () => {
-      const docs = ["SOURCES.md", "FIGURES.md"], before = Object.fromEntries(docs.map((f) => [f, existsSync(f) ? sha(f) : ""]));
-      execSync("npx tsx src/docs.ts", { stdio: "ignore" });
-      const changed = docs.filter((f) => sha(f) !== before[f]);
-      if (changed.length) fail(`out of date: ${changed.join(", ")} (run npm run docs)`);
-      return docs.join(", ");
-    });
   }
+  await check("generated docs are current, and the Italian documents match the English ones", () => {
+    const docs = ["SOURCES.md", "FIGURES.md", "FONTI.md", "CIFRE.md"], before = Object.fromEntries(docs.map((f) => [f, existsSync(f) ? sha(f) : ""]));
+    execSync("npx tsx src/docs.ts", { stdio: "ignore" });
+    const changed = docs.filter((f) => sha(f) !== before[f]);
+    if (changed.length) fail(`out of date: ${changed.join(", ")} (run npm run docs)`);
+    // the hand-written pairs must be changed together: the same sections, and the same numbers (written as 1'234 in
+    // Italian and 1,234 in English, so thousands separators are removed before comparing)
+    const pairs = [["METHOD.md", "METODO.md"], ["README.md", "LEGGIMI.md"]];
+    const heads = (t: string) => [2, 3].map((k) => (t.match(new RegExp(`^#{${k}} `, "gm")) ?? []).length).join("+");
+    const nums = (t: string) => new Set(t.replace(/(\d)[,'’](?=\d{3}(?!\d))/g, "$1").match(/\d+(?:\.\d+)?/g) ?? []);
+    const bad: string[] = [];
+    for (const [en, it] of pairs) {
+      const a = readFileSync(en, "utf8"), b = readFileSync(it, "utf8");
+      if (heads(a) !== heads(b)) bad.push(`${it} has ${heads(b)} sections, ${en} ${heads(a)}`);
+      const na = nums(a), nb = nums(b), onlyEn = [...na].filter((x) => !nb.has(x)), onlyIt = [...nb].filter((x) => !na.has(x));
+      if (onlyEn.length || onlyIt.length) bad.push(`${en} and ${it} differ in numbers: only in ${en}: ${onlyEn.join(" ") || "-"}; only in ${it}: ${onlyIt.join(" ") || "-"}`);
+    }
+    if (bad.length) fail(`${bad.join("; ")}. The English and Italian documents must be updated together.`);
+    return `${docs.join(", ")} generated; ${pairs.map(([en, it]) => `${it} matches ${en}`).join(", ")}`;
+  });
 
   await check("every line, group and function is printed on its row of the cited page", async () => {
     // the 72 lines, 43 groups, 10 functions and the City's total, in the 2025 budget and in the 2025 accounts: the

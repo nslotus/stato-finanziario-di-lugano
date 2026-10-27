@@ -75,7 +75,7 @@ const T = {
     lede: "Siete al centro della cupola. Ogni stella è una voce di spesa della Città nel 2025. <b>L'orizzonte è il preventivo</b>: le voci che hanno speso più del previsto salgono, quelle che hanno speso meno scendono, tanto più quanto più grande è lo scarto (in franchi o in percentuale). Più è luminosa, più è grande la spesa.",
     legendBtn: "Legenda", zoomIn: "Ingrandisci", zoomOut: "Rimpicciolisci",
     moreFail: "Una parte dei dati non si è caricata: ricaricate la pagina per aprire le schede e il quadro.",
-    show: "Mostra come", tilesBtn: "Riquadri", tilesTip: "La stessa spesa in riquadri e barre, al posto del cielo",
+    method: "Metodo, fonti e controlli (in italiano)", show: "Mostra come", tilesBtn: "Riquadri", tilesTip: "La stessa spesa in riquadri e barre, al posto del cielo",
     table: "Tabella", sky: "Cielo", close: "Chiudi", horizon: "preventivo 2025", over: "sopra il preventivo", under: "sotto il preventivo",
     notBudget: "non a preventivo", notSpent: "non spesa",
     hint: "Trascinate per scorrere · rotella o pizzico per allargare uno spicchio · doppio clic su una stella per avvicinarvi · 0 per la vista d'insieme",
@@ -150,7 +150,7 @@ const T = {
     lede: "You stand at the centre of the dome. Every star is one of the City's spending lines in 2025. <b>The horizon is the budget</b>: lines that spent more than planned rise, lines that spent less sink, the further the larger the gap (in francs or in percent). The brighter the star, the larger the spending.",
     legendBtn: "Legend", zoomIn: "Zoom in", zoomOut: "Zoom out",
     moreFail: "Part of the data did not load: reload the page to open the cards and the big picture.",
-    show: "Show as", tilesBtn: "Tiles", tilesTip: "The same spending as tiles and bars, instead of the sky",
+    method: "Method, sources and checks", show: "Show as", tilesBtn: "Tiles", tilesTip: "The same spending as tiles and bars, instead of the sky",
     table: "Table", sky: "Sky", close: "Close", horizon: "2025 budget", over: "above budget", under: "below budget",
     notBudget: "not in the budget", notSpent: "not spent",
     hint: "Drag to scroll · wheel or pinch to widen a slice · double-click a star to get closer · 0 for the overview",
@@ -969,7 +969,10 @@ function writeIntro() {
   t.steps.forEach((x, i) => (document.getElementById(`st${i + 1}`).innerHTML = x));
   document.getElementById("i-go").textContent = t.go; document.getElementById("i-example").textContent = t.example;
   document.getElementById("ctl-h").textContent = t.controlsH; document.getElementById("ctl").innerHTML = t.controls.map((x) => `<li>${x}</li>`).join("");
+  const m = document.getElementById("i-method"); m.textContent = `${t.method} ↗`; m.href = methodUrl();
 }
+// the method in the page's language: METODO.md in Italian, METHOD.md in English
+const methodUrl = () => `https://github.com/nslotus/stato-finanziario-di-lugano/blob/main/${lang === "it" ? "METODO.md" : "METHOD.md"}`;
 function showIntro(on) {
   intro.hidden = !on;
   if (on) document.getElementById("i-example").focus(); else { try { localStorage.setItem("cupola-intro", "1"); } catch {} cv.focus(); }
