@@ -72,6 +72,14 @@
     "sha256": "c823cb5f7adbc631f5e018e6291503c60a90caae04fad330a5fd33677b6b915a"
   },
   {
+    "file": "sources/20261026-moodys-rating.html",
+    "url": "https://www.lugano.ch/news/20261026-rating-moodys/",
+    "publisher": "Città di Lugano, notizia: Moody’s conferma il rating Aa3 con prospettiva stabile (26 ottobre 2026)",
+    "retrieved": "2026-10-27T00:40:55.915Z",
+    "bytes": 62678,
+    "sha256": "13b6c319dccdb37cec371d96021a6aaaca6f510684a4a40ea73fd32af3ad234e"
+  },
+  {
     "file": "sources/20251027-moodys-rating.pdf",
     "url": "https://www.lugano.ch/dam/jcr:f659385e-ceef-4a3b-b14f-c776dcbf239d/20251027-cs-conferma-rating-moodys.pdf",
     "publisher": "Città di Lugano, Moody's rating announcement",

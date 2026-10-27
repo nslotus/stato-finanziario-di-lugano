@@ -1,5 +1,5 @@
 {
- "sourcesAsOf": "2026-10-19T12:42:22.661Z",
+ "sourcesAsOf": "2026-10-27T00:40:55.915Z",
  "stars": [
   {
    "id": "salute.spesa",
@@ -33157,8 +33157,8 @@
      "en": "2027 budget: public debt rises by CHF 80.4 million (overall result: self-financing of 16.6 minus net investment of 97.0)."
     },
     {
-     "it": "Rating Moody's: Aa3 con prospettiva stabile, confermato a ottobre 2025 e ad aprile 2026.",
-     "en": "Moody's rating: Aa3 with a stable outlook, confirmed in October 2025 and April 2026."
+     "it": "Rating Moody's: Aa3 con prospettiva stabile, confermato per il decimo anno consecutivo nella revisione periodica pubblicata il 23 ottobre 2026.",
+     "en": "Moody's rating: Aa3 with a stable outlook, confirmed for the tenth consecutive year in the periodic review published on 23 October 2026."
     }
    ],
    "source": [
@@ -33181,10 +33181,16 @@
      "locator": "p. 14: «incremento del debito pubblico di CHF 80.4 mio»"
     },
     {
+     "file": "sources/20261026-moodys-rating.html",
+     "url": "https://www.lugano.ch/news/20261026-rating-moodys/",
+     "publisher": "Città di Lugano, notizia: Moody’s conferma il rating Aa3 con prospettiva stabile (26 ottobre 2026)",
+     "locator": "news page of 26 October 2026: 'revisione periodica pubblicata il 23 ottobre 2026, l'agenzia di rating Moody’s ha confermato per il decimo anno consecutivo la propria valutazione del profilo creditizio della Città di Lugano, che mantiene il rating Aa3 con prospettiva stabile'"
+    },
+    {
      "file": "sources/20251027-moodys-rating.pdf",
      "url": "https://www.lugano.ch/dam/jcr:f659385e-ceef-4a3b-b14f-c776dcbf239d/20251027-cs-conferma-rating-moodys.pdf",
      "publisher": "Città di Lugano, Moody's rating announcement",
-     "locator": "p. 1: rating Aa3, prospettiva stabile (27 October 2025)"
+     "locator": "p. 1: 'per il nono anno consecutivo, un rating Aa3 con prospettiva stabile' (27 October 2025)"
     },
     {
      "file": "sources/city-piano-finanziario-2026-2033.pdf",

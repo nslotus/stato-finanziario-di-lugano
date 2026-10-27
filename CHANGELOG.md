@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Moody's: the rating note now reads from the City's news page of 26 October 2026 (archived): Aa3 with a stable outlook,
+  confirmed for the tenth consecutive year in the periodic review published on 23 October 2026. The build checks that the
+  count follows on from the October 2025 release (ninth year). The note's earlier "confirmed in April 2026" had no
+  archived source and is removed.
 - From volunteer checkers:
   - The source notes (sheet, row, column, page) were in English on the Italian page. They are now shown in Italian, from
     `translations/sources-it.json` (266 notes, 72 publishers); check 9 requires one for every source the page shows.
@@ -79,18 +83,18 @@ First public version.
 - 74 archived source documents with SHA-256 fingerprints; `npm run verify` with 12 checks, run by GitHub Actions.
 - Italian and English.
 
-Last `npm run verify`, 26 October 2026, all 15 checks passed:
+Last `npm run verify`, 27 October 2026, all 15 checks passed:
 
 ```
-PASS   1  sources match their fingerprints                                            74 files, 134.0 MB, all match, names exact
-PASS   2  every cited file is archived, every archived file is cited                  74 files cited 1072 times
+PASS   1  sources match their fingerprints                                            75 files, 134.0 MB, all match, names exact
+PASS   2  every cited file is archived, every archived file is cited                  75 files cited 1075 times
 PASS   3  files pinned from dati-di-lugano name the commit of their URL               7 files, 6 commits of github.com/nslotus/dati-di-lugano
 PASS   4  sums add up (recomputed here, not by the build)                             183 sums
 PASS   5  budget against actual: actual − budget = printed difference                 18 rows
 PASS   6  ranks and medians among Ticino's municipalities                             29 figures, each against 106 municipalities
 PASS   7  canton indicator rank = 106 − page rank + 1 (net debt per resident)         canton 96/106 (1 = lowest debt), page 11th highest
 PASS   8  values read from PDF pages are printed on the cited page                    25 figures: 20 on their page, 4 within their cited pages or document, 1 as the sum of its printed parts
-PASS   9  every name has an English name, every source an Italian one, none unused    189 names in English; 266 source locators and 72 publishers in Italian
+PASS   9  every name has an English name, every source an Italian one, none unused    189 names in English; 267 source locators and 73 publishers in Italian
 PASS  10  no keys, tokens, personal paths or addresses                                83 files scanned
 PASS  11  rebuild is byte-identical                                                   7 files rebuilt from the archived sources, identical
 PASS  12  generated docs are current                                                  SOURCES.md, FIGURES.md

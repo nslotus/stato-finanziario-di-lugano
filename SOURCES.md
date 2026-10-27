@@ -4,7 +4,7 @@ Every document the figures come from, archived in [`sources/`](sources/) exactly
 [`sources/MANIFEST.json`](sources/MANIFEST.json); `npm run verify` recomputes every SHA-256 and fails if a file changed.
 The documents remain under the terms of their publishers (see [`sources/README.md`](sources/README.md)).
 
-74 documents, 134.0 MB.
+75 documents, 134.0 MB.
 
 | File | Publisher | Original | Retrieved | Size | SHA-256 | Cited by |
 |---|---|---|---|---|---|---|
@@ -17,6 +17,7 @@ The documents remain under the terms of their publishers (see [`sources/README.m
 | [`dati-di-lugano@61e3dbe-city-figures.json`](sources/dati-di-lugano@61e3dbe-city-figures.json) | Dati di Lugano (figures extracted from the City of Lugano's PDFs) | [link](https://github.com/nslotus/dati-di-lugano/blob/61e3dbe/out/city-figures.json) | 2026-10-15 | 26 KB | `181d88a2bf7e74d7…` | 2 |
 | [`dati-di-lugano@8c1fd28-lugano-indicators.json`](sources/dati-di-lugano@8c1fd28-lugano-indicators.json) | Dati di Lugano (from the Canton of Ticino municipal statistics) | [link](https://github.com/nslotus/dati-di-lugano/blob/8c1fd28/out/lugano-indicators.json) | 2026-10-14 | 17 KB | `f8754c650ad31408…` | 2 |
 | [`dati-di-lugano@6627e5f-budget-vs-actual.json`](sources/dati-di-lugano@6627e5f-budget-vs-actual.json) | Dati di Lugano (budget vs actual from the City's recap tables) | [link](https://github.com/nslotus/dati-di-lugano/blob/6627e5f/out/budget-vs-actual.json) | 2026-10-15 | 11 KB | `c823cb5f7adbc631…` | 1 |
+| [`20261026-moodys-rating.html`](sources/20261026-moodys-rating.html) | Città di Lugano, notizia: Moody’s conferma il rating Aa3 con prospettiva stabile (26 ottobre 2026) | [link](https://www.lugano.ch/news/20261026-rating-moodys/) | 2026-10-27 | 61 KB | `13b6c319dccdb37c…` | 1 |
 | [`20251027-moodys-rating.pdf`](sources/20251027-moodys-rating.pdf) | Città di Lugano, Moody's rating announcement | [link](https://www.lugano.ch/dam/jcr:f659385e-ceef-4a3b-b14f-c776dcbf239d/20251027-cs-conferma-rating-moodys.pdf) | 2026-10-15 | 29 KB | `2c41a02076c097b8…` | 1 |
 | [`city-preventivo-2027-comunicato.pdf`](sources/city-preventivo-2027-comunicato.pdf) | Città di Lugano, Preventivo 2027 press release (15 October 2026) | [link](https://www.lugano.ch/dam/jcr:3252b132-7bd9-4f5b-84af-f03a9a61c763/15%2010%202026_Comunicato_Preventivo%202027.pdf) | 2026-10-15 | 86 KB | `4d1b5a2ccaabf47d…` | 4 |
 | [`city-preventivo-2027-slides.pdf`](sources/city-preventivo-2027-slides.pdf) | Città di Lugano, Preventivo 2027 press presentation | [link](https://www.lugano.ch/dam/jcr:3f7967db-a4c6-4d4b-8570-c0ddf97179db/Presentazione_Preventivo%202027.pdf) | 2026-10-15 | 332 KB | `0d22428265c249d9…` | 2 |

@@ -6,10 +6,31 @@ import { compare, type Chapter, type Datum, type Source, type Star, type Text } 
 import type { Municipality } from "./adapters/municipalities";
 import { ALLEGATO } from "./adapters/sel";
 import { fail, num, rawPath, sheet } from "./adapters/common";
+import { readPdf } from "./adapters/pdf";
 import { readFileSync } from "node:fs";
 export const DS_PIN = "a90ca4a"; // dati-di-lugano commit with out/debt-service.json
 const DEBT_SERVICE = `dati-di-lugano@${DS_PIN}-debt-service.json`;
 const MOODYS_PDF = "20251027-moodys-rating.pdf";
+const MOODYS_2026 = "20261026-moodys-rating.html";
+const NTH: Record<string, [number, string]> = { nono: [9, "ninth"], decimo: [10, "tenth"], undicesimo: [11, "eleventh"], dodicesimo: [12, "twelfth"] };
+const MONTHS = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+const MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+/** The latest Moody's review, read from the City's news page, and its count checked against the previous release. */
+async function moodys() {
+  const page = readFileSync(rawPath(MOODYS_2026), "utf8").replace(/<(script|style)[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, " ")
+    .replace(/&rsquo;/g, "’").replace(/&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(+d))
+    .replace(/&([aeiou])(grave|acute);/gi, (_, v, k) => (v + (k.toLowerCase() === "grave" ? "̀" : "́")).normalize("NFC")).replace(/\s+/g, " ");
+  const re = /revisione periodica pubblicata il (\d{1,2}) (\p{L}+) (\d{4}), l.agenzia di rating Moody.s ha confermato per il (\p{L}+) anno consecutivo la propria valutazione del profilo creditizio della Città di Lugano, che mantiene il rating (A[a1-3]+) con prospettiva (stabile)/u;
+  const m = page.match(re) ?? fail(`${MOODYS_2026}: the review sentence was not found`);
+  const [, day, month, year, nth, rating, outlook] = m;
+  const mi = MONTHS.indexOf(month), count = NTH[nth] ?? fail(`${MOODYS_2026}: unknown ordinal "${nth}"`);
+  if (mi < 0) fail(`${MOODYS_2026}: unknown month "${month}"`);
+  // the previous release (October 2025) gave the year before: the count must follow on
+  const prev = (await readPdf(MOODYS_PDF, [1])).pages[0]?.replace(/\s+/g, " ") ?? "";
+  const pm = prev.match(/per il (\p{L}+) anno consecutivo, un rating (A[a1-3]+) con prospettiva stabile/u) ?? fail(`${MOODYS_PDF}: the rating sentence was not found`);
+  if ((NTH[pm[1]]?.[0] ?? -1) !== count[0] - 1 || pm[2] !== rating) fail(`Moody's: ${pm[1]} year ${pm[2]} in 2025 does not lead to ${nth} year ${rating}`);
+  return { rating, outlook, nth, nthEn: count[1], dateIt: `${day} ${month} ${year}`, dateEn: `${day} ${MONTHS_EN[mi]} ${year}`, quote: m[0], prevQuote: pm[0] };
+}
 import { BUDGET_VS_ACTUAL, BVA_ROWS, budgetVsActual, BUDGET_PDF, BUDGET27_MSG, BUDGET27_PDF, BUDGET27_SLIDES, CITY_FIGURES, CITY_PIN, DEBT_PROFILE, INDICATORS, PIN, budget2027Phrases, budgetMultipliers, cityFigures, debtProfile, finance, indicators } from "./adapters/finance";
 
 type Src = (file: string, locator: string) => Source;
@@ -30,6 +51,7 @@ export async function ledger(register: Municipality[], population: Map<number, n
   const fin = finance(register);
   const mp2026 = await budgetMultipliers();
   const p27 = await budget2027Phrases();
+  const mo = await moodys();
   const city = cityFigures();
   const debt = debtProfile();
   const ind = indicators();
@@ -280,10 +302,11 @@ export async function ledger(register: Municipality[], population: Map<number, n
         en: "The 'estimate' point adds the 2026 budget's borrowing need to end-2025 debt, before any asset sales: it is not a City figure." },
         { it: `Preventivo 2027: il debito pubblico aumenta di ${n(-g27("risultatoGlobale"))} milioni (risultato globale: autofinanziamento di ${n(g27("autofinanziamento"))} meno investimenti netti di ${n(g27("investimentiNetti"))}).`,
           en: `2027 budget: public debt rises by CHF ${n(-g27("risultatoGlobale"))} million (overall result: self-financing of ${n(g27("autofinanziamento"))} minus net investment of ${n(g27("investimentiNetti"))}).` },
-        { it: "Rating Moody's: Aa3 con prospettiva stabile, confermato a ottobre 2025 e ad aprile 2026.", en: "Moody's rating: Aa3 with a stable outlook, confirmed in October 2025 and April 2026." }],
+        { it: `Rating Moody's: ${mo.rating} con prospettiva ${mo.outlook}, confermato per il ${mo.nth} anno consecutivo nella revisione periodica pubblicata il ${mo.dateIt}.`,
+          en: `Moody's rating: ${mo.rating} with a stable outlook, confirmed for the ${mo.nthEn} consecutive year in the periodic review published on ${mo.dateEn}.` }],
       source: [src(DEBT_PROFILE, "snapshots (end 2024, end 2025, Q1 2026) and plan.debtPath"), cityPdfSrc("preventivo", 2027),
         src(BUDGET27_MSG, "p. 14: «incremento del debito pubblico di CHF 80.4 mio»"),
-        src(MOODYS_PDF, "p. 1: rating Aa3, prospettiva stabile (27 October 2025)")] },
+        src(MOODYS_2026, `news page of 26 October 2026: '${mo.quote}'`), src(MOODYS_PDF, `p. 1: '${mo.prevQuote}' (27 October 2025)`)] },
     { id: "obbligazioni", n: 6, title: { it: "Le obbligazioni", en: "The bonds" }, stars: ["finanze.obbligazioni", "finanze.debito-lordo", "finanze.interessi"],
       lede: { it: `${n(book.outstandingM, 0)} milioni in ${book.bondCount} obbligazioni, con cedola media ponderata dello ${n(book.weightedCouponPct, 2)}% e una durata residua media di ${n(book.weightedRemainingYears)} anni. Entro tre anni ne scadono ${n(book.maturingWithin["3y"], 0)} milioni.`,
         en: `CHF ${n(book.outstandingM, 0)} million in ${book.bondCount} bonds, with a volume-weighted coupon of ${n(book.weightedCouponPct, 2)}% and ${n(book.weightedRemainingYears)} years average remaining life. CHF ${n(book.maturingWithin["3y"], 0)} million falls due within three years.` },
@@ -325,6 +348,7 @@ export const LEDGER_ORIGINS: Record<string, { url: string; publisher: string }> 
     [CITY_FIGURES]: { url: `https://github.com/nslotus/dati-di-lugano/blob/${CITY_PIN}/out/city-figures.json`, publisher: "Dati di Lugano (figures extracted from the City of Lugano's PDFs)" },
     [INDICATORS]: { url: `https://github.com/nslotus/dati-di-lugano/blob/${PIN}/out/lugano-indicators.json`, publisher: "Dati di Lugano (from the Canton of Ticino municipal statistics)" },
     [BUDGET_VS_ACTUAL]: { url: "https://github.com/nslotus/dati-di-lugano/blob/6627e5f/out/budget-vs-actual.json", publisher: "Dati di Lugano (budget vs actual from the City's recap tables)" },
+    [MOODYS_2026]: { url: "https://www.lugano.ch/news/20261026-rating-moodys/", publisher: "Città di Lugano, notizia: Moody’s conferma il rating Aa3 con prospettiva stabile (26 ottobre 2026)" },
     [MOODYS_PDF]: { url: "https://www.lugano.ch/dam/jcr:f659385e-ceef-4a3b-b14f-c776dcbf239d/20251027-cs-conferma-rating-moodys.pdf", publisher: "Città di Lugano, Moody's rating announcement" },
     [BUDGET27_PDF]: { url: "https://www.lugano.ch/dam/jcr:3252b132-7bd9-4f5b-84af-f03a9a61c763/15%2010%202026_Comunicato_Preventivo%202027.pdf", publisher: "Città di Lugano, Preventivo 2027 press release (15 October 2026)" },
     [BUDGET27_SLIDES]: { url: "https://www.lugano.ch/dam/jcr:3f7967db-a4c6-4d4b-8570-c0ddf97179db/Presentazione_Preventivo%202027.pdf", publisher: "Città di Lugano, Preventivo 2027 press presentation" },
