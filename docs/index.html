@@ -15,7 +15,7 @@
 <canvas id="sky" tabindex="0" aria-label=""></canvas>
 <div class="top">
   <div class="title"><h1 id="h1"></h1><p id="lede"></p><div class="title-acts"><button id="b-tour"></button><button id="b-help" aria-label="?">?</button></div><div class="title-links" id="title-links"></div><div class="title-lang" id="title-lang"></div></div>
-  <div class="tools"><div class="seg" role="group" aria-labelledby="v-l"><span id="v-l"></span><button id="v-fn" aria-pressed="true"></button><button id="v-org" aria-pressed="false"></button></div><div class="seg" role="group" aria-labelledby="m-l"><span id="m-l"></span><button id="m-chf" aria-pressed="true">CHF</button><button id="m-pct" aria-pressed="false">%</button></div><button id="b-tiles"></button><button id="b-table" aria-pressed="false"></button><button id="b-ov" aria-pressed="false"></button><button id="l-it" aria-pressed="true">IT</button><button id="l-en" aria-pressed="false">EN</button></div>
+  <div class="tools"><div class="seg" role="group" aria-labelledby="v-l"><span id="v-l"></span><button id="v-fn" aria-pressed="true"></button><button id="v-org" aria-pressed="false"></button></div><div class="seg seg-view" role="group" id="g-show"><button id="v-sky" aria-pressed="true"></button><button id="b-tiles" aria-pressed="false"></button><button id="b-table" aria-pressed="false"></button></div><button id="b-ov" aria-pressed="false"></button><button id="l-it" aria-pressed="true">IT</button><button id="l-en" aria-pressed="false">EN</button></div>
 </div>
 <section id="intro" hidden role="dialog" aria-modal="true" aria-labelledby="intro-h">
   <div class="intro-card">
@@ -38,7 +38,7 @@
 <section id="ov" hidden role="dialog" aria-modal="true" aria-label=""></section>
 <div class="bottom">
   <div class="nav"><button id="b-over"></button><div class="sectors" id="sectors"></div></div>
-  <div class="corner"><div class="zoom" role="group"><button id="z-out">−</button><button id="z-in">+</button></div><button id="b-leg" aria-expanded="false" aria-controls="legend"></button>
+  <div class="corner"><div class="seg" role="group" aria-labelledby="m-l"><span id="m-l"></span><button id="m-chf" aria-pressed="true">CHF</button><button id="m-pct" aria-pressed="false">%</button></div><div class="zoom" role="group"><button id="z-out">−</button><button id="z-in">+</button></div><button id="b-leg" aria-expanded="false" aria-controls="legend"></button>
     <div class="legend" id="legend" hidden><canvas id="leg" width="260" height="46"></canvas><div class="hint ud" id="ud"></div><div class="hint" id="hint"></div><div class="hint" id="scale"></div></div></div>
 </div>
 <div id="phone" hidden>

@@ -75,7 +75,7 @@ const T = {
     lede: "Siete al centro della cupola. Ogni stella è una voce di spesa della Città nel 2025. <b>L'orizzonte è il preventivo</b>: le voci che hanno speso più del previsto salgono, quelle che hanno speso meno scendono, tanto più quanto più grande è lo scarto (in franchi o in percentuale). Più è luminosa, più è grande la spesa.",
     legendBtn: "Legenda", zoomIn: "Ingrandisci", zoomOut: "Rimpicciolisci",
     moreFail: "Una parte dei dati non si è caricata: ricaricate la pagina per aprire le schede e il quadro.",
-    tilesBtn: "Riquadri", tilesTip: "La stessa spesa in riquadri e barre, al posto del cielo",
+    show: "Mostra come", tilesBtn: "Riquadri", tilesTip: "La stessa spesa in riquadri e barre, al posto del cielo",
     table: "Tabella", sky: "Cielo", close: "Chiudi", horizon: "preventivo 2025", over: "sopra il preventivo", under: "sotto il preventivo",
     notBudget: "non a preventivo", notSpent: "non spesa",
     hint: "Trascinate per scorrere · rotella o pizzico per allargare uno spicchio · doppio clic su una stella per avvicinarvi · 0 per la vista d'insieme",
@@ -150,7 +150,7 @@ const T = {
     lede: "You stand at the centre of the dome. Every star is one of the City's spending lines in 2025. <b>The horizon is the budget</b>: lines that spent more than planned rise, lines that spent less sink, the further the larger the gap (in francs or in percent). The brighter the star, the larger the spending.",
     legendBtn: "Legend", zoomIn: "Zoom in", zoomOut: "Zoom out",
     moreFail: "Part of the data did not load: reload the page to open the cards and the big picture.",
-    tilesBtn: "Tiles", tilesTip: "The same spending as tiles and bars, instead of the sky",
+    show: "Show as", tilesBtn: "Tiles", tilesTip: "The same spending as tiles and bars, instead of the sky",
     table: "Table", sky: "Sky", close: "Close", horizon: "2025 budget", over: "above budget", under: "below budget",
     notBudget: "not in the budget", notSpent: "not spent",
     hint: "Drag to scroll · wheel or pinch to widen a slice · double-click a star to get closer · 0 for the overview",
@@ -365,19 +365,33 @@ function drawStars() {
     const name = s.kind === "fn" ? `${L(s.label)}` : `${s.code} ${L(s.label)}`;
     ctx.font = s.kind === "fn" ? "600 13px Instrument Sans, sans-serif" : "400 12px Instrument Sans, sans-serif";
     const short = name.length > 30 ? name.slice(0, 29) + "…" : name;
-    const w = ctx.measureText(short).width + 8, right = p.x + s._r + 8 + w + 60 > W, x = right ? p.x - s._r - 8 : p.x + s._r + 8, y = p.y - 4;
-    const box = right ? [x - w - 54, y - 13, w + 54, 30] : [x - 2, y - 13, w + 54, 30];
-    const hits = (b) => placed.some((q) => !(b[0] > q[0] + q[2] || b[0] + b[2] < q[0] || b[1] > q[1] + q[3] || b[1] + b[3] < q[1]));
-    if (!forced && hits(box)) continue;
-    let tx = x, al = right ? "right" : "left", bx = box;
-    if (forced && hits(box)) { const alt = right ? [p.x + s._r + 8 - 2, y - 13, w + 54, 30] : [p.x - s._r - 8 - w - 54, y - 13, w + 54, 30]; if (!hits(alt)) { bx = alt; tx = right ? p.x + s._r + 8 : p.x - s._r - 8; al = right ? "left" : "right"; } }
+    const sub = mode === "chf" ? `${sgn(s.c - s.b, 2)} mio · ${pct}` : `${pct} · ${n(s.c, 1)} mio`;
+    // the label's width is its wider line (a short name can carry a long "−0.68 mio · −0.9%")
+    const nameW = ctx.measureText(short).width;
+    ctx.font = "500 11.5px Instrument Sans, sans-serif";
+    const w = Math.max(nameW, ctx.measureText(sub).width) + 6, y = p.y - 4;
+    ctx.font = s.kind === "fn" ? "600 13px Instrument Sans, sans-serif" : "400 12px Instrument Sans, sans-serif";
+    // two places, right or left of the star; each is scored by what it would cover: the page's edges and panels and
+    // other labels count most, other stars less. The first clear one is used; a sector's label always shows, where it covers least.
+    const overlap = (b, q) => !(b[0] > q[0] + q[2] || b[0] + b[2] < q[0] || b[1] > q[1] + q[3] || b[1] + b[3] < q[1]);
+    const discs = visible.filter((o) => o.s !== s && o.s._p).map((o) => [o.p.x - o.s._r - 2, o.p.y - o.s._r - 2, 2 * o.s._r + 4, 2 * o.s._r + 4]);
+    // right, left, then above and below the star (centred) when both sides are taken
+    const sides = [{ al: "left", tx: p.x + s._r + 8, ty: y }, { al: "right", tx: p.x - s._r - 8, ty: y },
+      { al: "center", tx: p.x, ty: p.y - s._r - 21 }, { al: "center", tx: p.x, ty: p.y + s._r + 15 }].map((c) => {
+      const left = c.al === "left" ? c.tx - 2 : c.al === "right" ? c.tx - w - 2 : c.tx - w / 2 - 2, bx = [left, c.ty - 13, w + 4, 30];
+      const off = bx[0] < 4 || bx[0] + bx[2] > W - 4 || bx[1] < TOP - 10 || bx[1] + bx[3] > H - BOTM ? 100 : 0;
+      return { ...c, bx, score: off + placed.filter((q) => overlap(bx, q)).length * 10 + discs.filter((q) => overlap(bx, q)).length };
+    });
+    const clear = sides.find((c) => c.score === 0), pick = clear ?? (forced ? sides.reduce((a, c) => (c.score < a.score ? c : a)) : null);
+    if (!pick) continue;
+    const { tx, ty, al, bx } = pick;
     placed.push(bx);
     ctx.textAlign = al;
     ctx.fillStyle = s.kind === "fn" ? "rgba(255,244,228,0.98)" : "rgba(226,232,250,0.88)";
     ctx.shadowColor = "rgba(0,0,0,0.9)"; ctx.shadowBlur = 6;
-    ctx.fillText(short, tx, y);
+    ctx.fillText(short, tx, ty);
     ctx.font = "500 11.5px Instrument Sans, sans-serif"; ctx.fillStyle = s.alt >= 0 ? "rgba(200,214,255,0.92)" : "rgba(255,214,170,0.92)";
-    ctx.fillText(mode === "chf" ? `${sgn(s.c - s.b, 2)} mio · ${pct}` : `${pct} · ${n(s.c, 1)} mio`, tx, y + 15);
+    ctx.fillText(sub, tx, ty + 15);
     ctx.shadowBlur = 0;
   }
   ctx.globalAlpha = 1;
@@ -771,18 +785,14 @@ function writeOverview() {
 function showOverview(on) { if (on && !moreReady) return whenMore(() => showOverview(true)); const was = !ovEl.hidden; ovEl.hidden = !on; if (!on && was && !tour) document.getElementById("b-ov").focus(); syncRoute(); document.getElementById("b-ov").setAttribute("aria-pressed", String(on)); if (on) { writeOverview(); ovEl.scrollTop = 0; ovEl.querySelector("#ov-x").focus(); } }
 function openOverview(id) { if (!moreReady) return whenMore(() => openOverview(id)); if (focus) closeFocus(); toggleTable(false); showOverview(true); if (id) setTimeout(() => ovEl.querySelector(`#ov-${id}`)?.scrollIntoView({ block: "start" }), 50); }
 document.getElementById("b-ov").onclick = () => (ovEl.hidden ? openOverview() : showOverview(false));
-// phones: the header becomes two columns, the right one right-justified:
-//   title             IT EN
-//   Il quadro Tabella Tour ?
-//   Funzioni Dicasteri CHF %
-// on wider screens everything goes back to the tools row
+// The top bar on a computer: [Funzioni | Dicasteri] [Cielo | Riquadri | Tabella] Il quadro, and one language button (the
+// other language). CHF | % sits in the corner beside the legend, since it changes how the heights read. Up to 720px
+// the phone layout replaces all of it (assets/phone.js); this keeps the bar in order if the window is resized.
 function placeTopButtons() {
-  const narrow = innerWidth < 720, title = document.querySelector(".title"), tools = document.querySelector(".tools");
-  const links = document.getElementById("title-links"), langs = document.getElementById("title-lang");
-  const [ov, table, it, en] = ["b-ov", "b-table", "l-it", "l-en"].map((id) => document.getElementById(id));
+  const tools = document.querySelector(".tools"), corner = document.querySelector(".corner");
+  const [ov, it, en, show] = ["b-ov", "l-it", "l-en", "g-show"].map((id) => document.getElementById(id));
   const segView = document.getElementById("v-fn").parentElement, segMode = document.getElementById("m-chf").parentElement;
-  if (narrow && ov.parentElement !== links) { links.append(ov, table); langs.append(it, en); title.append(segView, segMode); }
-  else if (!narrow && ov.parentElement !== tools) tools.append(segView, segMode, table, ov, it, en);
+  if (ov.parentElement !== tools || segMode.parentElement !== corner) { tools.append(segView, show, ov, it, en); corner.prepend(segMode); }
 }
 placeTopButtons();
 addEventListener("resize", () => { placeTopButtons(); redraw(); });
@@ -926,8 +936,9 @@ function writeTable() {
   const go = (tr) => { const s = stars.find((x) => x.kind === "line" && x.code === tr.dataset.code); if (!s) return; toggleTable(false); select(s, false); flyTo(s.az, s.alt, Math.min(fov, SLICE * 1.6)); cv.focus(); };
   el.querySelectorAll("tr[data-code]").forEach((tr) => { tr.onclick = () => go(tr); tr.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(tr); } }; });
 }
-function toggleTable(on) { const el = document.getElementById("table"); el.hidden = !on; syncRoute(); document.getElementById("b-table").setAttribute("aria-pressed", String(on)); document.getElementById("b-table").textContent = on ? T[lang].sky : T[lang].table; if (on) writeTable(); }
-document.getElementById("b-table").onclick = () => toggleTable(document.getElementById("table").hidden);
+function toggleTable(on) { const el = document.getElementById("table"); el.hidden = !on; syncRoute(); document.getElementById("b-table").setAttribute("aria-pressed", String(on)); document.getElementById("v-sky").setAttribute("aria-pressed", String(!on)); if (on) writeTable(); }
+document.getElementById("b-table").onclick = () => toggleTable(true);
+document.getElementById("v-sky").onclick = () => toggleTable(false);
 document.getElementById("b-tiles").onclick = () => phoneUI?.setTiles(true);
 
 function writeLegend() {
@@ -946,7 +957,9 @@ function writeText() {
   toggleTable(!document.getElementById("table").hidden); writeSectors(); writeLegend(); if (sel && !focus) select(sel); if (focus) renderFocus(null); redraw();
   document.getElementById("b-tour").textContent = TOUR[lang].button; if (tour) renderTour();
   document.getElementById("b-ov").textContent = t.ovBtn;
-  document.getElementById("b-tiles").textContent = `▦ ${t.tilesBtn}`; document.getElementById("b-tiles").title = t.tilesTip; ovEl.setAttribute("aria-label", t.ovTitle); if (!ovEl.hidden) writeOverview();
+  document.getElementById("b-tiles").textContent = t.tilesBtn; document.getElementById("b-tiles").title = t.tilesTip;
+  document.getElementById("v-sky").textContent = t.sky; document.getElementById("b-table").textContent = t.table; document.getElementById("g-show").setAttribute("aria-label", t.show);
+  for (const l of ["it", "en"]) document.getElementById(`l-${l}`).title = l === "it" ? "Italiano" : "English"; ovEl.setAttribute("aria-label", t.ovTitle); if (!ovEl.hidden) writeOverview();
 }
 addEventListener("keydown", (e) => { if (e.key === "Escape" && focus) closeFocus(); else if (e.key === "Escape" && !document.getElementById("table").hidden && !tour) { toggleTable(false); document.getElementById("b-table").focus(); } });
 const intro = document.getElementById("intro");
@@ -1158,5 +1171,11 @@ else {
 }
 let seen = false; try { seen = localStorage.getItem("cupola-intro") === "1"; } catch {}
 // after every script has run, so that the phone layout can take over first
-document.addEventListener("DOMContentLoaded", () => { started = true; if (phoneUI?.active()) phoneUI.start(); else if (location.hash.length > 1) applyRoute(); else if (!seen) showIntro(true); });
+document.addEventListener("DOMContentLoaded", () => { started = true; if (phoneUI?.active()) phoneUI.start(); else if (location.hash.length > 1) applyRoute(); else if (!seen) firstVisit(); });
+// a first visit opens on the guided tour, once: the sky is hard to read without it. A moment first, so the sky is seen;
+// the instructions stay one click away ("?"), and a shared link opens what it points to instead.
+function firstVisit() {
+  try { localStorage.setItem("cupola-intro", "1"); } catch {}
+  setTimeout(() => { if (!tour && intro.hidden && !focus && ovEl.hidden) startTour(); }, 900);
+}
 document.fonts?.ready.then(redraw);

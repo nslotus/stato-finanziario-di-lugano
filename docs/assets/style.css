@@ -48,6 +48,9 @@ img { max-width: 100%; }
   .zoom { display: flex; gap: 4px; }
   .zoom button { width: 36px; padding: 7px 0; font-size: 17px; line-height: 1; }
   #b-leg[aria-expanded="true"] { border-color: var(--accent); }
+  /* one language button: the language not shown */
+  .tools #l-it[aria-pressed="true"], .tools #l-en[aria-pressed="true"] { display: none; }
+  .seg-view { padding-left: 3px; }
   .legend { position: absolute; right: 0; bottom: calc(100% + 8px); width: 300px; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55); display: grid; gap: 6px; padding: 10px 12px; border-radius: 12px; background: var(--glass); border: 1px solid var(--line); backdrop-filter: blur(10px); font-size: 12px; color: var(--muted); }
   .legend canvas { display: block; }
   .legend .hint { max-width: 40ch; }

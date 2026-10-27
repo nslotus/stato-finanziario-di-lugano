@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Computers: a calmer top bar. "Cielo | Riquadri | Tabella" is one switch for how to look at the data; one language
+  button shows the other language; "CHF | %" moved to the corner beside the legend, since it changes how the heights
+  read. The top bar is now four groups: functions or departments, the view, Il quadro, the language.
+- The sky's labels: a label's width now counts its second line too, so labels near the right edge (Finanze) are no
+  longer cut; a label also avoids covering other stars, trying right, left, above and below in turn (Economia's figures
+  covered a neighbouring star).
+- Computers: a first visit opens on the guided tour, which starts by itself after a moment (the sky is hard to read
+  without it); it runs once per browser. The instructions stay behind "?"; a shared link opens what it points to instead.
 - Moody's: the rating note now reads from the City's news page of 26 October 2026 (archived): Aa3 with a stable outlook,
   confirmed for the tenth consecutive year in the periodic review published on 23 October 2026. The build checks that the
   count follows on from the October 2025 release (ninth year). The note's earlier "confirmed in April 2026" had no
