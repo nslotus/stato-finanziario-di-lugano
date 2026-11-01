@@ -6,6 +6,7 @@
 
 import { readFileSync } from "node:fs";
 import { fail, norm, num, rawPath, sheet, type Row } from "./common";
+import type { Item } from "./pdf";
 import { matcher, type Municipality } from "./municipalities";
 import { APPENDICE } from "./sel";
 
@@ -61,4 +62,61 @@ export function schools(file: string) {
     const r = j.results.find((x) => x.schoolYear === year) ?? fail(`schools: no ${year}`);
     return { value: r.figures[key].value ?? fail(`schools ${year}: ${key} empty`), source: r.source };
   };
+}
+
+/**
+ * The City's per-site table for the 2025/26 school year (published with the school-start release of 3 September 2025):
+ * pupils and sections at each kindergarten and primary site, grouped in five school zones. Read by position: the
+ * kindergarten table is the left half of the page, the primary table the right half; a few rows print their numbers
+ * glued to the name ("81Pazzallo"), and rows of the two halves sit at slightly different heights, so each half is read
+ * on its own. Every site row must add up to its zone's printed total, every zone to the institute's printed total.
+ */
+export const SCHOOL_SITES = "20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf";
+export type Site = { name: string; sections: number; pupils: number };
+export type Zone = { zone: string; sections: number; pupils: number; sites: Site[] };
+export type Level = { sections: number; pupils: number; zones: Zone[] };
+
+export async function schoolSites(read: (file: string, pages: number[]) => Promise<{ items: Item[][] }>) {
+  const { items } = await read(SCHOOL_SITES, [1]);
+  const page = items[0] ?? fail(`${SCHOOL_SITES}: no page 1`);
+  const NUM = /^\d[\d’']*$/, toN = (s: string) => Number(s.replace(/[’']/g, ""));
+  // split "81Pazzallo" into its number and its name, keeping the left edge for each
+  const toks = page.flatMap((it) => {
+    const m = it.s.match(/^(\d[\d’']*)(\p{L}.*)$/u);
+    return m ? [{ x: it.x, y: it.y, s: m[1] }, { x: it.x + 1, y: it.y, s: m[2] }] : [{ x: it.x, y: it.y, s: it.s }];
+  });
+  const head = page.filter((it) => it.s === "ISTITUTO:");
+  if (head.length !== 2) fail(`${SCHOOL_SITES}: expected two 'ISTITUTO:' headings, found ${head.length}`);
+  const split = Math.max(...head.map((h) => h.x)) - 5;
+  const level = (left: boolean): Level => {
+    const half = toks.filter((t) => (t.x < split) === left);
+    const ys = [...new Set(half.map((t) => Math.round(t.y)))].sort((a, b) => b - a);
+    let inst: { sections: number; pupils: number } | null = null, cur: Zone | null = null;
+    const zones: Zone[] = [];
+    for (const y of ys) {
+      const row = half.filter((t) => Math.round(t.y) === y).sort((a, b) => a.x - b.x);
+      const words = row.filter((t) => !NUM.test(t.s)).map((t) => t.s).join(" ").trim();
+      const nums = row.filter((t) => NUM.test(t.s)).map((t) => toN(t.s));
+      const hd = words.match(/^([\p{Lu} ]+):/u);
+      if (hd) { cur = hd[1].trim() === "ISTITUTO" ? null : { zone: hd[1].trim(), sections: NaN, pupils: NaN, sites: [] }; if (cur) zones.push(cur); continue; }
+      if (!nums.length) continue;
+      if (nums.length !== 2 || !words) fail(`${SCHOOL_SITES}: row '${words}' has ${nums.length} numbers`);
+      const [sections, pupils] = nums;
+      if (words === "Totale") { if (cur) { cur.sections = sections; cur.pupils = pupils; } else inst = { sections, pupils }; continue; }
+      if (!cur) fail(`${SCHOOL_SITES}: site row '${words}' outside a school zone`);
+      cur.sites.push({ name: words, sections, pupils });
+    }
+    const merged = zones;
+    if (!inst) fail(`${SCHOOL_SITES}: no institute total (${left ? "left" : "right"} half)`);
+    for (const z of merged) {
+      if (Number.isNaN(z.sections) || !z.sites.length) fail(`${SCHOOL_SITES}: zone ${z.zone} has no total or no sites`);
+      const s = z.sites.reduce((t, q) => t + q.sections, 0), p = z.sites.reduce((t, q) => t + q.pupils, 0);
+      if (s !== z.sections || p !== z.pupils) fail(`${SCHOOL_SITES}: ${z.zone} sites add up to ${s}/${p}, printed ${z.sections}/${z.pupils}`);
+    }
+    const s = merged.reduce((t, z) => t + z.sections, 0), p = merged.reduce((t, z) => t + z.pupils, 0);
+    if (s !== inst.sections || p !== inst.pupils) fail(`${SCHOOL_SITES}: zones add up to ${s}/${p}, institute total ${inst.sections}/${inst.pupils}`);
+    if (merged.length !== 5) fail(`${SCHOOL_SITES}: ${merged.length} school zones, expected 5`);
+    return { ...inst, zones: merged };
+  };
+  return { kindergarten: level(true), primary: level(false) };
 }

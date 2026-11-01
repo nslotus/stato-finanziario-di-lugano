@@ -34,7 +34,17 @@ Not possible with these sources: spending **per pupil** across all 106 municipal
 
 - **Press coverage** (tio.ch, cdt.ch, Rivista di Lugano): used only to find the city's releases; figures come from the city's PDFs.
 - ***Lugano in Cifre 2024***: different school figures (2,261 primary pupils in 122 classes; 1,326 kindergarten pupils), probably a different reference date or scope. Not mixed with the releases.
-- **Per-school table** (`20250903-…-tabella.pdf`): pupils and sections per site and school zone, which is neighbourhood-level data. Its PDF text runs columns together ("Ronchetto227" = 2 sections, 27 pupils); parsing needs text positions. Parked.
+- **Per-school table** (`20250903-…-tabella.pdf`): built on 1 November 2026, see below.
+
+## Pupils by site, 2025/26 (built 1 November 2026)
+
+The City's table of pupils and sections per site and school zone, published with the school-start release of 3 September 2025 (same minute on lugano.ch), archived as `20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf`. Its text runs columns together ("Ronchetto227" = 2 sections, 27 pupils; one row prints "81Pazzallo"), and the rows of the two halves sit at different heights, so it is read by position: the kindergarten table is the left half of the page, the primary table the right half.
+
+Two stars: **Scuola dell'infanzia: allievi per sede** (1'177 pupils, 27 sites, 69 sections) and **Scuola elementare: allievi per sede** (2'090 pupils, 19 sites, 119 classes), each with a chart by school zone and one by site. The largest primary site is printed "NCS" in the table; the City's release calls it Viganello, and so does the page.
+
+Checks that stop the build: every site adds up to its zone's printed total, every zone to the institute's printed total, five zones on each side, and the institute totals equal the release's figures (pupils, sections and classes). Check 8 finds both totals on the page, and check 15 again with pypdf. Read separately with pdf.js and pypdf on 1 November 2026, all 58 rows agreed cell by cell.
+
+The PDF's document information names the City employee who produced it, as many of the City's PDFs do. The archived file is kept byte-identical to the City's, and check 10 fails if any such name appears in the repository's own files.
 - **"80 milioni in 10 anni"** for school buildings: a quote from a press conference reported by newspapers, not a figure in the city's accounts. Not used.
 
 ## Proposed stars

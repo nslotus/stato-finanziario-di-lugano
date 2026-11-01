@@ -4,7 +4,7 @@ Every document the figures come from, archived in [`sources/`](sources/) exactly
 [`sources/MANIFEST.json`](sources/MANIFEST.json); `npm run verify` recomputes every SHA-256 and fails if a file changed.
 The documents remain under the terms of their publishers (see [`sources/README.md`](sources/README.md)). Italian: [`FONTI.md`](FONTI.md).
 
-75 documents, 134.0 MB.
+76 documents, 134.1 MB.
 
 | File | Publisher | Original | Retrieved | Size | SHA-256 | Cited by |
 |---|---|---|---|---|---|---|
@@ -25,6 +25,7 @@ The documents remain under the terms of their publishers (see [`sources/README.m
 | [`city-preventivo-2026-comunicato.pdf`](sources/city-preventivo-2026-comunicato.pdf) | Città di Lugano, Preventivo 2026 press release | [link](https://www.lugano.ch/dam/jcr:0a793cce-fba0-4c83-b596-e65560732832/20251023-cs-preventivo-2026-piano-finanziario-2026-2033.pdf) | 2026-10-15 | 51 KB | `23c09304e1902f33…` | 3 |
 | [`decs-B110-infanzia.xlsx`](sources/decs-B110-infanzia.xlsx) | Cantone Ticino, DECS – Statistica allievi (B110) | [link](https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/B110Allievi_e_sezioni_delle_scuole_dell_infanzia_pubbliche_secondo_il_circondario_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx) | 2026-10-15 | 38 KB | `7df635e736e1a9bd…` | 1 |
 | [`decs-B210-elementari.xlsx`](sources/decs-B210-elementari.xlsx) | Cantone Ticino, DECS – Statistica allievi (B210) | [link](https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/B210Allievi_e_sezioni_delle_scuole_elementari_pubbliche_secondo_il_circondario_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx) | 2026-10-15 | 40 KB | `29f40323a7088362…` | 1 |
+| [`20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf`](sources/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf) | Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025) | [link](https://www.lugano.ch/dam/jcr:fa5a90d1-2c2a-4091-a361-4a17ab72c6c6/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf) | 2026-11-01 | 36 KB | `27f1a85d79d15ac0…` | 2 |
 | [`dati-di-lugano@74c57b7-schools.json`](sources/dati-di-lugano@74c57b7-schools.json) | Dati di Lugano (school figures extracted from the City's releases) | [link](https://github.com/nslotus/dati-di-lugano/blob/74c57b7/out/schools.json) | 2026-10-15 | 9 KB | `00d3bc7a53cabbed…` | 3 |
 | [`sbb-passagierfrequenz.csv`](sources/sbb-passagierfrequenz.csv) | FFS / SBB open data, Ein- und Aussteigende an Bahnhöfen | [link](https://data.sbb.ch/api/explore/v2.1/catalog/datasets/passagierfrequenz/exports/csv?delimiter=%3B) | 2026-10-15 | 944 KB | `e6360f2a87252c3c…` | 1 |
 | [`dati-di-lugano@969fe8d-mobility.json`](sources/dati-di-lugano@969fe8d-mobility.json) | Dati di Lugano (TPL and PubliBike figures extracted from the releases) | [link](https://github.com/nslotus/dati-di-lugano/blob/969fe8d/out/mobility.json) | 2026-10-15 | 5 KB | `f2502dc63549f6dd…` | 2 |

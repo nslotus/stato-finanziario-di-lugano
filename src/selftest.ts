@@ -13,6 +13,13 @@ const writeJs = (file: string, name: string, f: { head: string; obj: Json }) => 
 const editJs = (file: string, name: string, change: (o: Json) => void) => { const f = js(file, name); change(f.obj); writeJs(file, name, f); };
 const editJson = (file: string, change: (o: Json) => void) => { const o = JSON.parse(readFileSync(file, "utf8")); change(o); writeFileSync(file, JSON.stringify(o, null, 2) + "\n"); };
 const line = (o: Json, code: string) => o.D.lines.find((l: Json) => l.code === code);
+/** A PDF's Author field, read at run time so that no staff name is written in this file. */
+const pdfAuthorSync = (file: string) => {
+  for (const py of ["python3", "python"]) {
+    try { return execFileSync(py, ["-c", "import sys; from pypdf import PdfReader; print((PdfReader(sys.argv[1]).metadata or {}).get('/Author') or '')", file], { encoding: "utf8" }).trim(); } catch { /* next */ }
+  }
+  throw new Error("this case needs Python 3 with pypdf");
+};
 
 type Case = { what: string; touches: string[]; fail: number[]; pass?: number[]; plant: () => void; cleanup?: string[] };
 const CASES: Case[] = [
@@ -42,6 +49,8 @@ const CASES: Case[] = [
     plant: () => editJson(MANIFEST, (o) => { const a = Array.isArray(o) ? o : o.files; const m = a.find((x: Json) => /dati-di-lugano@/.test(x.file)); m.url = m.url.replace(/\/blob\/[0-9a-f]+\//, "/blob/0000000/"); }) },
   { what: "a stray file in sources/", touches: [], cleanup: ["sources/stray.txt"], fail: [2], plant: () => writeFileSync("sources/stray.txt", "not in the manifest\n") },
   { what: "an API key in a file", touches: [], cleanup: ["src/_selftest.tmp.txt"], fail: [10], plant: () => writeFileSync("src/_selftest.tmp.txt", `key = "sk-${"selftest".repeat(3)}"\n`) },
+  { what: "a staff name from an archived PDF's metadata in a file", touches: [], cleanup: ["src/_selftest.staff.txt"], fail: [10],
+    plant: () => writeFileSync("src/_selftest.staff.txt", `prepared by ${pdfAuthorSync("sources/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf")}\n`) },
 ];
 
 // keep every touched file, and put it back whatever happens

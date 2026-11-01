@@ -267,7 +267,9 @@
   "today.annualInterestM and accounts2024 (computed from the bond register of Dati di Lugano)": "today.annualInterestM e accounts2024 (calcolati dal registro dei prestiti obbligazionari di Dati di Lugano)",
   "today.outstandingM (bond register of Dati di Lugano)": "today.outstandingM (registro dei prestiti obbligazionari di Dati di Lugano)",
   "years[2023].contoEconomico (canton accounts 2023)": "years[2023].contoEconomico (conti cantonali 2023)",
-  "years[2024].indicatori (canton tab12, rating scales from the 2024 report)": "years[2024].indicatori (tab12 del Cantone, scale di valutazione dal rapporto 2024)"
+  "years[2024].indicatori (canton tab12, rating scales from the 2024 report)": "years[2024].indicatori (tab12 del Cantone, scale di valutazione dal rapporto 2024)",
+  "p. 1: table 'SCUOLA DELL'INFANZIA', one row per site, 'Totale' for each school zone and for the institute": "p. 1: tabella 'SCUOLA DELL'INFANZIA', una riga per sede, 'Totale' per ogni zona scolastica e per l'Istituto",
+  "p. 1: table 'SCUOLA ELEMENTARE', one row per site, 'Totale' for each school zone and for the institute": "p. 1: tabella 'SCUOLA ELEMENTARE', una riga per sede, 'Totale' per ogni zona scolastica e per l'Istituto"
  },
  "publishers": {
   "AIL SA, Rapporto annuale integrato 2025": "AIL SA, Rapporto annuale integrato 2025",
@@ -342,6 +344,7 @@
   "Ufficio di statistica del Cantone Ticino (USTAT) – transazioni immobiliari": "Ufficio di statistica del Cantone Ticino (USTAT) – transazioni immobiliari",
   "Ufficio di statistica del Cantone Ticino (USTAT), Annuario statistico ticinese, cap. 14 Salute": "Ufficio di statistica del Cantone Ticino (USTAT), Annuario statistico ticinese, cap. 14 Salute",
   "Ufficio federale del registro di commercio – Zefix, Indice centrale delle ditte (dati aperti LINDAS, enti attivi): risultato dell'interrogazione del 18.10.2026": "Ufficio federale del registro di commercio – Zefix, Indice centrale delle ditte (dati aperti LINDAS, enti attivi): risultato dell'interrogazione del 18.10.2026",
-  "Ufficio federale di statistica / Unione delle città svizzere – Statistica delle città svizzere 2026, beneficiari dell'aiuto sociale (DF_SSV_SOCIAL)": "Ufficio federale di statistica / Unione delle città svizzere – Statistica delle città svizzere 2026, beneficiari dell'aiuto sociale (DF_SSV_SOCIAL)"
+  "Ufficio federale di statistica / Unione delle città svizzere – Statistica delle città svizzere 2026, beneficiari dell'aiuto sociale (DF_SSV_SOCIAL)": "Ufficio federale di statistica / Unione delle città svizzere – Statistica delle città svizzere 2026, beneficiari dell'aiuto sociale (DF_SSV_SOCIAL)",
+  "Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025)": "Città di Lugano, Istituto scolastico: allievi e sezioni per sede, anno scolastico 2025/26 (tabella pubblicata con il comunicato del 3 settembre 2025)"
  }
 }

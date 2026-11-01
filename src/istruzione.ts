@@ -5,7 +5,8 @@ import { compare, type Relation, type Source, type Star, type Text } from "./cat
 import type { Municipality } from "./adapters/municipalities";
 import { AGE_FILE, AGE_SHEET } from "./adapters/municipalities";
 import { APPENDICE, ALLEGATO } from "./adapters/sel";
-import { DECS_KG, DECS_PR, DECS_YEAR, education, schools } from "./adapters/education";
+import { DECS_KG, DECS_PR, DECS_YEAR, SCHOOL_SITES, education, schoolSites, schools, type Level } from "./adapters/education";
+import { readPdf } from "./adapters/pdf";
 
 export const SCHOOLS_PIN = "74c57b7"; // dati-di-lugano commit with out/schools.json
 export const SCHOOLS_FILE = SCHOOLS_PIN ? `dati-di-lugano@${SCHOOLS_PIN}-schools.json` : "";
@@ -13,7 +14,7 @@ export const SCHOOLS_FILE = SCHOOLS_PIN ? `dati-di-lugano@${SCHOOLS_PIN}-schools
 type Src = (file: string, locator: string) => Source;
 const n = (v: number, d = 1) => v.toLocaleString("de-CH", { minimumFractionDigits: d, maximumFractionDigits: d });
 
-export function istruzione(register: Municipality[], population: Map<number, number>, src: Src) {
+export async function istruzione(register: Municipality[], population: Map<number, number>, src: Src) {
   const ed = education(register);
   const name = (bfs: number) => register.find((m) => m.bfs === bfs)!.name;
   const method: Text = { it: "Spesa lorda del comune (conto economico 2024) divisa per la popolazione al 31.12.2024.",
@@ -104,6 +105,52 @@ export function istruzione(register: Municipality[], population: Map<number, num
     ];
   }
 
+  // pupils by site and school zone, 2025/26: the City's table published with the school-start release
+  const tab = await schoolSites(readPdf);
+  // the table prints the largest primary site as "NCS"; the City's release calls it Viganello
+  const SITE_NAME: Record<string, string> = { NCS: "Viganello" };
+  const ZONE: Record<string, string> = { "CENTRO": "Centro", "COLLINA": "Collina", "MONTE BOGLIA": "Monte Boglia", "MONTE BRÈ": "Monte Brè", "MONTE SAN SALVATORE": "Monte San Salvatore" };
+  for (const lv of [tab.kindergarten, tab.primary]) for (const z of lv.zones) {
+    z.zone = ZONE[z.zone] ?? (() => { throw new Error(`${SCHOOL_SITES}: unknown school zone ${z.zone}`); })();
+    for (const q of z.sites) q.name = SITE_NAME[q.name] ?? q.name;
+  }
+  if (SCHOOLS_FILE) {
+    // the table and the release must agree on the totals
+    const sc = schools(SCHOOLS_FILE), y = "2025/26";
+    const pairs: [string, number, number][] = [["kgPupils", tab.kindergarten.pupils, sc(y, "kgPupils").value], ["kgSections", tab.kindergarten.sections, sc(y, "kgSections").value],
+      ["prPupils", tab.primary.pupils, sc(y, "prPupils").value], ["prClasses", tab.primary.sections, sc(y, "prClasses").value]];
+    for (const [k, a, b] of pairs) if (a !== b) throw new Error(`${SCHOOL_SITES}: ${k} ${a} differs from the release's ${b}`);
+  }
+  const sitesSrc = (half: Text) => src(SCHOOL_SITES, `p. 1: table '${half.it}', one row per site, 'Totale' for each school zone and for the institute`);
+  const siteStar = (id: string, lv: Level, what: { it: string; en: string; unitIt: string; unitEn: string; oneIt: string; oneEn: string; half: string; related: string[] }): Star => {
+    const sites = lv.zones.flatMap((z) => z.sites.map((q) => ({ ...q, zone: z.zone })));
+    const big = sites.reduce((a, b) => (b.pupils > a.pupils ? b : a)), small = sites.reduce((a, b) => (b.pupils < a.pupils ? b : a));
+    const s = sitesSrc({ it: what.half, en: what.half });
+    const star: Star = { id, constellation: "istruzione", label: { it: `${what.it}: allievi per sede`, en: `${what.en}: pupils by site` },
+      about: { it: `Allievi nelle ${sites.length} sedi di ${what.it.toLowerCase()} della Città, anno scolastico 2025/26, in ${lv.sections} ${what.unitIt} e cinque zone: da ${small.pupils} (${small.name}) a ${big.pupils} (${big.name}) per sede.`,
+        en: `Pupils at the City's ${sites.length} ${what.en.toLowerCase()} sites, school year 2025/26, in ${lv.sections} ${what.unitEn} and five school zones: from ${small.pupils} (${small.name}) to ${big.pupils} (${big.name}) per site.` },
+      value: lv.pupils, unit: "allievi", year: 2025, area: "Lugano", kind: "official",
+      method: { it: "Tabella della Città per sede, pubblicata con il comunicato di inizio anno scolastico del 3 settembre 2025, letta per posizione sulla pagina. Ogni sede somma al totale della sua zona, ogni zona al totale dell'Istituto, e i totali sono quelli del comunicato.",
+        en: "The City's table by site, published with the school-start release of 3 September 2025, read by position on the page. Each site adds up to its zone's total, each zone to the institute's total, and the totals are those of the release." },
+      source: [s], related: what.related,
+      detail: [
+        { title: { it: `Per zona: allievi e ${what.unitIt}`, en: `By school zone: pupils and ${what.unitEn}` },
+          chart: { type: "hbars", unit: "allievi", color: "var(--istruzione)", data: lv.zones.map((z, i) => ({ key: `z${i}`, label: { it: z.zone, en: z.zone }, value: z.pupils,
+            note: { it: `${z.sections} ${what.unitIt}, ${z.sites.length} sedi`, en: `${z.sections} ${what.unitEn}, ${z.sites.length} sites` } })) },
+          source: [s] },
+        { title: { it: "Per sede", en: "By site" },
+          chart: { type: "hbars", unit: "allievi", color: "var(--istruzione)", data: [...sites].sort((a, b) => b.pupils - a.pupils || a.name.localeCompare(b.name)).map((q, i) => ({ key: `s${i}`,
+            label: { it: q.name, en: q.name }, value: q.pupils, note: { it: `${q.zone}, ${q.sections} ${q.sections === 1 ? what.oneIt : what.unitIt}`, en: `${q.zone}, ${q.sections} ${q.sections === 1 ? what.oneEn : what.unitEn}` } })) },
+          ...(sites.some((q) => q.name === "Viganello") ? { note: { it: "Viganello: nella tabella «NCS»; il comunicato della Città la chiama Viganello.", en: "Viganello: printed as \"NCS\" in the table; the City's release calls it Viganello." } } : {}),
+          source: [s] },
+      ] };
+    return star;
+  };
+  stars.push(
+    siteStar("istruzione.sedi-infanzia", tab.kindergarten, { it: "Scuola dell'infanzia", en: "Kindergarten", unitIt: "sezioni", unitEn: "sections", oneIt: "sezione", oneEn: "section", half: "SCUOLA DELL'INFANZIA", related: ["istruzione.allievi", "istruzione.sezione-infanzia"] }),
+    siteStar("istruzione.sedi-elementare", tab.primary, { it: "Scuola elementare", en: "Primary school", unitIt: "classi", unitEn: "classes", oneIt: "classe", oneEn: "class", half: "SCUOLA ELEMENTARE", related: ["istruzione.allievi", "istruzione.classe-elementare"] }),
+  );
+
   const relations: Relation[] = [
     { id: "rel.formazione-under15", x: "istruzione.under15", y: "istruzione.spesa",
       label: { it: "Spesa per la formazione e residenti giovani", en: "Education spending and young residents" },
@@ -118,6 +165,8 @@ export const ISTRUZIONE_ORIGINS: Record<string, { url: string; publisher: string
     publisher: "Cantone Ticino, DECS – Statistica allievi (B110)" },
   [DECS_PR]: { url: "https://www4.ti.ch/fileadmin/DECS/DS/documenti/statistica/allievi/B210Allievi_e_sezioni_delle_scuole_elementari_pubbliche_secondo_il_circondario_l_anno_e_il_sesso_dal_2015-16_al_2024-25.xlsx",
     publisher: "Cantone Ticino, DECS – Statistica allievi (B210)" },
+  [SCHOOL_SITES]: { url: "https://www.lugano.ch/dam/jcr:fa5a90d1-2c2a-4091-a361-4a17ab72c6c6/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+    publisher: "Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025)" },
   ...(SCHOOLS_FILE ? { [SCHOOLS_FILE]: { url: `https://github.com/nslotus/dati-di-lugano/blob/${SCHOOLS_PIN}/out/schools.json`,
     publisher: "Dati di Lugano (school figures extracted from the City's releases)" } } : {}),
 };

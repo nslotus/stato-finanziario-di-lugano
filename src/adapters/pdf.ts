@@ -44,5 +44,11 @@ export async function readPdf(file: string, wanted?: number[]) {
   return { pages, items, numPages: entry!.numPages };
 }
 
+/** The Author field of a PDF's document information, or "" (staff names that must never reach the site: check 10). */
+export async function pdfAuthor(file: string): Promise<string> {
+  const doc = await PDFJS.getDocument(readFileSync(file));
+  try { return String((await doc.getMetadata())?.info?.Author ?? "").trim(); } finally { doc.destroy(); }
+}
+
 /** Pages 1 to n (or all), for documents read from the start. */
 export const firstPages = (n: number) => Array.from({ length: n }, (_, i) => i + 1);

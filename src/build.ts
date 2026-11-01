@@ -188,7 +188,7 @@ async function main() {
   // the budget sun, sector anchors, tax stars and the Ledger chapters
   const led = await ledger(register, new Map(rows.map((r) => [r.m.bfs, r.population])), src);
   stars.push(...led.stars);
-  const edu = istruzione(register, new Map(rows.map((r) => [r.m.bfs, r.population])), src);
+  const edu = await istruzione(register, new Map(rows.map((r) => [r.m.bfs, r.population])), src);
   stars.push(...edu.stars);
   // secondary and tertiary schools located in the City (not run by it; each says what the City spends)
   stars.push(...(await istruzioneSuperiore(src)).stars);

@@ -1,5 +1,5 @@
 {
- "sourcesAsOf": "2026-10-27T00:40:55.915Z",
+ "sourcesAsOf": "2026-11-01T22:36:33.321Z",
  "stars": [
   {
    "id": "salute.spesa",
@@ -15728,6 +15728,836 @@
        "url": "https://github.com/nslotus/dati-di-lugano/blob/74c57b7/out/schools.json",
        "publisher": "Dati di Lugano (school figures extracted from the City's releases)",
        "locator": "results[2026/27] (City release: https://www.lugano.ch/dam/jcr:3a340d7f-0d96-4d7a-8af3-f512b72d1c9e/20260831-inizio-anno-scolastico-2026-27-comunicato.pdf)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "istruzione.sedi-infanzia",
+   "constellation": "istruzione",
+   "label": {
+    "it": "Scuola dell'infanzia: allievi per sede",
+    "en": "Kindergarten: pupils by site"
+   },
+   "about": {
+    "it": "Allievi nelle 27 sedi di scuola dell'infanzia della Città, anno scolastico 2025/26, in 69 sezioni e cinque zone: da 10 (Brè) a 106 (Via Bottogno) per sede.",
+    "en": "Pupils at the City's 27 kindergarten sites, school year 2025/26, in 69 sections and five school zones: from 10 (Brè) to 106 (Via Bottogno) per site."
+   },
+   "value": 1177,
+   "unit": "allievi",
+   "year": 2025,
+   "area": "Lugano",
+   "kind": "official",
+   "method": {
+    "it": "Tabella della Città per sede, pubblicata con il comunicato di inizio anno scolastico del 3 settembre 2025, letta per posizione sulla pagina. Ogni sede somma al totale della sua zona, ogni zona al totale dell'Istituto, e i totali sono quelli del comunicato.",
+    "en": "The City's table by site, published with the school-start release of 3 September 2025, read by position on the page. Each site adds up to its zone's total, each zone to the institute's total, and the totals are those of the release."
+   },
+   "source": [
+    {
+     "file": "sources/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:fa5a90d1-2c2a-4091-a361-4a17ab72c6c6/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+     "publisher": "Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025)",
+     "locator": "p. 1: table 'SCUOLA DELL'INFANZIA', one row per site, 'Totale' for each school zone and for the institute"
+    }
+   ],
+   "related": [
+    "istruzione.allievi",
+    "istruzione.sezione-infanzia"
+   ],
+   "detail": [
+    {
+     "title": {
+      "it": "Per zona: allievi e sezioni",
+      "en": "By school zone: pupils and sections"
+     },
+     "chart": {
+      "type": "hbars",
+      "unit": "allievi",
+      "color": "var(--istruzione)",
+      "data": [
+       {
+        "key": "z0",
+        "label": {
+         "it": "Centro",
+         "en": "Centro"
+        },
+        "value": 206,
+        "note": {
+         "it": "13 sezioni, 4 sedi",
+         "en": "13 sections, 4 sites"
+        }
+       },
+       {
+        "key": "z1",
+        "label": {
+         "it": "Collina",
+         "en": "Collina"
+        },
+        "value": 221,
+        "note": {
+         "it": "12 sezioni, 4 sedi",
+         "en": "12 sections, 4 sites"
+        }
+       },
+       {
+        "key": "z2",
+        "label": {
+         "it": "Monte Boglia",
+         "en": "Monte Boglia"
+        },
+        "value": 354,
+        "note": {
+         "it": "21 sezioni, 8 sedi",
+         "en": "21 sections, 8 sites"
+        }
+       },
+       {
+        "key": "z3",
+        "label": {
+         "it": "Monte Brè",
+         "en": "Monte Brè"
+        },
+        "value": 241,
+        "note": {
+         "it": "14 sezioni, 5 sedi",
+         "en": "14 sections, 5 sites"
+        }
+       },
+       {
+        "key": "z4",
+        "label": {
+         "it": "Monte San Salvatore",
+         "en": "Monte San Salvatore"
+        },
+        "value": 155,
+        "note": {
+         "it": "9 sezioni, 6 sedi",
+         "en": "9 sections, 6 sites"
+        }
+       }
+      ]
+     },
+     "source": [
+      {
+       "file": "sources/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:fa5a90d1-2c2a-4091-a361-4a17ab72c6c6/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+       "publisher": "Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025)",
+       "locator": "p. 1: table 'SCUOLA DELL'INFANZIA', one row per site, 'Totale' for each school zone and for the institute"
+      }
+     ]
+    },
+    {
+     "title": {
+      "it": "Per sede",
+      "en": "By site"
+     },
+     "chart": {
+      "type": "hbars",
+      "unit": "allievi",
+      "color": "var(--istruzione)",
+      "data": [
+       {
+        "key": "s0",
+        "label": {
+         "it": "Via Bottogno",
+         "en": "Via Bottogno"
+        },
+        "value": 106,
+        "note": {
+         "it": "Monte Brè, 6 sezioni",
+         "en": "Monte Brè, 6 sections"
+        }
+       },
+       {
+        "key": "s1",
+        "label": {
+         "it": "Centrale",
+         "en": "Centrale"
+        },
+        "value": 96,
+        "note": {
+         "it": "Collina, 5 sezioni",
+         "en": "Collina, 5 sections"
+        }
+       },
+       {
+        "key": "s2",
+        "label": {
+         "it": "Molino Nuovo",
+         "en": "Molino Nuovo"
+        },
+        "value": 96,
+        "note": {
+         "it": "Centro, 6 sezioni",
+         "en": "Centro, 6 sections"
+        }
+       },
+       {
+        "key": "s3",
+        "label": {
+         "it": "Terzerina",
+         "en": "Terzerina"
+        },
+        "value": 79,
+        "note": {
+         "it": "Monte Boglia, 5 sezioni",
+         "en": "Monte Boglia, 5 sections"
+        }
+       },
+       {
+        "key": "s4",
+        "label": {
+         "it": "Cadro",
+         "en": "Cadro"
+        },
+        "value": 77,
+        "note": {
+         "it": "Monte Boglia, 4 sezioni",
+         "en": "Monte Boglia, 4 sections"
+        }
+       },
+       {
+        "key": "s5",
+        "label": {
+         "it": "Gemmo",
+         "en": "Gemmo"
+        },
+        "value": 77,
+        "note": {
+         "it": "Collina, 4 sezioni",
+         "en": "Collina, 4 sections"
+        }
+       },
+       {
+        "key": "s6",
+        "label": {
+         "it": "Cassarate",
+         "en": "Cassarate"
+        },
+        "value": 76,
+        "note": {
+         "it": "Monte Brè, 4 sezioni",
+         "en": "Monte Brè, 4 sections"
+        }
+       },
+       {
+        "key": "s7",
+        "label": {
+         "it": "Piccolo Mondo",
+         "en": "Piccolo Mondo"
+        },
+        "value": 72,
+        "note": {
+         "it": "Monte Boglia, 4 sezioni",
+         "en": "Monte Boglia, 4 sections"
+        }
+       },
+       {
+        "key": "s8",
+        "label": {
+         "it": "Castausio",
+         "en": "Castausio"
+        },
+        "value": 47,
+        "note": {
+         "it": "Centro, 3 sezioni",
+         "en": "Centro, 3 sections"
+        }
+       },
+       {
+        "key": "s9",
+        "label": {
+         "it": "Bozzoreda",
+         "en": "Bozzoreda"
+        },
+        "value": 40,
+        "note": {
+         "it": "Monte Boglia, 2 sezioni",
+         "en": "Monte Boglia, 2 sections"
+        }
+       },
+       {
+        "key": "s10",
+        "label": {
+         "it": "Lambertenghi",
+         "en": "Lambertenghi"
+        },
+        "value": 36,
+        "note": {
+         "it": "Centro, 2 sezioni",
+         "en": "Centro, 2 sections"
+        }
+       },
+       {
+        "key": "s11",
+        "label": {
+         "it": "Pazzallo",
+         "en": "Pazzallo"
+        },
+        "value": 34,
+        "note": {
+         "it": "Monte San Salvatore, 2 sezioni",
+         "en": "Monte San Salvatore, 2 sections"
+        }
+       },
+       {
+        "key": "s12",
+        "label": {
+         "it": "Barbengo 1-2",
+         "en": "Barbengo 1-2"
+        },
+        "value": 32,
+        "note": {
+         "it": "Monte San Salvatore, 2 sezioni",
+         "en": "Monte San Salvatore, 2 sections"
+        }
+       },
+       {
+        "key": "s13",
+        "label": {
+         "it": "Barbengo 3-4",
+         "en": "Barbengo 3-4"
+        },
+        "value": 32,
+        "note": {
+         "it": "Monte San Salvatore, 1 sezione",
+         "en": "Monte San Salvatore, 1 section"
+        }
+       },
+       {
+        "key": "s14",
+        "label": {
+         "it": "Ruvigliana",
+         "en": "Ruvigliana"
+        },
+        "value": 32,
+        "note": {
+         "it": "Monte Brè, 2 sezioni",
+         "en": "Monte Brè, 2 sections"
+        }
+       },
+       {
+        "key": "s15",
+        "label": {
+         "it": "Bertaccio",
+         "en": "Bertaccio"
+        },
+        "value": 30,
+        "note": {
+         "it": "Collina, 2 sezioni",
+         "en": "Collina, 2 sections"
+        }
+       },
+       {
+        "key": "s16",
+        "label": {
+         "it": "Davesco-Soragno",
+         "en": "Davesco-Soragno"
+        },
+        "value": 30,
+        "note": {
+         "it": "Monte Boglia, 2 sezioni",
+         "en": "Monte Boglia, 2 sections"
+        }
+       },
+       {
+        "key": "s17",
+        "label": {
+         "it": "Ronchetto",
+         "en": "Ronchetto"
+        },
+        "value": 27,
+        "note": {
+         "it": "Centro, 2 sezioni",
+         "en": "Centro, 2 sections"
+        }
+       },
+       {
+        "key": "s18",
+        "label": {
+         "it": "Sonvico",
+         "en": "Sonvico"
+        },
+        "value": 25,
+        "note": {
+         "it": "Monte Boglia, 2 sezioni",
+         "en": "Monte Boglia, 2 sections"
+        }
+       },
+       {
+        "key": "s19",
+        "label": {
+         "it": "Carona",
+         "en": "Carona"
+        },
+        "value": 20,
+        "note": {
+         "it": "Monte San Salvatore, 1 sezione",
+         "en": "Monte San Salvatore, 1 section"
+        }
+       },
+       {
+        "key": "s20",
+        "label": {
+         "it": "Pambio-Noranco",
+         "en": "Pambio-Noranco"
+        },
+        "value": 20,
+        "note": {
+         "it": "Monte San Salvatore, 1 sezione",
+         "en": "Monte San Salvatore, 1 section"
+        }
+       },
+       {
+        "key": "s21",
+        "label": {
+         "it": "Val Colla",
+         "en": "Val Colla"
+        },
+        "value": 19,
+        "note": {
+         "it": "Monte Boglia, 1 sezione",
+         "en": "Monte Boglia, 1 section"
+        }
+       },
+       {
+        "key": "s22",
+        "label": {
+         "it": "Besso",
+         "en": "Besso"
+        },
+        "value": 18,
+        "note": {
+         "it": "Collina, 1 sezione",
+         "en": "Collina, 1 section"
+        }
+       },
+       {
+        "key": "s23",
+        "label": {
+         "it": "Loreto",
+         "en": "Loreto"
+        },
+        "value": 17,
+        "note": {
+         "it": "Monte San Salvatore, 2 sezioni",
+         "en": "Monte San Salvatore, 2 sections"
+        }
+       },
+       {
+        "key": "s24",
+        "label": {
+         "it": "Viganello-Albonago",
+         "en": "Viganello-Albonago"
+        },
+        "value": 17,
+        "note": {
+         "it": "Monte Brè, 1 sezione",
+         "en": "Monte Brè, 1 section"
+        }
+       },
+       {
+        "key": "s25",
+        "label": {
+         "it": "Villa Luganese",
+         "en": "Villa Luganese"
+        },
+        "value": 12,
+        "note": {
+         "it": "Monte Boglia, 1 sezione",
+         "en": "Monte Boglia, 1 section"
+        }
+       },
+       {
+        "key": "s26",
+        "label": {
+         "it": "Brè",
+         "en": "Brè"
+        },
+        "value": 10,
+        "note": {
+         "it": "Monte Brè, 1 sezione",
+         "en": "Monte Brè, 1 section"
+        }
+       }
+      ]
+     },
+     "source": [
+      {
+       "file": "sources/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:fa5a90d1-2c2a-4091-a361-4a17ab72c6c6/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+       "publisher": "Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025)",
+       "locator": "p. 1: table 'SCUOLA DELL'INFANZIA', one row per site, 'Totale' for each school zone and for the institute"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "istruzione.sedi-elementare",
+   "constellation": "istruzione",
+   "label": {
+    "it": "Scuola elementare: allievi per sede",
+    "en": "Primary school: pupils by site"
+   },
+   "about": {
+    "it": "Allievi nelle 19 sedi di scuola elementare della Città, anno scolastico 2025/26, in 119 classi e cinque zone: da 16 (Villa Luganese) a 227 (Viganello) per sede.",
+    "en": "Pupils at the City's 19 primary school sites, school year 2025/26, in 119 classes and five school zones: from 16 (Villa Luganese) to 227 (Viganello) per site."
+   },
+   "value": 2090,
+   "unit": "allievi",
+   "year": 2025,
+   "area": "Lugano",
+   "kind": "official",
+   "method": {
+    "it": "Tabella della Città per sede, pubblicata con il comunicato di inizio anno scolastico del 3 settembre 2025, letta per posizione sulla pagina. Ogni sede somma al totale della sua zona, ogni zona al totale dell'Istituto, e i totali sono quelli del comunicato.",
+    "en": "The City's table by site, published with the school-start release of 3 September 2025, read by position on the page. Each site adds up to its zone's total, each zone to the institute's total, and the totals are those of the release."
+   },
+   "source": [
+    {
+     "file": "sources/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:fa5a90d1-2c2a-4091-a361-4a17ab72c6c6/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+     "publisher": "Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025)",
+     "locator": "p. 1: table 'SCUOLA ELEMENTARE', one row per site, 'Totale' for each school zone and for the institute"
+    }
+   ],
+   "related": [
+    "istruzione.allievi",
+    "istruzione.classe-elementare"
+   ],
+   "detail": [
+    {
+     "title": {
+      "it": "Per zona: allievi e classi",
+      "en": "By school zone: pupils and classes"
+     },
+     "chart": {
+      "type": "hbars",
+      "unit": "allievi",
+      "color": "var(--istruzione)",
+      "data": [
+       {
+        "key": "z0",
+        "label": {
+         "it": "Centro",
+         "en": "Centro"
+        },
+        "value": 379,
+        "note": {
+         "it": "22 classi, 3 sedi",
+         "en": "22 classes, 3 sites"
+        }
+       },
+       {
+        "key": "z1",
+        "label": {
+         "it": "Collina",
+         "en": "Collina"
+        },
+        "value": 384,
+        "note": {
+         "it": "21 classi, 3 sedi",
+         "en": "21 classes, 3 sites"
+        }
+       },
+       {
+        "key": "z2",
+        "label": {
+         "it": "Monte Boglia",
+         "en": "Monte Boglia"
+        },
+        "value": 670,
+        "note": {
+         "it": "37 classi, 7 sedi",
+         "en": "37 classes, 7 sites"
+        }
+       },
+       {
+        "key": "z3",
+        "label": {
+         "it": "Monte Brè",
+         "en": "Monte Brè"
+        },
+        "value": 397,
+        "note": {
+         "it": "23 classi, 3 sedi",
+         "en": "23 classes, 3 sites"
+        }
+       },
+       {
+        "key": "z4",
+        "label": {
+         "it": "Monte San Salvatore",
+         "en": "Monte San Salvatore"
+        },
+        "value": 260,
+        "note": {
+         "it": "16 classi, 3 sedi",
+         "en": "16 classes, 3 sites"
+        }
+       }
+      ]
+     },
+     "source": [
+      {
+       "file": "sources/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:fa5a90d1-2c2a-4091-a361-4a17ab72c6c6/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+       "publisher": "Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025)",
+       "locator": "p. 1: table 'SCUOLA ELEMENTARE', one row per site, 'Totale' for each school zone and for the institute"
+      }
+     ]
+    },
+    {
+     "title": {
+      "it": "Per sede",
+      "en": "By site"
+     },
+     "chart": {
+      "type": "hbars",
+      "unit": "allievi",
+      "color": "var(--istruzione)",
+      "data": [
+       {
+        "key": "s0",
+        "label": {
+         "it": "Viganello",
+         "en": "Viganello"
+        },
+        "value": 227,
+        "note": {
+         "it": "Monte Brè, 12 classi",
+         "en": "Monte Brè, 12 classes"
+        }
+       },
+       {
+        "key": "s1",
+        "label": {
+         "it": "Molino Nuovo",
+         "en": "Molino Nuovo"
+        },
+        "value": 220,
+        "note": {
+         "it": "Centro, 13 classi",
+         "en": "Centro, 13 classes"
+        }
+       },
+       {
+        "key": "s2",
+        "label": {
+         "it": "Breganzona",
+         "en": "Breganzona"
+        },
+        "value": 197,
+        "note": {
+         "it": "Collina, 10 classi",
+         "en": "Collina, 10 classes"
+        }
+       },
+       {
+        "key": "s3",
+        "label": {
+         "it": "Bozzoreda",
+         "en": "Bozzoreda"
+        },
+        "value": 189,
+        "note": {
+         "it": "Monte Boglia, 11 classi",
+         "en": "Monte Boglia, 11 classes"
+        }
+       },
+       {
+        "key": "s4",
+        "label": {
+         "it": "Probello",
+         "en": "Probello"
+        },
+        "value": 188,
+        "note": {
+         "it": "Monte Boglia, 10 classi",
+         "en": "Monte Boglia, 10 classes"
+        }
+       },
+       {
+        "key": "s5",
+        "label": {
+         "it": "Besso",
+         "en": "Besso"
+        },
+        "value": 155,
+        "note": {
+         "it": "Collina, 9 classi",
+         "en": "Collina, 9 classes"
+        }
+       },
+       {
+        "key": "s6",
+        "label": {
+         "it": "Cassarate",
+         "en": "Cassarate"
+        },
+        "value": 109,
+        "note": {
+         "it": "Monte Brè, 7 classi",
+         "en": "Monte Brè, 7 classes"
+        }
+       },
+       {
+        "key": "s7",
+        "label": {
+         "it": "Cadro",
+         "en": "Cadro"
+        },
+        "value": 108,
+        "note": {
+         "it": "Monte Boglia, 6 classi",
+         "en": "Monte Boglia, 6 classes"
+        }
+       },
+       {
+        "key": "s8",
+        "label": {
+         "it": "Barbengo",
+         "en": "Barbengo"
+        },
+        "value": 99,
+        "note": {
+         "it": "Monte San Salvatore, 6 classi",
+         "en": "Monte San Salvatore, 6 classes"
+        }
+       },
+       {
+        "key": "s9",
+        "label": {
+         "it": "Gerra",
+         "en": "Gerra"
+        },
+        "value": 85,
+        "note": {
+         "it": "Centro, 5 classi",
+         "en": "Centro, 5 classes"
+        }
+       },
+       {
+        "key": "s10",
+        "label": {
+         "it": "Pazzallo",
+         "en": "Pazzallo"
+        },
+        "value": 81,
+        "note": {
+         "it": "Monte San Salvatore, 5 classi",
+         "en": "Monte San Salvatore, 5 classes"
+        }
+       },
+       {
+        "key": "s11",
+        "label": {
+         "it": "Loreto",
+         "en": "Loreto"
+        },
+        "value": 80,
+        "note": {
+         "it": "Monte San Salvatore, 5 classi",
+         "en": "Monte San Salvatore, 5 classes"
+        }
+       },
+       {
+        "key": "s12",
+        "label": {
+         "it": "Sonvico",
+         "en": "Sonvico"
+        },
+        "value": 80,
+        "note": {
+         "it": "Monte Boglia, 4 classi",
+         "en": "Monte Boglia, 4 classes"
+        }
+       },
+       {
+        "key": "s13",
+        "label": {
+         "it": "Lambertenghi",
+         "en": "Lambertenghi"
+        },
+        "value": 74,
+        "note": {
+         "it": "Centro, 4 classi",
+         "en": "Centro, 4 classes"
+        }
+       },
+       {
+        "key": "s14",
+        "label": {
+         "it": "Ruvigliana",
+         "en": "Ruvigliana"
+        },
+        "value": 61,
+        "note": {
+         "it": "Monte Brè, 4 classi",
+         "en": "Monte Brè, 4 classes"
+        }
+       },
+       {
+        "key": "s15",
+        "label": {
+         "it": "Davesco-Soragno",
+         "en": "Davesco-Soragno"
+        },
+        "value": 58,
+        "note": {
+         "it": "Monte Boglia, 3 classi",
+         "en": "Monte Boglia, 3 classes"
+        }
+       },
+       {
+        "key": "s16",
+        "label": {
+         "it": "Bertaccio",
+         "en": "Bertaccio"
+        },
+        "value": 32,
+        "note": {
+         "it": "Collina, 2 classi",
+         "en": "Collina, 2 classes"
+        }
+       },
+       {
+        "key": "s17",
+        "label": {
+         "it": "Valcolla",
+         "en": "Valcolla"
+        },
+        "value": 31,
+        "note": {
+         "it": "Monte Boglia, 2 classi",
+         "en": "Monte Boglia, 2 classes"
+        }
+       },
+       {
+        "key": "s18",
+        "label": {
+         "it": "Villa Luganese",
+         "en": "Villa Luganese"
+        },
+        "value": 16,
+        "note": {
+         "it": "Monte Boglia, 1 classe",
+         "en": "Monte Boglia, 1 class"
+        }
+       }
+      ]
+     },
+     "note": {
+      "it": "Viganello: nella tabella «NCS»; il comunicato della Città la chiama Viganello.",
+      "en": "Viganello: printed as \"NCS\" in the table; the City's release calls it Viganello."
+     },
+     "source": [
+      {
+       "file": "sources/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:fa5a90d1-2c2a-4091-a361-4a17ab72c6c6/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+       "publisher": "Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025)",
+       "locator": "p. 1: table 'SCUOLA ELEMENTARE', one row per site, 'Totale' for each school zone and for the institute"
       }
      ]
     }

@@ -10,7 +10,7 @@
 //   7. canton rank  the canton's indicator rank and the page's rank describe the same position
 //   8. printed      official figures read from a PDF: printed on the cited page(s), or the sum of printed parts
 //   9. names        every Italian line, group and department name has an English name, and none is unused
-//  10. hygiene      no keys, tokens, personal paths or addresses in the files of the repository
+//  10. hygiene      no keys, tokens, personal paths, addresses or staff names (from PDF metadata) in the repository's files
 //  11. rebuild      npm run build and npm run site, run again, give byte-identical files   (skipped with --quick)
 //  12. docs         SOURCES.md and FIGURES.md are what npm run docs generates                (skipped with --quick)
 //  13. table        every line, group and function, and the total, on its row of the 2025 budget and accounts tables
@@ -23,6 +23,7 @@ import { execSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { departments, figuresPrinted, functionalTable, pdfjs, pypdf } from "./pages";
+import { pdfAuthor } from "./adapters/pdf";
 import { loadSite } from "./sitedata";
 
 const quick = process.argv.includes("--quick");
@@ -198,21 +199,45 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
     return `${need.size} names in English; ${locs.size} source locators and ${pubs.size} publishers in Italian`;
   });
 
-  await check("no keys, tokens, personal paths or addresses", () => {
+  await check("no keys, tokens, personal paths, addresses or staff names", async () => {
     const skip = new Set(["node_modules", ".git", "sources"]);
     const files: string[] = [];
     const walk = (d: string): void => { for (const e of readdirSync(d)) { if (skip.has(e)) continue; const p = join(d, e); if (statSync(p).isDirectory()) walk(p); else if (/\.(ts|js|json|md|html|css|yml|txt|svg)$|^\.[a-z]+$/.test(e)) files.push(p); } };
     walk(".");
+    // only what git would commit: local scratch that git ignores is not part of the repository
+    try {
+      const ignored = new Set(execSync("git ls-files --others --ignored --exclude-standard --directory", { encoding: "utf8" }).split("\n").filter(Boolean).map((p) => p.replace(/\/$/, "")));
+      const inIgnored = (f: string) => { const p = f.replace(/\\/g, "/"); return [...ignored].some((d) => p === d || p.startsWith(d + "/")); };
+      files.splice(0, files.length, ...files.filter((f) => !inIgnored(f)));
+    } catch { /* no git: scan everything */ }
     const patterns: [string, RegExp][] = [
       ["API key", /(sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|TYPESAFE_API_KEY\s*=\s*\S{8,}|-----BEGIN [A-Z ]*PRIVATE KEY)/],
       ["local path", /[A-Z]:\\Users\\|\/Users\/[a-z]+\/|\/home\/[a-z]+\//],
       ["e-mail address", /[A-Za-z0-9._%+-]+@(gmail|outlook|hotmail|yahoo|proton)\.[a-z]+/i],
     ];
+    // staff names: the Author field the City's PDFs carry (a full name, a user name like "MRossi" or "mario.rossi", a
+    // staff number) never appears in the repository's own files. Full names in either order, user names and staff
+    // numbers are matched; a lone first name ("Mario") is not, and neither is a bare surname, which can be a place name.
+    const people = new Set<string>();
+    for (const m of JSON.parse(readFileSync("sources/MANIFEST.json", "utf8"))) {
+      if (!/\.pdf$/.test(m.file)) continue;
+      for (const part of (await pdfAuthor(m.file)).split(/\s*[\/;,]\s*/).filter(Boolean)) {
+        const w = part.split(/\s+/);
+        if (w.length > 1) { people.add(part); people.add([...w].reverse().join(" ")); }
+        else if (!/^[A-ZÀ-Ý][a-zà-ÿ]+$/.test(part) && part.length >= 5) people.add(part);
+      }
+    }
+    const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+");
+    const staff = people.size ? new RegExp(`(?<![\\p{L}\\d.])(${[...people].map(esc).join("|")})(?![\\p{L}\\d])`, "iu") : null;
     const hits: string[] = [];
-    for (const f of files) { const t = readFileSync(f, "utf8"); for (const [what, re] of patterns) if (re.test(t)) hits.push(`${what} in ${f}`); }
+    for (const f of files) {
+      const t = readFileSync(f, "utf8");
+      for (const [what, re] of patterns) if (re.test(t)) hits.push(`${what} in ${f}`);
+      const s = staff?.exec(t); if (s) hits.push(`staff name from a PDF's metadata ("${s[1]}") in ${f}`);
+    }
     if (existsSync(".env")) hits.push(".env present");
     if (hits.length) fail(hits.join("; "));
-    return `${files.length} files scanned`;
+    return `${files.length} files scanned, ${people.size} staff names from PDF metadata kept out`;
   });
 
   if (quick) results.push({ n: ++n, name: "rebuild is byte-identical", ok: true, detail: "skipped (--quick)" });

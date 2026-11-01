@@ -136,6 +136,14 @@
     "sha256": "29f40323a7088362a85163a6ff970f5386f8d585757baf196f59f61a4c590a9d"
   },
   {
+    "file": "sources/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+    "url": "https://www.lugano.ch/dam/jcr:fa5a90d1-2c2a-4091-a361-4a17ab72c6c6/20250903-cs-inizio-anno-scolastico-2025-2026-tabella.pdf",
+    "publisher": "Città di Lugano, Istituto scolastico: pupils and sections by site, school year 2025/26 (table published with the release of 3 September 2025)",
+    "retrieved": "2026-11-01T22:36:33.321Z",
+    "bytes": 36867,
+    "sha256": "27f1a85d79d15ac02e23855d379babffc6cda69825baf80e12b4b26ea8dfbebd"
+  },
+  {
     "file": "sources/dati-di-lugano@74c57b7-schools.json",
     "url": "https://github.com/nslotus/dati-di-lugano/blob/74c57b7/out/schools.json",
     "publisher": "Dati di Lugano (school figures extracted from the City's releases)",
