@@ -6,8 +6,8 @@
    "holder": { "it": "Città di Lugano", "en": "City of Lugano" } },
  { "issue": 2, "title": { "it": "Spesa vincolata e spesa libera", "en": "Mandated and discretionary spending" },
    "question": { "it": "Quali obblighi si potrebbero togliere, e quanto decide davvero la Città?", "en": "Which obligations could go, and how much does the City actually decide?" },
-   "have": { "it": "Alcune voci fissate dalla legge cantonale: costi sociali (CHF 36.0 mio), perequazione (CHF 31.0 mio).", "en": "Some items fixed by cantonal law: social costs (CHF 36.0M), equalisation (CHF 31.0M)." },
-   "missing": { "it": "La spesa della Città per base legale: legge federale, legge cantonale, regolamento comunale o scelta del Municipio.", "en": "City spending by legal basis: federal law, cantonal law, City regulation or choice of the Municipio." },
+   "have": { "it": "Alcune voci fissate dalla legge cantonale: costi sociali (CHF 36.0 mio), perequazione (CHF 31.0 mio). Il Municipio ha dichiarato in Consiglio comunale (25.11.2024) che il 60% della spesa è indotto da basi legali superiori, senza pubblicarne il dettaglio.", "en": "Some items fixed by cantonal law: social costs (CHF 36.0M), equalisation (CHF 31.0M). The Municipio told the City Council (25.11.2024) that 60% of spending is set by higher law, without publishing the breakdown." },
+   "missing": { "it": "La spesa della Città per base legale: legge federale, legge cantonale, regolamento comunale o scelta del Municipio; la mappatura dei servizi annunciata nel 2024.", "en": "City spending by legal basis: federal law, cantonal law, City regulation or choice of the Municipio; the mapping of services announced in 2024." },
    "holder": { "it": "Città di Lugano, Cantone", "en": "City of Lugano, Canton" } },
  { "issue": 3, "title": { "it": "Consorzi e convenzioni", "en": "Consortia and agreements" },
    "question": { "it": "Quali funzioni sono già condivise con altri comuni, e quali potrebbero esserlo?", "en": "Which functions are already shared with other municipalities, and which could be?" },
@@ -31,7 +31,7 @@
    "holder": { "it": "Città di Lugano, UST, USTAT", "en": "City of Lugano, BFS, USTAT" } },
  { "issue": 7, "title": { "it": "Formazione e reinserimento", "en": "Training and back to work" },
    "question": { "it": "Le risorse vanno dove servono, a partire da formazione e sostegno?", "en": "Do resources go where they are needed, starting with training and support?" },
-   "have": { "it": "Scuole e allievi, assistenza sociale; programmi occupazionali (35 unità, CHF 126'000 a preventivo 2027).", "en": "Schools and pupils, social assistance; employment programmes (35 units, CHF 126,000 in the 2027 budget)." },
-   "missing": { "it": "La spesa per corsi per adulti, riqualifica e reinserimento, per programma, con persone raggiunte e risultati.", "en": "Spending on adult courses, retraining and back-to-work programmes, by programme, with people reached and results." },
+   "have": { "it": "LuganoNetWork e servizi collegati: 50 assunzioni, 34 corsi e 286 partecipanti nel 2025, serie dal 2022; centro di costo «Prossimità e lavoro» CHF 1.73 mio (2025). Programmi occupazionali: 23.72 unità e CHF 101'911 nel 2025 (35 unità e CHF 126'000 a preventivo).", "en": "LuganoNetWork and related services: 50 hires, 34 courses and 286 participants in 2025, series from 2022; cost centre 'Prossimità e lavoro' CHF 1.73M (2025). Employment programmes: 23.72 units and CHF 101,911 in 2025 (35 units and CHF 126,000 budgeted)." },
+   "missing": { "it": "Il costo di ogni servizio (LuganoNetWork, Spazio lavoro e formazione, Punto digitale, eQuiD), separato dal resto del centro di costo; i risultati a 6 e 12 mesi.", "en": "The cost of each service (LuganoNetWork, Spazio lavoro e formazione, Punto digitale, eQuiD), separate from the rest of the cost centre; results after 6 and 12 months." },
    "holder": { "it": "Città di Lugano, Cantone", "en": "City of Lugano, Canton" } }
 ]
