@@ -32972,6 +32972,849 @@
      ]
     }
    ]
+  },
+  {
+   "id": "finanze.opere",
+   "constellation": "finanze",
+   "label": {
+    "it": "Credito d'investimento non ancora speso",
+    "en": "Investment credit not yet spent"
+   },
+   "about": {
+    "it": "A fine 2025 la Città aveva 244 opere d'investimento aperte, con un credito aggiornato di CHF 1'107.8 mio; ne aveva spesi 569.2. Restano 540.9 mio di credito. 13 opere votate entro il 2020 hanno speso meno di un quinto del credito: 24.1 mio fermi. 15 opere hanno superato il credito, in tutto di 2.3 mio.",
+    "en": "At the end of 2025 the City had 244 open investment works, with an updated credit of CHF 1'107.8 million, of which 569.2 was spent. 540.9 million of credit remains. 13 works voted by 2020 have spent less than a fifth of their credit: 24.1 million idle. 15 works have gone over their credit, by 2.3 million in all."
+   },
+   "value": 540.8954,
+   "unit": "mio CHF",
+   "year": 2025,
+   "area": "Lugano",
+   "kind": "derived",
+   "method": {
+    "it": "Registro delle opere aperte nel consuntivo 2025 (pp. 385–413), crediti votati dal Consiglio comunale e di competenza del Municipio, letto per posizione. Credito = credito aggiornato (votato più rincari); speso = uscite al 31.12.2025; restante = credito meno speso, opera per opera, mai sotto zero. L'avanzamento è quello stampato dalla Città, «indipendentemente dall'evoluzione delle uscite» (p. 351). Ogni opera soddisfa 31.12.2024 + 2025 = 31.12.2025 e le opere sommano a ogni totale stampato; nei totali delle categorie del Municipio (24 righe) la colonna «Entrate al 31.12.2024» ripete le uscite, come stampato, e non torna con la sua riga. Escluse le 2 opere dei beni patrimoniali (p. 415) e una voce di soli incassi senza credito (INV.980000).",
+    "en": "The register of open works in the 2025 accounts (pp. 385–413), credits voted by the Council and within the Municipio's authority, read by position. Credit = updated credit (voted plus price increases); spent = outgoings at 31.12.2025; remaining = credit minus spent, work by work, never below zero. Progress is the City's printed figure, \"independently of the evolution of spending\" (p. 351). Every work satisfies 31.12.2024 + 2025 = 31.12.2025, and the works add up to every printed total; in the Municipio's category totals (24 rows) the column \"Entrate al 31.12.2024\" repeats the outgoings, as printed, and does not agree with its own row. Left out: the 2 patrimonial works (p. 415) and one income-only line without a credit (INV.980000)."
+   },
+   "source": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "pp. 385–413: register of open works ('Situazione investimenti amministrativi 2025'), columns Credito aggiornato, Sit. Lav. %, Uscite al 31.12.2025"
+    }
+   ],
+   "related": [
+    "finanze.piano-investimenti",
+    "finanze.piano-debito"
+   ],
+   "detail": [
+    {
+     "title": {
+      "it": "Credito e speso, per anno del voto",
+      "en": "Credit and spent, by year voted"
+     },
+     "chart": {
+      "type": "columns",
+      "unit": "mio CHF",
+      "color": "var(--finanze)",
+      "digits": 1,
+      "series": [
+       {
+        "label": {
+         "it": "Credito aggiornato",
+         "en": "Updated credit"
+        },
+        "data": [
+         {
+          "key": "c≤’10",
+          "label": {
+           "it": "≤’10",
+           "en": "≤’10"
+          },
+          "value": 55.2469,
+          "status": "budget"
+         },
+         {
+          "key": "c’11–15",
+          "label": {
+           "it": "’11–15",
+           "en": "’11–15"
+          },
+          "value": 233.9936,
+          "status": "budget"
+         },
+         {
+          "key": "c’16",
+          "label": {
+           "it": "’16",
+           "en": "’16"
+          },
+          "value": 1.7662,
+          "status": "budget"
+         },
+         {
+          "key": "c’17",
+          "label": {
+           "it": "’17",
+           "en": "’17"
+          },
+          "value": 61.916,
+          "status": "budget"
+         },
+         {
+          "key": "c’18",
+          "label": {
+           "it": "’18",
+           "en": "’18"
+          },
+          "value": 71.0093,
+          "status": "budget"
+         },
+         {
+          "key": "c’19",
+          "label": {
+           "it": "’19",
+           "en": "’19"
+          },
+          "value": 43.6803,
+          "status": "budget"
+         },
+         {
+          "key": "c’20",
+          "label": {
+           "it": "’20",
+           "en": "’20"
+          },
+          "value": 199.7987,
+          "status": "budget"
+         },
+         {
+          "key": "c’21",
+          "label": {
+           "it": "’21",
+           "en": "’21"
+          },
+          "value": 61.6707,
+          "status": "budget"
+         },
+         {
+          "key": "c’22",
+          "label": {
+           "it": "’22",
+           "en": "’22"
+          },
+          "value": 28.4244,
+          "status": "budget"
+         },
+         {
+          "key": "c’23",
+          "label": {
+           "it": "’23",
+           "en": "’23"
+          },
+          "value": 78.7772,
+          "status": "budget"
+         },
+         {
+          "key": "c’24",
+          "label": {
+           "it": "’24",
+           "en": "’24"
+          },
+          "value": 84.159,
+          "status": "budget"
+         },
+         {
+          "key": "c’25",
+          "label": {
+           "it": "’25",
+           "en": "’25"
+          },
+          "value": 187.3155,
+          "status": "budget"
+         }
+        ]
+       },
+       {
+        "label": {
+         "it": "Speso al 31.12.2025",
+         "en": "Spent to 31.12.2025"
+        },
+        "data": [
+         {
+          "key": "s≤’10",
+          "label": {
+           "it": "≤’10",
+           "en": "≤’10"
+          },
+          "value": 51.6865,
+          "status": "actual"
+         },
+         {
+          "key": "s’11–15",
+          "label": {
+           "it": "’11–15",
+           "en": "’11–15"
+          },
+          "value": 175.577,
+          "status": "actual"
+         },
+         {
+          "key": "s’16",
+          "label": {
+           "it": "’16",
+           "en": "’16"
+          },
+          "value": 1.3407,
+          "status": "actual"
+         },
+         {
+          "key": "s’17",
+          "label": {
+           "it": "’17",
+           "en": "’17"
+          },
+          "value": 51.2595,
+          "status": "actual"
+         },
+         {
+          "key": "s’18",
+          "label": {
+           "it": "’18",
+           "en": "’18"
+          },
+          "value": 49.1068,
+          "status": "actual"
+         },
+         {
+          "key": "s’19",
+          "label": {
+           "it": "’19",
+           "en": "’19"
+          },
+          "value": 34.3431,
+          "status": "actual"
+         },
+         {
+          "key": "s’20",
+          "label": {
+           "it": "’20",
+           "en": "’20"
+          },
+          "value": 110.6414,
+          "status": "actual"
+         },
+         {
+          "key": "s’21",
+          "label": {
+           "it": "’21",
+           "en": "’21"
+          },
+          "value": 46.268,
+          "status": "actual"
+         },
+         {
+          "key": "s’22",
+          "label": {
+           "it": "’22",
+           "en": "’22"
+          },
+          "value": 7.9118,
+          "status": "actual"
+         },
+         {
+          "key": "s’23",
+          "label": {
+           "it": "’23",
+           "en": "’23"
+          },
+          "value": 21.1527,
+          "status": "actual"
+         },
+         {
+          "key": "s’24",
+          "label": {
+           "it": "’24",
+           "en": "’24"
+          },
+          "value": 16.8863,
+          "status": "actual"
+         },
+         {
+          "key": "s’25",
+          "label": {
+           "it": "’25",
+           "en": "’25"
+          },
+          "value": 2.9934,
+          "status": "actual"
+         }
+        ]
+       }
+      ]
+     },
+     "note": {
+      "it": "Anno della prima risoluzione dell'opera. Tratteggio: credito; pieno: speso. Opere per anno: ≤’10 12, ’11–15 19, ’16 3, ’17 12, ’18 21, ’19 17, ’20 30, ’21 18, ’22 17, ’23 33, ’24 32, ’25 30.",
+      "en": "Year of the work's first resolution. Dashed: credit; solid: spent. Works per year: ≤’10 12, ’11–15 19, ’16 3, ’17 12, ’18 21, ’19 17, ’20 30, ’21 18, ’22 17, ’23 33, ’24 32, ’25 30."
+     },
+     "source": [
+      {
+       "file": "sources/city-consuntivo-2025-messaggio.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+       "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+       "locator": "pp. 385–413: register of open works ('Situazione investimenti amministrativi 2025'), columns Credito aggiornato, Sit. Lav. %, Uscite al 31.12.2025"
+      }
+     ]
+    },
+    {
+     "title": {
+      "it": "Votate entro il 2020, spese meno di un quinto: credito fermo",
+      "en": "Voted by 2020, under a fifth spent: credit idle"
+     },
+     "chart": {
+      "type": "hbars",
+      "unit": "mio CHF",
+      "color": "var(--finanze)",
+      "digits": 2,
+      "data": [
+       {
+        "key": "i0",
+        "label": {
+         "it": "Biogno: riqualifica della pavimentazione nel nucleo, realizzazione …",
+         "en": "Biogno: riqualifica della pavimentazione nel nucleo, realizzazione …"
+        },
+        "value": 8.126,
+        "note": {
+         "it": "votata 2020 · credito 8.18 · speso 1% · avanzamento 1%",
+         "en": "voted 2020 · credit 8.18 · spent 1% · progress 1%"
+        }
+       },
+       {
+        "key": "i1",
+        "label": {
+         "it": "Pedemontana: realizzazione di un tratto della rete regionale di …",
+         "en": "Pedemontana: realizzazione di un tratto della rete regionale di …"
+        },
+        "value": 6.0999,
+        "note": {
+         "it": "votata 2019 · credito 6.20 · speso 2% · avanzamento 2%",
+         "en": "voted 2019 · credit 6.20 · spent 2% · progress 2%"
+        }
+       },
+       {
+        "key": "i2",
+        "label": {
+         "it": "N.Q.C. - realizzazione opere stradali, illuminazione pubblica e …",
+         "en": "N.Q.C. - realizzazione opere stradali, illuminazione pubblica e …"
+        },
+        "value": 3.0472,
+        "note": {
+         "it": "votata 2017 · credito 3.09 · speso 1% · avanzamento 2%",
+         "en": "voted 2017 · credit 3.09 · spent 1% · progress 2%"
+        }
+       },
+       {
+        "key": "i3",
+        "label": {
+         "it": "Casa Anziani La Meridiana - ampliamento struttura: progettazione",
+         "en": "Casa Anziani La Meridiana - ampliamento struttura: progettazione"
+        },
+        "value": 2.4466,
+        "note": {
+         "it": "votata 2020 · credito 2.56 · speso 4% · avanzamento 65%",
+         "en": "voted 2020 · credit 2.56 · spent 4% · progress 65%"
+        }
+       },
+       {
+        "key": "i4",
+        "label": {
+         "it": "Nuova rotonda e interventi costruttivi per il miglioramento della …",
+         "en": "Nuova rotonda e interventi costruttivi per il miglioramento della …"
+        },
+        "value": 1.8302,
+        "note": {
+         "it": "votata 2018 · credito 2.00 · speso 8% · avanzamento 8%",
+         "en": "voted 2018 · credit 2.00 · spent 8% · progress 8%"
+        }
+       },
+       {
+        "key": "i5",
+        "label": {
+         "it": "Cadro - Partecipazione al Cantone per Via Circonvallazione e Via Villa …",
+         "en": "Cadro - Partecipazione al Cantone per Via Circonvallazione e Via Villa …"
+        },
+        "value": 0.7,
+        "note": {
+         "it": "votata 2013 · credito 0.70 · speso 0% · avanzamento 100%",
+         "en": "voted 2013 · credit 0.70 · spent 0% · progress 100%"
+        }
+       },
+       {
+        "key": "i6",
+        "label": {
+         "it": "Acquisizione del posteggio ad uso pubblico a servizio del nucleo di …",
+         "en": "Acquisizione del posteggio ad uso pubblico a servizio del nucleo di …"
+        },
+        "value": 0.5496,
+        "note": {
+         "it": "votata 2018 · credito 0.55 · speso 0% · avanzamento 5%",
+         "en": "voted 2018 · credit 0.55 · spent 0% · progress 5%"
+        }
+       },
+       {
+        "key": "i7",
+        "label": {
+         "it": "Riqualifica della Piazza del sagrato della Chiesa dei Santi Giorgio e …",
+         "en": "Riqualifica della Piazza del sagrato della Chiesa dei Santi Giorgio e …"
+        },
+        "value": 0.5197,
+        "note": {
+         "it": "votata 2018 · credito 0.54 · speso 4% · avanzamento 4%",
+         "en": "voted 2018 · credit 0.54 · spent 4% · progress 4%"
+        }
+       },
+       {
+        "key": "i8",
+        "label": {
+         "it": "Via Selvapiana a Pregassona: allargamento",
+         "en": "Via Selvapiana a Pregassona: allargamento"
+        },
+        "value": 0.2897,
+        "note": {
+         "it": "votata 2019 · credito 0.30 · speso 2% · avanzamento 3%",
+         "en": "voted 2019 · credit 0.30 · spent 2% · progress 3%"
+        }
+       },
+       {
+        "key": "i9",
+        "label": {
+         "it": "Realizzazione di idranti nei quartieri di Carabbia, Carona, …",
+         "en": "Realizzazione di idranti nei quartieri di Carabbia, Carona, …"
+        },
+        "value": 0.2281,
+        "note": {
+         "it": "votata 2018 · credito 0.24 · speso 4% · avanzamento 4%",
+         "en": "voted 2018 · credit 0.24 · spent 4% · progress 4%"
+        }
+       },
+       {
+        "key": "i10",
+        "label": {
+         "it": "Carona - Moderazione del traffico",
+         "en": "Carona - Moderazione del traffico"
+        },
+        "value": 0.224,
+        "note": {
+         "it": "votata 2009 · credito 0.26 · speso 14% · avanzamento 14%",
+         "en": "voted 2009 · credit 0.26 · spent 14% · progress 14%"
+        }
+       },
+       {
+        "key": "i11",
+        "label": {
+         "it": "Contributo per la pavimentazione del Cimitero dei Comuni di Lugano e …",
+         "en": "Contributo per la pavimentazione del Cimitero dei Comuni di Lugano e …"
+        },
+        "value": 0.0648,
+        "note": {
+         "it": "votata 2017 · credito 0.06 · speso 0% · avanzamento 100%",
+         "en": "voted 2017 · credit 0.06 · spent 0% · progress 100%"
+        }
+       },
+       {
+        "key": "i12",
+        "label": {
+         "it": "Variante PR Pregassona: Parco urbano pubblico Viarno",
+         "en": "Variante PR Pregassona: Parco urbano pubblico Viarno"
+        },
+        "value": 0.0148,
+        "note": {
+         "it": "votata 2013 · credito 0.02 · speso 1% · avanzamento 95%",
+         "en": "voted 2013 · credit 0.02 · spent 1% · progress 95%"
+        }
+       }
+      ]
+     },
+     "note": {
+      "it": "Senza le opere in liquidazione (contrassegnate * dalla Città).",
+      "en": "Without works being closed (marked * by the City)."
+     },
+     "source": [
+      {
+       "file": "sources/city-consuntivo-2025-messaggio.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+       "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+       "locator": "pp. 385–413: register of open works ('Situazione investimenti amministrativi 2025'), columns Credito aggiornato, Sit. Lav. %, Uscite al 31.12.2025"
+      }
+     ]
+    },
+    {
+     "title": {
+      "it": "Opere oltre il credito: quanto oltre",
+      "en": "Works over their credit: by how much"
+     },
+     "chart": {
+      "type": "hbars",
+      "unit": "mio CHF",
+      "color": "var(--finanze)",
+      "digits": 2,
+      "data": [
+       {
+        "key": "o0",
+        "label": {
+         "it": "Risanamento sopra e sottostrutture via Albonago",
+         "en": "Risanamento sopra e sottostrutture via Albonago"
+        },
+        "value": 0.5174,
+        "note": {
+         "it": "votata 2003 · credito 5.01 · speso 110% · avanzamento 100%",
+         "en": "voted 2003 · credit 5.01 · spent 110% · progress 100%"
+        }
+       },
+       {
+        "key": "o1",
+        "label": {
+         "it": "Riqualifica Nucleo di Sonvico: opere di sottostruttura e di …",
+         "en": "Riqualifica Nucleo di Sonvico: opere di sottostruttura e di …"
+        },
+        "value": 0.4977,
+        "note": {
+         "it": "votata 2019 · credito 4.26 · speso 112% · avanzamento 100%",
+         "en": "voted 2019 · credit 4.26 · spent 112% · progress 100%"
+        }
+       },
+       {
+        "key": "o2",
+        "label": {
+         "it": "CDALED: ristrutturazione e ammodernamento infrastrutture del …",
+         "en": "CDALED: ristrutturazione e ammodernamento infrastrutture del …"
+        },
+        "value": 0.4867,
+        "note": {
+         "it": "votata 2010 · credito 6.39 · speso 108% · avanzamento 100%",
+         "en": "voted 2010 · credit 6.39 · spent 108% · progress 100%"
+        }
+       },
+       {
+        "key": "o3",
+        "label": {
+         "it": "Riordino infrastrutture e nuova pavimentazione in pietra naturale in …",
+         "en": "Riordino infrastrutture e nuova pavimentazione in pietra naturale in …"
+        },
+        "value": 0.2385,
+        "note": {
+         "it": "votata 2017 · credito 12.18 · speso 102% · avanzamento 0%",
+         "en": "voted 2017 · credit 12.18 · spent 102% · progress 0%"
+        }
+       },
+       {
+        "key": "o4",
+        "label": {
+         "it": "Completamento degli interventi su strade cantonali in territorio di …",
+         "en": "Completamento degli interventi su strade cantonali in territorio di …"
+        },
+        "value": 0.1483,
+        "note": {
+         "it": "votata 2020 · credito 6.90 · speso 102% · avanzamento 100%",
+         "en": "voted 2020 · credit 6.90 · spent 102% · progress 100%"
+        }
+       },
+       {
+        "key": "o5",
+        "label": {
+         "it": "Quartiere di Cadro - Via Circonvallazione, Via Campagna e Via Bondola: …",
+         "en": "Quartiere di Cadro - Via Circonvallazione, Via Campagna e Via Bondola: …"
+        },
+        "value": 0.1166,
+        "note": {
+         "it": "votata 2020 · credito 2.35 · speso 105% · avanzamento 90%",
+         "en": "voted 2020 · credit 2.35 · spent 105% · progress 90%"
+        }
+       },
+       {
+        "key": "o6",
+        "label": {
+         "it": "Sant'Anna Castagnola - Strada di PR: realizzazione",
+         "en": "Sant'Anna Castagnola - Strada di PR: realizzazione"
+        },
+        "value": 0.1163,
+        "note": {
+         "it": "votata 2006 · credito 2.32 · speso 105% · avanzamento 100%",
+         "en": "voted 2006 · credit 2.32 · spent 105% · progress 100%"
+        }
+       },
+       {
+        "key": "o7",
+        "label": {
+         "it": "SI Sonvico: realizzazione e nuova mensa SE Sonvico",
+         "en": "SI Sonvico: realizzazione e nuova mensa SE Sonvico"
+        },
+        "value": 0.0863,
+        "note": {
+         "it": "votata 2018 · credito 5.67 · speso 102% · avanzamento 100%",
+         "en": "voted 2018 · credit 5.67 · spent 102% · progress 100%"
+        }
+       },
+       {
+        "key": "o8",
+        "label": {
+         "it": "Agenzia NQC: mandato di prestazione 2020 - 2024 e 2025 - 2026",
+         "en": "Agenzia NQC: mandato di prestazione 2020 - 2024 e 2025 - 2026"
+        },
+        "value": 0.0292,
+        "note": {
+         "it": "votata 2020 · credito 0.61 · speso 105% · avanzamento 85%",
+         "en": "voted 2020 · credit 0.61 · spent 105% · progress 85%"
+        }
+       },
+       {
+        "key": "o9",
+        "label": {
+         "it": "Barbengo - rinnovo infrastrutture campo da calcio: realizzazione",
+         "en": "Barbengo - rinnovo infrastrutture campo da calcio: realizzazione"
+        },
+        "value": 0.0238,
+        "note": {
+         "it": "votata 2023 · credito 0.59 · speso 104% · avanzamento 100%",
+         "en": "voted 2023 · credit 0.59 · spent 104% · progress 100%"
+        }
+       },
+       {
+        "key": "o10",
+        "label": {
+         "it": "PR_CIPPS: conclusione dell'elaborazione della variante e gestione …",
+         "en": "PR_CIPPS: conclusione dell'elaborazione della variante e gestione …"
+        },
+        "value": 0.0127,
+        "note": {
+         "it": "votata 2018 · credito 0.23 · speso 105% · avanzamento 97%",
+         "en": "voted 2018 · credit 0.23 · spent 105% · progress 97%"
+        }
+       },
+       {
+        "key": "o11",
+        "label": {
+         "it": "CDALED: nuovo bacino al Parco Ciani",
+         "en": "CDALED: nuovo bacino al Parco Ciani"
+        },
+        "value": 0.0094,
+        "note": {
+         "it": "votata 2020 · credito 0.14 · speso 107% · avanzamento 100%",
+         "en": "voted 2020 · credit 0.14 · spent 107% · progress 100%"
+        }
+       },
+       {
+        "key": "o12",
+        "label": {
+         "it": "Nuova sede DSU in zona Piano della Stampa: progettazione",
+         "en": "Nuova sede DSU in zona Piano della Stampa: progettazione"
+        },
+        "value": 0.0086,
+        "note": {
+         "it": "votata 2019 · credito 4.45 · speso 100% · avanzamento 99%",
+         "en": "voted 2019 · credit 4.45 · spent 100% · progress 99%"
+        }
+       },
+       {
+        "key": "o13",
+        "label": {
+         "it": "CDALED: partecipazione spese sistemazione del fiume Vedeggio da …",
+         "en": "CDALED: partecipazione spese sistemazione del fiume Vedeggio da …"
+        },
+        "value": 0.0086,
+        "note": {
+         "it": "votata 2008 · credito 0.35 · speso 102% · avanzamento 100%",
+         "en": "voted 2008 · credit 0.35 · spent 102% · progress 100%"
+        }
+       },
+       {
+        "key": "o14",
+        "label": {
+         "it": "CDAPS - messaggio 34: risanamento collettore consortile",
+         "en": "CDAPS - messaggio 34: risanamento collettore consortile"
+        },
+        "value": 0.0048,
+        "note": {
+         "it": "votata 2021 · credito 0.22 · speso 102% · avanzamento 100%",
+         "en": "voted 2021 · credit 0.22 · spent 102% · progress 100%"
+        }
+       }
+      ]
+     },
+     "source": [
+      {
+       "file": "sources/city-consuntivo-2025-messaggio.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+       "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+       "locator": "pp. 385–413: register of open works ('Situazione investimenti amministrativi 2025'), columns Credito aggiornato, Sit. Lav. %, Uscite al 31.12.2025"
+      }
+     ]
+    },
+    {
+     "title": {
+      "it": "Il credito residuo più grande",
+      "en": "The largest remaining credits"
+     },
+     "chart": {
+      "type": "hbars",
+      "unit": "mio CHF",
+      "color": "var(--finanze)",
+      "digits": 1,
+      "data": [
+       {
+        "key": "b0",
+        "label": {
+         "it": "Acquisto dell'Arena Sportiva del Polo Sportivo e degli Eventi (PSE)",
+         "en": "Acquisto dell'Arena Sportiva del Polo Sportivo e degli Eventi (PSE)"
+        },
+        "value": 114.5,
+        "note": {
+         "it": "votata 2025 · credito 114.50 · speso 0% · avanzamento 0%",
+         "en": "voted 2025 · credit 114.50 · spent 0% · progress 0%"
+        }
+       },
+       {
+        "key": "b1",
+        "label": {
+         "it": "Partecipazione al fondo di realizzazione del Piano dei Trasporti …",
+         "en": "Partecipazione al fondo di realizzazione del Piano dei Trasporti …"
+        },
+        "value": 44.9855,
+        "note": {
+         "it": "votata 2015 · credito 102.04 · speso 56% · avanzamento 55%",
+         "en": "voted 2015 · credit 102.04 · spent 56% · progress 55%"
+        }
+       },
+       {
+        "key": "b2",
+        "label": {
+         "it": "Nuova sede della Divisione Spazi Urbani (DSU): realizzazione",
+         "en": "Nuova sede della Divisione Spazi Urbani (DSU): realizzazione"
+        },
+        "value": 30.1982,
+        "note": {
+         "it": "votata 2020 · credito 61.46 · speso 51% · avanzamento 61%",
+         "en": "voted 2020 · credit 61.46 · spent 51% · progress 61%"
+        }
+       },
+       {
+        "key": "b3",
+        "label": {
+         "it": "Nuova SE Viganello: realizzazione",
+         "en": "Nuova SE Viganello: realizzazione"
+        },
+        "value": 27.85,
+        "note": {
+         "it": "votata 2023 · credito 27.85 · speso 0% · avanzamento 0%",
+         "en": "voted 2023 · credit 27.85 · spent 0% · progress 0%"
+        }
+       },
+       {
+        "key": "b4",
+        "label": {
+         "it": "StazLu1 - Modulo 3 - Modulo stradale e infrastrutture d'interscambio - …",
+         "en": "StazLu1 - Modulo 3 - Modulo stradale e infrastrutture d'interscambio - …"
+        },
+        "value": 25.82,
+        "note": {
+         "it": "votata 2025 · credito 25.82 · speso 0% · avanzamento 0%",
+         "en": "voted 2025 · credit 25.82 · spent 0% · progress 0%"
+        }
+       },
+       {
+        "key": "b5",
+        "label": {
+         "it": "CDALED: ammodernamento degli impianti di trattamento acque - …",
+         "en": "CDALED: ammodernamento degli impianti di trattamento acque - …"
+        },
+        "value": 23.8672,
+        "note": {
+         "it": "votata 2020 · credito 37.27 · speso 36% · avanzamento 36%",
+         "en": "voted 2020 · credit 37.27 · spent 36% · progress 36%"
+        }
+       },
+       {
+        "key": "b6",
+        "label": {
+         "it": "Parco Viarno: realizzazione ed espropriazione",
+         "en": "Parco Viarno: realizzazione ed espropriazione"
+        },
+        "value": 23.1468,
+        "note": {
+         "it": "votata 2024 · credito 25.87 · speso 11% · avanzamento 0%",
+         "en": "voted 2024 · credit 25.87 · spent 11% · progress 0%"
+        }
+       },
+       {
+        "key": "b7",
+        "label": {
+         "it": "PGS Lugano - Fase 2: progettazione e realizzazione opere nei diversi …",
+         "en": "PGS Lugano - Fase 2: progettazione e realizzazione opere nei diversi …"
+        },
+        "value": 22.4525,
+        "note": {
+         "it": "votata 2025 · credito 24.50 · speso 8% · avanzamento 8%",
+         "en": "voted 2025 · credit 24.50 · spent 8% · progress 8%"
+        }
+       },
+       {
+        "key": "b8",
+        "label": {
+         "it": "Fermate mezzi pubblici: messa a norma secondo LDis",
+         "en": "Fermate mezzi pubblici: messa a norma secondo LDis"
+        },
+        "value": 12.3612,
+        "note": {
+         "it": "votata 2022 · credito 13.60 · speso 9% · avanzamento 15%",
+         "en": "voted 2022 · credit 13.60 · spent 9% · progress 15%"
+        }
+       },
+       {
+        "key": "b9",
+        "label": {
+         "it": "Cornaredo Sud: rifacimento campi e spostamento pista di atletica",
+         "en": "Cornaredo Sud: rifacimento campi e spostamento pista di atletica"
+        },
+        "value": 12.006,
+        "note": {
+         "it": "votata 2024 · credito 12.30 · speso 2% · avanzamento 5%",
+         "en": "voted 2024 · credit 12.30 · spent 2% · progress 5%"
+        }
+       },
+       {
+        "key": "b10",
+        "label": {
+         "it": "Polo Sportivo e degli Eventi (PSE)  Centro Sportivo al Maglio: …",
+         "en": "Polo Sportivo e degli Eventi (PSE)  Centro Sportivo al Maglio: …"
+        },
+        "value": 11.2468,
+        "note": {
+         "it": "votata 2021 · credito 46.58 · speso 76% · avanzamento 90%",
+         "en": "voted 2021 · credit 46.58 · spent 76% · progress 90%"
+        }
+       },
+       {
+        "key": "b11",
+        "label": {
+         "it": "Area RSI a Besso: acquisizione",
+         "en": "Area RSI a Besso: acquisizione"
+        },
+        "value": 11.1606,
+        "note": {
+         "it": "votata 2023 · credito 21.25 · speso 47% · avanzamento 50%",
+         "en": "voted 2023 · credit 21.25 · spent 47% · progress 50%"
+        }
+       }
+      ]
+     },
+     "source": [
+      {
+       "file": "sources/city-consuntivo-2025-messaggio.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+       "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+       "locator": "pp. 385–413: register of open works ('Situazione investimenti amministrativi 2025'), columns Credito aggiornato, Sit. Lav. %, Uscite al 31.12.2025"
+      }
+     ]
+    }
+   ]
   }
  ],
  "relations": [

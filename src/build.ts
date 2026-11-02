@@ -21,6 +21,7 @@ import { INIZIATIVE_ORIGINS, iniziative } from "./iniziative";
 import { BILANCIO_FUNZIONI_ORIGINS, bilancioFunzioni } from "./bilancio-funzioni";
 import { dicasteri } from "./dicasteri";
 import { PIANO_ORIGINS, pianoFinanziario } from "./piano-finanziario";
+import { investimenti } from "./investimenti";
 import { CULTURA_ORIGINS, cultura } from "./cultura";
 import { SICUREZZA_ORIGINS, sicurezza } from "./sicurezza";
 import { AMBIENTE_ORIGINS, ambiente } from "./ambiente";
@@ -276,6 +277,9 @@ async function main() {
   dc.data = [...dc.data.filter((d) => d.status !== "plan"), ...pf.debtPlan];
   debito.source.push(...pf.source);
   debito.stars.push("finanze.piano-debito", "finanze.piano-rivalorizzazioni", "finanze.piano-misure");
+
+  // the open investment works in the 2025 accounts: credit, spent, progress (checked against the printed totals)
+  stars.push(...(await investimenti(src)).stars);
 
   // every per-resident star says which population it divides by (see METHODOLOGY, population base)
   const lugPop = register.find((m) => m.bfs === 5192)!.population.toLocaleString("de-CH");
