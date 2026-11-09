@@ -16,6 +16,7 @@
 //  13. table        every line, group and function, and the total, on its row of the 2025 budget and accounts tables
 //  14. departments  every department, division and cost centre in the 2025 accounts, through the printed arithmetic
 //  15. second reader checks 8 and 13 again with pypdf, a separate PDF reader, finding columns by arithmetic alone
+//  16. years        every sentence of the overview that gives an amount names its year (or date)
 // npm run verify:selftest plants known errors and requires the right checks to fail (src/selftest.ts).
 
 import { createHash } from "node:crypto";
@@ -180,10 +181,19 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
     // every official figure whose source is a PDF: printed on its cited page or pages (the whole document when the
     // locator gives none), in its unit, in thousands or in francs; a total the document does not print (a sum over a
     // list) must equal the sum of one of its series, each part printed on a cited page
-    const r = await figuresPrinted(pdfjs, catalog.stars);
+    const r = await figuresPrinted(pdfjs, [...catalog.stars, ...chapterFigures()]);
     if (r.missed.length) fail(`not printed as such: ${r.missed.join("; ")}`);
     return `${r.one + r.range + r.sum} figures: ${r.one} on their page, ${r.range} within their cited pages or document, ${r.sum} as the sum of its printed parts`;
   });
+  // the overview's total spending and its revenue by type (2025 accounts, pp. 41 and 50–56) are read from PDF pages
+  // too: checks 8 and 15 look for them like for a figure record
+  function chapterFigures() {
+    const ch = (id: string) => catalog.chapters.find((c: any) => c.id === id);
+    const bil = ch("bilancio"), ent = ch("entrate");
+    const revSrc = ent.source.find((s: any) => /revenue group headings/.test(s.locator));
+    return [{ id: "chapter bilancio (total spending)", kind: "official", value: bil.chart.value, unit: "mio CHF", source: [bil.source[0]] },
+      ...ent.chart.data.map((d: any) => ({ id: `chapter entrate ${d.key}`, kind: "official", value: d.value, unit: "mio CHF", source: [revSrc] }))];
+  }
   await check("every name has an English name, every source an Italian one, none unused", () => {
     const need = new Set<string>([...D.lines.map((l: any) => l.label), ...D.groups.map((g: any) => g.label), ...D.org.groups.map((g: any) => g.label), ...D.org.lines.map((l: any) => l.label), ...D.org.slices.map((s: any) => s.name.it)]);
     const missing = [...need].filter((k) => !EN[k]), unused = Object.keys(EN).filter((k) => !need.has(k));
@@ -300,10 +310,22 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
   await check("a second, independent PDF reader (pypdf) finds the same values", async () => {
     // checks 8 and 13 again with pypdf (src/pdftext.py) instead of pdf.js, and for the table without any column
     // positions: the COSTI value of each row is the one its own arithmetic (costs − revenue = −balance) allows
-    const f = await figuresPrinted(pypdf, catalog.stars), t = await functionalTable(pypdf, D, false);
+    const f = await figuresPrinted(pypdf, [...catalog.stars, ...chapterFigures()]), t = await functionalTable(pypdf, D, false);
     const bad = [...f.missed.map((x) => `figure ${x}`), ...t.bad];
     if (bad.length) fail(bad.join("; "));
     return `${f.one + f.range + f.sum} figures and ${t.k} table values, as with pdf.js`;
+  });
+  await check("every sentence of the overview with an amount names its year", () => {
+    // Italian and English: a sentence with francs, millions or a percentage and no year (20xx) is ambiguous
+    const bad: string[] = []; let k = 0;
+    for (const c of X.chapters) for (const [where, t] of [["lede", c.lede], ["chart", c.chart?.sub], ...(c.notes ?? []).map((x: any, i: number) => [`note ${i + 1}`, x])] as [string, any][])
+      for (const lang of ["it", "en"] as const) for (const s of (t?.[lang] ?? "").split(/(?<=[.!?])\s+(?=[A-ZÀ-Ù«"'(])/)) {
+        if (!/\d\s*(mio|milioni|million|CHF|%)|CHF\s?\d/.test(s)) continue;
+        k++;
+        if (!/\b20\d\d\b/.test(s)) bad.push(`${c.id} ${where} (${lang}): "${s.slice(0, 80)}…"`);
+      }
+    if (bad.length) fail(bad.join("; "));
+    return `${k} sentences with an amount, each with its year`;
   });
   const w = Math.max(...results.map((r) => r.name.length));
   for (const r of results) console.log(`${r.ok ? "PASS" : "FAIL"}  ${String(r.n).padStart(2)}  ${r.name.padEnd(w)}  ${r.detail}`);

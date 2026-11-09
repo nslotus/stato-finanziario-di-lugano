@@ -18,7 +18,9 @@ import { ECONOMIA_ORIGINS, economia } from "./economia";
 import { SOCIALE_ORIGINS, sociale } from "./sociale";
 import { IMPRESE_ORIGINS, imprese } from "./imprese";
 import { INIZIATIVE_ORIGINS, iniziative } from "./iniziative";
-import { BILANCIO_FUNZIONI_ORIGINS, bilancioFunzioni } from "./bilancio-funzioni";
+import { BILANCIO_FUNZIONI_ORIGINS, F, bilancioFunzioni } from "./bilancio-funzioni";
+import { nature2025 } from "./adapters/nature";
+import { readPdf } from "./adapters/pdf";
 import { dicasteri } from "./dicasteri";
 import { PIANO_ORIGINS, pianoFinanziario } from "./piano-finanziario";
 import { investimenti } from "./investimenti";
@@ -257,6 +259,8 @@ async function main() {
   const uscite = led.chapters.find((c) => c.id === "uscite")!;
   const fnData = (uscite.chart as { data: { key: string; value: number; star?: string }[] }).data;
   const bf = await bilancioFunzioni(src, new Map(fnData.map((d) => [d.key, d.value])));
+  // money in, money out and the total move to the 2025 accounts (spending by type, pp. 41–56), the year the sky shows
+  led.finish2025(await nature2025(readPdf, F.c25), (key) => bf.series.get(key)!.c25, F.c25);
   for (const d of fnData) {
     if (!d.star) continue;
     const a = stars.find((x) => x.id === d.star)!;

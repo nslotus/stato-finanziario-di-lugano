@@ -7,6 +7,7 @@ import type { Municipality } from "./adapters/municipalities";
 import { ALLEGATO } from "./adapters/sel";
 import { fail, num, rawPath, sheet } from "./adapters/common";
 import { readPdf } from "./adapters/pdf";
+import { NATURE_PAGES, type nature2025 } from "./adapters/nature";
 import { readFileSync } from "node:fs";
 export const DS_PIN = "a90ca4a"; // dati-di-lugano commit with out/debt-service.json
 const DEBT_SERVICE = `dati-di-lugano@${DS_PIN}-debt-service.json`;
@@ -39,10 +40,13 @@ const n = (v: number, d = 1) => v.toLocaleString("de-CH", { minimumFractionDigit
 const FN_EN: Record<number, string> = { 0: "General administration", 1: "Public order and safety", 2: "Education", 3: "Culture, sport, leisure, church",
   4: "Health", 5: "Social security", 6: "Transport and communications", 7: "Environment and land", 8: "Public economy", 9: "Finance and taxes" };
 const REV_EN: Record<string, string> = { "40": "Taxes", "41": "Royalties and concessions", "42": "Fees and charges", "43": "Other revenue",
-  "44": "Financial revenue", "45": "Drawings from funds", "46": "Transfers received", "48": "Extraordinary revenue" };
+  "44": "Financial revenue", "45": "Drawings from funds", "46": "Transfers received", "47": "Pass-through revenue", "48": "Extraordinary revenue", "49": "Internal credits" };
 const RATING_EN: Record<string, string> = { "molto elevato": "very high", eccessivo: "excessive", debole: "weak", disavanzo: "deficit", bassa: "low",
   media: "average", buona: "good", avanzo: "surplus", basso: "low", medio: "medium", elevato: "high" };
 const ord = (k: number) => `${k}°`;
+/** 2026-10-14 → 14 ottobre 2026 / 14 October 2026 */
+const dIt = (iso: string) => `${+iso.slice(8, 10)} ${MONTHS[+iso.slice(5, 7) - 1]} ${iso.slice(0, 4)}`;
+const dEn = (iso: string) => `${+iso.slice(8, 10)} ${MONTHS_EN[+iso.slice(5, 7) - 1]} ${iso.slice(0, 4)}`;
 /** Italian article before a percentage: l'8%, l'11%, il 12% */
 const ilPct = (p: number) => (/^(8|11)(D|$)/.test(String(p)) ? `l'${p}%` : `il ${p}%`);
 const alPct = (p: number) => (/^(8|11)(D|$)/.test(String(p)) ? `all'${p}%` : `al ${p}%`);
@@ -308,16 +312,16 @@ export async function ledger(register: Municipality[], population: Map<number, n
         src(BUDGET27_MSG, "p. 14: «incremento del debito pubblico di CHF 80.4 mio»"),
         src(MOODYS_2026, `news page of 26 October 2026: '${mo.quote}'`), src(MOODYS_PDF, `p. 1: '${mo.prevQuote}' (27 October 2025)`)] },
     { id: "obbligazioni", n: 6, title: { it: "Le obbligazioni", en: "The bonds" }, stars: ["finanze.obbligazioni", "finanze.debito-lordo", "finanze.interessi"],
-      lede: { it: `${n(book.outstandingM, 0)} milioni in ${book.bondCount} obbligazioni, con cedola media ponderata dello ${n(book.weightedCouponPct, 2)}% e una durata residua media di ${n(book.weightedRemainingYears)} anni. Entro tre anni ne scadono ${n(book.maturingWithin["3y"], 0)} milioni.`,
-        en: `CHF ${n(book.outstandingM, 0)} million in ${book.bondCount} bonds, with a volume-weighted coupon of ${n(book.weightedCouponPct, 2)}% and ${n(book.weightedRemainingYears)} years average remaining life. CHF ${n(book.maturingWithin["3y"], 0)} million falls due within three years.` },
+      lede: { it: `Al ${dIt(book.asOf)} la Città aveva ${n(book.outstandingM, 0)} milioni in ${book.bondCount} obbligazioni, con cedola media ponderata dello ${n(book.weightedCouponPct, 2)}% e una durata residua media di ${n(book.weightedRemainingYears)} anni. Entro tre anni, cioè entro ${dIt(book.asOf).replace(/^\d+ /, "").replace(/\d{4}$/, (y) => String(+y + 3))}, ne scadono ${n(book.maturingWithin["3y"], 0)} milioni.`,
+        en: `On ${dEn(book.asOf)} the City had CHF ${n(book.outstandingM, 0)} million in ${book.bondCount} bonds, with a volume-weighted coupon of ${n(book.weightedCouponPct, 2)}% and ${n(book.weightedRemainingYears)} years average remaining life. CHF ${n(book.maturingWithin["3y"], 0)} million falls due within three years, by ${dEn(book.asOf).replace(/^\d+ /, "").replace(/\d{4}$/, (y) => String(+y + 3))}.` },
       chart: { type: "ladder", unit: "mio CHF",
         data: Object.entries(book.ladderM as Record<string, number>).map(([y, v]) => ({ key: `y${y}`, label: { it: y, en: y }, value: v, status: "actual" })),
         bonds: book.bonds.map((b: any) => ({ isin: b.isin, coupon: b.coupon, maturity: b.maturity, volumeM: b.volumeMCHF, kind: b.kind, sixUrl: b.sixUrl })) },
       notes: [{ it: "Solo le condizioni dei titoli: i prezzi di mercato sono su SIX (dati soggetti a licenza).", en: "Bond terms only: market prices are on SIX (licensed data)." }],
       source: [src(DEBT_PROFILE, "today (bond register of Dati di Lugano, terms only)")] },
     { id: "interessi", n: 7, title: { it: "Interessi e rimborsi", en: "Interest and repayments" }, stars: ["finanze.interessi", "finanze.obbligazioni"],
-      lede: { it: `Sulle obbligazioni di oggi la Città paga ${n(ds.today.annualInterestM, 2)} milioni di interessi all'anno. Nel ${next.year} scade l'obbligazione da ${n(nextBond.volumeM, 0)} milioni allo ${n(nextBond.coupon, 2)}%: se fosse rifinanziata alla cedola dell'ultima emissione (${n(latest.coupon, 2)}%), costerebbe ${n(refiDelta, 2)} milioni in più all'anno.`,
-        en: `On today's bonds the City pays CHF ${n(ds.today.annualInterestM, 2)} million in interest a year. In ${next.year} the CHF ${n(nextBond.volumeM, 0)} million bond at ${n(nextBond.coupon, 2)}% falls due: refinanced at the coupon of the latest issue (${n(latest.coupon, 2)}%), it would cost CHF ${n(refiDelta, 2)} million more a year.` },
+      lede: { it: `Sulle obbligazioni in circolazione al ${dIt(ds.asOf)} la Città paga ${n(ds.today.annualInterestM, 2)} milioni di interessi all'anno. Nel ${next.year} scade l'obbligazione da ${n(nextBond.volumeM, 0)} milioni allo ${n(nextBond.coupon, 2)}%: se fosse rifinanziata alla cedola dell'ultima emissione (${n(latest.coupon, 2)}%), costerebbe ${n(refiDelta, 2)} milioni in più all'anno.`,
+        en: `On the bonds outstanding on ${dEn(ds.asOf)} the City pays CHF ${n(ds.today.annualInterestM, 2)} million in interest a year. In ${next.year} the CHF ${n(nextBond.volumeM, 0)} million bond at ${n(nextBond.coupon, 2)}% falls due: refinanced at the coupon of the latest issue (${n(latest.coupon, 2)}%), it would cost CHF ${n(refiDelta, 2)} million more a year.` },
       chart: { type: "columns", unit: "mio CHF", series: [{ label: { it: "Interessi pagati", en: "Interest paid" }, data: dsRows.map((r: any): Datum => ({
         key: `i${r.year}`, label: { it: String(r.year), en: String(r.year) }, value: r.interestPaidM, status: r.year < yearNow ? "paid" : "contract",
         note: r.redemptionM ? { it: `rimborso ${n(r.redemptionM, 0)} mio`, en: `repayment CHF ${n(r.redemptionM, 0)}M` } : undefined })) }] },
@@ -340,8 +344,59 @@ export async function ledger(register: Municipality[], population: Map<number, n
       source: [src(INDICATORS, "years[2024].indicatori (canton tab12, rating scales from the 2024 report)")] },
   ];
 
-  return { stars, chapters };
+  /** Money in, money out and the total on the 2025 accounts, the year the sky shows: spending is always the accounts'
+   *  total (gruppo 3), and the 2024 canton figures stay only where Lugano is compared with the other municipalities. */
+  const finish2025 = (nat: Awaited<ReturnType<typeof nature2025>>, c25: (key: string) => number, file: string) => {
+    const M = (v: number) => v / 1e6, g = (code: string) => nat.spendGroups.find((r) => r.code === code) ?? fail(`ledger: spending group ${code} missing`);
+    const tot = M(nat.spend.c25), op = M(nat.operating.c25), fin34 = M(g("34").c25), int39 = M(g("39").c25);
+    const bTot = M(nat.spend.p25), bOp = M(nat.operating.p25), bFin = M(g("34").p25), bInt = M(g("39").p25);
+    if (Math.abs(op + fin34 + int39 - tot) > 0.00001) fail("ledger: operating + financial + internal ≠ total spending");
+    if (Math.abs(nat.revenue.c25 - nat.spend.c25 - r2025.value * 1e6) > 1) fail(`ledger: 2025 revenue − spending ≠ the 2025 result ${r2025.value}`);
+    if (Math.abs(op - bva(2025, "speseOperative").actual) > 0.00001 || Math.abs(bOp - bva(2025, "speseOperative").budget) > 0.00001) fail("ledger: operating spending differs from the recap deck");
+    const sun = S["bilancio.spesa"], s = (p: number, what: string) => src(file, `p. ${p}: ${what}`);
+    const natSrc = [s(nat.spend.page, "'3 SPESE', columns Consuntivo 2025, Preventivo 2025, Consuntivo 2024"), s(g("34").page, "'34 SPESE FINANZIARIE'"), s(g("39").page, "'39 ADDEBITI INTERNI'"),
+      s(NATURE_PAGES.recap, "'Spese operative' (summary of the 2025 results)")];
+
+    const bil = chapters.find((c) => c.id === "bilancio")!;
+    bil.lede = { it: `Nel 2025 la Città ha speso ${n(tot)} milioni di franchi (spese totali del consuntivo): ${n(op)} di spese operative, ${n(fin34)} di spese finanziarie, soprattutto interessi, e ${n(int39)} di addebiti interni tra un servizio e l'altro. Il preventivo 2025 ne prevedeva ${n(bTot)}. Il confronto con gli altri comuni ticinesi è possibile solo sul 2024, l'ultimo anno pubblicato dal Cantone: con la stessa misura la Città spendeva ${n(totalM)} milioni, cioè ${n(sun.value, 0)} CHF per abitante, ${rankText(sun).it}.`,
+      en: `In 2025 the City spent CHF ${n(tot)} million (total spending in the accounts): ${n(op)} of operating spending, ${n(fin34)} of financial spending, mostly interest, and ${n(int39)} of internal charges between services. The 2025 budget planned ${n(bTot)}. Comparison with Ticino's other municipalities is only possible for 2024, the latest year the canton publishes: on the same measure the City spent CHF ${n(totalM)} million, or CHF ${n(sun.value, 0)} per resident, ${rankText(sun).en}.` };
+    bil.chart = { type: "kpi", value: tot, unit: "mio CHF", sub: { it: "spese totali del consuntivo 2025", en: "total spending, 2025 accounts" } };
+    bil.notes = [{ it: `Da ${n(tot)} a ${n(op)}: le spese operative (${n(op)} milioni nel 2025, ${n(bOp)} a preventivo) sono le spese totali senza le spese finanziarie (${n(fin34)}; preventivo ${n(bFin)}) e gli addebiti interni (${n(int39)}; preventivo ${n(bInt)}). Gli addebiti interni sono servizi che un settore della Città fattura a un altro: tornano tra i ricavi come accrediti interni, per lo stesso importo.`,
+      en: `From ${n(tot)} to ${n(op)}: operating spending (CHF ${n(op)} million in 2025, ${n(bOp)} in the budget) is total spending without financial spending (${n(fin34)}; budget ${n(bFin)}) and internal charges (${n(int39)}; budget ${n(bInt)}). Internal charges are services one part of the City bills to another: they come back as internal credits on the revenue side, for the same amount.` }];
+    bil.source = [...natSrc, ...fnSrc("0–9 (sum)")];
+
+    const ent = chapters.find((c) => c.id === "entrate")!;
+    const rev = M(nat.revenue.c25), tax = nat.revenueGroups.find((r) => r.code === "40") ?? fail("ledger: revenue group 40 missing");
+    ent.lede = { it: `Nel 2025 le imposte hanno portato ${n(M(tax.c25))} dei ${n(rev)} milioni di ricavi della Città (${pct(tax.c25, nat.revenue.c25)}%). Delle imposte 2025, le persone fisiche hanno versato ${n(M(nat.pf.c25))} milioni, le aziende ${n(M(nat.pg.c25))} milioni.`,
+      en: `In 2025 taxes brought in CHF ${n(M(tax.c25))} million of the City's CHF ${n(rev)} million revenue (${pct(tax.c25, nat.revenue.c25)}%). Of the 2025 taxes, individuals paid CHF ${n(M(nat.pf.c25))} million, companies CHF ${n(M(nat.pg.c25))} million.` };
+    ent.chart = { type: "hbars", unit: "mio CHF", data: nat.revenueGroups.map((r) => ({ key: `r${r.code}`, label: { it: `${r.code} ${REV_IT[r.code] ?? r.label}`, en: `${r.code} ${REV_EN[r.code] ?? r.label}` }, value: M(r.c25), status: "actual" as const,
+      star: r.code === "40" ? "finanze.imposte-pf" : undefined })) };
+    ent.notes = [{ it: `Le stelle sulle imposte confrontano Lugano con gli altri comuni sui conti 2024, gli ultimi pubblicati dal Cantone: nel 2024 le persone fisiche versavano ${n(pf)} milioni, le aziende ${n(pg)} milioni.`,
+      en: `The tax stars compare Lugano with the other municipalities on the 2024 accounts, the latest the canton publishes: in 2024 individuals paid CHF ${n(pf)} million, companies CHF ${n(pg)} million.` }, ...(ent.notes ?? [])];
+    ent.source = [s(nat.revenue.page, "'4 RICAVI' and '400'/'401' rows, column Consuntivo 2025"), src(file, `pp. ${NATURE_PAGES.revenue[0]}–${NATURE_PAGES.revenue[1]}: revenue group headings (40–49), column Consuntivo 2025`),
+      ...ent.source.filter((x) => !/tab9b/.test(x.locator))];
+
+    const usc = chapters.find((c) => c.id === "uscite")!;
+    const rows25 = fnRows.map((d) => ({ ...d, value: c25(d.key) }));
+    if (Math.abs(rows25.reduce((t, d) => t + d.value, 0) - tot) > 0.00001) fail("ledger: 2025 functions do not add up to total spending");
+    const top25 = [...rows25].sort((a, b) => b.value - a.value).slice(0, 3);
+    usc.lede = { it: `Nel 2025 le voci maggiori sono state ${top25.map((f) => `${f.label.it.replace(/^\d /, "").toLowerCase()} (${n(f.value)} mio)`).join(", ")}. Ogni barra con una stella porta alla sua costellazione.`,
+      en: `In 2025 the largest items were ${top25.map((f) => `${f.label.en.replace(/^\d /, "").toLowerCase()} (CHF ${n(f.value)}M)`).join(", ")}. Each bar with a star leads to its constellation.` };
+    usc.chart = { type: "hbars", unit: "mio CHF", data: rows25 };
+    usc.notes = [{ it: "Le stelle dei settori confrontano la spesa per abitante con gli altri comuni ticinesi sui conti 2024, gli ultimi pubblicati dal Cantone.",
+      en: "The sector stars compare spending per resident with Ticino's other municipalities on the 2024 accounts, the latest the canton publishes." }];
+    usc.source = [src(file, "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale', column COSTI")];
+
+    const ris = chapters.find((c) => c.id === "risultato")!;
+    ris.notes = [{ it: `Le spese operative della tabella (${n(op)} milioni nel 2025) non sono tutta la spesa: con ${n(fin34)} di spese finanziarie e ${n(int39)} di addebiti interni si arriva alle spese totali di ${n(tot)} milioni (a preventivo ${n(bOp)} + ${n(bFin)} + ${n(bInt)} = ${n(bTot)}). I ricavi totali 2025 sono stati ${n(rev)} milioni: ${n(rev)} − ${n(tot)} = ${n(r2025.value)}, il risultato d'esercizio.`,
+      en: `The table's operating spending (CHF ${n(op)} million in 2025) is not all spending: with ${n(fin34)} of financial spending and ${n(int39)} of internal charges it comes to total spending of CHF ${n(tot)} million (budget ${n(bOp)} + ${n(bFin)} + ${n(bInt)} = ${n(bTot)}). Total revenue in 2025 was CHF ${n(rev)} million: ${n(rev)} − ${n(tot)} = ${n(r2025.value)}, the operating result.` }, ...(ris.notes ?? [])];
+    ris.source.push(...natSrc, s(nat.revenue.page, "'4 RICAVI', column Consuntivo 2025"));
+  };
+
+  return { stars, chapters, finish2025 };
 }
+const REV_IT: Record<string, string> = { "40": "Ricavi fiscali", "41": "Regalie e concessioni", "42": "Tasse e retribuzioni", "43": "Ricavi diversi", "44": "Ricavi finanziari",
+  "45": "Prelievi da fondi e finanziamenti speciali", "46": "Ricavi da trasferimento", "47": "Riversamenti", "48": "Ricavi straordinari", "49": "Accrediti interni" };
 
 export const LEDGER_ORIGINS: Record<string, { url: string; publisher: string }> = {
     [DEBT_SERVICE]: { url: `https://github.com/nslotus/dati-di-lugano/blob/${DS_PIN}/out/debt-service.json`, publisher: "Dati di Lugano (bond interest and repayments computed from the bond terms)" },

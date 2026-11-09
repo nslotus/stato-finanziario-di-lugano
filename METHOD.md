@@ -38,7 +38,9 @@ sources. In the department view, each department shows its staff and gross salar
 
 **The overview** ("Il quadro") brings the accounts together: total spending by year, revenue, spending by sector, the
 operating result, investment and self-financing, the debt to 2033, the bonds, interest and repayments, how Lugano
-compares with Ticino's municipalities, staff costs, and the datasets that are not published.
+compares with Ticino's municipalities, staff costs, and the datasets that are not published. Revenue, spending and the
+result are those of the 2025 accounts, the year the sky shows; only the comparisons with the other municipalities use
+2024, the latest year the canton publishes, and every sentence that gives an amount names its year (check 16).
 
 **On phones** (screens up to 720 px wide), and on a computer in the **"Riquadri"** (Tiles) view, the same data is shown
 without the sky (on a computer the tiles and a sector's list sit side by side):
@@ -134,6 +136,7 @@ schools' pupils and classes, the TPL and PubliBike figures, and the bond interes
 |---|---|
 | Budget 2025 by function | The Municipio's proposal, as printed by function in the 2025 budget message. The Council changed the total by CHF 100,000 in one department, which the table by function does not allocate; the overview shows both totals. |
 | Actual 2025 | The final accounts in the City's message on the 2025 accounts (April 2026). |
+| Spending | Total spending in the City's accounts (group 3): CHF 490.7 million in 2025, against CHF 497.5 million in the approved budget. The City's recap and the budget-against-actual table give operating spending (CHF 473.6 million), which leaves out financial spending (13.8, mostly interest) and internal charges between services (3.3). Comparisons with the other municipalities use the same total for 2024 (CHF 485.1 million). |
 | Gap | Actual − budget, in CHF million, and (actual − budget) ÷ budget in percent. |
 | Per resident | Divided by Lugano's 63,629 permanent residents at 31 December 2024 (federal definition), the base the canton uses for all 106 municipalities. The City publishes higher counts of its own (64,430 in its register; 68,507 including secondary residents); they are not used because they do not exist for the other municipalities. Per resident is not per taxpayer. |
 | Rank | Lugano's position among Ticino's 106 municipalities, 1 = highest value, with the median. Ranks compare Ticino only. Figures are ranked only where a comparison means something for a resident; the method of each figure says when it is not. |
@@ -212,6 +215,7 @@ centres, and check 4's sums cover it.
 | 13 | The table on the page | each of the 72 lines, 43 groups and 10 functions, and the City's total, in the 2025 budget (pp. 221–223) and the 2025 accounts (pp. 238–239): the number in the COSTI column of the row with its code; a row without cost has that column empty. With check 4, the lines are tied to the City's own printed totals | CHF 0.006 (to the centime) |
 | 14 | Departments on the page | each cost centre and division with a table of its own: row 3 (spending) of its table in the 2025 accounts, read through the row's printed arithmetic; each department and division: its row in the department's overview table, by the columns' headings | CHF 0.006; the row's arithmetic CHF 0.015 and 0.01 percentage points |
 | 15 | Second reader | checks 8 and 13 again with pypdf; for the table, the costs found by each row's arithmetic only | as checks 8 and 13 |
+| 16 | Years | every sentence of the overview (introductions, chart captions, notes) that gives an amount names its year, in Italian and English | exact |
 
 Check 14 reports what it finds in the source as printed: in centre 4101 (Servizi generali, division 41 Polizia) the two printed
 differences do not recompute from the printed amounts (both are CHF 16.97 off, as if the actual were CHF 4'948'323.76
@@ -219,13 +223,13 @@ rather than the CHF 4'948'306.79 printed); the page uses the printed actual. In 
 (1213, 1214, 1230, 1231, 1232, 1401) a row's arithmetic alone allows two readings; check 14 accepts either, and check 4
 decides: the centres' budgets must add up to their division's budget, which check 14 reads from the printed overview.
 
-**Would the checks fail?** `npm run verify:selftest`, also run by GitHub Actions, plants 19 known errors one at a time
+**Would the checks fail?** `npm run verify:selftest`, also run by GitHub Actions, plants 21 known errors one at a time
 and requires the expected checks to fail: a line's budget off by CHF 1,000; a line's actual read from the revenue
 column; two lines' actuals swapped within a function (check 4's sums still pass; checks 13 and 15 fail); a cost
 centre off by CHF 10; a department's budget off by CHF 1,000; a new centre's budget read the other way its row allows
 (check 14 passes; check 4 fails); a figure off by one unit, on its page and across its pages (675 road accidents read as
 676); a part of a printed list misread with its total; a rank off by one; a printed difference, the canton's rank, an
-English name or an Italian source note, a source's fingerprint and an upstream commit changed; a stray file in `sources/`; an API key in a file; a number changed in this file but not in `METODO.md`. The repository's files are restored after each case.
+English name or an Italian source note, a source's fingerprint and an upstream commit changed; an amount in the overview without its year; a stray file in `sources/`; an API key or a staff name from a PDF's metadata in a file; a number changed in this file but not in `METODO.md`. The repository's files are restored after each case.
 
 Checks 15 and the self-test need Python 3 with pypdf, pinned by hash in
 [`requirements-verify.txt`](requirements-verify.txt).

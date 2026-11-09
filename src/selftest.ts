@@ -43,6 +43,8 @@ const CASES: Case[] = [
   { what: "a source shown on the Italian page without its Italian version", touches: [MORE], fail: [9], plant: () => editJs(MORE, "CIELO_MORE", (o) => { delete o.srcIt.locators[Object.keys(o.srcIt.locators)[0]]; }) },
   { what: "the Italian method not updated with the English one (a number changed in METHOD.md only)", touches: ["METHOD.md"], fail: [12],
     plant: () => writeFileSync("METHOD.md", readFileSync("METHOD.md", "utf8").replace("63,629 permanent residents", "63,630 permanent residents")) },
+  { what: "an amount in the overview without its year", touches: [DATA], fail: [16],
+    plant: () => editJs(DATA, "CIELO", (o) => { const c = o.X.chapters.find((x: Json) => x.id === "entrate"); c.lede.it += " Le tasse portano 42.3 milioni."; }) },
   { what: "an English name missing", touches: [DATA], fail: [9], plant: () => editJs(DATA, "CIELO", (o) => { delete o.EN[Object.keys(o.EN)[0]]; }) },
   { what: "a source's fingerprint not matching the archived file", touches: [MANIFEST], fail: [1], plant: () => editJson(MANIFEST, (o) => { const a = Array.isArray(o) ? o : o.files; a[0].sha256 = "0".repeat(64); }) },
   { what: "a pinned upstream file whose URL names another commit", touches: [MANIFEST], fail: [3],

@@ -34236,19 +34236,43 @@
     "bilancio.spesa"
    ],
    "lede": {
-    "it": "Nel 2024 la Città ha speso 485.1 milioni di franchi (spesa lorda), cioè 7'624 CHF per abitante: 18° su 106 comuni ticinesi (mediana 5'396 CHF).",
-    "en": "In 2024 the City spent CHF 485.1 million (gross), or CHF 7'624 per resident: rank 18 of Ticino's 106 municipalities (median CHF 5'396)."
+    "it": "Nel 2025 la Città ha speso 490.7 milioni di franchi (spese totali del consuntivo): 473.6 di spese operative, 13.8 di spese finanziarie, soprattutto interessi, e 3.3 di addebiti interni tra un servizio e l'altro. Il preventivo 2025 ne prevedeva 497.5. Il confronto con gli altri comuni ticinesi è possibile solo sul 2024, l'ultimo anno pubblicato dal Cantone: con la stessa misura la Città spendeva 485.1 milioni, cioè 7'624 CHF per abitante, 18° su 106 comuni ticinesi (mediana 5'396 CHF).",
+    "en": "In 2025 the City spent CHF 490.7 million (total spending in the accounts): 473.6 of operating spending, 13.8 of financial spending, mostly interest, and 3.3 of internal charges between services. The 2025 budget planned 497.5. Comparison with Ticino's other municipalities is only possible for 2024, the latest year the canton publishes: on the same measure the City spent CHF 485.1 million, or CHF 7'624 per resident, rank 18 of Ticino's 106 municipalities (median CHF 5'396)."
    },
    "chart": {
     "type": "kpi",
-    "value": 485.13159781999997,
+    "value": 490.69040987,
     "unit": "mio CHF",
     "sub": {
-     "it": "7'624 CHF per abitante · 2024",
-     "en": "CHF 7'624 per resident · 2024"
+     "it": "spese totali del consuntivo 2025",
+     "en": "total spending, 2025 accounts"
     }
    },
    "source": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 41: '3 SPESE', columns Consuntivo 2025, Preventivo 2025, Consuntivo 2024"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 44: '34 SPESE FINANZIARIE'"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 49: '39 ADDEBITI INTERNI'"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 13: 'Spese operative' (summary of the 2025 results)"
+    },
     {
      "file": "sources/sel-2024-allegato.xlsx",
      "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/StatisticaFinanziaria/2024-allegato.xlsx",
@@ -34260,6 +34284,12 @@
      "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/StatisticaFinanziaria/2024-allegato.xlsx",
      "publisher": "Cantone Ticino, Sezione degli enti locali",
      "locator": "sheet tab8, column 'Popolazione residente al 31.12.2024'"
+    }
+   ],
+   "notes": [
+    {
+     "it": "Da 490.7 a 473.6: le spese operative (473.6 milioni nel 2025, 480.2 a preventivo) sono le spese totali senza le spese finanziarie (13.8; preventivo 14.0) e gli addebiti interni (3.3; preventivo 3.3). Gli addebiti interni sono servizi che un settore della Città fattura a un altro: tornano tra i ricavi come accrediti interni, per lo stesso importo.",
+     "en": "From 490.7 to 473.6: operating spending (CHF 473.6 million in 2025, 480.2 in the budget) is total spending without financial spending (13.8; budget 14.0) and internal charges (3.3; budget 3.3). Internal charges are services one part of the City bills to another: they come back as internal credits on the revenue side, for the same amount."
     }
    ]
   },
@@ -34278,8 +34308,8 @@
     "finanze.ifd-quota"
    ],
    "lede": {
-    "it": "Le imposte portano 354.5 dei 479.8 milioni di ricavi (74%). Le persone fisiche versano 264.8 milioni, le aziende 75.6 milioni.",
-    "en": "Taxes bring in CHF 354.5 million of CHF 479.8 million revenue (74%). Individuals pay CHF 264.8 million, companies CHF 75.6 million."
+    "it": "Nel 2025 le imposte hanno portato 381.0 dei 514.4 milioni di ricavi della Città (74%). Delle imposte 2025, le persone fisiche hanno versato 295.7 milioni, le aziende 71.3 milioni.",
+    "en": "In 2025 taxes brought in CHF 381.0 million of the City's CHF 514.4 million revenue (74%). Of the 2025 taxes, individuals paid CHF 295.7 million, companies CHF 71.3 million."
    },
    "chart": {
     "type": "hbars",
@@ -34288,70 +34318,83 @@
      {
       "key": "r40",
       "label": {
-       "it": "40 ricavi fiscali",
+       "it": "40 Ricavi fiscali",
        "en": "40 Taxes"
       },
-      "value": 354.53867015,
+      "value": 381.01698055,
       "status": "actual",
       "star": "finanze.imposte-pf"
      },
      {
       "key": "r41",
       "label": {
-       "it": "41 regalie e concessioni",
+       "it": "41 Regalie e concessioni",
        "en": "41 Royalties and concessions"
       },
-      "value": 6.450412750000001,
+      "value": 6.8306835999999995,
       "status": "actual"
      },
      {
       "key": "r42",
       "label": {
-       "it": "42 tasse e retribuzioni",
+       "it": "42 Tasse e retribuzioni",
        "en": "42 Fees and charges"
       },
-      "value": 48.733682740000006,
+      "value": 42.346362899999995,
       "status": "actual"
      },
      {
       "key": "r43",
       "label": {
-       "it": "43 ricavi diversi",
+       "it": "43 Ricavi diversi",
        "en": "43 Other revenue"
       },
-      "value": 0.9140279,
+      "value": 0.8000194,
       "status": "actual"
      },
      {
       "key": "r44",
       "label": {
-       "it": "44 ricavi finanziari",
+       "it": "44 Ricavi finanziari",
        "en": "44 Financial revenue"
       },
-      "value": 47.13429643,
+      "value": 55.94964253,
       "status": "actual"
      },
      {
       "key": "r45",
       "label": {
-       "it": "45 prelievi da fondi e finanziamenti speciali",
+       "it": "45 Prelievi da fondi e finanziamenti speciali",
        "en": "45 Drawings from funds"
       },
-      "value": 1.66742336,
+      "value": 2.04682614,
       "status": "actual"
      },
      {
       "key": "r46",
       "label": {
-       "it": "46 ricavi da trasferimento",
+       "it": "46 Ricavi da trasferimento",
        "en": "46 Transfers received"
       },
-      "value": 20.333186100000002,
+      "value": 22.09761023,
+      "status": "actual"
+     },
+     {
+      "key": "r49",
+      "label": {
+       "it": "49 Accrediti interni",
+       "en": "49 Internal credits"
+      },
+      "value": 3.33720144,
       "status": "actual"
      }
     ]
    },
    "notes": [
+    {
+     "it": "Le stelle sulle imposte confrontano Lugano con gli altri comuni sui conti 2024, gli ultimi pubblicati dal Cantone: nel 2024 le persone fisiche versavano 264.8 milioni, le aziende 75.6 milioni.",
+     "en": "The tax stars compare Lugano with the other municipalities on the 2024 accounts, the latest the canton publishes: in 2024 individuals paid CHF 264.8 million, companies CHF 75.6 million."
+    },
     {
      "it": "Moltiplicatore d'imposta: 77% per le persone fisiche e 82% per le aziende nel 2025; 80% e 85% nel preventivo 2026, 80% e 85% nel preventivo 2027.",
      "en": "Tax multiplier: 77% for individuals and 82% for companies in 2025; 80% and 85% in the 2026 budget, 80% and 85% in the 2027 budget."
@@ -34367,10 +34410,16 @@
    ],
    "source": [
     {
-     "file": "sources/sel-2024-allegato.xlsx",
-     "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/StatisticaFinanziaria/2024-allegato.xlsx",
-     "publisher": "Cantone Ticino, Sezione degli enti locali",
-     "locator": "sheet tab9b (CHF thousands; excludes 47 pass-through and 49 internal), row 'Lugano'"
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 50: '4 RICAVI' and '400'/'401' rows, column Consuntivo 2025"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "pp. 50–56: revenue group headings (40–49), column Consuntivo 2025"
     },
     {
      "file": "sources/sel-2024-allegato.xlsx",
@@ -34434,8 +34483,8 @@
     "economia.spesa"
    ],
    "lede": {
-    "it": "Le voci maggiori sono finanze e imposte (78.1 mio), sanità (60.8 mio), trasporti e comunicazioni (59.0 mio). Ogni barra con una stella porta alla sua costellazione.",
-    "en": "The largest items are finance and taxes (CHF 78.1M), health (CHF 60.8M), transport and communications (CHF 59.0M). Each bar with a star leads to its constellation."
+    "it": "Nel 2025 le voci maggiori sono state finanze e imposte (76.4 mio), sanità (63.0 mio), trasporti e comunicazioni (59.2 mio). Ogni barra con una stella porta alla sua costellazione.",
+    "en": "In 2025 the largest items were finance and taxes (CHF 76.4M), health (CHF 63.0M), transport and communications (CHF 59.2M). Each bar with a star leads to its constellation."
    },
    "chart": {
     "type": "hbars",
@@ -34447,7 +34496,7 @@
        "it": "0 Amministrazione generale",
        "en": "0 General administration"
       },
-      "value": 45.71205004,
+      "value": 44.17202096,
       "status": "actual"
      },
      {
@@ -34456,7 +34505,7 @@
        "it": "1 Ordine pubblico, sicurezza, difesa",
        "en": "1 Public order and safety"
       },
-      "value": 45.82240002,
+      "value": 46.543644119999996,
       "status": "actual",
       "star": "sicurezza.spesa"
      },
@@ -34466,7 +34515,7 @@
        "it": "2 Formazione",
        "en": "2 Education"
       },
-      "value": 53.9584715,
+      "value": 54.12078966,
       "status": "actual",
       "star": "istruzione.spesa"
      },
@@ -34476,7 +34525,7 @@
        "it": "3 Cultura, sport, tempo libero, chiesa",
        "en": "3 Culture, sport, leisure, church"
       },
-      "value": 53.61541458,
+      "value": 52.718710200000004,
       "status": "actual",
       "star": "cultura.spesa"
      },
@@ -34486,7 +34535,7 @@
        "it": "4 Sanità",
        "en": "4 Health"
       },
-      "value": 60.77868982,
+      "value": 62.95671943,
       "status": "actual",
       "star": "salute.spesa"
      },
@@ -34496,7 +34545,7 @@
        "it": "5 Sicurezza sociale",
        "en": "5 Social security"
       },
-      "value": 54.001559439999994,
+      "value": 57.17702851,
       "status": "actual",
       "star": "sociale.spesa"
      },
@@ -34506,7 +34555,7 @@
        "it": "6 Trasporti e comunicazioni",
        "en": "6 Transport and communications"
       },
-      "value": 58.994749600000006,
+      "value": 59.1653708,
       "status": "actual",
       "star": "trasporti.spesa"
      },
@@ -34516,7 +34565,7 @@
        "it": "7 Ambiente e territorio",
        "en": "7 Environment and land"
       },
-      "value": 29.651955129999997,
+      "value": 32.79031596,
       "status": "actual",
       "star": "ambiente.spesa"
      },
@@ -34526,7 +34575,7 @@
        "it": "8 Economia pubblica",
        "en": "8 Public economy"
       },
-      "value": 4.5458539700000005,
+      "value": 4.601386219999999,
       "status": "actual",
       "star": "economia.spesa"
      },
@@ -34536,17 +34585,23 @@
        "it": "9 Finanze e imposte",
        "en": "9 Finance and taxes"
       },
-      "value": 78.05045372000001,
+      "value": 76.44442401,
       "status": "actual"
      }
     ]
    },
    "source": [
     {
-     "file": "sources/sel-2024-allegato.xlsx",
-     "url": "https://www4.ti.ch/fileadmin/DI/DI_DI/SEL/Comuni/DatiFinanziari/StatisticaFinanziaria/2024-allegato.xlsx",
-     "publisher": "Cantone Ticino, Sezione degli enti locali",
-     "locator": "sheet tab9e, row 'Spese' (CHF thousands, gross; functions 0–9), row 'Lugano'"
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale', column COSTI"
+    }
+   ],
+   "notes": [
+    {
+     "it": "Le stelle dei settori confrontano la spesa per abitante con gli altri comuni ticinesi sui conti 2024, gli ultimi pubblicati dal Cantone.",
+     "en": "The sector stars compare spending per resident with Ticino's other municipalities on the 2024 accounts, the latest the canton publishes."
     }
    ]
   },
@@ -34825,6 +34880,10 @@
    },
    "notes": [
     {
+     "it": "Le spese operative della tabella (473.6 milioni nel 2025) non sono tutta la spesa: con 13.8 di spese finanziarie e 3.3 di addebiti interni si arriva alle spese totali di 490.7 milioni (a preventivo 480.2 + 14.0 + 3.3 = 497.5). I ricavi totali 2025 sono stati 514.4 milioni: 514.4 − 490.7 = 23.7, il risultato d'esercizio.",
+     "en": "The table's operating spending (CHF 473.6 million in 2025) is not all spending: with 13.8 of financial spending and 3.3 of internal charges it comes to total spending of CHF 490.7 million (budget 480.2 + 14.0 + 3.3 = 497.5). Total revenue in 2025 was CHF 514.4 million: 514.4 − 490.7 = 23.7, the operating result."
+    },
+    {
      "it": "Presentando il preventivo 2027 (ottobre 2026), la Città indica che il 2026 dovrebbe chiudersi con un risultato totale positivo, contro il disavanzo a preventivo.",
      "en": "Presenting the 2027 budget (October 2026), the City says 2026 is expected to close with a positive total result, against the budgeted deficit."
     },
@@ -34875,6 +34934,36 @@
      "url": "https://github.com/nslotus/dati-di-lugano/blob/6627e5f/out/budget-vs-actual.json",
      "publisher": "Dati di Lugano (budget vs actual from the City's recap tables)",
      "locator": "recap tables of the 2024 deck (p. 2) and 2025 deck (p. 3); actual − budget = printed difference for every row"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 41: '3 SPESE', columns Consuntivo 2025, Preventivo 2025, Consuntivo 2024"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 44: '34 SPESE FINANZIARIE'"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 49: '39 ADDEBITI INTERNI'"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 13: 'Spese operative' (summary of the 2025 results)"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 50: '4 RICAVI', column Consuntivo 2025"
     }
    ]
   },
@@ -35238,8 +35327,8 @@
     "finanze.interessi"
    ],
    "lede": {
-    "it": "1'120 milioni in 11 obbligazioni, con cedola media ponderata dello 0.97% e una durata residua media di 11.4 anni. Entro tre anni ne scadono 320 milioni.",
-    "en": "CHF 1'120 million in 11 bonds, with a volume-weighted coupon of 0.97% and 11.4 years average remaining life. CHF 320 million falls due within three years."
+    "it": "Al 14 ottobre 2026 la Città aveva 1'120 milioni in 11 obbligazioni, con cedola media ponderata dello 0.97% e una durata residua media di 11.4 anni. Entro tre anni, cioè entro ottobre 2029, ne scadono 320 milioni.",
+    "en": "On 14 October 2026 the City had CHF 1'120 million in 11 bonds, with a volume-weighted coupon of 0.97% and 11.4 years average remaining life. CHF 320 million falls due within three years, by October 2029."
    },
    "chart": {
     "type": "ladder",
@@ -35463,8 +35552,8 @@
     "finanze.obbligazioni"
    ],
    "lede": {
-    "it": "Sulle obbligazioni di oggi la Città paga 10.89 milioni di interessi all'anno. Nel 2027 scade l'obbligazione da 120 milioni allo 0.25%: se fosse rifinanziata alla cedola dell'ultima emissione (0.95%), costerebbe 0.84 milioni in più all'anno.",
-    "en": "On today's bonds the City pays CHF 10.89 million in interest a year. In 2027 the CHF 120 million bond at 0.25% falls due: refinanced at the coupon of the latest issue (0.95%), it would cost CHF 0.84 million more a year."
+    "it": "Sulle obbligazioni in circolazione al 15 ottobre 2026 la Città paga 10.89 milioni di interessi all'anno. Nel 2027 scade l'obbligazione da 120 milioni allo 0.25%: se fosse rifinanziata alla cedola dell'ultima emissione (0.95%), costerebbe 0.84 milioni in più all'anno.",
+    "en": "On the bonds outstanding on 15 October 2026 the City pays CHF 10.89 million in interest a year. In 2027 the CHF 120 million bond at 0.25% falls due: refinanced at the coupon of the latest issue (0.95%), it would cost CHF 0.84 million more a year."
    },
    "chart": {
     "type": "columns",

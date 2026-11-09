@@ -39,7 +39,9 @@ il metodo e le fonti. Nella vista per dicastero, ogni dicastero mostra il suo pe
 
 **Il quadro** riunisce i conti: la spesa totale per anno, le entrate, la spesa per settore, il risultato d'esercizio, gli
 investimenti e l'autofinanziamento, il debito fino al 2033, le obbligazioni, gli interessi e i rimborsi, il confronto di
-Lugano con i comuni ticinesi, la spesa per il personale e i dati che non sono pubblicati.
+Lugano con i comuni ticinesi, la spesa per il personale e i dati che non sono pubblicati. Entrate, spese e risultato sono
+quelli del consuntivo 2025, l'anno mostrato dal cielo; solo i confronti con gli altri comuni usano il 2024, l'ultimo anno
+pubblicato dal Cantone, e ogni frase che dà un importo ne indica l'anno (controllo 16).
 
 **Sui telefoni** (schermi fino a 720 px di larghezza), e su un computer nella vista **«Riquadri»**, gli stessi dati sono
 mostrati senza il cielo (su un computer i riquadri e l'elenco di un settore stanno uno accanto all'altro):
@@ -150,6 +152,7 @@ calendario degli interessi delle obbligazioni (calcolato dalle loro condizioni).
 |---|---|
 | Preventivo 2025 per funzione | La proposta del Municipio, come stampata per funzione nel messaggio sul preventivo 2025. Il Consiglio comunale ha modificato il totale di CHF 100'000 in un dicastero, che la tabella per funzione non attribuisce; il quadro mostra entrambi i totali. |
 | Consuntivo 2025 | I conti finali nel messaggio della Città sul consuntivo 2025 (aprile 2026). |
+| Spesa | Le spese totali del consuntivo della Città (gruppo 3): CHF 490.7 milioni nel 2025, contro CHF 497.5 milioni del preventivo approvato. La sintesi della Città e la tabella preventivo-consuntivo danno le spese operative (CHF 473.6 milioni), che escludono le spese finanziarie (13.8, soprattutto interessi) e gli addebiti interni tra servizi (3.3). I confronti con gli altri comuni usano lo stesso totale per il 2024 (CHF 485.1 milioni). |
 | Scarto | Consuntivo − preventivo, in milioni di franchi, e (consuntivo − preventivo) ÷ preventivo in percentuale. |
 | Per abitante | Diviso per i 63'629 abitanti permanenti di Lugano al 31 dicembre 2024 (definizione federale), la base che il Cantone usa per tutti i 106 comuni. La Città pubblica conteggi propri più alti (64'430 nel suo registro; 68'507 includendo i residenti secondari); non sono usati perché non esistono per gli altri comuni. Per abitante non significa per contribuente. |
 | Rango | La posizione di Lugano fra i 106 comuni ticinesi, 1 = valore più alto, con la mediana. I ranghi confrontano solo il Ticino. Le cifre sono classificate solo dove un confronto ha senso per un abitante; il metodo di ogni cifra dice quando non lo è. |
@@ -230,6 +233,7 @@ effettivamente trovata.
 | 13 | La tabella sulla pagina | ognuna delle 72 voci, dei 43 gruppi e delle 10 funzioni, e il totale della Città, nel preventivo 2025 (pp. 221–223) e nel consuntivo 2025 (pp. 238–239): il numero nella colonna COSTI della riga con il suo codice; una riga senza costi ha quella colonna vuota. Con il controllo 4, le voci sono legate ai totali stampati dalla Città | CHF 0.006 (al centesimo) |
 | 14 | I dicasteri sulla pagina | ogni centro di responsabilità e divisione con una tabella propria: la riga 3 (spese) della sua tabella nel consuntivo 2025, letta attraverso l'aritmetica stampata della riga; ogni dicastero e divisione: la sua riga nella tabella riassuntiva del dicastero, dalle intestazioni delle colonne | CHF 0.006; l'aritmetica della riga CHF 0.015 e 0.01 punti percentuali |
 | 15 | Secondo lettore | i controlli 8 e 13 di nuovo con pypdf; per la tabella, i costi trovati solo dall'aritmetica di ogni riga | come i controlli 8 e 13 |
+| 16 | Anni | ogni frase del quadro (introduzioni, didascalie dei grafici, note) che dà un importo ne indica l'anno, in italiano e in inglese | esatta |
 
 Il controllo 14 riporta ciò che trova nella fonte così come stampata: nel centro 4101 (Servizi generali, divisione 41
 Polizia) le due differenze stampate non si ricalcolano dagli importi stampati (entrambe differiscono di CHF 16.97, come se
@@ -238,7 +242,7 @@ nuovi centri senza colonna 2024 (1213, 1214, 1230, 1231, 1232, 1401) l'aritmetic
 controllo 14 le accetta entrambe, e decide il controllo 4: i preventivi dei centri devono sommare al preventivo della loro
 divisione, che il controllo 14 legge dalla tabella riassuntiva stampata.
 
-**I controlli fallirebbero?** `npm run verify:selftest`, eseguito anche da GitHub Actions, inserisce 19 errori noti uno alla
+**I controlli fallirebbero?** `npm run verify:selftest`, eseguito anche da GitHub Actions, inserisce 21 errori noti uno alla
 volta e richiede che falliscano i controlli attesi: il preventivo di una voce sbagliato di CHF 1'000; il consuntivo di una
 voce letto dalla colonna dei ricavi; i consuntivi di due voci scambiati all'interno di una funzione (le somme del controllo
 4 passano ancora; i controlli 13 e 15 falliscono); un centro di responsabilità sbagliato di CHF 10; il preventivo di un
@@ -246,7 +250,7 @@ dicastero sbagliato di CHF 1'000; il preventivo di un nuovo centro letto nell'al
 controllo 14 passa; il controllo 4 fallisce); una cifra sbagliata di un'unità, sulla sua pagina e attraverso le sue pagine
 (675 incidenti stradali letti come 676); una parte di un elenco stampato letta male insieme al suo totale; un rango
 sbagliato di uno; una differenza stampata, il rango del Cantone, un nome inglese o un'indicazione di fonte italiana,
-l'impronta di una fonte e un commit a monte modificati; un file estraneo in `sources/`; una chiave di accesso in un file; una cifra modificata in `METHOD.md` ma non in questo file. I
+l'impronta di una fonte e un commit a monte modificati; un importo nel quadro senza il suo anno; un file estraneo in `sources/`; una chiave di accesso o il nome di un collaboratore dai metadati di un PDF in un file; una cifra modificata in `METHOD.md` ma non in questo file. I
 file del repository sono ripristinati dopo ogni caso.
 
 Il controllo 15 e il test dei controlli richiedono Python 3 con pypdf, fissato tramite impronta in

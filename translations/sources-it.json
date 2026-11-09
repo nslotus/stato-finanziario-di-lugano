@@ -226,12 +226,10 @@
   "sheet tab8, multipliers 2025": "foglio tab8, moltiplicatori 2025",
   "sheet tab8, multipliers 2025, row 'Lugano'": "foglio tab8, moltiplicatori 2025, riga 'Lugano'",
   "sheet tab8, population 31.12.2024": "foglio tab8, popolazione al 31.12.2024",
-  "sheet tab9b (CHF thousands; excludes 47 pass-through and 49 internal), row 'Lugano'": "foglio tab9b (migliaia di CHF; esclusi 47 riversamenti e 49 addebiti interni), riga 'Lugano'",
   "sheet tab9c, column 340 'spese per interessi', row 'Lugano' (CHF thousands)": "foglio tab9c, colonna 340 'spese per interessi', riga 'Lugano' (migliaia di CHF)",
   "sheet tab9d, columns 400 and 401, row 'Lugano' (CHF thousands)": "foglio tab9d, colonne 400 e 401, riga 'Lugano' (migliaia di CHF)",
   "sheet tab9d, columns 400–401, row 'Lugano'": "foglio tab9d, colonne 400–401, riga 'Lugano'",
   "sheet tab9d, columns 446 and 412, row 'Lugano' (CHF thousands)": "foglio tab9d, colonne 446 e 412, riga 'Lugano' (migliaia di CHF)",
-  "sheet tab9e, row 'Spese' (CHF thousands, gross; functions 0–9), row 'Lugano'": "foglio tab9e, riga 'Spese' (migliaia di CHF, lorde; funzioni 0–9), riga 'Lugano'",
   "sheet tab9e, row 'Spese' of each municipality, column 0–9 (sum of all functions) (CHF thousands, gross)": "foglio tab9e, riga 'Spese' di ogni comune, colonna 0–9 (somma di tutte le funzioni) (migliaia di CHF, lorde)",
   "sheet tab9e, row 'Spese' of each municipality, column 0–9 (sum) (CHF thousands, gross)": "foglio tab9e, riga 'Spese' di ogni comune, colonna 0–9 (somma) (migliaia di CHF, lorde)",
   "sheet tab9e, row 'Spese' of each municipality, column 1 'Ordine pubblico, sicurezza, difesa' (CHF thousands, gross)": "foglio tab9e, riga 'Spese' di ogni comune, colonna 1 'Ordine pubblico, sicurezza, difesa' (migliaia di CHF, lorde)",
@@ -271,7 +269,14 @@
   "p. 1: table 'SCUOLA DELL'INFANZIA', one row per site, 'Totale' for each school zone and for the institute": "p. 1: tabella 'SCUOLA DELL'INFANZIA', una riga per sede, 'Totale' per ogni zona scolastica e per l'Istituto",
   "p. 1: table 'SCUOLA ELEMENTARE', one row per site, 'Totale' for each school zone and for the institute": "p. 1: tabella 'SCUOLA ELEMENTARE', una riga per sede, 'Totale' per ogni zona scolastica e per l'Istituto",
   "pp. 385–413: register of open works ('Situazione investimenti amministrativi 2025'), columns Credito aggiornato, Sit. Lav. %, Uscite al 31.12.2025": "pp. 385–413: registro delle opere aperte ('Situazione investimenti amministrativi 2025'), colonne Credito aggiornato, Sit. Lav. %, Uscite al 31.12.2025",
-  "pp. 313–323: 'Conti investimenti 2027/2030: crediti votati', columns Credito agg., Cons. stimato, Probabile cons. al 31.12.2026, Preventivo 2027–2030, 2031-2034 (CHF thousands)": "pp. 313–323: 'Conti investimenti 2027/2030: crediti votati', colonne Credito agg., Cons. stimato, Probabile cons. al 31.12.2026, Preventivo 2027–2030, 2031-2034 (migliaia di franchi)"
+  "pp. 313–323: 'Conti investimenti 2027/2030: crediti votati', columns Credito agg., Cons. stimato, Probabile cons. al 31.12.2026, Preventivo 2027–2030, 2031-2034 (CHF thousands)": "pp. 313–323: 'Conti investimenti 2027/2030: crediti votati', colonne Credito agg., Cons. stimato, Probabile cons. al 31.12.2026, Preventivo 2027–2030, 2031-2034 (migliaia di franchi)",
+  "p. 41: '3 SPESE', columns Consuntivo 2025, Preventivo 2025, Consuntivo 2024": "p. 41: '3 SPESE', colonne Consuntivo 2025, Preventivo 2025, Consuntivo 2024",
+  "p. 44: '34 SPESE FINANZIARIE'": "p. 44: '34 SPESE FINANZIARIE'",
+  "p. 49: '39 ADDEBITI INTERNI'": "p. 49: '39 ADDEBITI INTERNI'",
+  "p. 13: 'Spese operative' (summary of the 2025 results)": "p. 13: 'Spese operative' (sintesi dei risultati 2025)",
+  "p. 50: '4 RICAVI' and '400'/'401' rows, column Consuntivo 2025": "p. 50: righe '4 RICAVI' e '400'/'401', colonna Consuntivo 2025",
+  "pp. 50–56: revenue group headings (40–49), column Consuntivo 2025": "pp. 50–56: righe dei gruppi di ricavo (40–49), colonna Consuntivo 2025",
+  "p. 50: '4 RICAVI', column Consuntivo 2025": "p. 50: '4 RICAVI', colonna Consuntivo 2025"
  },
  "publishers": {
   "AIL SA, Rapporto annuale integrato 2025": "AIL SA, Rapporto annuale integrato 2025",

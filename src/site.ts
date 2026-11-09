@@ -4,7 +4,6 @@
 //   npm run site   -> docs/data/data.js and docs/data/data-more.js (see sitedata.ts)
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import * as XLSX from "xlsx";
 import { CENTRE, DEPT, GROUP } from "./personale-names";
 import { readPdf } from "./adapters/pdf";
 import { splitSite } from "./sitedata";
@@ -27,58 +26,40 @@ const FACTS: Record<string, string[]> = {
 const HUE: Record<string, string> = {
   f0: "#e9edff", f1: "#4cf8e7", f2: "#9085e9", f3: "#3b5bf0", f4: "#0e97ab", f5: "#e5e75b", f6: "#d55181", f7: "#abca84", f8: "#b0b5c4", f9: "#5aab3c",
 };
-const F9: Record<string, [string, string]> = {
-  "910": ["Riscossione delle imposte", "Tax collection"], "930": ["Perequazione con gli altri comuni", "Equalisation with other municipalities"],
-  "950": ["Quote di entrate del Cantone", "Shares of cantonal revenue"], "961": ["Interessi sui debiti", "Interest on debt"], "962": ["Costi dei prestiti", "Borrowing costs"],
-  "963": ["Immobili da reddito", "Investment property"], "969": ["Altri beni", "Other assets"], "990": ["Voci non ripartite", "Unallocated items"],
-};
 
 const sun = star("bilancio.spesa");
 const pop = sun.comparison.values.find((v: any) => v.bfs === 5192).population;
+// money in and out on the 2025 accounts (the ledger's chapters); per-resident figures and ranks stay on 2024, the
+// latest year the canton publishes for every municipality, and say so through their stars
 const fn = ch("uscite").chart.data.map((d: any) => {
   const anchor = d.star ? star(d.star) : null;
   const facts = (FACTS[d.key] ?? []).map((id) => { const s = star(id); return { id, label: s.label, value: s.value, unit: s.unit, digits: s.digits, year: s.year }; });
   return { key: d.key, code: d.key.slice(1), name: { it: NAMES[d.key][0], en: NAMES[d.key][1] }, account: d.label, value: d.value, hue: HUE[d.key],
-    perRes: (d.value * 1e6) / pop, rank: anchor?.comparison ? { rank: anchor.comparison.lugano.rank, of: anchor.comparison.lugano.of } : null,
+    rank2024: anchor?.comparison ? { rank: anchor.comparison.lugano.rank, of: anchor.comparison.lugano.of } : null,
     unranked: anchor && !anchor.comparison ? true : false, star: d.star ?? null, facts };
 });
-
-// function 9 by line (canton annex, appendice TabD, row 'Lugano', CHF thousands)
-const wb = XLSX.read(readFileSync("sources/sel-2024-appendice.xlsx"));
-const tabD = XLSX.utils.sheet_to_json<(string | number | null)[]>(wb.Sheets["TabD"], { header: 1, defval: null });
-const head = tabD[1].map((x) => String(x ?? "").trim()), lug = tabD.find((r) => r[0] === "Lugano") ?? (() => { throw new Error("TabD: Lugano missing"); })();
-const f9lines = Object.keys(F9).map((code) => ({ code, label: { it: F9[code][0], en: F9[code][1] }, value: Number(lug[head.indexOf(code)] ?? 0) / 1000 })).filter((l) => l.value > 0.05)
-  .sort((a, b) => b.value - a.value);
-const f9 = fn.find((f: any) => f.key === "f9");
-if (Math.abs(f9lines.reduce((s, l) => s + l.value, 0) - f9.value) > 0.1) throw new Error(`function 9 lines add up to ${f9lines.reduce((s, l) => s + l.value, 0)}, not ${f9.value}`);
-f9.lines = f9lines;
 
 const rev = ch("entrate").chart.data.map((d: any) => ({ key: d.key, label: d.label, value: d.value }));
 const total = ch("bilancio").chart.value;
 if (Math.abs(fn.reduce((s: number, f: any) => s + f.value, 0) - total) > 0.05) throw new Error("functions do not add up to the total");
 const pf = star("finanze.imposte-pf").value, pg = star("finanze.imposte-pg").value;
 
-const data = JSON.stringify({ year: 2024, total, pop, perRes: sun.value, sunRank: { rank: sun.comparison.lugano.rank, of: sun.comparison.lugano.of }, fn, rev, revTotal: rev.reduce((s: number, r: any) => s + r.value, 0), pf, pg,
-  source: { it: "Conti 2024 della Città, come pubblicati dalla Sezione degli enti locali del Cantone (allegato e appendice statistica); cifre e fonti di ogni voce nei dati della pagina.", en: "The City's 2024 accounts, as published by the cantonal Local Authorities Section (statistical annex and appendix); figures and sources of every figure in the page's data." } })
-  .replace(/<\//g, "<\\/");
+const data = JSON.stringify({ year: 2025, total, sun2024: { perRes: sun.value, rank: sun.comparison.lugano.rank, of: sun.comparison.lugano.of }, fn, rev, revTotal: rev.reduce((s: number, r: any) => s + r.value, 0), pf, pg,
+  source: { it: "Consuntivo 2025 della Città (spese e ricavi per genere e per funzione); i confronti con gli altri comuni sui conti 2024 pubblicati dal Cantone.", en: "The City's 2025 accounts (spending and revenue by type and by function); comparisons with other municipalities on the 2024 accounts published by the canton." } })
+  .replace(/<\//g, "<\/");
 
 
 // ---- sectors (functions) with their figures, the full figure records and the source manifest
-// revenue planets: accounts 40–46 from the revenue chapter, plus the rest of the canton's revenue total (TabB) so both sides meet at the result
+// revenue planets: every revenue group of the 2025 accounts, so both sides meet at the 2025 result
 const REV_NAMES: Record<string, [string, string]> = {
   r40: ["Imposte", "Taxes"], r41: ["Regalie e concessioni", "Royalties and concessions"], r42: ["Tasse e tariffe", "Fees and charges"], r43: ["Ricavi diversi", "Other revenue"],
-  r44: ["Ricavi finanziari", "Financial revenue"], r45: ["Prelievi da fondi", "Drawings from funds"], r46: ["Trasferimenti ricevuti", "Transfers received"], r4x: ["Altri ricavi", "Remaining revenue"],
+  r44: ["Ricavi finanziari", "Financial revenue"], r45: ["Prelievi da fondi", "Drawings from funds"], r46: ["Trasferimenti ricevuti", "Transfers received"], r49: ["Accrediti interni", "Internal credits"],
 };
-const REV_HUE: Record<string, string> = { r40: "#f2b84b", r41: "#c9875a", r42: "#e3a08c", r43: "#b8a46a", r44: "#e8d9b0", r45: "#a8865a", r46: "#f0c98a", r4x: "#8f8a7a" };
-const tabB = XLSX.utils.sheet_to_json<(string | number | null)[]>(wb.Sheets["TabB"], { header: 1, defval: null });
-const lugB = tabB.find((r) => r[0] === "Lugano") ?? (() => { throw new Error("TabB: Lugano missing"); })();
-const revAll = lugB.slice(1).reduce((t: number, v) => t + (Number(v) || 0), 0) / 1000;
-const result2024 = ch("risultato").chart.series[0].data.find((d: any) => d.key === "a2024").value;
-if (Math.abs(revAll - total - result2024) > 0.01) throw new Error(`revenue ${revAll} minus spending ${total} is not the 2024 result ${result2024}`);
-const revRest = revAll - rev.reduce((t: number, r: any) => t + r.value, 0);
-if (revRest < 0) throw new Error("accounts 40–46 exceed total revenue");
-const revPlanets = [...rev, { key: "r4x", label: { it: "altri ricavi (differenza dal totale)", en: "remaining revenue (difference from the total)" }, value: revRest }]
-  .map((r: any) => ({ key: r.key, code: r.key === "r4x" ? "47–49" : r.key.slice(1), name: { it: REV_NAMES[r.key][0], en: REV_NAMES[r.key][1] }, account: r.label, value: r.value, hue: REV_HUE[r.key] }));
+const REV_HUE: Record<string, string> = { r40: "#f2b84b", r41: "#c9875a", r42: "#e3a08c", r43: "#b8a46a", r44: "#e8d9b0", r45: "#a8865a", r46: "#f0c98a", r49: "#8f8a7a" };
+const revAll = rev.reduce((t: number, r: any) => t + r.value, 0);
+const result2025 = ch("risultato").chart.series[0].data.find((d: any) => d.key === "a2025").value;
+if (Math.abs(revAll - total - result2025) > 0.01) throw new Error(`revenue ${revAll} minus spending ${total} is not the 2025 result ${result2025}`);
+const revPlanets = rev.map((r: any) => ({ key: r.key, code: r.key.slice(1), name: { it: (REV_NAMES[r.key] ?? (() => { throw new Error(`site: no name for revenue ${r.key}`); })())[0], en: REV_NAMES[r.key][1] }, account: r.label, value: r.value, hue: REV_HUE[r.key] }));
 const MOON_FN: Record<string, string> = { "finanze.imposte-pf": "r40", "finanze.imposte-pg": "r40", "finanze.pg-cantone": "r40", "finanze.ifd-quota": "r40", "finanze.contribuente": "r40", "economia.imprese-pubbliche": "r44" };
 const CONST_FN: Record<string, string> = { sicurezza: "f1", istruzione: "f2", cultura: "f3", salute: "f4", sociale: "f5", trasporti: "f6", ambiente: "f7", economia: "f8", finanze: "f9" };
 const moons = cat.stars.filter((s: any) => CONST_FN[s.constellation] && !s.id.endsWith(".spesa")).map((s: any) => ({
@@ -176,8 +157,8 @@ const missing = JSON.parse(readFileSync("src/missing.json", "utf8")).map((m: any
 const FUN = JSON.parse(readFileSync("catalog/funzioni.json", "utf8"));
 const base = JSON.parse(data);
 for (const f of base.fn) f.trend = FUN.series[f.key] ?? (() => { throw new Error(`trend for ${f.key} missing`); })();
-const sys = JSON.stringify({ ...base, trendTotals: FUN.totals, trendNote: FUN.amend, trendSource: FUN.source, missing, moons: [...moons, ...staffMoons], anchors: { ...anchors, ...staffAnchors }, staff, manifest, revPlanets, revAll, result: result2024, resultSource: ch("risultato").source,
-  debt: { value: debt.value, year: debt.year, label: debt.label }, revSource: { it: "Ricavi 2024 per genere di conto (40–46) e totale dei ricavi per funzione, appendice statistica del Cantone (tabella B).", en: "2024 revenue by account type (40–46) and total revenue by function, canton statistical appendix (table B)." } }).replace(/<\//g, "<\\/");
+const sys = JSON.stringify({ ...base, trendTotals: FUN.totals, trendNote: FUN.amend, trendSource: FUN.source, missing, moons: [...moons, ...staffMoons], anchors: { ...anchors, ...staffAnchors }, staff, manifest, revPlanets, revAll, result: result2025, resultSource: ch("risultato").source,
+  debt: { value: debt.value, year: debt.year, label: debt.label }, revSource: { it: "Ricavi 2025 per genere di conto (40–49), consuntivo 2025 della Città.", en: "2025 revenue by account type (40–49), the City's 2025 accounts." } }).replace(/<\//g, "<\\/");
 
 // ---- the overview's data: money in and out, staff, budget against actual, results, investment, the debt to 2033 and
 // missing data, checked against each other
@@ -190,7 +171,7 @@ const debtCh = chap("debito");
 if (debtCh.chart.data.some((d: any) => !d.date || !["actual", "estimate", "plan"].includes(d.status))) throw new Error("site: every debt point needs a date and a known status");
 const sysData = JSON.parse(sys);
 const story = { ...sysData, sun: rec(sun), taxes: { pf: rec(star("finanze.imposte-pf")), pg: rec(star("finanze.imposte-pg")) }, plan, debtCh, resultCh: chap("risultato"), investCh: chap("investire"),
-  revCh: chap("entrate"), outCh: chap("uscite"), revAllSource: [{ file: "sources/sel-2024-appendice.xlsx", locator: "sheet TabB, row 'Lugano' (total revenue by function, CHF thousands)" }],
+  revCh: chap("entrate"), outCh: chap("uscite"), revAllSource: ch("entrate").source.slice(0, 1),
   atlas: cat.stars.map(rec) };
 // every source the story cites must be an archived file
 const files = new Set(manifest.map((m: any) => m.file));
