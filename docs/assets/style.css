@@ -178,6 +178,12 @@ img { max-width: 100%; }
   .sayall p { margin: 0; }
   .say-card { max-height: 52vh; overflow-y: auto; }
   .say-card .sayall { max-height: none; }
+  /* "Perché?": the City's reason for a large gap, or that it gives none */
+  .why { margin: 0; font: 400 13px/1.5 var(--sans); color: #dfe4f3; border-left: 2px solid color-mix(in srgb, var(--hue, #9aa3bd) 55%, transparent); padding-left: 10px; }
+  .why b { display: block; margin-bottom: 4px; font: 500 11px/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .why .small { color: var(--muted); font-size: 12px; }
+  .why .calc { display: block; margin-top: 6px; }
+  .why-mark { display: inline-block; min-width: 1.3em; text-align: center; font: 600 11px/1.3em var(--sans); color: var(--night); background: var(--muted); border-radius: 999px; }
   #peek .say { margin: 0; font: italic 400 13px/1.45 var(--serif); font-size: 14.5px; color: #dfe4f3; border-left: 2px solid color-mix(in srgb, var(--hue) 55%, transparent); padding-left: 10px; }
   #peek .say b { font: 500 11px/1 var(--sans); font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; }
   /* one column below 1180px: ordered from most above budget to most below */

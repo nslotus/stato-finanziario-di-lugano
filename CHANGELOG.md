@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- "Perché?": every line whose 2025 actual is at least CHF 1 million or 25% away from its budget now carries a note: 24
+  lines, 12 by function and 12 by department. Each note gives the City's own words with their page, or says that the
+  City gives no reason and names the pages read. The notes are in the line's card, its full view and the phone card,
+  and a "?" marks the line in the table. The largest, 710 Approvvigionamento idrico (+1'403.7%), is not water: CHF
+  4.16 million of its 4.44 million is an allowance for doubtful tax receivables. The City recorded that allowance for
+  the first time in 2025, in the same cost centre as the water used by its buildings (p. 280, to the cent). The note
+  says so and marks it as calculated here, since the City does not say why the allowance is classed as water supply.
+  Check 17 requires a note for every line over the threshold and finds every quote on its page with both PDF readers;
+  the self-test removes a note and changes a word of a quote. The quotes were gathered with an AI assistant and every
+  one is checked against its page.
 - One year and one measure of spending in Il quadro. Money in, money out and the total now come from the 2025 accounts,
   the year the sky shows: spending CHF 490.7 million (total spending, group 3), revenue CHF 514.4 million, so the
   result is +23.7. Before, the overview opened on the canton's 2024 figures (485.1, revenue 479.8, health 60.8) next to

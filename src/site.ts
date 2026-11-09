@@ -7,6 +7,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { CENTRE, DEPT, GROUP } from "./personale-names";
 import { readPdf } from "./adapters/pdf";
 import { splitSite } from "./sitedata";
+import { attachWhy, loadWhy } from "./perche";
 
 const cat = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
 const star = (id: string) => cat.stars.find((s: any) => s.id === id) ?? (() => { throw new Error(`star ${id} missing`); })();
@@ -214,6 +215,9 @@ let cupola: any;
   const orgTotal = org.lines.reduce((t: number, l: any) => t + l.c25, 0);
   if (Math.abs(orgTotal - FUN.totals.c25) > 0.0001) throw new Error(`cupola: department stars add up to ${orgTotal}, functions to ${FUN.totals.c25}`);
   for (const g of org.groups) { const k = org.lines.filter((l: any) => l.code.startsWith(g.code)); if (k.length && Math.abs(k.reduce((t: number, l: any) => t + l.c25, 0) - g.c25) > 0.0001) throw new Error(`cupola: centres of division ${g.code} do not add up`); }
+  // "Perché?": the City's reason for every large gap, or the pages read where it gives none (src/perche.json)
+  const notes = loadWhy();
+  console.log(`perché: ${attachWhy("fn", lines, notes)} lines by function, ${attachWhy("org", org.lines, notes)} by department`);
   cupola = { fns, lines, groups, amend: FUN.amend, linesSource: FUN.linesSource, trendSource: FUN.source, org, manifest };
   walk(cupola, "cupola");
 }

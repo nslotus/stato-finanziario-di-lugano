@@ -138,6 +138,7 @@ schools' pupils and classes, the TPL and PubliBike figures, and the bond interes
 | Actual 2025 | The final accounts in the City's message on the 2025 accounts (April 2026). |
 | Spending | Total spending in the City's accounts (group 3): CHF 490.7 million in 2025, against CHF 497.5 million in the approved budget. The City's recap and the budget-against-actual table give operating spending (CHF 473.6 million), which leaves out financial spending (13.8, mostly interest) and internal charges between services (3.3). Comparisons with the other municipalities use the same total for 2024 (CHF 485.1 million). |
 | Gap | Actual − budget, in CHF million, and (actual − budget) ÷ budget in percent. |
+| Why? | Every line whose actual is at least CHF 1 million or 25% away from its budget (24 lines: 12 by function, 12 by department) has a note in `src/perche.json`: the City's own words, quoted with their page, or, where the City gives no reason, the pages that were read. What this repository found itself (for example that 710 Water supply holds a CHF 4.16 million allowance for doubtful tax receivables) is marked "calculated here, not by the City". |
 | Per resident | Divided by Lugano's 63,629 permanent residents at 31 December 2024 (federal definition), the base the canton uses for all 106 municipalities. The City publishes higher counts of its own (64,430 in its register; 68,507 including secondary residents); they are not used because they do not exist for the other municipalities. Per resident is not per taxpayer. |
 | Rank | Lugano's position among Ticino's 106 municipalities, 1 = highest value, with the median. Ranks compare Ticino only. Figures are ranked only where a comparison means something for a resident; the method of each figure says when it is not. |
 | Canton indicator rank | In the canton's indicator table (overview, "How it compares in Ticino") rank 1 is the best value on the canton's scale, so the same position can read 96th there and 11th highest among the figures. The check in §6 confirms they agree. |
@@ -216,6 +217,7 @@ centres, and check 4's sums cover it.
 | 14 | Departments on the page | each cost centre and division with a table of its own: row 3 (spending) of its table in the 2025 accounts, read through the row's printed arithmetic; each department and division: its row in the department's overview table, by the columns' headings | CHF 0.006; the row's arithmetic CHF 0.015 and 0.01 percentage points |
 | 15 | Second reader | checks 8 and 13 again with pypdf; for the table, the costs found by each row's arithmetic only | as checks 8 and 13 |
 | 16 | Years | every sentence of the overview's chapters (introductions, chart captions, notes, the debt notes and the note on total spending by year) that gives an amount names its year, in Italian and English | exact |
+| 17 | Why? | every line over the threshold has a note and no other line does; every quote is printed on its cited page, letter by letter, found by pdf.js and by pypdf | exact |
 
 Check 14 reports what it finds in the source as printed: in centre 4101 (Servizi generali, division 41 Polizia) the two printed
 differences do not recompute from the printed amounts (both are CHF 16.97 off, as if the actual were CHF 4'948'323.76
@@ -223,13 +225,13 @@ rather than the CHF 4'948'306.79 printed); the page uses the printed actual. In 
 (1213, 1214, 1230, 1231, 1232, 1401) a row's arithmetic alone allows two readings; check 14 accepts either, and check 4
 decides: the centres' budgets must add up to their division's budget, which check 14 reads from the printed overview.
 
-**Would the checks fail?** `npm run verify:selftest`, also run by GitHub Actions, plants 21 known errors one at a time
+**Would the checks fail?** `npm run verify:selftest`, also run by GitHub Actions, plants 23 known errors one at a time
 and requires the expected checks to fail: a line's budget off by CHF 1,000; a line's actual read from the revenue
 column; two lines' actuals swapped within a function (check 4's sums still pass; checks 13 and 15 fail); a cost
 centre off by CHF 10; a department's budget off by CHF 1,000; a new centre's budget read the other way its row allows
 (check 14 passes; check 4 fails); a figure off by one unit, on its page and across its pages (675 road accidents read as
 676); a part of a printed list misread with its total; a rank off by one; a printed difference, the canton's rank, an
-English name or an Italian source note, a source's fingerprint and an upstream commit changed; an amount in the overview without its year; a stray file in `sources/`; an API key or a staff name from a PDF's metadata in a file; a number changed in this file but not in `METODO.md`. The repository's files are restored after each case.
+English name or an Italian source note, a source's fingerprint and an upstream commit changed; an amount in the overview without its year; a large gap's note removed; one word of a City quote changed; a stray file in `sources/`; an API key or a staff name from a PDF's metadata in a file; a number changed in this file but not in `METODO.md`. The repository's files are restored after each case.
 
 Checks 15 and the self-test need Python 3 with pypdf, pinned by hash in
 [`requirements-verify.txt`](requirements-verify.txt).

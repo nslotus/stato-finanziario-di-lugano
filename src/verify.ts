@@ -17,6 +17,8 @@
 //  14. departments  every department, division and cost centre in the 2025 accounts, through the printed arithmetic
 //  15. second reader checks 8 and 13 again with pypdf, a separate PDF reader, finding columns by arithmetic alone
 //  16. years        every sentence of the overview that gives an amount names its year (or date)
+//  17. perché       every line whose actual is CHF 1 million or 25% away from its budget has a note, and every quote
+//                   in it is printed on its cited page, found by pdf.js and by pypdf
 // npm run verify:selftest plants known errors and requires the right checks to fail (src/selftest.ts).
 
 import { createHash } from "node:crypto";
@@ -328,6 +330,31 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
       }
     if (bad.length) fail(bad.join("; "));
     return `${k} sentences with an amount, each with its year`;
+  });
+  await check("every large gap has its note, and every quote is on its cited page (pdf.js and pypdf)", async () => {
+    // the threshold recomputed here: a gap of at least CHF 1 million, or 25% of the budget, or an actual without budget
+    const big = (l: any) => { const d = l.c25 - l.p25; return Math.abs(d) > 1e-9 && (Math.abs(d) >= 1 || !l.p25 || Math.abs(d / l.p25) >= 0.25); };
+    const bad: string[] = []; let lines = 0, quotes = 0;
+    // a quote is compared letter by letter: spaces, punctuation and accents dropped on both sides, since the two readers
+    // split words and render accented letters differently; "…" marks a cut, and each piece must be printed in order
+    const bare = (s: string) => s.normalize("NFD").replace(/[^A-Za-z0-9]/g, "");
+    for (const [view, list] of [["fn", D.lines], ["org", D.org.lines]] as const) for (const l of list) {
+      if (big(l) !== !!l.why) { bad.push(`${view} ${l.code}: ${l.why ? "note on a line under the threshold" : "large gap without a note"}`); continue; }
+      if (!l.why) continue;
+      lines++;
+      for (const q of l.why.quotes) for (const reader of [pdfjs, pypdf]) {
+        const page = bare((await reader.read(q.file.replace(/^sources\//, ""), [q.page]))[q.page]?.text ?? "");
+        let at = 0;
+        for (const piece of q.it.split("…").map(bare).filter(Boolean)) {
+          const i = page.indexOf(piece, at);
+          if (i < 0) { bad.push(`${view} ${l.code}: "${q.it.slice(0, 40)}…" not on ${q.file} p. ${q.page} (${reader.name})`); break; }
+          at = i + piece.length;
+        }
+        if (reader === pdfjs) quotes++;
+      }
+    }
+    if (bad.length) fail(bad.join("; "));
+    return `${lines} lines with a gap of CHF 1 million or 25%, each with its note; ${quotes} quotes found on their pages by both readers`;
   });
   const w = Math.max(...results.map((r) => r.name.length));
   for (const r of results) console.log(`${r.ok ? "PASS" : "FAIL"}  ${String(r.n).padStart(2)}  ${r.name.padEnd(w)}  ${r.detail}`);

@@ -1,0 +1,443 @@
+{
+ "_about": "Perché? For every 2025 spending line whose actual is at least CHF 1 million or 25% away from its budget: what the City says about it, quoted verbatim with its page (checked by npm run verify, check 17), or the pages read where it says nothing. 'computed' is what this repository found itself, never the City's words. Quotes cut with '…'; no personal names. Research drafted with an AI assistant; every quote is matched against its page by check 17, and the computed notes were checked by hand against the cited pages.",
+ "lines": {
+  "fn 710": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 42,
+     "it": "Delcredere su crediti d'imposta calcolato su singole posizioni rilevanti."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 127,
+     "it": "Per la prima volta si è provveduto alla valutazione dei crediti dubbiosi (delcredere), rilevati presso il CdR 22023 “Altre spese per beni e servizi” – vedi specifico commento."
+    }
+   ],
+   "en": "\"Allowance for doubtful tax receivables, calculated on the individual significant positions\" (account 31800000, CHF 4,161,272.15, not budgeted). \"For the first time the doubtful receivables were assessed, recorded at cost centre 2023, other spending on goods and services.\"",
+   "searched": {
+    "it": "Consuntivo 2025, pp. 1–56, 127–131, 239 e 280; preventivo 2027, pp. 215 e 240.",
+    "en": "2025 accounts, pp. 1–56, 127–131, 239 and 280; 2027 budget, pp. 215 and 240."
+   },
+   "computed": {
+    "it": "i 4.44 milioni di questa voce non sono acqua: sono 0.28 milioni di consumo d'acqua degli immobili della Città e 4.16 milioni di delcredere sui crediti d'imposta, entrambi nel centro 2023 (p. 280), al centesimo. Il preventivo 2025 prevedeva solo l'acqua (0.30). Anche il preventivo 2027 mette qui l'acqua (0.28) e un delcredere di 0.50 milioni (p. 240). La Città non dice perché il delcredere è classificato come approvvigionamento idrico.",
+    "en": "the CHF 4.44 million on this line is not water: it is CHF 0.28 million of water used by the City's buildings and CHF 4.16 million of allowance for doubtful tax receivables, both in cost centre 2023 (p. 280), to the cent. The 2025 budget planned only the water (0.30). The 2027 budget again puts the water (0.28) and a CHF 0.50 million allowance here (p. 240). The City does not say why the allowance is classed as water supply."
+   }
+  },
+  "fn 022": {
+   "status": "not_found",
+   "quotes": [],
+   "en": "",
+   "searched": {
+    "it": "consuntivo 2025: l'importo dello scarto (3'193'902) e «servizi generali» in tutto il messaggio; preventivo 2027.",
+    "en": "2025 accounts: the gap's amount (3,193,902) and 'servizi generali' throughout the message; 2027 budget."
+   }
+  },
+  "fn 111": {
+   "status": "none_explained",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 171,
+     "it": "Il risultato si è rivelato migliore delle previsioni con un minore aggravio di CHF 2'089'750.54, dovuto principalmente a una riduzione dei costi per CHF 1'453'169.25, rispettivamente ad un incremento delle entrate pari a CHF 636'581.29."
+    }
+   ],
+   "en": "\"The result was better than forecast, with a lower burden of CHF 2,089,750.54, mainly due to a cost reduction of CHF 1,453,169.25 and higher revenue of CHF 636,581.29.\" (Police division)",
+   "searched": {
+    "it": "consuntivo 2025, pp. 85 e 171–173 (Divisione Polizia).",
+    "en": "2025 accounts, pp. 85 and 171–173 (Police division)."
+   },
+   "computed": {
+    "it": "la tabella del personale (p. 85) conta meno agenti del previsto per i tempi di avvicendamento; la Città non lega queste unità ai franchi.",
+    "en": "the staff table (p. 85) counts fewer officers than planned, because of the time taken to replace staff; the City does not link these units to francs."
+   }
+  },
+  "fn 161": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 136,
+     "it": "36361000 Rimborso spese di manutenzione piazze di tiro L’importante minor costo registrato rispetto sia al P2025 di circa CHF 71'000.--, riguarda il dimezzamento del contributo della Città al fondo di rinnovamento per lo stand della Civici Carabinieri di Lugano di originali CHF 120'000.--, nell’ambito del piano di risanamento adottato."
+    }
+   ],
+   "en": "Shooting-range maintenance: the saving of about CHF 71,000 against the budget comes from halving the City's contribution, originally CHF 120,000, to the renewal fund for the Civici Carabinieri di Lugano stand, under the adopted recovery plan.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 48 e 136.",
+    "en": "2025 accounts, pp. 48 and 136."
+   }
+  },
+  "fn 213": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 204,
+     "it": "Nell’ambito delle misure di risparmio adottate nel corso del 2025 il contributo alle casse allievi delle scuole medie è stato ridotto, a partire dall’anno scolastico 2025-2026 da CHF 90.-- a CHF 50.-- per allievo, ciò che giustifica il minor esborso sia rispetto al P2025 (CHF -49'160.--, sia rispetto al C2024 (CHF -56’350.--)."
+    }
+   ],
+   "en": "As part of the 2025 savings measures, the contribution to the lower-secondary pupils' funds was cut from CHF 90 to CHF 50 per pupil from school year 2025-2026, which explains the lower outlay against the 2025 budget (CHF -49,160) and the 2024 accounts (CHF -56,350).",
+   "searched": {
+    "it": "consuntivo 2025, pp. 48 e 204.",
+    "en": "2025 accounts, pp. 48 and 204."
+   }
+  },
+  "fn 512": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 202,
+     "it": "La posta in questione, preventivata in CHF 35’400’000.--, in forza del calcolo stesso del contributo, si è infine dimostrata insufficiente a coprire la richiesta del contributo finale, gravato anche dall’aumento del gettito cantonale base di competenza della Città."
+    }
+   ],
+   "en": "The item, budgeted at CHF 35,400,000, proved insufficient, given how the contribution is calculated, to cover the final contribution requested, which was also raised by the increase in the City's basic cantonal tax yield.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 47 e 202–203; preventivo 2025, p. 222.",
+    "en": "2025 accounts, pp. 47 and 202–203; 2025 budget, p. 222."
+   },
+   "computed": {
+    "it": "la Città commenta il contributo al Cantone per casse malati, prestazioni complementari, AVS e AI nel suo insieme (39.0 milioni contro 35.4 a preventivo, p. 202), non la sola quota delle riduzioni dei premi.",
+    "en": "the City comments on the contribution to the canton for health insurance, supplementary benefits, AVS and AI as a whole (CHF 39.0 million against 35.4 budgeted, p. 202), not on the premium-reduction share alone."
+   }
+  },
+  "fn 615": {
+   "status": "none_explained",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 42,
+     "it": "31410000 Manutenzione strade 5 379 900.77 5 100 000.00 279 900.77 Maggiori inverventi di manutenzione delle strade eseguite dalla Divisione Spazi Urbani."
+    }
+   ],
+   "en": "Road maintenance, CHF +279,900.77: \"more road maintenance work carried out by the Urban Spaces Division.\" This goes the other way: it does not explain the lower spending of the line as a whole.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 42, 85 e 158–163.",
+    "en": "2025 accounts, pp. 42, 85 and 158–163."
+   }
+  },
+  "fn 632": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 130,
+     "it": "Il risultato d’esercizio dell’aeroporto è sostanzialmente in linea con il preventivo ma in leggera flessione rispetto al C2024. L’aumento dei costi è stato completamente bilanciato da maggiori introiti."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 131,
+     "it": "- costi per l’acquisto di carburante coperti dai maggiori ricavi derivanti dalla vendita (vedi gruppo 42 “tasse e retribuzioni”) CHF +410'184.11 … - costi Skyguide per avvicinamenti integralmente coperti dai maggiori introiti per tasse di avvicinamento e dai sussidi UFAC a copertura dei costi Skyguide CHF +1'156'162.61"
+    }
+   ],
+   "en": "The airport's operating result is broadly in line with the budget but slightly down on 2024. The increase in costs was fully offset by higher revenue. Fuel purchases, covered by higher fuel sales: CHF +410,184.11. Skyguide approach costs, fully covered by higher approach fees and federal (FOCA) subsidies: CHF +1,156,162.61.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 42 e 130–131.",
+    "en": "2025 accounts, pp. 42 and 130–131."
+   }
+  },
+  "fn 720": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 184,
+     "it": "36121100 Consorzio depurazione acque Lugano e dintorni Il minor costo di CHF 1'205'560.97, è relativo al conguaglio 2024, risultato inferiore a quanto previsto ed accantonato al 31.12.2024."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 184,
+     "it": "36121101 Consorzio Depurazione acque Pian Scairolo Anche in questo caso, il minor costo per rapporto al P2025 (CHF 52'528.44) è legato al conguaglio 2024, risultato inferiore a quanto previsto e accantonato al 31.12.2024."
+    }
+   ],
+   "en": "Lugano wastewater treatment consortium: CHF 1,205,560.97 less, because the 2024 balancing payment was lower than forecast and set aside at 31.12.2024. Pian Scairolo wastewater consortium: CHF 52,528.44 less, for the same reason.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 47, 158, 163 e 184.",
+    "en": "2025 accounts, pp. 47, 158, 163 and 184."
+   },
+   "computed": {
+    "it": "queste due voci spiegano 1.26 dei 1.67 milioni; il resto non è commentato.",
+    "en": "these two items explain CHF 1.26 million of the 1.67 million; the rest is not commented."
+   }
+  },
+  "fn 930": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 136,
+     "it": "36227000 Cantone: livellamento potenzialità fiscale … L’importante aumento sia rispetto al P2025 che al C2024, non riguarda solo il contributo ricalcolato dalla SEL in base ai nuovi dati (C2025 CHF +884'086.--); concretamente in sede di consuntivo 2025 (come già avvenuto nel 2024), non si è ritenuto necessario effettuare nessun prelievo dal fondo di stabilizzazione, come invece era stato previsto in sede di Preventivo 2025 per un importo di CHF 1’500'000.--."
+    }
+   ],
+   "en": "Equalisation of fiscal capacity (36227000): the large increase is not only the contribution recalculated by the canton's local authorities section on new data (CHF +884,086). In the 2025 accounts, as in 2024, no draw on the stabilisation fund was needed, whereas the 2025 budget had planned one of CHF 1,500,000.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 47 e 136.",
+    "en": "2025 accounts, pp. 47 and 136."
+   }
+  },
+  "fn 969": {
+   "status": "not_found",
+   "quotes": [],
+   "en": "",
+   "searched": {
+    "it": "consuntivo 2025, pp. 44, 129–130 e 280; preventivo 2027.",
+    "en": "2025 accounts, pp. 44, 129–130 and 280; 2027 budget."
+   },
+   "computed": {
+    "it": "la voce è il conto 34190000 «Perdite sul cambio» (6'212.14 franchi contro 2'000 a preventivo, p. 280).",
+    "en": "the line is account 34190000, exchange losses (CHF 6,212.14 against 2,000 budgeted, p. 280)."
+   }
+  },
+  "fn 990": {
+   "status": "none_explained",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 128,
+     "it": "Leggermente inferiori alle previsioni ma sostanzialmente ma sostanzialmente in linea con il C2024 gli ammortamenti registrati nel 2024."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 15,
+     "it": "Gli ammortamenti dell’anno ammontano a CHF 18.9 mio rispetto al budget preventivato di CHF 20.4 mio (CHF -1.5 mio, -7.2%)."
+    }
+   ],
+   "en": "\"Depreciation recorded in 2024 [sic] slightly below forecast but broadly in line with the 2024 accounts.\" \"Depreciation for the year amounts to CHF 18.9 million against a budget of CHF 20.4 million (CHF -1.5 million, -7.2%).\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 12–15, 44, 128 e 136.",
+    "en": "2025 accounts, pp. 12–15, 44, 128 and 136."
+   },
+   "computed": {
+    "it": "la voce è per quattro quinti ammortamenti (centro 2021: 21.2 milioni, p. 128) e lo scarto è quello degli ammortamenti, −1.89 milioni.",
+    "en": "four fifths of the line is depreciation (cost centre 2021: CHF 21.2 million, p. 128), and the gap is the depreciation gap, −1.89 million."
+   }
+  },
+  "org 1232": {
+   "status": "none_explained",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 115,
+     "it": "Non si segnalano scostamenti significativi rispetto al preventivo."
+    }
+   ],
+   "en": "\"No significant deviations from the budget to report.\" (Communication and Digital Innovation division)",
+   "searched": {
+    "it": "consuntivo 2025, pp. 42, 85, 115 e 117.",
+    "en": "2025 accounts, pp. 42, 85, 115 and 117."
+   },
+   "computed": {
+    "it": "la tabella del personale (p. 85) indica 3.9 unità invece di 4.8, per un avvicendamento rinviato.",
+    "en": "the staff table (p. 85) shows 3.9 staff units instead of 4.8, because a replacement was postponed."
+   }
+  },
+  "org 15": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 123,
+     "it": "Rispetto al P25 si registra una diminuzione delle spese per il personale pari a circa CHF 100'000.--. … Anche il gruppo 31 chiude il 2025 con una minor spesa rispetto al preventivo, … dovuta principalmente a minori spese sostenute nell’ambito dei nuovi progetti e a minori spese per consulenti esterni, periti, esperti."
+    }
+   ],
+   "en": "Against the 2025 budget, staff spending fell by about CHF 100,000. Goods and services also closed below budget, mainly because of lower spending on new projects and on external consultants and experts.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 42, 85 e 123.",
+    "en": "2025 accounts, pp. 42, 85 and 123."
+   }
+  },
+  "org 2021": {
+   "status": "none_explained",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 128,
+     "it": "Leggermente inferiori alle previsioni ma sostanzialmente ma sostanzialmente in linea con il C2024 gli ammortamenti registrati nel 2024."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 15,
+     "it": "Gli ammortamenti dell’anno ammontano a CHF 18.9 mio rispetto al budget preventivato di CHF 20.4 mio (CHF -1.5 mio, -7.2%)."
+    }
+   ],
+   "en": "\"Depreciation recorded in 2024 [sic] slightly below forecast but broadly in line with the 2024 accounts.\" \"Depreciation for the year amounts to CHF 18.9 million against a budget of CHF 20.4 million (CHF -1.5 million, -7.2%).\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 12–15, 44, 47 e 128.",
+    "en": "2025 accounts, pp. 12–15, 44, 47 and 128."
+   }
+  },
+  "org 2023": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 130,
+     "it": "- Rettifica di valore e perdite su crediti: valutazione crediti dubbiosi (delcredere) calcolata sulle singole posizioni rilevanti CHF +4.16 mio"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 127,
+     "it": "Per la prima volta si è provveduto alla valutazione dei crediti dubbiosi (delcredere), rilevati presso il CdR 22023 “Altre spese per beni e servizi” – vedi specifico commento."
+    }
+   ],
+   "en": "\"Value adjustments and losses on receivables: assessment of doubtful receivables, calculated on the individual significant positions, CHF +4.16 million.\" \"For the first time the doubtful receivables were assessed, recorded at cost centre 2023.\" The City's list (pp. 129–130) also names lower electricity tariffs (−0.26), more public-lighting work (+0.22) and uninsured damage.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 42, 127–130 e 280.",
+    "en": "2025 accounts, pp. 42, 127–130 and 280."
+   },
+   "computed": {
+    "it": "nel conto della funzione questo delcredere compare sotto «710 Approvvigionamento idrico». La Città stampa «Danni non assicurati e franchigie CHF +0.89 mio», ma il dettaglio del conto (p. 280) dà 239'002 franchi contro 150'000 a preventivo: +0.09 milioni.",
+    "en": "in the accounts by function this allowance appears under 710, water supply. The City prints 'uninsured damage and deductibles CHF +0.89 million', but the account detail (p. 280) gives CHF 239,002 against 150,000 budgeted: +0.09 million."
+   }
+  },
+  "org 2030": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 130,
+     "it": "Il risultato d’esercizio dell’aeroporto è sostanzialmente in linea con il preventivo ma in leggera flessione rispetto al C2024. L’aumento dei costi è stato completamente bilanciato da maggiori introiti."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 131,
+     "it": "- costi per l’acquisto di carburante coperti dai maggiori ricavi derivanti dalla vendita (vedi gruppo 42 “tasse e retribuzioni”) CHF +410'184.11 … - costi Skyguide per avvicinamenti integralmente coperti dai maggiori introiti per tasse di avvicinamento e dai sussidi UFAC a copertura dei costi Skyguide CHF +1'156'162.61"
+    }
+   ],
+   "en": "The airport's operating result is broadly in line with the budget but slightly down on 2024. The increase in costs was fully offset by higher revenue. Fuel purchases, covered by higher fuel sales: CHF +410,184.11. Skyguide approach costs, fully covered by higher approach fees and federal (FOCA) subsidies: CHF +1,156,162.61.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 42 e 130–131.",
+    "en": "2025 accounts, pp. 42 and 130–131."
+   }
+  },
+  "org 2900": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 136,
+     "it": "36227000 Cantone: livellamento potenzialità fiscale … L’importante aumento sia rispetto al P2025 che al C2024, non riguarda solo il contributo ricalcolato dalla SEL in base ai nuovi dati (C2025 CHF +884'086.--); concretamente in sede di consuntivo 2025 (come già avvenuto nel 2024), non si è ritenuto necessario effettuare nessun prelievo dal fondo di stabilizzazione, come invece era stato previsto in sede di Preventivo 2025 per un importo di CHF 1’500'000.--."
+    }
+   ],
+   "en": "Equalisation of fiscal capacity (36227000): the large increase is not only the contribution recalculated by the canton's local authorities section on new data (CHF +884,086). In the 2025 accounts, as in 2024, no draw on the stabilisation fund was needed, whereas the 2025 budget had planned one of CHF 1,500,000.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 136–137.",
+    "en": "2025 accounts, pp. 136–137."
+   }
+  },
+  "org 4011": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 163,
+     "it": "La voce spese per il personale costituisce la maggiore differenza (CHF - 428'004), …"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 163,
+     "it": "L’area ha occupato 72.84 unità lavorative, contro un preventivo di 75.5, con una differenza dovuta ai tempi degli avvicendamenti del personale e alla rinuncia di una posizione tecnica/operativa trasferita ad un’altra divisione."
+    }
+   ],
+   "en": "Staff spending is the largest difference (CHF −428,004). The area employed 72.84 staff units against 75.5 budgeted, because of the time taken to replace staff and a technical post given up and moved to another division.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 159–163.",
+    "en": "2025 accounts, pp. 159–163."
+   }
+  },
+  "org 4040": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 170,
+     "it": "A causa della riorganizzazione dell’UCCL, la posizione di responsabile è rimasta vacante per sei mesi. Ciò ha comportato un significativo rallentamento dei lavori programmati, come evidenziato sia dai conti della gestione ordinaria, che registrano minori spese per consulenze esterne e servizi di terzi, …"
+    }
+   ],
+   "en": "Because the coordination unit was reorganised, its head's post was vacant for six months. This significantly slowed the planned work, as the operating accounts show with lower spending on external consultancy and third-party services.",
+   "searched": {
+    "it": "consuntivo 2025, p. 170.",
+    "en": "2025 accounts, p. 170."
+   }
+  },
+  "org 4110": {
+   "status": "none_explained",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 172,
+     "it": "Il Centro di Responsabilità 4110 propone per il 2025 uscite pari a CHF 15'931’415.60 ed entrate per CHF 5'821'940.38, con un disavanzo d’esercizio di CHF 10'109'475.22."
+    }
+   ],
+   "en": "\"Cost centre 4110 shows 2025 spending of CHF 15,931,415.60 and revenue of CHF 5,821,940.38, an operating deficit of CHF 10,109,475.22.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 85 e 171–173.",
+    "en": "2025 accounts, pp. 85 and 171–173."
+   },
+   "computed": {
+    "it": "il personale spiega −1.13 dei −1.28 milioni (p. 172); la tabella del personale (p. 85) conta meno agenti del previsto per i tempi di avvicendamento.",
+    "en": "staff accounts for −1.13 of the −1.28 million (p. 172); the staff table (p. 85) counts fewer officers than planned, because of the time taken to replace staff."
+   }
+  },
+  "org 4900": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 184,
+     "it": "36121100 Consorzio depurazione acque Lugano e dintorni Il minor costo di CHF 1'205'560.97, è relativo al conguaglio 2024, risultato inferiore a quanto previsto ed accantonato al 31.12.2024."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 184,
+     "it": "36121101 Consorzio Depurazione acque Pian Scairolo Anche in questo caso, il minor costo per rapporto al P2025 (CHF 52'528.44) è legato al conguaglio 2024, risultato inferiore a quanto previsto e accantonato al 31.12.2024."
+    }
+   ],
+   "en": "Lugano wastewater treatment consortium: CHF 1,205,560.97 less, because the 2024 balancing payment was lower than forecast and set aside at 31.12.2024. Pian Scairolo wastewater consortium: CHF 52,528.44 less, for the same reason.",
+   "searched": {
+    "it": "consuntivo 2025, p. 184.",
+    "en": "2025 accounts, p. 184."
+   }
+  },
+  "org 5130": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 197,
+     "it": "Nel 2025 si è registrata una diminuzione delle domande presentate e gestite tramite il Regolamento, passate da 433 nel 2024 a 312 nel 2025. Tale andamento è riconducibile in larga misura al rafforzamento dell’attività di consulenza, sempre più orientata a individuare e affrontare le cause delle difficoltà attraverso soluzioni sostenibili nel tempo, piuttosto che intervenire unicamente a copertura delle spese."
+    }
+   ],
+   "en": "In 2025 the applications handled under the regulation on municipal social benefits fell from 433 in 2024 to 312. The City attributes this largely to stronger counselling, aimed at tackling the causes of difficulties with lasting solutions rather than only covering expenses.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 47 e 196–197.",
+    "en": "2025 accounts, pp. 47 and 196–197."
+   },
+   "computed": {
+    "it": "quasi tutto lo scarto (−0.81 milioni) è nel conto delle prestazioni comunali in ambito sociale (p. 47); la Città non scrive esplicitamente che il calo delle domande ne è la causa.",
+    "en": "almost all the gap (−0.81 million) is in the account for municipal social benefits (p. 47); the City does not say outright that the fall in applications caused it."
+   }
+  },
+  "org 5900": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 202,
+     "it": "La posta in questione, preventivata in CHF 35’400’000.--, in forza del calcolo stesso del contributo, si è infine dimostrata insufficiente a coprire la richiesta del contributo finale, gravato anche dall’aumento del gettito cantonale base di competenza della Città."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 203,
+     "it": "36321000 Finanziamento delle case per anziani Complessivamente il contributo in questione somma CHF 39'171'750.39 a fronte di un preventivo di CHF 38'500’000.-- (CHF +671'750.39)."
+    }
+   ],
+   "en": "The item, budgeted at CHF 35,400,000, proved insufficient, given how the contribution is calculated, to cover the final contribution requested, which was also raised by the increase in the City's basic cantonal tax yield. Care homes: CHF 39,171,750.39 against CHF 38,500,000 budgeted (CHF +671,750.39).",
+   "searched": {
+    "it": "consuntivo 2025, pp. 202–203.",
+    "en": "2025 accounts, pp. 202–203."
+   }
+  }
+ }
+}
