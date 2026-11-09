@@ -42,8 +42,11 @@ compares with Ticino's municipalities, staff costs, and the datasets that are no
 result are those of the 2025 accounts, the year the sky shows; only the comparisons with the other municipalities use
 2024, the latest year the canton publishes, and every sentence that gives an amount names its year (check 16).
 
-**On phones** (screens up to 720 px wide), and on a computer in the **"Riquadri"** (Tiles) view, the same data is shown
-without the sky (on a computer the tiles and a sector's list sit side by side):
+**The page opens on the tiles** on every screen; on phones (up to 720 px wide) they are the only layout, and on a computer
+the tiles and a sector's list sit side by side, with the sky one click away ("✦ Esplora il cielo"). The headline compares
+2025 spending with the budget the Council approved; the tiles and lines with the Municipio's proposal, the only budget the
+City splits by function. A first visit is offered a three-step tour (total, tiles, a line's card); the sky has its own
+three steps. Neither starts or moves on by itself:
 
 - **The sectors as tiles.** Each function (or department) is a rectangle whose area is its 2025 spending (a squarified
   treemap). Its colour is its gap in percent: grey on budget, warmer below, cooler above, at full strength from ±6%.

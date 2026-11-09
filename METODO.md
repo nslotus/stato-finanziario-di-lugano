@@ -43,8 +43,11 @@ Lugano con i comuni ticinesi, la spesa per il personale e i dati che non sono pu
 quelli del consuntivo 2025, l'anno mostrato dal cielo; solo i confronti con gli altri comuni usano il 2024, l'ultimo anno
 pubblicato dal Cantone, e ogni frase che dà un importo ne indica l'anno (controllo 16).
 
-**Sui telefoni** (schermi fino a 720 px di larghezza), e su un computer nella vista **«Riquadri»**, gli stessi dati sono
-mostrati senza il cielo (su un computer i riquadri e l'elenco di un settore stanno uno accanto all'altro):
+**La pagina si apre sui riquadri** su ogni schermo; sui telefoni (fino a 720 px di larghezza) sono l'unica disposizione, e
+su un computer i riquadri e l'elenco di un settore stanno uno accanto all'altro, con il cielo a un clic («✦ Esplora il
+cielo»). Il titolo confronta la spesa 2025 con il preventivo approvato dal Consiglio comunale; i riquadri e le voci con la
+proposta del Municipio, l'unico preventivo che la Città ripartisce per funzione. A una prima visita si propone un giro in
+tre passi (totale, riquadri, la scheda di una voce); il cielo ha i suoi tre passi. Nessuno dei due parte o avanza da solo:
 
 - **I settori come riquadri.** Ogni funzione (o dicastero) è un rettangolo la cui area è la sua spesa 2025 (una treemap
   squarificata). Il colore è il suo scarto in percentuale: grigio se in linea con il preventivo, più caldo sotto, più

@@ -101,7 +101,7 @@
     if (pt && !pt.moving && here() !== STEPS[pt.i].r) endPt();             // a move the tour did not make ends it
     document.getElementById("ph-tour").setAttribute("aria-label", P().tour.btn); document.getElementById("ph-tour").title = P().tour.btn;
     document.getElementById("ph-h1").textContent = T[lang].h1;
-    document.getElementById("ph-sky").textContent = `✦ ${T[lang].sky}`;
+    document.getElementById("ph-sky").textContent = `✦ ${T[lang].skyExplore}`;
     for (const l of ["it", "en"]) document.getElementById(`ph-${l}`).setAttribute("aria-pressed", String(l === lang));
     title();
   }
@@ -126,7 +126,8 @@
   }
 
   function home(chosen) {
-    const t = T[lang], p = P(), sl = V.slices, c = sl.reduce((s, f) => s + f.c25, 0), b = sl.reduce((s, f) => s + f.p25, 0);
+    // the headline compares with the budget the Council approved; by function the City splits only the Municipio's proposal
+    const t = T[lang], p = P(), sl = V.slices, c = sl.reduce((s, f) => s + f.c25, 0), b = D.budget25, bFn = sl.reduce((s, f) => s + f.p25, 0);
     const WU = 100, HU = mq.matches ? 120 : 80;          // on a wide screen the map is lower, so it fits beside the list
     // a tile's size in pixels decides how much text it gets: the map's width on a phone, or its column on a wide screen
     const ppu = (mq.matches ? Math.min(innerWidth - 32, 560) : ((Math.min(innerWidth - 56, 1280) - 44) * 1.1) / 2.1) / WU;
@@ -142,6 +143,7 @@
       <p class="eyebrow">${p.eyebrow}</p>
       <div class="ph-big">${n(c)}<small>${p.spent}</small></div>
       <p class="ph-sub">${p.budgetWas(n(b))} · ${gapSpan(b, c)}</p>
+      ${Math.abs(bFn - b) > 0.005 ? `<p class="small ph-bfn">${p.byFn(n(bFn))}</p>` : ""}
       ${viewSeg()}
       <div class="ph-tm" style="aspect-ratio:${WU} / ${HU}">${tiles}</div>
       ${small.length ? `<div class="ph-small">${small.map(({ f, rgb }) => `<button data-go="${kOf()}/${f.code}"><i style="background:rgb(${rgb})"></i>${f.code} ${esc(L(f.name))} <b>${n(f.c25)}</b> <span class="${f.pct >= 0 ? "ph-up" : "ph-down"}">${sgn(f.pct)}%</span></button>`).join("")}</div>` : ""}
@@ -336,7 +338,7 @@
   // ---------- a short guided tour: five steps, opened from "?" or from a one-time offer; it never plays by itself ----------
   // Each step goes to its screen, outlines what it talks about and explains it in a small card. Moving elsewhere ends it.
   const ring = document.getElementById("ph-ring"), box = document.getElementById("ph-tourbox"), hint = document.getElementById("ph-hint");
-  const STEPS = [{ r: "", el: ".ph-big" }, { r: "", el: ".ph-tm" }, { r: "settore/2", el: ".ph-gaps li" }, { r: "settore/212", el: ".sh-card" }, { r: "", el: "#ph-tabs" }];
+  const STEPS = [{ r: "", el: ".ph-big" }, { r: "", el: ".ph-tm" }, { r: "settore/710", el: ".sh-card" }];
   let pt = null;
   const seenTour = () => { try { return localStorage.getItem("ph-tour") === "1"; } catch { return true; } };
   const markSeen = () => { try { localStorage.setItem("ph-tour", "1"); } catch {} };
@@ -367,6 +369,7 @@
     Object.assign(ring.style, { left: `${Math.max(4, r.left - pad)}px`, top: `${top}px`, width: `${Math.min(innerWidth - 8, r.width + 2 * pad)}px`, height: `${Math.max(0, bottom - top)}px` });
     ring.hidden = false;
     box.classList.toggle("at-top", (top + bottom) / 2 > innerHeight * 0.45);   // the card sits on the side away from what it explains
+    box.classList.toggle("at-left", !mq.matches && r.left + r.width / 2 > innerWidth / 2);
   }
   box.addEventListener("click", (e) => {
     const b = e.target.closest("[data-pt]"); if (!b) return; const a = b.dataset.pt;
@@ -379,8 +382,9 @@
   addEventListener("keydown", (e) => { if (e.key === "Escape" && pt) endPt(); });
 
   // ---------- switching between the phone and the sky ----------
-  // on a wide screen the reader may choose these views ("Riquadri") instead of the sky; the choice is kept in this browser
-  let tiles = false; try { tiles = localStorage.getItem("cielo-layout") === "tiles"; } catch {}
+  // every screen opens on these views; on a wide screen the reader may choose the sky instead ("✦ Esplora il cielo"),
+  // and that choice is kept in this browser
+  let tiles = true; try { tiles = localStorage.getItem("cielo-layout") !== "sky"; } catch {}
   const want = () => mq.matches || tiles;
   let shown = want();                                    // which layout is on screen; after start() it changes only in apply()
   function apply() {
@@ -390,7 +394,7 @@
     root.hidden = !shown; tabsEl.hidden = !shown;
     if (!shown) { closeSheet(); endPt(); hint.hidden = true; }
   }
-  function start() { apply(); stack = [here()]; render(); if (mq.matches && !seenTour() && !here()) { writeHint(); hint.hidden = false; } }
+  function start() { apply(); stack = [here()]; render(); if (!seenTour() && !here()) { writeHint(); hint.hidden = false; } }
   // turning a tablet or resizing a window across 720px swaps the layouts; resize is checked too, because the media
   // query's own change event does not always arrive
   function swap() {

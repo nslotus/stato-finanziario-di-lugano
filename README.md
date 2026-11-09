@@ -10,11 +10,12 @@ Open a sector to see what it is made of, the City's own explanations, and figure
 economy, debt and more, each with its source. An overview brings together revenue, the debt to 2033, the bonds, staff and
 the datasets that are not published. In Italian and English.
 
-On a phone the sky gives way to a layout made for small screens: the sectors as tiles sized by what they spent, each
-sector as a list of its lines' gaps around the budget, a card for each line with its pages and sources, "Il tuo franco"
-(how an amount splits in the proportions of 2025 spending) and a searchable table. Same data, same addresses: a link
-shared from a phone opens the same line on a computer. On a computer the same views are one click away: "Riquadri"
-(Tiles) shows the tiles beside the list of a sector's lines, for readers who prefer plain charts to the sky.
+The page opens on plain charts: what the City spent against the approved budget, the sectors as tiles sized by what they
+spent, each sector as a list of its lines' gaps around the budget, a card for each line with its pages, sources and, for
+large gaps, the City's reason, "Il tuo franco" (how an amount splits in the proportions of 2025 spending) and a
+searchable table. A first visit is offered a three-step tour, which moves only when the visitor clicks. On a computer
+the sky is the explore mode, one click away ("✦ Esplora il cielo"); the browser remembers it if the visitor chooses it.
+Same data, same addresses: a link shared from a phone opens the same line on a computer.
 
 **View it:** https://nslotus.github.io/stato-finanziario-di-lugano/ · locally: `npm ci && npm run serve`
 

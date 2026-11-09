@@ -237,8 +237,6 @@ img { max-width: 100%; }
   .t-nav button:disabled { opacity: 0.35; cursor: default; }
   .t-nav .primary, #b-tour { background: var(--accent); color: var(--night); border-color: var(--accent); font-weight: 600; }
   .t-prog { height: 3px; border-radius: 2px; background: var(--line); overflow: hidden; }
-  .t-timer { height: 2px; margin-top: -8px; border-radius: 2px; overflow: hidden; }
-  .t-timer i { display: block; height: 100%; width: 0; background: rgba(255, 217, 160, 0.45); }
   .t-prog i { display: block; height: 100%; width: var(--w, 0%); background: var(--accent); transition: width 0.35s; }
   /* charts and depth inside a figure */
   .fact-more { --ch: var(--hue, var(--accent)); }
@@ -492,4 +490,5 @@ body.wide .sh-card.in { animation-name: sh-left; }
 @keyframes sh-left { from { transform: translateX(100%); } }
 body.wide .sh-grip { display: none; }
 body.wide #ph-tourbox { left: auto; right: 24px; width: 380px; }
+body.wide #ph-tourbox.at-left { right: auto; left: 24px; }
 @media (prefers-reduced-motion: reduce) { .sh-card.in { animation: none; } .sh-card { transition: none; } #ph-ring { transition: none; } }

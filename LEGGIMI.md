@@ -10,12 +10,13 @@ la voce ha speso. Aprendo un settore si vede di che cosa è fatto, le spiegazion
 sicurezza, trasporti, economia, debito e altro, ciascuna con la sua fonte. Un quadro d'insieme riunisce le entrate, il
 debito fino al 2033, le obbligazioni, il personale e i dati che non sono pubblicati. In italiano e in inglese.
 
-Sul telefono il cielo lascia il posto a una disposizione pensata per gli schermi piccoli: i settori come riquadri grandi
-quanto la loro spesa, ogni settore come elenco degli scarti delle sue voci rispetto al preventivo, una scheda per ogni voce
-con le sue pagine e le sue fonti, «Il tuo franco» (come un importo si ripartisce nelle proporzioni della spesa 2025) e una
-tabella con ricerca. Stessi dati, stessi indirizzi: un collegamento condiviso da un telefono apre la stessa voce su un
-computer. Su un computer le stesse viste sono a un clic: «Riquadri» mostra i riquadri accanto all'elenco delle voci di un
-settore, per chi preferisce grafici semplici al cielo.
+La pagina si apre su grafici semplici: quanto ha speso la Città rispetto al preventivo approvato, i settori come riquadri
+grandi quanto la loro spesa, ogni settore come elenco degli scarti delle sue voci rispetto al preventivo, una scheda per
+ogni voce con le sue pagine, le sue fonti e, per gli scarti grandi, la ragione data dalla Città, «Il tuo franco» (come un
+importo si ripartisce nelle proporzioni della spesa 2025) e una tabella con ricerca. A una prima visita si propone un giro
+in tre passi, che avanza solo quando il visitatore clicca. Su un computer il cielo è la modalità per esplorare, a un clic
+(«✦ Esplora il cielo»); il browser lo ricorda se il visitatore lo sceglie. Stessi dati, stessi indirizzi: un collegamento
+condiviso da un telefono apre la stessa voce su un computer.
 
 **Vederla:** https://nslotus.github.io/stato-finanziario-di-lugano/ · in locale: `npm ci && npm run serve`
 

@@ -76,7 +76,7 @@ const T = {
     legendBtn: "Legenda", zoomIn: "Ingrandisci", zoomOut: "Rimpicciolisci",
     moreFail: "Una parte dei dati non si è caricata: ricaricate la pagina per aprire le schede e il quadro.",
     method: "Metodo, fonti e controlli (in italiano)", show: "Mostra come", tilesBtn: "Riquadri", tilesTip: "La stessa spesa in riquadri e barre, al posto del cielo",
-    table: "Tabella", sky: "Cielo", close: "Chiudi", horizon: "preventivo 2025", over: "sopra il preventivo", under: "sotto il preventivo",
+    table: "Tabella", sky: "Cielo", skyExplore: "Esplora il cielo", close: "Chiudi", horizon: "preventivo 2025", over: "sopra il preventivo", under: "sotto il preventivo",
     notBudget: "non a preventivo", notSpent: "non spesa",
     hint: "Trascinate per scorrere · rotella o pizzico per allargare uno spicchio · doppio clic su una stella per avvicinarvi · 0 per la vista d'insieme",
     legend: "Luminosità: spesa 2025 (mio CHF)",
@@ -106,7 +106,7 @@ const T = {
     factsTip: "Toccate una cifra per la spiegazione e le fonti.", factsAll: "Apri tutte", factsNone: "Chiudi tutte",
     pagesFn: (l) => `Messaggi municipali: preventivo p. ${l.pagesP}, consuntivo p. ${l.pagesC}`, pagesOrg: (l) => `Messaggio sul consuntivo, p. ${l.page}`,
     ph: {
-      eyebrow: "Città di Lugano · conti 2025", spent: "mio CHF spesi nel 2025", budgetWas: (b) => `Preventivo ${b} mio`,
+      eyebrow: "Città di Lugano · conti 2025", spent: "mio CHF spesi nel 2025", budgetWas: (b) => `Preventivo approvato ${b} mio`, byFn: (b) => `Per settore e per voce la Città ripartisce solo la proposta del Municipio (${b} mio): riquadri e voci si confrontano con quella.`,
       tiles: "L'area di ogni riquadro è la spesa 2025; il colore dice com'è andata rispetto al preventivo. Toccate un riquadro.",
       less: "meno del previsto", more: "più del previsto", how: "Come si legge",
       howText: ["Il preventivo è quanto la Città prevedeva di spendere nel 2025; il consuntivo è quanto ha speso davvero.", "Ogni voce è letta dai messaggi municipali, con la pagina: toccatela per vedere le cifre e le fonti."],
@@ -121,11 +121,9 @@ const T = {
       search: "Cerca una voce o un codice", sortBy: "Ordina", sorts: ["Scarto", "Spesa", "Codice"], none: "Nessuna voce corrisponde.",
       against: "Rispetto al preventivo", pick: "Scegliete un riquadro o una riga per vederne le voci.",
       tour: { btn: "Giro guidato", hint: "Prima volta qui?", start: "Fate il giro", next: "Avanti", back: "Indietro", done: "Fine", count: (i, k) => `${i} di ${k}`,
-        steps: ["Quanto ha speso la Città nel 2025, e la differenza dal preventivo.",
-          "Ogni riquadro è un settore: più è grande, più ha speso. Blu: più del previsto; arancio: meno. Toccatene uno.",
-          "Dentro un settore, ogni voce è una barra: a destra della linea dorata ha speso più del previsto, a sinistra meno.",
-          "Ogni voce ha la sua scheda: preventivo, consuntivo, scarto e le pagine dei documenti da cui vengono le cifre.",
-          "Qui sotto: il vostro franco, il quadro dei conti (debito, entrate, personale) e la tabella di tutte le voci. Il ? in alto riapre questo giro."] },
+        steps: ["Quanto ha speso la Città nel 2025, e la differenza dal preventivo approvato dal Consiglio comunale.",
+          "Ogni riquadro è un settore: più è grande, più ha speso. Blu: più del previsto; arancio: meno. Toccatene uno per vederne le voci.",
+          "Ogni voce ha la sua scheda: preventivo, consuntivo, scarto, le pagine dei documenti e, per gli scarti grandi, il perché secondo la Città. Il ? in alto riapre questo giro; «✦ Esplora il cielo» mostra le stesse voci come stelle."] },
       wide: "Su uno schermo più largo questa pagina è un cielo di stelle: ogni voce è una stella, il preventivo è l'orizzonte.",
     },
     sources: "Fonti", how: "Come leggerla", doc: "documento", row: "riga", facts: "Altre cifre del settore", trend: "Spesa 2023–2027 (mio CHF)", trendKey: "Pieno: consuntivo. Tratteggio: preventivo.",
@@ -151,7 +149,7 @@ const T = {
     legendBtn: "Legend", zoomIn: "Zoom in", zoomOut: "Zoom out",
     moreFail: "Part of the data did not load: reload the page to open the cards and the big picture.",
     method: "Method, sources and checks", show: "Show as", tilesBtn: "Tiles", tilesTip: "The same spending as tiles and bars, instead of the sky",
-    table: "Table", sky: "Sky", close: "Close", horizon: "2025 budget", over: "above budget", under: "below budget",
+    table: "Table", sky: "Sky", skyExplore: "Explore the sky", close: "Close", horizon: "2025 budget", over: "above budget", under: "below budget",
     notBudget: "not in the budget", notSpent: "not spent",
     hint: "Drag to scroll · wheel or pinch to widen a slice · double-click a star to get closer · 0 for the overview",
     legend: "Brightness: 2025 spending (CHF million)",
@@ -181,7 +179,7 @@ const T = {
     factsTip: "Tap a figure for its explanation and sources.", factsAll: "Open all", factsNone: "Close all",
     pagesFn: (l) => `Municipal messages: budget p. ${l.pagesP}, accounts p. ${l.pagesC}`, pagesOrg: (l) => `Message on the accounts, p. ${l.page}`,
     ph: {
-      eyebrow: "City of Lugano · 2025 accounts", spent: "million CHF spent in 2025", budgetWas: (b) => `Budget ${b} million`,
+      eyebrow: "City of Lugano · 2025 accounts", spent: "million CHF spent in 2025", budgetWas: (b) => `Approved budget ${b} million`, byFn: (b) => `By sector and line the City splits only the Municipio’s proposal (${b} million): tiles and lines are compared with that.`,
       tiles: "Each tile's area is its 2025 spending; its colour shows how it went against the budget. Tap a tile.",
       less: "less than budgeted", more: "more than budgeted", how: "How to read it",
       howText: ["The budget is what the City planned to spend in 2025; the accounts are what it actually spent.", "Every line is read from the municipal messages, with its page: tap it to see the figures and the sources."],
@@ -196,11 +194,9 @@ const T = {
       search: "Search a line or a code", sortBy: "Sort", sorts: ["Gap", "Spending", "Code"], none: "No line matches.",
       against: "Against the budget", pick: "Choose a tile or a row to see its lines.",
       tour: { btn: "Guided tour", hint: "First time here?", start: "Take the tour", next: "Next", back: "Back", done: "Done", count: (i, k) => `${i} of ${k}`,
-        steps: ["What the City spent in 2025, and the difference from the budget.",
-          "Each tile is a sector: the bigger it is, the more it spent. Blue: more than budgeted; orange: less. Tap one.",
-          "Inside a sector, each line is a bar: right of the gold line it spent more than budgeted, left of it less.",
-          "Each line has its card: budget, actual, gap and the pages of the documents the figures come from.",
-          "Down here: your franc, the big picture (debt, revenue, staff) and the table of every line. The ? at the top restarts this tour."] },
+        steps: ["What the City spent in 2025, and the difference from the budget the Council approved.",
+          "Each tile is a sector: the bigger it is, the more it spent. Blue: more than budgeted; orange: less. Tap one to see its lines.",
+          "Each line has its card: budget, actual, gap, the pages of the documents and, for large gaps, the City's reason. The ? at the top restarts this tour; “✦ Explore the sky” shows the same lines as stars."] },
       wide: "On a wider screen this page is a sky of stars: each line is a star and the budget is the horizon.",
     },
     sources: "Sources", how: "How to read it", doc: "document", row: "row", facts: "Other figures in this sector", trend: "Spending 2023–2027 (CHF million)", trendKey: "Solid: actual. Dashed: budget.",
@@ -994,8 +990,8 @@ document.getElementById("i-example").onclick = () => startTour();
 document.getElementById("b-tour").onclick = () => startTour();
 // ---------- the guided tour: drives the sky one step at a time, with a ring on what it is talking about ----------
 const TOUR = {
-  it: { button: "▶ Tour", count: (i, n) => `Tour guidato · ${i} di ${n}`, next: "Avanti →", back: "← Indietro", done: "Fine", close: "Chiudi ×", pause: "❚❚ Pausa", play: "▶ Riprendi" },
-  en: { button: "▶ Tour", count: (i, n) => `Guided tour · ${i} of ${n}`, next: "Next →", back: "← Back", done: "Done", close: "Close ×", pause: "❚❚ Pause", play: "▶ Play" },
+  it: { button: "▶ Tour", count: (i, n) => `Tour guidato · ${i} di ${n}`, next: "Avanti →", back: "← Indietro", done: "Fine", close: "Chiudi ×" },
+  en: { button: "▶ Tour", count: (i, n) => `Guided tour · ${i} of ${n}`, next: "Next →", back: "← Back", done: "Done", close: "Close ×" },
 };
 const bigGap = (sign) => stars.filter((x) => x.kind === "line" && x.p != null && !x.only).sort((a, b) => sign * ((b.c - b.b) - (a.c - a.b)))[0];
 const elRect = (el) => { if (!el) return null; const r = el.getBoundingClientRect(); return r.width ? { x: r.left - 6, y: r.top - 6, w: r.width + 12, h: r.height + 12 } : null; };
@@ -1009,43 +1005,17 @@ function tourBase(v = "fn", m = "chf") {
 function showStar(c, s) { c.s = s; select(s, false); flyTo(s.az, s.alt, Math.min(fullSpan(), SLICE * 1.8)); }
 function showSlice(c) { const i = Math.min(2, V.slices.length - 1); c.f = V.slices[i]; c.s = stars.find((x) => x.kind === "fn" && x.f === c.f); flyTo(i * SLICE + SLICE / 2, 0, Math.min(fullSpan(), SLICE * 2.4)); select(c.s); }
 const mio = (s) => sgn(s.c - s.b, 2);
+// three steps, each moved on by the visitor: the horizon, the line furthest over budget with its card, and the way back
 const STEPS = [
-  { run: () => { tourBase(); overview(); },
-    it: () => "<b>Benvenuti in Cielo del preventivo, Lugano.</b> Ogni punto luminoso è una voce di spesa della Città di Lugano nel 2025. In un minuto vi mostriamo come leggerlo: premete «Avanti».",
-    en: () => "<b>Welcome to Sky budget, Lugano.</b> Every point of light is one of the City of Lugano's spending lines in 2025. In a minute we'll show you how to read it: press “Next”." },
   { run: () => { tourBase(); overview(); }, target: () => ({ x: 6, y: cy() - 18, w: innerWidth - 12, h: 36 }),
-    it: () => "<b>Questa linea dorata è il preventivo 2025.</b> Una voce che ha speso esattamente quanto previsto starebbe sulla linea. Sopra, ha speso di più; sotto, di meno. Le cifre a sinistra dicono di quanto.",
-    en: () => "<b>This golden line is the 2025 budget.</b> A line that spent exactly what was planned would sit on it. Above, it spent more; below, less. The figures on the left say by how much." },
-  { run: (c) => { tourBase(); showStar(c, bigGap(1)); }, target: (c) => starRect(c.s),
-    it: (c) => `<b>In alto: più del previsto.</b> «${esc(L(c.s.label))}» è la voce che ha superato di più il preventivo: ${mio(c.s)} milioni di franchi (${sgn(c.s.p, 1)}%). Più grande lo scarto, più la stella sale.`,
-    en: (c) => `<b>Up high: more than planned.</b> “${esc(L(c.s.label))}” is the line that went furthest over budget: CHF ${mio(c.s)} million (${sgn(c.s.p, 1)}%). The larger the gap, the higher the star.` },
-  { run: (c) => { tourBase(); showStar(c, bigGap(-1)); }, target: (c) => starRect(c.s),
-    it: (c) => `<b>In basso: meno del previsto.</b> «${esc(L(c.s.label))}» ha speso ${mio(c.s)} milioni rispetto al preventivo (${sgn(c.s.p, 1)}%). Non è per forza un bene o un male: può essere un risparmio, un lavoro rinviato o un bisogno minore.`,
-    en: (c) => `<b>Down low: less than planned.</b> “${esc(L(c.s.label))}” spent CHF ${mio(c.s)} million against its budget (${sgn(c.s.p, 1)}%). That is not good or bad by itself: it can be a saving, work postponed, or a smaller need.` },
-  { run: (c) => { tourBase(); showStar(c, bigGap(-1)); }, target: () => elRect(peek.hidden ? null : peek),
-    it: () => "<b>La scheda accanto alla stella</b> dà le cifre in milioni di franchi: preventivo, consuntivo (la spesa vera) e scarto. La barra tratteggiata è il preventivo, quella piena la spesa. Toccate la scheda per aprire la voce.",
-    en: () => "<b>The card next to the star</b> gives the figures in CHF million: budget, actual (what was really spent) and the gap. The dashed bar is the budget, the solid one the spending. Tap the card to open the line." },
-  { run: () => { tourBase(); overview(); showLegend(true); }, target: () => elRect(document.getElementById("legend")),
-    it: () => "<b>La luce è la spesa.</b> Più la stella è grande e luminosa, più soldi muove la voce. Le stelle con un anello sono i totali di ogni settore. Il pulsante «Legenda», in basso a destra, apre la scala.",
-    en: () => "<b>Light is spending.</b> The bigger and brighter the star, the more money the line moves. Stars with a ring are the totals of each sector. The “Legend” button at the bottom right opens the scale." },
-  { run: (c) => { tourBase(); showSlice(c); }, target: () => elRect(document.querySelector(".nav")),
-    it: (c) => `<b>Il cielo è diviso in settori.</b> I pulsanti in basso vi portano a ciascuno: ecco «${esc(L(c.f.name))}». Con «⤢ Vista d'insieme» tornate a vedere tutto il cielo; con − e + in basso a destra allargate o stringete.`,
-    en: (c) => `<b>The sky is divided into sectors.</b> The buttons at the bottom take you to each one: here is “${esc(L(c.f.name))}”. “⤢ Overview” brings back the whole sky; − and + at the bottom right zoom out and in.` },
-  { run: (c) => { tourBase(); showSlice(c); cancelAnimationFrame(flyRaf); openFocus(c.s); }, corner: true,
-    it: (c) => `<b>Aprendo una stella</b> si vede di che cosa è fatta. I gruppi di voci di «${esc(L(c.f.name))}» si dispongono sopra o sotto la linea del preventivo, come nel cielo; ogni gruppo si apre sulle sue voci. Poi l'andamento 2023–2027, altre cifre del settore e le fonti, con i link ai documenti.`,
-    en: (c) => `<b>Opening a star</b> shows what it is made of. The groups of lines in “${esc(L(c.f.name))}” sit above or below the budget line, as in the sky; each group opens onto its lines. Then the 2023–2027 trend, other figures for the sector, and the sources, linked to the documents.` },
-  { run: () => { tourBase("fn", "pct"); overview(); }, target: () => elRect(document.getElementById("m-l").parentElement),
-    it: () => "<b>Franchi o percentuale.</b> L'altezza può seguire lo scarto in franchi (CHF) o in percentuale (%). Ora siamo in %: attenzione, una voce piccola può salire molto anche per pochi franchi.",
-    en: () => "<b>Francs or percent.</b> Height can follow the gap in francs (CHF) or in percent (%). We are now in %: careful, a small line can climb high on just a few francs." },
-  { run: () => { tourBase("org", "chf"); overview(); }, target: () => elRect(document.getElementById("v-l").parentElement),
-    it: () => "<b>Funzioni o dicasteri.</b> «Funzioni» ordina il cielo come i conti; «Dicasteri» come è organizzata la Città. Nei dicasteri si leggono anche le spiegazioni della Città sugli scarti.",
-    en: () => "<b>Functions or departments.</b> “Functions” arranges the sky as the accounts do; “Departments” as the City is organised. In the departments you can also read the City's own explanations of the gaps (in Italian)." },
-  { run: () => { tourBase(); toggleTable(true); }, target: () => elRect(document.getElementById("b-table")),
-    it: () => "<b>Preferite un elenco?</b> «Tabella» mostra tutte le voci con preventivo, consuntivo e scarto. Cliccate un'intestazione per ordinare, una riga per trovare la sua stella nel cielo.",
-    en: () => "<b>Prefer a list?</b> “Table” shows every line with budget, actual and gap. Click a heading to sort, a row to find its star in the sky." },
-  { run: () => { tourBase(); overview(); }, target: () => elRect(document.getElementById("b-ov")),
-    it: () => "<b>Ecco tutto.</b> «Il quadro», in alto, mostra i conti nel loro insieme: entrate, debito, obbligazioni, personale e i dati che mancano. Il pulsante «?» riapre le istruzioni, «▶ Tour» questo giro.",
-    en: () => "<b>That's it.</b> “Big picture”, at the top, shows the accounts as a whole: revenue, debt, bonds, staff and the data that is missing. The “?” button reopens the instructions, “▶ Tour” this walkthrough." },
+    it: () => "<b>Ogni stella è una voce di spesa del 2025; la linea dorata è il preventivo.</b> Una voce che ha speso quanto previsto starebbe sulla linea: sopra ha speso di più, sotto di meno. Le cifre a sinistra dicono di quanto. Più la stella è luminosa, più soldi muove.",
+    en: () => "<b>Each star is a 2025 spending line; the golden line is the budget.</b> A line that spent what was planned would sit on it: above, it spent more; below, less. The figures on the left say by how much. The brighter the star, the more money it moves." },
+  { run: (c) => { tourBase(); showStar(c, bigGap(1)); }, target: () => elRect(peek.hidden ? null : peek),
+    it: (c) => `<b>Toccate una stella per la sua scheda.</b> «${esc(L(c.s.label))}» è la voce più sopra il preventivo: ${mio(c.s)} milioni (${sgn(c.s.p, 1)}%). La scheda dà preventivo, consuntivo e scarto e, per gli scarti grandi, il perché secondo la Città.`,
+    en: (c) => `<b>Tap a star for its card.</b> “${esc(L(c.s.label))}” is the line furthest over budget: CHF ${mio(c.s)} million (${sgn(c.s.p, 1)}%). The card gives budget, actual and gap and, for large gaps, the City's reason.` },
+  { run: () => { tourBase(); overview(); }, target: () => elRect(document.getElementById("g-show")),
+    it: () => "<b>Le stesse voci, in altri modi.</b> «Riquadri» mostra i settori per grandezza, «Tabella» tutte le voci in un elenco; «Il quadro» i conti nel loro insieme. Il pulsante «?» riapre le istruzioni.",
+    en: () => "<b>The same lines, other ways.</b> “Tiles” shows the sectors by size, “Table” every line in a list, “Big picture” the accounts as a whole. The “?” button reopens the instructions." },
 ];
 const tourEl = document.getElementById("tour"), ring = document.getElementById("t-ring"), tcard = tourEl.querySelector(".t-card");
 let tour = null;
@@ -1057,23 +1027,10 @@ function renderTour() {
   document.getElementById("t-back").textContent = t.back; document.getElementById("t-back").disabled = i === 0;
   document.getElementById("t-next").textContent = i === n - 1 ? t.done : t.next;
   document.getElementById("t-x").textContent = t.close;
-  const pb = document.getElementById("t-play"); pb.textContent = tour.play ? t.pause : t.play; pb.hidden = i === n - 1;
 }
-function goTour(i) { tour.i = Math.max(0, Math.min(STEPS.length - 1, i)); tour.c = {}; STEPS[tour.i].run(tour.c); renderTour(); armTour(); }
-// auto-play: each step stays up long enough to read it, then the tour moves on by itself (not with reduced motion:
-// there it waits for a click, and ▶ Play starts it)
-function armTour() {
-  clearTimeout(tour.timer);
-  const bar = document.getElementById("t-timer"), last = tour.i === STEPS.length - 1;
-  bar.style.transition = "none"; bar.style.width = "0";
-  if (!tour.play || last) return;
-  const ms = Math.max(6500, 2500 + document.getElementById("t-text").textContent.length * 55);
-  void bar.offsetWidth; bar.style.transition = `width ${ms}ms linear`; bar.style.width = "100%";
-  tour.timer = setTimeout(() => tour && goTour(tour.i + 1), ms);
-}
-function setPlay(on) { if (!tour) return; tour.play = on; renderTour(); armTour(); }
-function startTour() { const was = tour; if (was) clearTimeout(was.timer); intro.hidden = true; tour = { i: 0, c: {}, play: !reduceMotion() }; tourEl.hidden = false; goTour(0); if (!was) trackRing(); document.getElementById("t-next").focus(); }
-function stopTour() { clearTimeout(tour?.timer); tourBase(); overview(); tour = null; syncRoute(); tourEl.hidden = true; ring.hidden = true; try { localStorage.setItem("cupola-intro", "1"); } catch {} cv.focus(); }
+function goTour(i) { tour.i = Math.max(0, Math.min(STEPS.length - 1, i)); tour.c = {}; STEPS[tour.i].run(tour.c); renderTour(); }
+function startTour() { const was = tour; intro.hidden = true; tour = { i: 0, c: {} }; tourEl.hidden = false; goTour(0); if (!was) trackRing(); document.getElementById("t-next").focus(); }
+function stopTour() { tourBase(); overview(); tour = null; syncRoute(); tourEl.hidden = true; ring.hidden = true; try { localStorage.setItem("cupola-intro", "1"); } catch {} cv.focus(); }
 function trackRing() {
   if (!tour) return;
   const r = STEPS[tour.i].target?.(tour.c) ?? null;
@@ -1086,9 +1043,6 @@ function trackRing() {
 document.getElementById("t-next").onclick = () => (tour.i === STEPS.length - 1 ? stopTour() : goTour(tour.i + 1));
 document.getElementById("t-back").onclick = () => goTour(tour.i - 1);
 document.getElementById("t-x").onclick = () => stopTour();
-document.getElementById("t-play").onclick = () => setPlay(!tour.play);
-// touching the sky or an open star means the viewer wants to look around: pause
-for (const el of [cv, focusEl]) el.addEventListener("pointerdown", () => { if (tour?.play) setPlay(false); });
 addEventListener("keydown", (e) => { if (tour && e.key === "Escape") { e.stopImmediatePropagation(); stopTour(); } }, true);
 
 // ---------- the address bar follows what is open, so Back closes it and a link can be shared ----------
@@ -1188,10 +1142,6 @@ else {
 let seen = false; try { seen = localStorage.getItem("cupola-intro") === "1"; } catch {}
 // after every script has run, so that the phone layout can take over first
 document.addEventListener("DOMContentLoaded", () => { started = true; if (phoneUI?.active()) phoneUI.start(); else if (location.hash.length > 1) applyRoute(); else if (!seen) firstVisit(); });
-// a first visit opens on the guided tour, once: the sky is hard to read without it. A moment first, so the sky is seen;
-// the instructions stay one click away ("?"), and a shared link opens what it points to instead.
-function firstVisit() {
-  try { localStorage.setItem("cupola-intro", "1"); } catch {}
-  setTimeout(() => { if (!tour && intro.hidden && !focus && ovEl.hidden) startTour(); }, 900);
-}
+// the sky is the explore mode: it never starts its tour by itself; "▶ Tour" and "?" stay one click away
+function firstVisit() { try { localStorage.setItem("cupola-intro", "1"); } catch {} }
 document.fonts?.ready.then(redraw);
