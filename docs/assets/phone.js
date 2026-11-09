@@ -356,7 +356,7 @@
     box.setAttribute("aria-label", t.btn);
     if (here() !== s.r) { pt.moving = true; stack[stack.length - 1] = s.r; history.replaceState(history.state, "", urlOf(s.r)); render(); pt.moving = false; }
     if (s.r === "") root.scrollTop = 0;
-    box.innerHTML = `<button class="pt-x" data-pt="end" aria-label="${T[lang].close}">×</button><p class="pt-n">${t.btn} · ${t.count(i + 1, STEPS.length)}</p><p class="pt-t" aria-live="polite">${t.steps[i]}</p>
+    box.innerHTML = `<button class="pt-x" data-pt="end" aria-label="${T[lang].close}">×</button><p class="pt-n">${t.btn} · ${t.count(i + 1, STEPS.length)}</p><p class="pt-t" aria-live="polite">${i === STEPS.length - 1 && mq.matches ? t.lastPhone : t.steps[i]}</p>
       <div class="pt-nav">${i ? `<button data-pt="back">${t.back}</button>` : ""}<button class="pt-go" data-pt="${i === STEPS.length - 1 ? "end" : "next"}">${i === STEPS.length - 1 ? t.done : t.next}</button></div>`;
     setTimeout(placeRing, s.el === ".sh-card" ? 320 : 30);
     box.querySelector(".pt-go").focus({ preventScroll: true });
@@ -368,7 +368,9 @@
     const r = el.getBoundingClientRect(), pad = 6, top = Math.max(4, r.top - pad), bottom = Math.min(innerHeight - 4, r.bottom + pad);
     Object.assign(ring.style, { left: `${Math.max(4, r.left - pad)}px`, top: `${top}px`, width: `${Math.min(innerWidth - 8, r.width + 2 * pad)}px`, height: `${Math.max(0, bottom - top)}px` });
     ring.hidden = false;
-    box.classList.toggle("at-top", (top + bottom) / 2 > innerHeight * 0.45);   // the card sits on the side away from what it explains
+    // the box sits on the side away from what it explains; over a phone's line card it goes to the bottom, over the
+    // sources, so the figures and the "Perché?" at the top of the card stay readable
+    box.classList.toggle("at-top", !(mq.matches && STEPS[pt.i].el === ".sh-card") && (top + bottom) / 2 > innerHeight * 0.45);
     box.classList.toggle("at-left", !mq.matches && r.left + r.width / 2 > innerWidth / 2);
   }
   box.addEventListener("click", (e) => {
