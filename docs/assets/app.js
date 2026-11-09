@@ -1048,7 +1048,8 @@ function renderTour() {
   const pb = document.getElementById("t-play"); pb.textContent = tour.play ? t.pause : t.play; pb.hidden = i === n - 1;
 }
 function goTour(i) { tour.i = Math.max(0, Math.min(STEPS.length - 1, i)); tour.c = {}; STEPS[tour.i].run(tour.c); renderTour(); armTour(); }
-// auto-play: each step stays up long enough to read it, then the tour moves on by itself
+// auto-play: each step stays up long enough to read it, then the tour moves on by itself (not with reduced motion:
+// there it waits for a click, and ▶ Play starts it)
 function armTour() {
   clearTimeout(tour.timer);
   const bar = document.getElementById("t-timer"), last = tour.i === STEPS.length - 1;
@@ -1059,7 +1060,7 @@ function armTour() {
   tour.timer = setTimeout(() => tour && goTour(tour.i + 1), ms);
 }
 function setPlay(on) { if (!tour) return; tour.play = on; renderTour(); armTour(); }
-function startTour() { const was = tour; if (was) clearTimeout(was.timer); intro.hidden = true; tour = { i: 0, c: {}, play: true }; tourEl.hidden = false; goTour(0); if (!was) trackRing(); document.getElementById("t-next").focus(); }
+function startTour() { const was = tour; if (was) clearTimeout(was.timer); intro.hidden = true; tour = { i: 0, c: {}, play: !reduceMotion() }; tourEl.hidden = false; goTour(0); if (!was) trackRing(); document.getElementById("t-next").focus(); }
 function stopTour() { clearTimeout(tour?.timer); tourBase(); overview(); tour = null; syncRoute(); tourEl.hidden = true; ring.hidden = true; try { localStorage.setItem("cupola-intro", "1"); } catch {} cv.focus(); }
 function trackRing() {
   if (!tour) return;
