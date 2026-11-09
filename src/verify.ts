@@ -318,11 +318,13 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
   await check("every sentence of the overview with an amount names its year", () => {
     // Italian and English: a sentence with francs, millions or a percentage and no year (20xx) is ambiguous
     const bad: string[] = []; let k = 0;
-    for (const c of X.chapters) for (const [where, t] of [["lede", c.lede], ["chart", c.chart?.sub], ...(c.notes ?? []).map((x: any, i: number) => [`note ${i + 1}`, x])] as [string, any][])
+    const texts: [string, any][] = [...X.chapters.flatMap((c: any) => [[`${c.id} lede`, c.lede], [`${c.id} chart`, c.chart?.sub], ...(c.notes ?? []).map((x: any, i: number) => [`${c.id} note ${i + 1}`, x])]),
+      ["totals note", X.totalsNote], ...(X.extras ?? []).map((x: any, i: number) => [`debt extra ${i + 1}`, x.text])];
+    for (const [where, t] of texts)
       for (const lang of ["it", "en"] as const) for (const s of (t?.[lang] ?? "").split(/(?<=[.!?])\s+(?=[A-ZÀ-Ù«"'(])/)) {
         if (!/\d\s*(mio|milioni|million|CHF|%)|CHF\s?\d/.test(s)) continue;
         k++;
-        if (!/\b20\d\d\b/.test(s)) bad.push(`${c.id} ${where} (${lang}): "${s.slice(0, 80)}…"`);
+        if (!/\b20\d\d\b/.test(s)) bad.push(`${where} (${lang}): "${s.slice(0, 80)}…"`);
       }
     if (bad.length) fail(bad.join("; "));
     return `${k} sentences with an amount, each with its year`;

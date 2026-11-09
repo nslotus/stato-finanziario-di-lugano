@@ -215,7 +215,7 @@ centres, and check 4's sums cover it.
 | 13 | The table on the page | each of the 72 lines, 43 groups and 10 functions, and the City's total, in the 2025 budget (pp. 221–223) and the 2025 accounts (pp. 238–239): the number in the COSTI column of the row with its code; a row without cost has that column empty. With check 4, the lines are tied to the City's own printed totals | CHF 0.006 (to the centime) |
 | 14 | Departments on the page | each cost centre and division with a table of its own: row 3 (spending) of its table in the 2025 accounts, read through the row's printed arithmetic; each department and division: its row in the department's overview table, by the columns' headings | CHF 0.006; the row's arithmetic CHF 0.015 and 0.01 percentage points |
 | 15 | Second reader | checks 8 and 13 again with pypdf; for the table, the costs found by each row's arithmetic only | as checks 8 and 13 |
-| 16 | Years | every sentence of the overview (introductions, chart captions, notes) that gives an amount names its year, in Italian and English | exact |
+| 16 | Years | every sentence of the overview's chapters (introductions, chart captions, notes, the debt notes and the note on total spending by year) that gives an amount names its year, in Italian and English | exact |
 
 Check 14 reports what it finds in the source as printed: in centre 4101 (Servizi generali, division 41 Polizia) the two printed
 differences do not recompute from the printed amounts (both are CHF 16.97 off, as if the actual were CHF 4'948'323.76

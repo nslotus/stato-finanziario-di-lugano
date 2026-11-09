@@ -233,7 +233,7 @@ effettivamente trovata.
 | 13 | La tabella sulla pagina | ognuna delle 72 voci, dei 43 gruppi e delle 10 funzioni, e il totale della Città, nel preventivo 2025 (pp. 221–223) e nel consuntivo 2025 (pp. 238–239): il numero nella colonna COSTI della riga con il suo codice; una riga senza costi ha quella colonna vuota. Con il controllo 4, le voci sono legate ai totali stampati dalla Città | CHF 0.006 (al centesimo) |
 | 14 | I dicasteri sulla pagina | ogni centro di responsabilità e divisione con una tabella propria: la riga 3 (spese) della sua tabella nel consuntivo 2025, letta attraverso l'aritmetica stampata della riga; ogni dicastero e divisione: la sua riga nella tabella riassuntiva del dicastero, dalle intestazioni delle colonne | CHF 0.006; l'aritmetica della riga CHF 0.015 e 0.01 punti percentuali |
 | 15 | Secondo lettore | i controlli 8 e 13 di nuovo con pypdf; per la tabella, i costi trovati solo dall'aritmetica di ogni riga | come i controlli 8 e 13 |
-| 16 | Anni | ogni frase del quadro (introduzioni, didascalie dei grafici, note) che dà un importo ne indica l'anno, in italiano e in inglese | esatta |
+| 16 | Anni | ogni frase dei capitoli del quadro (introduzioni, didascalie dei grafici, note, le note sul debito e la nota sulla spesa totale per anno) che dà un importo ne indica l'anno, in italiano e in inglese | esatta |
 
 Il controllo 14 riporta ciò che trova nella fonte così come stampata: nel centro 4101 (Servizi generali, divisione 41
 Polizia) le due differenze stampate non si ricalcolano dagli importi stampati (entrambe differiscono di CHF 16.97, come se
