@@ -32981,8 +32981,8 @@
     "en": "Investment credit not yet spent"
    },
    "about": {
-    "it": "A fine 2025 la Città aveva 244 opere d'investimento aperte, con un credito aggiornato di CHF 1'107.8 mio; ne aveva spesi 569.2. Restano 540.9 mio di credito. 13 opere votate entro il 2020 hanno speso meno di un quinto del credito: 24.1 mio fermi. 15 opere hanno superato il credito, in tutto di 2.3 mio.",
-    "en": "At the end of 2025 the City had 244 open investment works, with an updated credit of CHF 1'107.8 million, of which 569.2 was spent. 540.9 million of credit remains. 13 works voted by 2020 have spent less than a fifth of their credit: 24.1 million idle. 15 works have gone over their credit, by 2.3 million in all."
+    "it": "A fine 2025 la Città aveva 244 opere d'investimento aperte, con un credito aggiornato di CHF 1'107.8 mio; ne aveva spesi 569.2. Restano 540.9 mio di credito. 13 opere votate entro il 2020 hanno speso meno di un quinto del credito: 24.1 mio fermi. 15 opere hanno superato il credito, in tutto di 2.3 mio. Il preventivo 2027 prevede di spenderne 236.6 mio nel 2027–2030 e 85.2 nel 2031–2034; 92.6 mio di credito votato non sono previsti in nessun anno fino al 2034, soprattutto per Nuova SE Viganello e Parco Viarno.",
+    "en": "At the end of 2025 the City had 244 open investment works, with an updated credit of CHF 1'107.8 million, of which 569.2 was spent. 540.9 million of credit remains. 13 works voted by 2020 have spent less than a fifth of their credit: 24.1 million idle. 15 works have gone over their credit, by 2.3 million in all. The 2027 budget plans to spend 236.6 million of it in 2027–2030 and 85.2 in 2031–2034; 92.6 million of voted credit is scheduled in no year up to 2034, mostly for Nuova SE Viganello and Parco Viarno."
    },
    "value": 540.8954,
    "unit": "mio CHF",
@@ -32990,8 +32990,8 @@
    "area": "Lugano",
    "kind": "derived",
    "method": {
-    "it": "Registro delle opere aperte nel consuntivo 2025 (pp. 385–413), crediti votati dal Consiglio comunale e di competenza del Municipio, letto per posizione. Credito = credito aggiornato (votato più rincari); speso = uscite al 31.12.2025; restante = credito meno speso, opera per opera, mai sotto zero. L'avanzamento è quello stampato dalla Città, «indipendentemente dall'evoluzione delle uscite» (p. 351). Ogni opera soddisfa 31.12.2024 + 2025 = 31.12.2025 e le opere sommano a ogni totale stampato; nei totali delle categorie del Municipio (24 righe) la colonna «Entrate al 31.12.2024» ripete le uscite, come stampato, e non torna con la sua riga. Escluse le 2 opere dei beni patrimoniali (p. 415) e una voce di soli incassi senza credito (INV.980000).",
-    "en": "The register of open works in the 2025 accounts (pp. 385–413), credits voted by the Council and within the Municipio's authority, read by position. Credit = updated credit (voted plus price increases); spent = outgoings at 31.12.2025; remaining = credit minus spent, work by work, never below zero. Progress is the City's printed figure, \"independently of the evolution of spending\" (p. 351). Every work satisfies 31.12.2024 + 2025 = 31.12.2025, and the works add up to every printed total; in the Municipio's category totals (24 rows) the column \"Entrate al 31.12.2024\" repeats the outgoings, as printed, and does not agree with its own row. Left out: the 2 patrimonial works (p. 415) and one income-only line without a credit (INV.980000)."
+    "it": "Registro delle opere aperte nel consuntivo 2025 (pp. 385–413), crediti votati dal Consiglio comunale e di competenza del Municipio, letto per posizione. Credito = credito aggiornato (votato più rincari); speso = uscite al 31.12.2025; restante = credito meno speso, opera per opera, mai sotto zero. L'avanzamento è quello stampato dalla Città, «indipendentemente dall'evoluzione delle uscite» (p. 351). Ogni opera soddisfa 31.12.2024 + 2025 = 31.12.2025 e le opere sommano a ogni totale stampato; nei totali delle categorie del Municipio (24 righe) la colonna «Entrate al 31.12.2024» ripete le uscite, come stampato, e non torna con la sua riga. Escluse le 2 opere dei beni patrimoniali (p. 415) e una voce di soli incassi senza credito (INV.980000). Il calendario viene dal preventivo 2027 (pp. 313–323, 137 opere votate, in migliaia di franchi): spesa probabile al 31.12.2026, ogni anno 2027–2030 e il resto 2031–2034; ogni riepilogo 2027–2030 è la somma dei quattro anni e le opere sommano ai 44 totali stampati, entro gli arrotondamenti. Mai previsto = credito aggiornato meno spesa probabile al 31.12.2026, meno 2027–2030, meno 2031–2034.",
+    "en": "The register of open works in the 2025 accounts (pp. 385–413), credits voted by the Council and within the Municipio's authority, read by position. Credit = updated credit (voted plus price increases); spent = outgoings at 31.12.2025; remaining = credit minus spent, work by work, never below zero. Progress is the City's printed figure, \"independently of the evolution of spending\" (p. 351). Every work satisfies 31.12.2024 + 2025 = 31.12.2025, and the works add up to every printed total; in the Municipio's category totals (24 rows) the column \"Entrate al 31.12.2024\" repeats the outgoings, as printed, and does not agree with its own row. Left out: the 2 patrimonial works (p. 415) and one income-only line without a credit (INV.980000). The schedule comes from the 2027 budget (pp. 313–323, 137 voted works, in thousands of francs): probable spending to 31.12.2026, each year 2027–2030 and the rest in 2031–2034; every 2027–2030 summary is the sum of its four years, and the works add up to the 44 printed totals, within rounding. Never scheduled = updated credit minus probable spending to 31.12.2026, minus 2027–2030, minus 2031–2034."
    },
    "source": [
     {
@@ -32999,6 +32999,12 @@
      "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
      "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
      "locator": "pp. 385–413: register of open works ('Situazione investimenti amministrativi 2025'), columns Credito aggiornato, Sit. Lav. %, Uscite al 31.12.2025"
+    },
+    {
+     "file": "sources/city-preventivo-2027-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
+     "publisher": "Città di Lugano, Preventivo 2027 municipal message",
+     "locator": "pp. 313–323: 'Conti investimenti 2027/2030: crediti votati', columns Credito agg., Cons. stimato, Probabile cons. al 31.12.2026, Preventivo 2027–2030, 2031-2034 (CHF thousands)"
     }
    ],
    "related": [
@@ -33434,8 +33440,8 @@
       ]
      },
      "note": {
-      "it": "Senza le opere in liquidazione (contrassegnate * dalla Città).",
-      "en": "Without works being closed (marked * by the City)."
+      "it": "Senza le opere in liquidazione (contrassegnate * dalla Città). Nel preventivo 2027 (mio CHF): Biogno: riqualifica della pavimentazione nel …: non è nel piano 2027; Pedemontana: realizzazione di un tratto …: 2027–30 0.00, 2031–34 0.00, mai previsti 6.10; N.Q.C. - realizzazione opere stradali, …: 2027–30 1.69, 2031–34 1.07; Casa Anziani La Meridiana: 2027–30 1.78, 2031–34 0.00, mai previsti 0.00; Nuova rotonda e interventi costruttivi …: 2027–30 0.00, 2031–34 1.00, mai previsti 0.83; Cadro - Partecipazione al Cantone …: non è nel piano 2027; Acquisizione del posteggio ad uso …: 2027–30 0.55, 2031–34 0.00; Riqualifica della Piazza del sagrato …: 2027–30 0.00, 2031–34 0.52; Via Selvapiana a Pregassona: 2027–30 0.00, 2031–34 0.29; Realizzazione di idranti nei quartieri …: 2027–30 0.21, 2031–34 0.00; Carona - Moderazione del traffico: 2027–30 0.00, 2031–34 0.22; Contributo per la pavimentazione del …: non è nel piano 2027; Variante PR Pregassona: non è nel piano 2027.",
+      "en": "Without works being closed (marked * by the City). In the 2027 budget (CHF million): Biogno: riqualifica della pavimentazione nel …: not in the 2027 plan; Pedemontana: realizzazione di un tratto …: 2027–30 0.00, 2031–34 0.00, never scheduled 6.10; N.Q.C. - realizzazione opere stradali, …: 2027–30 1.69, 2031–34 1.07; Casa Anziani La Meridiana: 2027–30 1.78, 2031–34 0.00, never scheduled 0.00; Nuova rotonda e interventi costruttivi …: 2027–30 0.00, 2031–34 1.00, never scheduled 0.83; Cadro - Partecipazione al Cantone …: not in the 2027 plan; Acquisizione del posteggio ad uso …: 2027–30 0.55, 2031–34 0.00; Riqualifica della Piazza del sagrato …: 2027–30 0.00, 2031–34 0.52; Via Selvapiana a Pregassona: 2027–30 0.00, 2031–34 0.29; Realizzazione di idranti nei quartieri …: 2027–30 0.21, 2031–34 0.00; Carona - Moderazione del traffico: 2027–30 0.00, 2031–34 0.22; Contributo per la pavimentazione del …: not in the 2027 plan; Variante PR Pregassona: not in the 2027 plan."
      },
      "source": [
       {
@@ -33443,6 +33449,352 @@
        "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
        "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
        "locator": "pp. 385–413: register of open works ('Situazione investimenti amministrativi 2025'), columns Credito aggiornato, Sit. Lav. %, Uscite al 31.12.2025"
+      },
+      {
+       "file": "sources/city-preventivo-2027-messaggio.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
+       "publisher": "Città di Lugano, Preventivo 2027 municipal message",
+       "locator": "pp. 313–323: 'Conti investimenti 2027/2030: crediti votati', columns Credito agg., Cons. stimato, Probabile cons. al 31.12.2026, Preventivo 2027–2030, 2031-2034 (CHF thousands)"
+      }
+     ]
+    },
+    {
+     "title": {
+      "it": "Quando il preventivo 2027 prevede di spendere il credito votato",
+      "en": "When the 2027 budget plans to spend the voted credit"
+     },
+     "chart": {
+      "type": "columns",
+      "unit": "mio CHF",
+      "color": "var(--finanze)",
+      "digits": 1,
+      "series": [
+       {
+        "label": {
+         "it": "Uscite previste",
+         "en": "Planned outgoings"
+        },
+        "data": [
+         {
+          "key": "y0",
+          "label": {
+           "it": "2027",
+           "en": "2027"
+          },
+          "value": 107.992,
+          "status": "budget"
+         },
+         {
+          "key": "y1",
+          "label": {
+           "it": "2028",
+           "en": "2028"
+          },
+          "value": 58.458,
+          "status": "budget"
+         },
+         {
+          "key": "y2",
+          "label": {
+           "it": "2029",
+           "en": "2029"
+          },
+          "value": 43.788,
+          "status": "budget"
+         },
+         {
+          "key": "y3",
+          "label": {
+           "it": "2030",
+           "en": "2030"
+          },
+          "value": 26.357,
+          "status": "budget"
+         },
+         {
+          "key": "y4",
+          "label": {
+           "it": "2031–34",
+           "en": "2031–34"
+          },
+          "value": 85.219,
+          "status": "plan"
+         },
+         {
+          "key": "y5",
+          "label": {
+           "it": "mai",
+           "en": "never"
+          },
+          "value": 92.555,
+          "status": "estimate"
+         }
+        ]
+       }
+      ]
+     },
+     "note": {
+      "it": "Opere votate nel preventivo 2027: 136. «Mai»: credito votato che nessun anno fino al 2034 prevede di spendere (calcolato qui).",
+      "en": "Voted works in the 2027 budget: 136. \"Never\": voted credit that no year up to 2034 plans to spend (calculated here)."
+     },
+     "source": [
+      {
+       "file": "sources/city-preventivo-2027-messaggio.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
+       "publisher": "Città di Lugano, Preventivo 2027 municipal message",
+       "locator": "pp. 313–323: 'Conti investimenti 2027/2030: crediti votati', columns Credito agg., Cons. stimato, Probabile cons. al 31.12.2026, Preventivo 2027–2030, 2031-2034 (CHF thousands)"
+      }
+     ]
+    },
+    {
+     "title": {
+      "it": "Credito votato mai previsto fino al 2034",
+      "en": "Voted credit scheduled in no year up to 2034"
+     },
+     "chart": {
+      "type": "hbars",
+      "unit": "mio CHF",
+      "color": "var(--finanze)",
+      "digits": 2,
+      "data": [
+       {
+        "key": "u0",
+        "label": {
+         "it": "Nuova SE Viganello: realizzazione",
+         "en": "Nuova SE Viganello: realizzazione"
+        },
+        "value": 27.85,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u1",
+        "label": {
+         "it": "Parco Viarno: realizzazione ed espropriazione",
+         "en": "Parco Viarno: realizzazione ed espropriazione"
+        },
+        "value": 23.147,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u2",
+        "label": {
+         "it": "Fermate mezzi pubblici: messa a norma secondo LDis",
+         "en": "Fermate mezzi pubblici: messa a norma secondo LDis"
+        },
+        "value": 9.31,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u3",
+        "label": {
+         "it": "Manutenzione e gestione patrimonio stradale della Città di Lugano per …",
+         "en": "Manutenzione e gestione patrimonio stradale della Città di Lugano per …"
+        },
+        "value": 6.48,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u4",
+        "label": {
+         "it": "Pedemontana: realizzazione di un tratto della rete regionale di …",
+         "en": "Pedemontana: realizzazione di un tratto della rete regionale di …"
+        },
+        "value": 6.099,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u5",
+        "label": {
+         "it": "PGS Lugano - Fase 2: progettazione e realizzazione opere nei diversi …",
+         "en": "PGS Lugano - Fase 2: progettazione e realizzazione opere nei diversi …"
+        },
+        "value": 3.905,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u6",
+        "label": {
+         "it": "Gestione dei boschi di protezione nel comparto Monte Boglia",
+         "en": "Gestione dei boschi di protezione nel comparto Monte Boglia"
+        },
+        "value": 2.51,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u7",
+        "label": {
+         "it": "Piano Mobilità scolastica (PMS)",
+         "en": "Piano Mobilità scolastica (PMS)"
+        },
+        "value": 2.188,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u8",
+        "label": {
+         "it": "Interventi costruttivi per il miglioramento della sicurezza stradale",
+         "en": "Interventi costruttivi per il miglioramento della sicurezza stradale"
+        },
+        "value": 1.973,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u9",
+        "label": {
+         "it": "CDALED: sostituzione collettore consortile situato nei Comuni di …",
+         "en": "CDALED: sostituzione collettore consortile situato nei Comuni di …"
+        },
+        "value": 1.92,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u10",
+        "label": {
+         "it": "Parco S. Grato: acquisto e ristrutturazione degli stabili esistenti",
+         "en": "Parco S. Grato: acquisto e ristrutturazione degli stabili esistenti"
+        },
+        "value": 1.692,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "u11",
+        "label": {
+         "it": "CDALED: risanamento delle tubazioni del cunicolo Lugano- Vedeggio - …",
+         "en": "CDALED: risanamento delle tubazioni del cunicolo Lugano- Vedeggio - …"
+        },
+        "value": 0.97,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       }
+      ]
+     },
+     "source": [
+      {
+       "file": "sources/city-preventivo-2027-messaggio.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
+       "publisher": "Città di Lugano, Preventivo 2027 municipal message",
+       "locator": "pp. 313–323: 'Conti investimenti 2027/2030: crediti votati', columns Credito agg., Cons. stimato, Probabile cons. al 31.12.2026, Preventivo 2027–2030, 2031-2034 (CHF thousands)"
+      }
+     ]
+    },
+    {
+     "title": {
+      "it": "Costo stimato oltre il credito",
+      "en": "Estimated cost above the credit"
+     },
+     "chart": {
+      "type": "hbars",
+      "unit": "mio CHF",
+      "color": "var(--finanze)",
+      "digits": 2,
+      "data": [
+       {
+        "key": "e0",
+        "label": {
+         "it": "Nuova sede della Divisione Spazi Urbani (DSU): realizzazione",
+         "en": "Nuova sede della Divisione Spazi Urbani (DSU): realizzazione"
+        },
+        "value": 3.408,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "e1",
+        "label": {
+         "it": "Nuovo pontile e molo frangiflutti e ampliamento porto foce: …",
+         "en": "Nuovo pontile e molo frangiflutti e ampliamento porto foce: …"
+        },
+        "value": 0.4,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "e2",
+        "label": {
+         "it": "Nuova sede DSU in zona Piano della Stampa: progettazione",
+         "en": "Nuova sede DSU in zona Piano della Stampa: progettazione"
+        },
+        "value": 0.332,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "e3",
+        "label": {
+         "it": "Carona - Centro Balneare: progettazione",
+         "en": "Carona - Centro Balneare: progettazione"
+        },
+        "value": 0.015,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       },
+       {
+        "key": "e4",
+        "label": {
+         "it": "SI e SE: manutenzione straordinaria canalizzazioni",
+         "en": "SI e SE: manutenzione straordinaria canalizzazioni"
+        },
+        "value": 0.008,
+        "note": {
+         "it": "",
+         "en": ""
+        }
+       }
+      ]
+     },
+     "note": {
+      "it": "Colonna «Cons. stimato» del preventivo 2027 meno il credito aggiornato.",
+      "en": "Column 'Cons. stimato' of the 2027 budget minus the updated credit."
+     },
+     "source": [
+      {
+       "file": "sources/city-preventivo-2027-messaggio.pdf",
+       "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
+       "publisher": "Città di Lugano, Preventivo 2027 municipal message",
+       "locator": "pp. 313–323: 'Conti investimenti 2027/2030: crediti votati', columns Credito agg., Cons. stimato, Probabile cons. al 31.12.2026, Preventivo 2027–2030, 2031-2034 (CHF thousands)"
       }
      ]
     },
