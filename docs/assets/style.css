@@ -491,4 +491,6 @@ body.wide .sh-card.in { animation-name: sh-left; }
 body.wide .sh-grip { display: none; }
 body.wide #ph-tourbox { left: auto; right: 24px; width: 380px; }
 body.wide #ph-tourbox.at-left { right: auto; left: 24px; }
+/* the first-visit offer sits at the right end of the tabs row, clear of the tiles */
+body.wide #ph-hint { z-index: 11; left: auto; right: 16px; transform: none; bottom: auto; top: calc(env(safe-area-inset-top, 0px) + 52px); }
 @media (prefers-reduced-motion: reduce) { .sh-card.in { animation: none; } .sh-card { transition: none; } #ph-ring { transition: none; } }
