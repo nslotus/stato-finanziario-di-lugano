@@ -63,8 +63,8 @@ export async function imposteAziende(src: Src, cityPG2024M: number) {
       related: ["finanze.pg-cantone"] },
   ];
   const note: Text = {
-    it: `Le aziende pagano tre imposte: federale, cantonale e comunale. Quella comunale (${n(cityPG2024M, 1)} milioni nel 2024) è nei conti della Città; quella cantonale delle aziende di Lugano era di ${n(pgM, 1)} milioni nel 2023 (${n(pct, 1)}% del Ticino); di quella federale la Città riceve una quota, ${n(shareM, 2)} milioni nel 2026. L'imposta federale delle aziende non è pubblicata per comune.`,
-    en: `Companies pay three taxes: federal, cantonal and municipal. The municipal one (CHF ${n(cityPG2024M, 1)} million in 2024) is in the City's accounts; the cantonal tax of Lugano's companies was CHF ${n(pgM, 1)} million in 2023 (${n(pct, 1)}% of Ticino); of the federal tax the City receives a share, CHF ${n(shareM, 2)} million in 2026. Federal company tax is not published per municipality.` };
+    it: `Le aziende pagano tre imposte: federale, cantonale e comunale. Quella comunale è nei conti della Città. Quella cantonale delle aziende di Lugano era di ${n(pgM, 1)} milioni nel 2023, l'ultimo accertamento pubblicato dal Cantone: il ${n(pct, 1)}% del Ticino. Di quella federale la Città riceve una quota: ${n(shareM, 2)} milioni nel 2026. L'imposta federale delle aziende non è pubblicata per comune.`,
+    en: `Companies pay three taxes: federal, cantonal and municipal. The municipal one is in the City's accounts. The cantonal tax of Lugano's companies was CHF ${n(pgM, 1)} million in 2023, the latest assessment the canton publishes: ${n(pct, 1)}% of Ticino. Of the federal tax the City receives a share: CHF ${n(shareM, 2)} million in 2026. Federal company tax is not published per municipality.` };
   return { stars, note };
 }
 

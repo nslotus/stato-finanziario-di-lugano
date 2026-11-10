@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+- Reviewer's notes:
+  - The page is now called "Lugano: spesa 2025 rispetto al preventivo" (EN "Lugano: 2025 spending against budget");
+    the sky keeps the name *Cielo del preventivo* as the explore mode.
+  - In the function view the budget axis reads "preventivo 2025 · proposta del Municipio", since those bars use the
+    proposal (497.4) while the headline uses the approved budget (497.5).
+  - The full card no longer shows the heading "Perché?" twice. In English, City quotes are labelled "translated from
+    Italian".
+  - Il quadro's spending chapter sums up the notes: of 12 large gaps by function the City explains 7, comments on 3
+    without explaining them and says nothing on 2. The largest it leaves unexplained is 022 Servizi generali, altro
+    (−3.19 million).
+  - The spending bridge names the City's own headline, "spese effettive totali" of 487.4 million (p. 12): total
+    spending without internal charges. The build reads the figure from the page and checks it.
+  - Revenue notes give one year per sentence: taxes from 2024 to 2025 (companies 75.6 → 71.3), and the cantonal and
+    federal company taxes each with their latest year.
+  - The chart of total spending by year adds the 2026 budget (505.7 million, 2027 budget message p. 21). The build
+    checks that the same row's 2027 budget and 2025 actual equal the functional tables'.
 - "Perché?": every line whose 2025 actual is at least CHF 1 million or 25% away from its budget now carries a note: 24
   lines, 12 by function and 12 by department. Each note gives the City's own words with their page, or says that the
   City gives no reason and names the pages read. The notes are in the line's card, its full view and the phone card,

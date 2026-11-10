@@ -274,9 +274,11 @@
   "p. 44: '34 SPESE FINANZIARIE'": "p. 44: '34 SPESE FINANZIARIE'",
   "p. 49: '39 ADDEBITI INTERNI'": "p. 49: '39 ADDEBITI INTERNI'",
   "p. 13: 'Spese operative' (summary of the 2025 results)": "p. 13: 'Spese operative' (sintesi dei risultati 2025)",
-  "p. 50: '4 RICAVI' and '400'/'401' rows, column Consuntivo 2025": "p. 50: righe '4 RICAVI' e '400'/'401', colonna Consuntivo 2025",
   "pp. 50–56: revenue group headings (40–49), column Consuntivo 2025": "pp. 50–56: righe dei gruppi di ricavo (40–49), colonna Consuntivo 2025",
-  "p. 50: '4 RICAVI', column Consuntivo 2025": "p. 50: '4 RICAVI', colonna Consuntivo 2025"
+  "p. 50: '4 RICAVI', column Consuntivo 2025": "p. 50: '4 RICAVI', colonna Consuntivo 2025",
+  "p. 50: '4 RICAVI' and '400'/'401' rows, columns Consuntivo 2025 and Consuntivo 2024": "p. 50: righe '4 RICAVI' e '400'/'401', colonne Consuntivo 2025 e Consuntivo 2024",
+  "p. 21: 'TOTALE SPESE CORRENTI', column Preventivo 2026": "p. 21: 'TOTALE SPESE CORRENTI', colonna Preventivo 2026",
+  "p. 12: 'spese effettive totali' (summary of the 2025 accounts)": "p. 12: 'spese effettive totali' (sintesi del consuntivo 2025)"
  },
  "publishers": {
   "AIL SA, Rapporto annuale integrato 2025": "AIL SA, Rapporto annuale integrato 2025",

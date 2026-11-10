@@ -13,7 +13,7 @@ import { BUDGET27_MSG } from "./adapters/finance";
 
 type Src = (file: string, locator: string) => Source;
 export const F = { c25: "city-consuntivo-2025-messaggio.pdf", p25: "city-preventivo-2025-messaggio.pdf", sel23: "sel-2023-appendice.xlsx" };
-const PAGES = { c25: [238, 239], p25: [221, 222, 223], p27: [214, 215, 216], c25dept: 233, p25dept: 21 };
+const PAGES = { c25: [238, 239], p25: [221, 222, 223], p27: [214, 215, 216], c25dept: 233, p25dept: 21, p27total: 21 };
 export const FUNCTIONS = "0123456789".split("");
 const num = (s: string) => Number(s.replace(/[’'\s]/g, "").replace(",", "."));
 const close = (a: number, b: number, what: string, tol = 0.02) => { if (Math.abs(a - b) > tol) fail(`${what}: ${a} vs ${b}`); };
@@ -143,9 +143,17 @@ export async function bilancioFunzioni(src: Src, ledger2024: Map<string, number>
   console.log(`2025 lines: ${lines25.length} (${only("p25").length} budget only: ${only("p25").join(", ") || "none"}; ${only("c25").length} actual only: ${only("c25").join(", ") || "none"})`);
   const linesSource = [src(F.p25, `pp. ${PAGES.p25.join("–")}: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', column COSTI, row by code`),
     src(F.c25, `pp. ${PAGES.c25.join("–")}: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', column COSTI, row by code`)];
-  const totals = { c23: [...c23.values()].reduce((t, v) => t + v, 0), c24: mio(actual24), p25: mio(p25.total.c), approved25: mio(approved25), c25: mio(c25.total.c), p27: mio(p27.total.c) };
+  // the 2026 budget's total, from the 2027 budget message (no table by function is published for 2026): its row also
+  // prints the 2027 budget and the 2025 actual, which must equal the functional tables'
+  const tot27 = (await readPdf(BUDGET27_MSG, [PAGES.p27total])).pages[PAGES.p27total - 1];
+  const tr = tot27.match(new RegExp(`TOTALE SPESE CORRENTI (${M}) (${M}) (${M}) [^ ]+% (${M})`)) ?? fail(`${BUDGET27_MSG} p. ${PAGES.p27total}: 'TOTALE SPESE CORRENTI' row`);
+  close(num(tr[1]), p27.total.c, "2027 budget: total row vs functional table");
+  close(num(tr[4]), c25.total.c, "2025 actual: 2027 message's total row vs functional table");
+  const budget26 = num(tr[2]);
+  const totals = { c23: [...c23.values()].reduce((t, v) => t + v, 0), c24: mio(actual24), p25: mio(p25.total.c), approved25: mio(approved25), c25: mio(c25.total.c), p26: mio(budget26), p27: mio(p27.total.c) };
   console.log(`functions by year: ${FUNCTIONS.map((f) => { const s = series.get(`f${f}`)!; return `${f} ${sign(s.pct)}%`; }).join(" · ")} · total ${totals.c25.toFixed(2)} vs ${totals.p25.toFixed(2)}`);
-  return { series, detail, totals, amendText, source, lines25, groups25, linesSource };
+  const p26Source = src(BUDGET27_MSG, `p. ${PAGES.p27total}: 'TOTALE SPESE CORRENTI', column Preventivo 2026`);
+  return { series, detail, totals, amendText, source, lines25, groups25, linesSource, p26Source };
 }
 
 export const BILANCIO_FUNZIONI_ORIGINS: Record<string, { url: string; publisher: string }> = {

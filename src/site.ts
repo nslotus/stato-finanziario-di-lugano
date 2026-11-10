@@ -1,4 +1,4 @@
-// Builds the data of the public page "Cielo del preventivo, Lugano" (docs/) from the catalogue (catalog/*.json), which
+// Builds the data of the public page "Lugano: spesa 2025 rispetto al preventivo" (docs/) from the catalogue (catalog/*.json), which
 // npm run build makes from the archived sources. Every number on the page comes from here; none is typed by hand.
 // Each step checks its sums and stops on the first failure.
 //   npm run site   -> docs/data/data.js and docs/data/data-more.js (see sitedata.ts)
@@ -281,6 +281,18 @@ for (const sl of cupola.org.slices) {
 
 // the overview: the catalogue's chapters and relations, total spending by year, staff, missing datasets
 X.chapters = cat.chapters.map((c: any) => { const o = JSON.parse(JSON.stringify(c)); if (o.chart) delete o.chart.color; return o; });
+// the "Perché?" notes in one sentence on the spending chapter: how many large gaps the City explains, and the largest
+// it does not (lines by function, so that no franc is counted twice)
+{
+  const big = cupola.lines.filter((l: any) => l.why), by = (s: string) => big.filter((l: any) => l.why.status === s).length;
+  const open = big.filter((l: any) => l.why.status !== "quote").sort((a: any, b: any) => Math.abs(b.c25 - b.p25) - Math.abs(a.c25 - a.p25))[0];
+  const en = JSON.parse(readFileSync("translations/labels-en.json", "utf8"));
+  const f2 = (v: number) => `${v > 0 ? "+" : "−"}${Math.abs(v).toFixed(2)}`;
+  const usc = X.chapters.find((c: any) => c.id === "uscite") ?? (() => { throw new Error("site: chapter uscite missing"); })();
+  usc.notes = [...(usc.notes ?? []), {
+    it: `Nel 2025 ${big.length} voci per funzione si sono scostate dal preventivo di almeno 1 milione o del 25%: per ${by("quote")} la Città spiega lo scarto, per ${by("none_explained")} lo commenta senza spiegarlo, per ${by("not_found")} non ne parla. Lo scarto maggiore del 2025 che la Città non spiega è ${open.code} ${open.label} (${f2(open.c25 - open.p25)} milioni). Ogni voce ha il suo «Perché?».`,
+    en: `In 2025 ${big.length} lines by function were at least CHF 1 million or 25% away from their budget: for ${by("quote")} the City explains the gap, for ${by("none_explained")} it comments without explaining it, for ${by("not_found")} it says nothing. The largest 2025 gap the City does not explain is ${open.code} ${en[open.label] ?? open.label} (CHF ${f2(open.c25 - open.p25)} million). Every line has its "Why?".` }];
+}
 X.relations = cat.relations;
 for (const r of X.relations) if (!X.stars[r.x]?.cmp || !X.stars[r.y]?.cmp) throw new Error(`site: relation ${r.id} needs comparisons for ${r.x} and ${r.y}`);
 const tt = FUN.totals;
@@ -290,11 +302,11 @@ for (const k of ["c23", "c24", "p25", "c25", "p27"]) {
 }
 X.totals = { type: "columns", unit: "mio CHF", series: [
   { label: { it: "Consuntivo", en: "Actual" }, data: [["2023", tt.c23], ["2024", tt.c24], ["2025", tt.c25]].map(([y, v]) => ({ key: `a${y}`, label: { it: y, en: y }, value: v, status: "actual" })) },
-  { label: { it: "Preventivo", en: "Budget" }, data: [["2025", tt.approved25], ["2027", tt.p27]].map(([y, v]) => ({ key: `b${y}`, label: { it: y, en: y }, value: v, status: "budget" })) }] };
+  { label: { it: "Preventivo", en: "Budget" }, data: [["2025", tt.approved25], ["2026", tt.p26], ["2027", tt.p27]].map(([y, v]) => ({ key: `b${y}`, label: { it: y, en: y }, value: v, status: "budget" })) }] };
 X.totalsNote = {
-  it: `Spesa totale della Città per anno. Il preventivo 2025 è quello approvato dal Consiglio comunale (${tt.approved25.toFixed(1)} milioni); la proposta del Municipio, ripartita per funzione, era di ${tt.p25.toFixed(1)} milioni.`,
-  en: `The City's total spending by year. The 2025 budget is the one approved by the Council (CHF ${tt.approved25.toFixed(1)} million); the Municipio's proposal, split by function, was CHF ${tt.p25.toFixed(1)} million.` };
-X.totalsSource = FUN.source;
+  it: `Spesa totale della Città per anno. Il preventivo 2025 è quello approvato dal Consiglio comunale (${tt.approved25.toFixed(1)} milioni); la proposta del Municipio, ripartita per funzione, era di ${tt.p25.toFixed(1)} milioni. Il preventivo 2026 (${tt.p26.toFixed(1)} milioni) è pubblicato solo come totale, nel messaggio sul preventivo 2027.`,
+  en: `The City's total spending by year. The 2025 budget is the one approved by the Council (CHF ${tt.approved25.toFixed(1)} million); the Municipio's proposal, split by function, was CHF ${tt.p25.toFixed(1)} million. The 2026 budget (CHF ${tt.p26.toFixed(1)} million) is published only as a total, in the 2027 budget message.` };
+X.totalsSource = [...FUN.source, FUN.p26Source];
 
 // more on the debt: read from the debt profile of dati-di-lugano (pinned) and the 2026 budget release
 const DEBT_FILE = "dati-di-lugano@8c1fd28-debt-profile.json";

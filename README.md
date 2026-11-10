@@ -1,6 +1,6 @@
 # Stato finanziario di Lugano
 
-**The financial state of the City of Lugano: its 2025 spending against its budget, line by line, with every figure traced to the document it comes from. The page is called *Cielo del preventivo, Lugano* (in English, *Sky budget, Lugano*).**
+**The financial state of the City of Lugano: its 2025 spending against its budget, line by line, with every figure traced to the document it comes from. The page is called *Lugano: spesa 2025 rispetto al preventivo* (in English, *Lugano: 2025 spending against budget*); its sky view, *Cielo del preventivo*, is the explore mode.**
 
 > **Italiano:** [`LEGGIMI.md`](LEGGIMI.md). The full method in Italian is [`METODO.md`](METODO.md).
 

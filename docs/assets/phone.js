@@ -1,4 +1,4 @@
-// Cielo del preventivo, Lugano on a phone, and the "Riquadri" view on a computer. Up to 720px wide (or on a wider
+// Lugano: spesa 2025 rispetto al preventivo, on a phone, and the "Riquadri" view on a computer. Up to 720px wide (or on a wider
 // screen when the reader chooses "Riquadri" instead of the sky) the page is read by scrolling and tapping:
 // the sectors as tiles, a sector as its lines' gaps around the budget, a line as a card that slides up from the bottom,
 // "Il tuo franco" and a searchable table. It reads the same window.CIELO and uses the page's own wording, cards and
@@ -158,7 +158,7 @@
   const byGap = (x, y) => (gapOf(x) == null) - (gapOf(y) == null) || Math.abs(gapOf(y)) - Math.abs(gapOf(x));
   const modeRow = (title) => { const t = T[lang]; return `<div class="ph-row"><p class="eyebrow">${title}</p>
         <div class="seg ph-seg" role="group" aria-label="${esc(t.height)}">${["chf", "pct"].map((m) => `<button data-mode="${m}" aria-pressed="${m === mode}">${m === "chf" ? "CHF" : "%"}</button>`).join("")}</div></div>
-      <div class="g-axis" aria-hidden="true"><span>${P().less}</span><span class="g-h">${t.horizon}</span><span>${P().more}</span></div>`; };
+      <div class="g-axis" aria-hidden="true"><span>${P().less}</span><span class="g-h">${hz()}</span><span>${P().more}</span></div>`; };
   // one row per star (a line, or a whole sector): its name, and a bar left or right of the budget line
   function gapRows(list) {
     const t = T[lang], max = Math.max(...list.map((s) => Math.abs(gapOf(s) ?? 0)), 1e-9), SPAN = 34;

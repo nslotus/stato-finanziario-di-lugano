@@ -97,6 +97,7 @@
   "p25": 497.399203,
   "approved25": 497.499203,
   "c25": 490.69040987,
+  "p26": 505.742114,
   "p27": 515.19443
  },
  "amend": {
@@ -986,5 +987,11 @@
    "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
    "locator": "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', column COSTI, row by code"
   }
- ]
+ ],
+ "p26Source": {
+  "file": "sources/city-preventivo-2027-messaggio.pdf",
+  "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
+  "publisher": "Città di Lugano, Preventivo 2027 municipal message",
+  "locator": "p. 21: 'TOTALE SPESE CORRENTI', column Preventivo 2026"
+ }
 }

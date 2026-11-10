@@ -266,7 +266,7 @@ async function main() {
     const a = stars.find((x) => x.id === d.star)!;
     a.detail = [...(a.detail ?? []), bf.detail(d.key, `var(--${a.constellation})`)];
   }
-  writeFileSync("catalog/funzioni.json", JSON.stringify({ series: Object.fromEntries(bf.series), totals: bf.totals, amend: bf.amendText, source: bf.source, lines25: bf.lines25, groups25: bf.groups25, linesSource: bf.linesSource }, null, 1) + "\n");
+  writeFileSync("catalog/funzioni.json", JSON.stringify({ series: Object.fromEntries(bf.series), totals: bf.totals, amend: bf.amendText, source: bf.source, lines25: bf.lines25, groups25: bf.groups25, linesSource: bf.linesSource, p26Source: bf.p26Source }, null, 1) + "\n");
 
   // the same 2025 budget against actual by the City's organisation, with its explanations; must add up to the same total
   const org = await dicasteri(src);

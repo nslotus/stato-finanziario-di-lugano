@@ -8,7 +8,7 @@
 import { fail } from "./common";
 import type { readPdf } from "./pdf";
 
-export const NATURE_PAGES = { spend: [41, 49], revenue: [50, 56], recap: 13 } as const;
+export const NATURE_PAGES = { spend: [41, 49], revenue: [50, 56], recap: 13, headline: 12 } as const;
 export const SPEND_GROUPS = ["30", "31", "33", "34", "35", "36", "37", "38", "39"] as const;
 export const REVENUE_GROUPS = ["40", "41", "42", "43", "44", "45", "46", "47", "48", "49"] as const;
 export type Row = { code: string; label: string; c25: number; p25: number; c24: number; page: number };
@@ -47,7 +47,7 @@ function heading(pages: string[], from: number, to: number, code: string, label:
 export async function nature2025(read: typeof readPdf, file: string) {
   const [s0, s1] = NATURE_PAGES.spend, [r0, r1] = NATURE_PAGES.revenue;
   const all = Array.from({ length: r1 - s0 + 1 }, (_, i) => s0 + i);
-  const { pages } = await read(file, [...all, NATURE_PAGES.recap]);
+  const { pages } = await read(file, [...all, NATURE_PAGES.recap, NATURE_PAGES.headline]);
   const CAPS = /[A-ZÀ-Ù][A-ZÀ-Ù' ,]*[A-ZÀ-Ù]/;
   const spend = heading(pages, s0, s1, "3", /SPESE/), revenue = heading(pages, r0, r1, "4", /RICAVI/);
   const present = (codes: readonly string[], from: number, to: number) => codes.filter((c) => pages.slice(from - 1, to).some((t) => t.includes(` ${c} `) && new RegExp(` ${c} [A-ZÀ-Ù]{2}`).test(t)));
@@ -65,5 +65,11 @@ export async function nature2025(read: typeof readPdf, file: string) {
   const recap = pages[NATURE_PAGES.recap - 1].match(/Spese operative (\S+) (\S+) (\S+) \S+ (\S+)/) ?? fail(`nature p. ${NATURE_PAGES.recap}: 'Spese operative' row missing`);
   const printed = { c25: chf(recap[1]), p25: chf(recap[2]), c24: chf(recap[4]) };
   for (const k of ["c25", "p25", "c24"] as const) if (Math.abs(operating[k] - printed[k]) > 0.015) fail(`nature: operating spending ${k} ${operating[k]} vs recap ${printed[k]}`);
-  return { spend, revenue, spendGroups: sg, revenueGroups: rg, pf, pg, operating };
+  // the City's own headline (p. 12): "spese effettive totali" = operating + financial spending, without internal charges
+  const hl = pages[NATURE_PAGES.headline - 1].replace(/\s+/g, " ").match(/spese effettive totali \(spese operative, finanziarie e straordinarie\) pari a CHF (\d+\.\d) mio contro i CHF (\d+\.\d) mio preventivati/)
+    ?? fail(`nature p. ${NATURE_PAGES.headline}: 'spese effettive totali' sentence missing`);
+  const effective = { c25: Number(hl[1]), p25: Number(hl[2]), quote: hl[0] };
+  if (Math.abs(effective.c25 - (spend.c25 - g("39").c25) / 1e6) > 0.05 || Math.abs(effective.p25 - (spend.p25 - g("39").p25) / 1e6) > 0.05)
+    fail(`nature: the City's 'spese effettive totali' ${effective.c25} / ${effective.p25} are not total spending without internal charges`);
+  return { spend, revenue, spendGroups: sg, revenueGroups: rg, pf, pg, operating, effective };
 }

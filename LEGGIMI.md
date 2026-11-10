@@ -1,6 +1,6 @@
 # Stato finanziario di Lugano
 
-**Lo stato delle finanze della Città di Lugano: la spesa 2025 rispetto al preventivo, voce per voce, con ogni cifra ricondotta al documento da cui viene. La pagina si chiama *Cielo del preventivo, Lugano* (in inglese, *Sky budget, Lugano*).**
+**Lo stato delle finanze della Città di Lugano: la spesa 2025 rispetto al preventivo, voce per voce, con ogni cifra ricondotta al documento da cui viene. La pagina si chiama *Lugano: spesa 2025 rispetto al preventivo* (in inglese, *Lugano: 2025 spending against budget*); la sua vista a cielo, *Cielo del preventivo*, è la modalità per esplorare.**
 
 > Versione italiana di [`README.md`](README.md). Il metodo completo in italiano è in [`METODO.md`](METODO.md).
 
