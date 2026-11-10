@@ -29430,8 +29430,8 @@
     "en": "Road accidents"
    },
    "about": {
-    "it": "Incidenti stradali sul territorio della Città nel 2025: 675, 126 con danni alle persone. Ci sono stati 2 morti, 49 feriti gravi e 91 feriti leggeri. Nel 2013 gli incidenti erano 739.",
-    "en": "Road accidents in the City's territory in 2025: 675, 126 with injuries. There were 2 deaths, 49 people seriously and 91 lightly injured. In 2013 there were 739 accidents."
+    "it": "Incidenti stradali sul territorio della Città nel 2025: 675, 126 con danni alle persone. Ci sono stati 2 morti, 49 feriti gravi e 91 feriti leggeri. Nel 2013 gli incidenti erano 739. Il consuntivo 2025 della Città (p. 175) e il rapporto della Polizia Città contano invece 641 incidenti nel 2025; per il 2024 l'annuario dà 729, e il −12.07% indicato dal consuntivo porta allo stesso numero. La differenza è chiesta alla Città.",
+    "en": "Road accidents in the City's territory in 2025: 675, 126 with injuries. There were 2 deaths, 49 people seriously and 91 lightly injured. In 2013 there were 739 accidents. The City's 2025 accounts (p. 175) and the City police report count 641 accidents in 2025 instead; for 2024 the yearbook gives 729, and the −12.07% in the accounts leads to the same number. The City has been asked about the difference."
    },
    "value": 675,
    "unit": "incidenti",
@@ -29444,6 +29444,12 @@
      "url": "https://statistica.lugano.ch/site/wp-content/uploads/2026/06/A5_LiC_2026_Web_def.pdf",
      "publisher": "Città di Lugano, Lugano in cifre 2026 (giugno 2026)",
      "locator": "PDF pp. 65–66 (book p. 118–121): 'Incidenti stradali' and 'Infortunati per conseguenze', 2013–2025"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+     "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+     "locator": "p. 175: 'incidenti stradali ... con un totale di 641' (in the text only)"
     }
    ],
    "context": [
@@ -29714,8 +29720,8 @@
       ]
      },
      "note": {
-      "it": "Il rapporto della Polizia Città conta 641 incidenti nel 2025 sulla giurisdizione del Comune, con un'altra ripartizione; qui si usa la serie dell'annuario.",
-      "en": "The City police report counts 641 accidents in 2025 on the City's jurisdiction, with a different breakdown; the yearbook series is used here."
+      "it": "Il consuntivo 2025 (p. 175) e il rapporto della Polizia Città contano 641 incidenti nel 2025 sulla giurisdizione del Comune, con un'altra ripartizione; qui si usa la serie dell'annuario Lugano in cifre (675), finché la Città non chiarisce quale cifra è corretta.",
+      "en": "The 2025 accounts (p. 175) and the City police report count 641 accidents in 2025 on the City's jurisdiction, with a different breakdown; the Lugano in cifre yearbook series (675) is used here until the City says which figure is correct."
      },
      "source": [
       {

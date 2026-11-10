@@ -188,10 +188,11 @@ export async function sicurezza(register: Municipality[], src: Src) {
           note: { it: `Legge sugli stranieri: ${years.map((y, k) => `${y} ${n(foreign[k])}`).join(", ")}.`, en: `Foreigners law: ${years.map((y, k) => `${y} ${n(foreign[k])}`).join(", ")}.` },
           source: [usc(F.lic, `PDF p. ${yrs.p}, table 'Evoluzione dei reati per tipologia'`)] }] },
     { id: "sicurezza.incidenti", constellation: "sicurezza", label: { it: "Incidenti stradali", en: "Road accidents" },
-      about: { it: `Incidenti stradali sul territorio della Città nel 2025: ${n(accTot[12])}, ${n(pers[12])} con danni alle persone. Ci sono stati ${n(cDead[12])} morti, ${n(cSer[12])} feriti gravi e ${n(cLight[12])} feriti leggeri. Nel 2013 gli incidenti erano ${n(accTot[0])}.`,
-        en: `Road accidents in the City's territory in 2025: ${n(accTot[12])}, ${n(pers[12])} with injuries. There were ${n(cDead[12])} deaths, ${n(cSer[12])} people seriously and ${n(cLight[12])} lightly injured. In 2013 there were ${n(accTot[0])} accidents.` },
+      about: { it: `Incidenti stradali sul territorio della Città nel 2025: ${n(accTot[12])}, ${n(pers[12])} con danni alle persone. Ci sono stati ${n(cDead[12])} morti, ${n(cSer[12])} feriti gravi e ${n(cLight[12])} feriti leggeri. Nel 2013 gli incidenti erano ${n(accTot[0])}. Il consuntivo 2025 della Città (p. 175) e il rapporto della Polizia Città contano invece 641 incidenti nel 2025; per il 2024 l'annuario dà 729, e il −12.07% indicato dal consuntivo porta allo stesso numero. La differenza è chiesta alla Città.`,
+        en: `Road accidents in the City's territory in 2025: ${n(accTot[12])}, ${n(pers[12])} with injuries. There were ${n(cDead[12])} deaths, ${n(cSer[12])} people seriously and ${n(cLight[12])} lightly injured. In 2013 there were ${n(accTot[0])} accidents. The City's 2025 accounts (p. 175) and the City police report count 641 accidents in 2025 instead; for 2024 the yearbook gives 729, and the −12.07% in the accounts leads to the same number. The City has been asked about the difference.` },
       value: accTot[12], unit: "incidenti", year: 2025, area: "Lugano", kind: "official",
-      source: [usc(F.lic, `PDF pp. ${accP.p}–${cas.p} (book p. 118–121): 'Incidenti stradali' and 'Infortunati per conseguenze', 2013–2025`)],
+      source: [usc(F.lic, `PDF pp. ${accP.p}–${cas.p} (book p. 118–121): 'Incidenti stradali' and 'Infortunati per conseguenze', 2013–2025`),
+        usc("city-consuntivo-2025-messaggio.pdf", "p. 175: 'incidenti stradali ... con un totale di 641' (in the text only)")],
       context: [{ label: { it: "Con danni alle persone", en: "With injuries" }, value: pers[12], unit: "incidenti" }, { label: { it: "Morti", en: "Deaths" }, value: cDead[12], unit: "persone" },
         { label: { it: "Feriti gravi", en: "Seriously injured" }, value: cSer[12], unit: "persone" }],
       related: ["sicurezza.reati", "trasporti.strade"],
@@ -200,7 +201,7 @@ export async function sicurezza(register: Municipality[], src: Src) {
           chart: { type: "columns", unit: "incidenti", color: SC, series: [
             { label: { it: "Solo danni materiali", en: "Damage only" }, data: accYears.map((y, k) => ({ key: `m${y}`, label: yr(y), value: mat[k] })) },
             { label: { it: "Con danni alle persone", en: "With injuries" }, data: accYears.map((y, k) => ({ key: `p${y}`, label: yr(y), value: pers[k] })) }] },
-          note: { it: "Il rapporto della Polizia Città conta 641 incidenti nel 2025 sulla giurisdizione del Comune, con un'altra ripartizione; qui si usa la serie dell'annuario.", en: "The City police report counts 641 accidents in 2025 on the City's jurisdiction, with a different breakdown; the yearbook series is used here." },
+          note: { it: "Il consuntivo 2025 (p. 175) e il rapporto della Polizia Città contano 641 incidenti nel 2025 sulla giurisdizione del Comune, con un'altra ripartizione; qui si usa la serie dell'annuario Lugano in cifre (675), finché la Città non chiarisce quale cifra è corretta.", en: "The 2025 accounts (p. 175) and the City police report count 641 accidents in 2025 on the City's jurisdiction, with a different breakdown; the Lugano in cifre yearbook series (675) is used here until the City says which figure is correct." },
           source: [usc(F.lic, `PDF p. ${accP.p}, table 'Incidenti per conseguenze'`)] },
         { title: { it: "Persone morte e ferite gravemente, per anno", en: "People killed and seriously injured, by year" },
           chart: { type: "columns", unit: "persone", color: SC, series: [
