@@ -353,7 +353,7 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
         if (reader === pdfjs) quotes++;
       }
     }
-    // "cantonale": each group's quotes and account amounts on their pages, and the share recomputed here (≥ 90%)
+    // "cantonale" and "consortile": each group's quotes and account amounts on their pages, and the share recomputed here (≥ 90%)
     const seen = new Set<string>(); let cants = 0;
     for (const l of D.lines.filter((x: any) => x.cant)) {
       const c = l.cant, key = c.lines.join("+");
@@ -374,7 +374,7 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
       }
     }
     if (bad.length) fail(bad.join("; "));
-    return `${lines} lines with a gap of CHF 1 million or 25%, each with its note; ${quotes} quotes found on their pages by both readers; ${cants} cantonal groups, each quote and amount on its page`;
+    return `${lines} lines with a gap of CHF 1 million or 25%, each with its note; ${quotes} quotes found on their pages by both readers; ${cants} cantonal and consortium groups, each quote and amount on its page`;
   });
   const w = Math.max(...results.map((r) => r.name.length));
   for (const r of results) console.log(`${r.ok ? "PASS" : "FAIL"}  ${String(r.n).padStart(2)}  ${r.name.padEnd(w)}  ${r.detail}`);

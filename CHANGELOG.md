@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- A "consortile" tag next to "cantonale" marks lines paid to consortia of municipalities in which the City has a
+  share of votes and costs: 162 civil protection, 422 Croce Verde, 741 river works (2025 accounts, p. 33 and p. 47).
+  The same rule applies: the cited accounts must make up at least 90% of the line. Wastewater (720) is 78%, so it is
+  not tagged. The data file is now `src/vincoli.json`.
 - Net gap and cantonal lines. Every card now shows the net gap (the cost gap less the revenue gap) next to the cost
   gap. The table and the phone list can sort by it. Aviation (632), +1.52 on cost, is −0.04 net: its revenue rose
   as much. Wastewater (720) is the other way round: −1.67 on cost, +2.85 net, because its revenue fell. The revenue

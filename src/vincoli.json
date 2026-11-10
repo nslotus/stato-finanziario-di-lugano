@@ -1,0 +1,226 @@
+{
+ "_about": "Lines whose 2025 amount is set outside the Municipio, as the cited documents say: by the Canton (kind 'cantonal') or by a consortium of municipalities in which the City has a share of votes and costs (kind 'consortium'). A line is tagged only when the cited accounts make up at least 90% of its actual spending (checked by npm run site) and every quote and account amount is printed on its page (npm run verify, check 17). Gathered with an AI assistant; every quote and amount is checked against its page. Lines not listed are not shown as set elsewhere: the City does not publish its spending by legal basis (missing data #2).",
+ "groups": [
+  {
+   "lines": [
+    "512",
+    "522",
+    "532"
+   ],
+   "accounts": [
+    {
+     "name": "36310000 Cantone: AVS, AI, PC e CM (oneri sociali)",
+     "chf": 39005575.3,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 202
+    }
+   ],
+   "basis": {
+    "it": "Contributo al Cantone per AVS, AI, prestazioni complementari e casse malati: il Cantone lo calcola come percentuale del gettito cantonale della Città (9% per Lugano nel 2025). Le voci 512, 522 e 532 insieme sono questo conto, al centesimo.",
+    "en": "Contribution to the Canton for old-age and disability insurance, supplementary benefits and health insurance: the Canton calculates it as a percentage of the City's cantonal tax yield (9% for Lugano in 2025). Lines 512, 522 and 532 together are this account, to the centime."
+   },
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 202,
+     "it": "Per quanto attiene a questo importante contributo cantonale, ricordiamo come lo stesso, di carattere perequativo, si basa su una percentuale rapportata al gettito cantonale base al netto del livellamento, percentuale che per Lugano si fissa alla quota massima del 9%."
+    }
+   ],
+   "kind": "cantonal"
+  },
+  {
+   "lines": [
+    "930"
+   ],
+   "accounts": [
+    {
+     "name": "36227000 Contributo al fondo di livellamento della potenzialità fiscale",
+     "chf": 31584086.0,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 136
+    }
+   ],
+   "basis": {
+    "it": "Contributo al fondo cantonale di livellamento della potenzialità fiscale, ricalcolato dalla Sezione degli enti locali. Una parte dello scarto 2025, 1.5 milioni, viene però da una scelta della Città: non prelevare dal proprio fondo di stabilizzazione, come previsto a preventivo.",
+    "en": "Contribution to the cantonal fund that levels out tax capacity, recalculated by the cantonal Local Authorities Section. Part of the 2025 gap, CHF 1.5 million, comes from a choice of the City, though: not to draw on its own stabilisation fund, as the budget had planned."
+   },
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 136,
+     "it": "L'importante aumento sia rispetto al P2025 che al C2024, non riguarda solo il contributo ricalcolato dalla SEL in base ai nuovi dati (C2025 CHF +884'086.--); concretamente in sede di consuntivo 2025 (come già avvenuto nel 2024), non si è ritenuto necessario effettuare nessun prelievo dal fondo di stabilizzazione, come invece era stato previsto in sede di Preventivo 2025 per un importo di CHF 1'500'000.--."
+    }
+   ],
+   "kind": "cantonal"
+  },
+  {
+   "lines": [
+    "412"
+   ],
+   "accounts": [
+    {
+     "name": "36321000 Finanziamento delle case per anziani",
+     "chf": 39171750.39,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 203
+    }
+   ],
+   "basis": {
+    "it": "Contributo prelevato dal Cantone per gli anziani domiciliati a Lugano negli istituti riconosciuti: le giornate di presenza per il costo unitario fissato dal Cantone, più una percentuale del gettito cantonale. Il Cantone fissa le tariffe; il volume dipende dalle giornate dei residenti.",
+    "en": "Contribution the Canton levies for elderly Lugano residents in recognised care homes: days of residence times the unit cost the Canton sets, plus a percentage of the cantonal tax yield. The Canton sets the rates; the volume depends on residents' days."
+   },
+   "quotes": [
+    {
+     "file": "sources/city-preventivo-2027-messaggio.pdf",
+     "page": 153,
+     "it": "L'ammontare del contributo prelevato dal Cantone per gli anziani ospiti domiciliati nel Comune, in istituti riconosciuti dal Cantone, è determinato con l'ausilio di quattro distinte chiavi: l'ammontare complessivo delle giornate di presenza nelle nostre strutture, moltiplicato per il costo unitario stabilito per giornata degli ospiti."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 203,
+     "it": "vi è una % da contrapporre al gettito cantonale base, stabilita a fronte del fabbisogno necessario alla copertura dei costi totali delle case anziani a livello cantonale."
+    }
+   ],
+   "kind": "cantonal"
+  },
+  {
+   "lines": [
+    "421"
+   ],
+   "accounts": [
+    {
+     "name": "36321030 + 36321040 Servizi d'appoggio e aiuto domiciliare (SPITEX)",
+     "chf": 19387931.25,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 203
+    }
+   ],
+   "basis": {
+    "it": "Contributi cantonali per l'assistenza e cura a domicilio (SPITEX): una percentuale del gettito cantonale fissata ogni anno. Il resto della voce, circa il 9%, non è commentato.",
+    "en": "Cantonal contributions for home care (SPITEX): a percentage of the cantonal tax yield set every year. The rest of the line, about 9%, is not commented on."
+   },
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 203,
+     "it": "Questi conti conglobano i contributi cantonali (ex Spitex) SACD, OACD, infermieri indipendenti, servizi d'appoggio. Alla base di questo contributo vi è una % da contrapporre al gettito cantonale base."
+    }
+   ],
+   "kind": "cantonal"
+  },
+  {
+   "kind": "consortium",
+   "lines": [
+    "162"
+   ],
+   "accounts": [
+    {
+     "name": "36121300 Consorzio Protezione Civile Lugano Città",
+     "chf": 1962062.43,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 47
+    }
+   ],
+   "basis": {
+    "it": "Consorzio Protezione Civile Regione di Lugano Città: 15 comuni. La Città vi ha 18 voti e ne paga il 65.638% delle spese, in base alla popolazione residente: l'importo lo decide il consorzio, non il solo Municipio.",
+    "en": "Civil protection consortium of the Lugano City region: 15 municipalities. The City has 18 votes and pays 65.638% of its costs, by resident population: the amount is decided by the consortium, not by the Municipio alone."
+   },
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 33,
+     "it": "Consorzio Protezione Civile Regione di Lugano Città Legge sul consorziamento dei Comuni del 22 febbraio 2010"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 33,
+     "it": "15 Comuni 18 In base alla popolazione residente permanente in %"
+    }
+   ]
+  },
+  {
+   "kind": "consortium",
+   "lines": [
+    "422"
+   ],
+   "accounts": [
+    {
+     "name": "36140000 Contributo Croce Verde",
+     "chf": 1236844.55,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 47
+    }
+   ],
+   "basis": {
+    "it": "Croce Verde Lugano: servizio ambulanze per 46 comuni, nel quale la Città ha 63 voti; le spese sono ripartite per abitante. Il resto della voce, 0.02 milioni, va alle società di salvataggio.",
+    "en": "Croce Verde Lugano: ambulance service for 46 municipalities, in which the City has 63 votes; costs are shared per resident. The rest of the line, CHF 0.02 million, goes to rescue societies."
+   },
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 33,
+     "it": "Croce Verde Lugano Regolamento della Legge sul servizio pre-ospedaliero di soccorso e trasporto sanitatio Servizio ambulanze e servizio Medico Dentario 46 Comuni 63 Popolazione residente permanente x pro capite Ripartito ai Comuni"
+    }
+   ]
+  },
+  {
+   "kind": "consortium",
+   "lines": [
+    "741"
+   ],
+   "accounts": [
+    {
+     "name": "36121200 Consorzio arginature Pian Scairolo e Collina (CMAPS)",
+     "chf": 258060.69,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 47
+    },
+    {
+     "name": "36121202 Consorzio arginature Valle del Cassarate e Golfo di Lugano (CVC)",
+     "chf": 967228.59,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 47
+    },
+    {
+     "name": "36121203 Consorzio sistemazione Vedeggio Camignolo (CSV)",
+     "chf": 30097.55,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 47
+    },
+    {
+     "name": "36121204 Consorzio arginature Basso Ceresio",
+     "chf": 4000.0,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 47
+    },
+    {
+     "name": "36121205 Consorzio arginature Basso Vedeggio (CMABV)",
+     "chf": 86155.75,
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 47
+    }
+   ],
+   "basis": {
+    "it": "Cinque consorzi per le opere di arginatura (Valle del Cassarate e Golfo di Lugano, Pian Scairolo e Collina, Vedeggio, Basso Ceresio, Basso Vedeggio), nei quali la Città paga dal 2.00% al 50.26% delle spese.",
+    "en": "Five consortia for river embankment works (Cassarate valley and Gulf of Lugano, Pian Scairolo and Collina, Vedeggio, Basso Ceresio, Basso Vedeggio), in which the City pays from 2.00% to 50.26% of the costs."
+   },
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 33,
+     "it": "Valle del Cassarate e Golfo di Lugano (CVC) Legge sui Consorzi del 21.07.1913"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 33,
+     "it": "9 Comuni e 8 Altri Enti 10 50.26% Ripartito ai Comuni"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 33,
+     "it": "Consorzio di manutenzione opere di arginatura del Pian Scairolo e Collina (CMAPS) Legge sui Consorzi del 21.07.1913"
+    }
+   ]
+  }
+ ]
+}

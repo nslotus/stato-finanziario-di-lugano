@@ -219,7 +219,7 @@ let cupola: any;
   // "Perché?": the City's reason for every large gap, or the pages read where it gives none (src/perche.json)
   const notes = loadWhy();
   console.log(`perché: ${attachWhy("fn", lines, notes)} lines by function, ${attachWhy("org", org.lines, notes)} by department`);
-  console.log(`cantonale: ${attachCant(lines)} groups of lines by function`);
+  console.log(`cantonale and consortile: ${attachCant(lines)} groups of lines by function`);
   // the headline's budget is the one the Council approved: the departments' budgets add up to it
   if (Math.abs(org.slices.reduce((s: number, d: any) => s + d.p25, 0) - FUN.totals.approved25) > 0.0001) throw new Error("cupola: departments' budgets do not add up to the approved budget");
   cupola = { fns, lines, groups, budget25: FUN.totals.approved25, amend: FUN.amend, linesSource: FUN.linesSource, trendSource: FUN.source, org, manifest };
