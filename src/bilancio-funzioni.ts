@@ -13,7 +13,7 @@ import { BUDGET27_MSG } from "./adapters/finance";
 
 type Src = (file: string, locator: string) => Source;
 export const F = { c25: "city-consuntivo-2025-messaggio.pdf", p25: "city-preventivo-2025-messaggio.pdf", sel23: "sel-2023-appendice.xlsx" };
-const PAGES = { c25: [238, 239], p25: [221, 222, 223], p27: [214, 215, 216], c25dept: 233, p25dept: 21, p27total: 21 };
+const PAGES = { c25: [238, 239], p25: [221, 222, 223], p27: [214, 215, 216], c25dept: 233, p25dept: 21, p27total: 21, gettito: 40 };
 export const FUNCTIONS = "0123456789".split("");
 const num = (s: string) => Number(s.replace(/[’'\s]/g, "").replace(",", "."));
 const close = (a: number, b: number, what: string, tol = 0.02) => { if (Math.abs(a - b) > tol) fail(`${what}: ${a} vs ${b}`); };
@@ -126,6 +126,16 @@ export async function bilancioFunzioni(src: Src, ledger2024: Map<string, number>
     // revenue (RICAVI) from the same rows, so that a gap can be read net of what the line earns
     return { code, label: (a ?? b)!.label, p25: b ? mio(b.c) : 0, c25: a ? mio(a.c) : 0, rp25: b ? mio(b.r) : 0, rc25: a ? mio(a.r) : 0, pagesP: b?.page ?? null, pagesC: a?.page ?? null };
   });
+  // the budget's functional table leaves out the tax yield ('gettito', budgeted at the amount printed on p. 40 of the
+  // 2025 accounts), which the accounts book on line 910: add it there, so that budget and actual revenue compare
+  const yp = (await readPdf(F.c25, [PAGES.gettito])).pages[PAGES.gettito - 1];
+  const yr = yp.match(new RegExp(`Gettito (${M}) (${M})`)) ?? fail(`${F.c25} p. ${PAGES.gettito}: 'Gettito' row missing`);
+  const gettito = { c25: mio(num(yr[1])), p25: mio(num(yr[2])) };
+  const l910 = lines25.find((l) => l.code === "910") ?? fail("line 910 missing");
+  if (mio(p25.fn.get("9")!.r) > 0 && Math.abs(lines25.reduce((t, l) => t + l.rp25, 0) - mio(p25.total.r)) > 0.0001) fail("budget revenue: lines vs total before the tax yield");
+  l910.rp25 += gettito.p25;
+  p25.fn.get("9")!.r += num(yr[2]); p25.total.r += num(yr[2]);
+  const g91 = p25.lines.get("91") ?? fail("budget group 91 missing"); g91.r += num(yr[2]);
   for (const f of FUNCTIONS) {
     const inF = lines25.filter((l) => l.code[0] === f);
     close(inF.reduce((t, l) => t + l.c25, 0), mio(c25.fn.get(f)!.c), `2025 actual: lines add up to function ${f}`, 0.0001);
@@ -161,7 +171,8 @@ export async function bilancioFunzioni(src: Src, ledger2024: Map<string, number>
   const totals = { c23: [...c23.values()].reduce((t, v) => t + v, 0), c24: mio(actual24), p25: mio(p25.total.c), approved25: mio(approved25), c25: mio(c25.total.c), p26: mio(budget26), p27: mio(p27.total.c) };
   console.log(`functions by year: ${FUNCTIONS.map((f) => { const s = series.get(`f${f}`)!; return `${f} ${sign(s.pct)}%`; }).join(" · ")} · total ${totals.c25.toFixed(2)} vs ${totals.p25.toFixed(2)}`);
   const p26Source = src(BUDGET27_MSG, `p. ${PAGES.p27total}: 'TOTALE SPESE CORRENTI', column Preventivo 2026`);
-  return { series, detail, totals, amendText, source, lines25, groups25, linesSource, p26Source, revenue };
+  const gettitoSource = src(F.c25, `p. ${PAGES.gettito}: 'Gettito', budgeted tax yield added to line 910's budget revenue`);
+  return { series, detail, totals, amendText, source, lines25, groups25, linesSource, p26Source, revenue, gettito, gettitoSource };
 }
 
 export const BILANCIO_FUNZIONI_ORIGINS: Record<string, { url: string; publisher: string }> = {

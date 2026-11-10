@@ -7,7 +7,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { CENTRE, DEPT, GROUP } from "./personale-names";
 import { readPdf } from "./adapters/pdf";
 import { splitSite } from "./sitedata";
-import { attachCant, attachWhy, loadWhy } from "./perche";
+import { attachCant, attachNetWhy, attachWhy, loadWhy } from "./perche";
 
 const cat = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
 const star = (id: string) => cat.stars.find((s: any) => s.id === id) ?? (() => { throw new Error(`star ${id} missing`); })();
@@ -216,9 +216,18 @@ let cupola: any;
   const orgTotal = org.lines.reduce((t: number, l: any) => t + l.c25, 0);
   if (Math.abs(orgTotal - FUN.totals.c25) > 0.0001) throw new Error(`cupola: department stars add up to ${orgTotal}, functions to ${FUN.totals.c25}`);
   for (const g of org.groups) { const k = org.lines.filter((l: any) => l.code.startsWith(g.code)); if (k.length && Math.abs(k.reduce((t: number, l: any) => t + l.c25, 0) - g.c25) > 0.0001) throw new Error(`cupola: centres of division ${g.code} do not add up`); }
+  // line 910 and function 9: their budget revenue includes the tax yield, which the budget's functional table omits
+  {
+    const g = FUN.gettito.p25.toFixed(1);
+    const rnote = { it: `I ricavi a preventivo comprendono il gettito d'imposta di ${g} milioni (consuntivo 2025, p. 40), che la tabella per funzione del preventivo non riporta: il consuntivo lo registra su questa voce.`,
+      en: `Budgeted revenue includes the tax yield of CHF ${g} million (2025 accounts, p. 40), which the budget's table by function leaves out: the accounts book it on this line.` };
+    const l = lines.find((x: any) => x.code === "910") ?? (() => { throw new Error("cupola: line 910 missing"); })();
+    l.rnote = rnote; fns.find((f: any) => f.code === "9").rnote = rnote;
+  }
   // "Perché?": the City's reason for every large gap, or the pages read where it gives none (src/perche.json)
   const notes = loadWhy();
   console.log(`perché: ${attachWhy("fn", lines, notes)} lines by function, ${attachWhy("org", org.lines, notes)} by department`);
+  console.log(`perché (net): ${attachNetWhy("fn", lines)} lines by function, ${attachNetWhy("org", org.lines)} by department`);
   console.log(`cantonale and consortile: ${attachCant(lines)} groups of lines by function`);
   // the headline's budget is the one the Council approved: the departments' budgets add up to it
   if (Math.abs(org.slices.reduce((s: number, d: any) => s + d.p25, 0) - FUN.totals.approved25) > 0.0001) throw new Error("cupola: departments' budgets do not add up to the approved budget");

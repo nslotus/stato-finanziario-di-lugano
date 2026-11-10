@@ -80,11 +80,11 @@ const T = {
     notBudget: "non a preventivo", notSpent: "non spesa",
     hint: "Trascinate per scorrere · rotella o pizzico per allargare uno spicchio · doppio clic su una stella per avvicinarvi · 0 per la vista d'insieme",
     legend: "Luminosità: spesa 2025 (mio CHF)",
-    budget: "Preventivo", actual: "Consuntivo", diff: "Scarto", cant: "cantonale", cantTip: "Importo fissato o calcolato dal Cantone, secondo i documenti citati", cons: "consortile", consTip: "Importo deciso in un consorzio di comuni, nel quale la Città ha una quota dei voti e delle spese", cantSay: "Cosa dicono i documenti", cantNote: "«cantonale»: voci il cui importo, secondo i documenti citati, è fissato o calcolato dal Cantone; «consortile»: voci decise in un consorzio di comuni, nel quale la Città ha una quota dei voti e delle spese (in entrambi i casi i conti citati sono almeno il 90% della voce). Per le altre voci la Città non pubblica la base legale della spesa (dati mancanti #2): una voce senza il segno non è per forza una scelta del Municipio. «Netto»: lo scarto dei costi meno quello dei ricavi.", net: "Netto", netTip: "Scarto netto: lo scarto dei costi meno quello dei ricavi, cioè quanto è cambiato ciò che la voce costa alla Città al netto di ciò che incassa", netNA: "n.d.", mio: "mio CHF", fn: "Funzione", line: "Voce",
+    budget: "Preventivo", actual: "Consuntivo", diff: "Scarto", cant: "cantonale", cantTip: "Importo fissato o calcolato dal Cantone, secondo i documenti citati", cons: "consortile", consTip: "Importo deciso in un consorzio di comuni, nel quale la Città ha una quota dei voti e delle spese", cantSay: "Cosa dicono i documenti", cantNote: "«cantonale»: voci il cui importo, secondo i documenti citati, è fissato o calcolato dal Cantone; «consortile»: voci decise in un consorzio di comuni, nel quale la Città ha una quota dei voti e delle spese (in entrambi i casi i conti citati sono almeno il 90% della voce). Per le altre voci la Città non pubblica la base legale della spesa (dati mancanti #2): una voce senza il segno non è per forza una scelta del Municipio. «Netto»: lo scarto dei costi meno quello dei ricavi.", netLine: "Netto: lo scarto dei costi meno quello dei ricavi, cioè quanto è cambiato ciò che la voce costa alla Città, al netto di ciò che incassa.", net: "Netto", netTip: "Scarto netto: lo scarto dei costi meno quello dei ricavi, cioè quanto è cambiato ciò che la voce costa alla Città al netto di ciò che incassa", netNA: "n.d.", mio: "mio CHF", fn: "Funzione", line: "Voce",
     neutral: "Sopra o sotto il preventivo non è di per sé un bene o un male: può essere un risparmio, un lavoro non fatto o un bisogno in crescita.",
     scale: () => mode === "pct" ? "L'altezza segue lo scarto in percentuale su una scala compressa: i cerchi segnano 2, 5, 10, 25, 50 e 100%. Attenzione: una voce piccola può avere uno scarto percentuale grande su pochi franchi." : "L'altezza segue lo scarto in franchi su una scala compressa: i cerchi segnano 0.1, 0.25, 0.5, 1, 2 e 5 milioni.",
     height: "Altezza", view: "Cielo per",
-    why: "Perché?", whyCity: "La Città", whyOnly: "La Città non spiega lo scarto; scrive soltanto", whyNone: "Il messaggio sul consuntivo 2025 non spiega questo scarto.", whyRead: "Pagine lette", whyCalc: "Calcolato qui, non dalla Città", whyTr: "", say: "La Città spiega", sayDiv: "La Città, sulla divisione", sayNone: "Il messaggio non commenta questa unità.", sayMore: "Che cosa dice la Città",
+    why: "Perché?", whyNet: "Perché? Ricavi e netto", whyCity: "La Città", whyOnly: "La Città non spiega lo scarto; scrive soltanto", whyNone: "Il messaggio sul consuntivo 2025 non spiega questo scarto.", whyRead: "Pagine lette", whyCalc: "Calcolato qui, non dalla Città", whyTr: "", say: "La Città spiega", sayDiv: "La Città, sulla divisione", sayNone: "Il messaggio non commenta questa unità.", sayMore: "Che cosa dice la Città",
     W: {
       fn: { tab: "Funzioni", slice: "Funzione", unit: "Voce", open: (k) => `Apri i ${k} gruppi`, units: (k) => `${k} ${k === 1 ? "voce" : "voci"}`, col2: "Funzione", col3: "Voce",
         anchor: (f) => `La funzione ${f.code} nel suo insieme: la stella più luminosa del suo spicchio di cielo. Le sue voci le stanno attorno, ciascuna alla propria altezza.` },
@@ -154,11 +154,11 @@ const T = {
     notBudget: "not in the budget", notSpent: "not spent",
     hint: "Drag to scroll · wheel or pinch to widen a slice · double-click a star to get closer · 0 for the overview",
     legend: "Brightness: 2025 spending (CHF million)",
-    budget: "Budget", actual: "Actual", diff: "Gap", cant: "cantonal", cantTip: "Amount set or calculated by the Canton, as the cited documents say", cons: "consortium", consTip: "Amount decided in a consortium of municipalities, in which the City has a share of votes and costs", cantSay: "What the documents say", cantNote: "“cantonal”: lines whose amount, as the cited documents say, the Canton sets or calculates; “consortium”: lines decided in a consortium of municipalities, in which the City has a share of votes and costs (in both cases the cited accounts are at least 90% of the line). For the other lines the City does not publish the legal basis of its spending (missing data #2): a line without the tag is not necessarily a choice of the Municipio. “Net”: the cost gap less the revenue gap.", net: "Net", netTip: "Net gap: the cost gap minus the revenue gap, i.e. how much what the line costs the City changed, net of what it earns", netNA: "n/a", mio: "CHF million", fn: "Function", line: "Line",
+    budget: "Budget", actual: "Actual", diff: "Gap", cant: "cantonal", cantTip: "Amount set or calculated by the Canton, as the cited documents say", cons: "consortium", consTip: "Amount decided in a consortium of municipalities, in which the City has a share of votes and costs", cantSay: "What the documents say", cantNote: "“cantonal”: lines whose amount, as the cited documents say, the Canton sets or calculates; “consortium”: lines decided in a consortium of municipalities, in which the City has a share of votes and costs (in both cases the cited accounts are at least 90% of the line). For the other lines the City does not publish the legal basis of its spending (missing data #2): a line without the tag is not necessarily a choice of the Municipio. “Net”: the cost gap less the revenue gap.", netLine: "Net: the cost gap less the revenue gap, i.e. how much what the line costs the City changed, net of what it earns.", net: "Net", netTip: "Net gap: the cost gap minus the revenue gap, i.e. how much what the line costs the City changed, net of what it earns", netNA: "n/a", mio: "CHF million", fn: "Function", line: "Line",
     neutral: "Above or below budget is not good or bad by itself: it can be a saving, work not done, or a growing need.",
     scale: () => mode === "pct" ? "Height follows the gap in percent on a compressed scale: the circles mark 2, 5, 10, 25, 50 and 100%. Note: a small line can show a large percentage on a few francs." : "Height follows the gap in francs on a compressed scale: the circles mark 0.1, 0.25, 0.5, 1, 2 and 5 million.",
     height: "Height", view: "Sky by",
-    why: "Why?", whyCity: "The City", whyOnly: "The City does not explain the gap; it only writes", whyNone: "The 2025 accounts message does not explain this gap.", whyRead: "Pages read", whyCalc: "Calculated here, not by the City", whyTr: " (translated from Italian)", say: "The City explains", sayDiv: "The City, on the division", sayNone: "The message does not comment on this unit.", sayMore: "What the City says",
+    why: "Why?", whyNet: "Why? Revenue and net", whyCity: "The City", whyOnly: "The City does not explain the gap; it only writes", whyNone: "The 2025 accounts message does not explain this gap.", whyRead: "Pages read", whyCalc: "Calculated here, not by the City", whyTr: " (translated from Italian)", say: "The City explains", sayDiv: "The City, on the division", sayNone: "The message does not comment on this unit.", sayMore: "What the City says",
     W: {
       fn: { tab: "Functions", slice: "Function", unit: "Line", open: (k) => `Open its ${k} groups`, units: (k) => `${k} ${k === 1 ? "line" : "lines"}`, col2: "Function", col3: "Line",
         anchor: (f) => `Function ${f.code} as a whole: the brightest star in its slice of sky. Its lines sit around it, each at its own height.` },
@@ -233,11 +233,11 @@ function buildStars() {
 stars.length = 0; SLICE = 360 / V.slices.length;
 V.slices.forEach((f, i) => {
   const lines = V.lines.filter((l) => l.code[0] === f.code), a0 = i * SLICE;
-  stars.push({ kind: "fn", f, code: f.code, label: f.name, p: f.pct, c: f.c25, b: f.p25, rb: f.rp25, rc: f.rc25, az: a0 + SLICE / 2, alt: altOf(f.pct) });
+  stars.push({ kind: "fn", f, code: f.code, label: f.name, p: f.pct, c: f.c25, b: f.p25, rb: f.rp25, rc: f.rc25, rnote: f.rnote ?? null, az: a0 + SLICE / 2, alt: altOf(f.pct) });
   lines.forEach((l, j) => {
     const p = l.p25 ? ((l.c25 - l.p25) / l.p25) * 100 : null;
-    stars.push({ kind: "line", f, code: l.code, label: { it: l.label, en: EN[l.label] ?? l.label }, p, c: l.c25, b: l.p25, rb: l.rp25, rc: l.rc25, az: a0 + SLICE * (0.1 + (0.8 * (j + 0.5)) / lines.length),
-      alt: p == null ? 89 : altOf(p), only: p == null ? "actual" : l.c25 === 0 ? "budget" : null, text: l.text ?? [], unitKind: l.kind ?? null, why: l.why ?? null, cant: l.cant ?? null });
+    stars.push({ kind: "line", f, code: l.code, label: { it: l.label, en: EN[l.label] ?? l.label }, p, c: l.c25, b: l.p25, rb: l.rp25, rc: l.rc25, rnote: l.rnote ?? null, az: a0 + SLICE * (0.1 + (0.8 * (j + 0.5)) / lines.length),
+      alt: p == null ? 89 : altOf(p), only: p == null ? "actual" : l.c25 === 0 ? "budget" : null, text: l.text ?? [], unitKind: l.kind ?? null, why: l.why ?? null, whyNet: l.whyNet ?? null, cant: l.cant ?? null });
   });
 });
 }
@@ -471,10 +471,10 @@ const side = (p) => (p == null || p >= 0 ? "up" : "down");
 const bars = (b, c) => { const m = Math.max(b, c, 1e-9); return `<div class="bars" aria-hidden="true"><span class="bb" style="width:${(b / m) * 100}%"></span><span class="ba" style="width:${(c / m) * 100}%"></span></div>`; };
 // the net gap: the cost gap less the revenue gap (null where the revenue is not known)
 const netOf = (b, c, rb, rc) => (rb == null || rc == null ? null : (c - rc) - (b - rb));
-const nums = (b, c, rb, rc) => { const t = T[lang], net = netOf(b, c, rb, rc); return `<dl class="nums"><div><dt>${t.budget}</dt><dd>${n(b, 2)}</dd></div><div><dt>${t.actual}</dt><dd>${n(c, 2)}</dd></div><div><dt>${t.diff}</dt><dd>${sgn(c - b, 2)}</dd></div><div title="${esc(t.netTip)}"><dt>${t.net}</dt><dd>${net == null ? t.netNA : sgn(net, 2)}</dd></div></dl>`; };
+const nums = (b, c, rb, rc, rnote) => { const t = T[lang], net = netOf(b, c, rb, rc); return `<dl class="nums"><div><dt>${t.budget}</dt><dd>${n(b, 2)}</dd></div><div><dt>${t.actual}</dt><dd>${n(c, 2)}</dd></div><div><dt>${t.diff}</dt><dd>${sgn(c - b, 2)}</dd></div><div title="${esc(t.netTip)}"><dt>${t.net}</dt><dd>${net == null ? t.netNA : sgn(net, 2)}</dd></div></dl><p class="small net-line">${t.netLine}${rnote ? ` ${esc(L(rnote))}` : ""}</p>`; };
 // "Perché?": the City's own words on a large gap (src/perche.json), or the pages read where it gives none
-function whyHtml(s, max = Infinity, head = true) {
-  const w = s.why, t = T[lang]; if (!w) return "";
+function whyHtml(s, max = Infinity, head = true, w = s.why, title = T[lang].why) {
+  const t = T[lang]; if (!w) return "";
   const cut = (x) => (x.length > max ? x.slice(0, max - 2) + "…" : x);
   const pages = [...new Set(w.quotes.map((q) => q.page))].join(", ");
   const pp = pages ? ` <span class="small">(p. ${pages})</span>` : "";
@@ -484,7 +484,7 @@ function whyHtml(s, max = Infinity, head = true) {
   const body = w.status === "quote" ? `${t.whyCity}${t.whyTr}: ${said}${pp}`
     : w.status === "none_explained" ? `${t.whyOnly}${t.whyTr}: ${said}${pp}`
     : `${t.whyNone} <span class="small">${t.whyRead}: ${esc(L(w.searched))}</span>`;
-  return `<p class="why">${head ? `<b>${t.why}</b> ` : ""}${body}${w.computed ? ` <span class="small calc">${t.whyCalc}: ${esc(L(w.computed))}</span>` : ""}</p>`;
+  return `<p class="why">${head ? `<b>${title}</b> ` : ""}${body}${w.computed ? ` <span class="small calc">${t.whyCalc}: ${esc(L(w.computed))}</span>` : ""}</p>`;
 }
 // "cantonale" and "consortile": the tag, and the basis in one sentence (src/vincoli.json); the full card adds the documents' words
 const cantTag = (s) => { if (!s.cant) return ""; const t = T[lang], c = s.cant.kind === "consortium"; return ` <span class="tag-cant" title="${esc(c ? t.consTip : t.cantTip)}">${c ? t.cons : t.cant}</span>`; };
@@ -507,8 +507,8 @@ function select(s, center) {
   peek.innerHTML = `<button class="p-x" aria-label="${t.close}">×</button><button class="p-back" aria-label="${t.peekBack}" title="${t.peekBack}"${peekPinned ? "" : " hidden"}>↺</button><div class="eyebrow">${Wd().slice} ${s.f.code} · ${esc(L(s.f.name))}${g && g.code !== s.code ? ` · ${g.code} ${esc(tr(g.label))}` : ""}</div>
     <h2>${s.kind === "line" ? `<i>${s.code}</i> ` : ""}${esc(titleOf(s))}${cantTag(s)}</h2>
     <div class="dev ${side(s.p)}">${devText(s)}<small>${s.p == null || s.only ? "" : onBudget(s) ? (mode === "chf" ? t.onLineChf : t.onLine) : s.p >= 0 ? t.over : t.under}</small></div>
-    ${bars(s.b, s.c)}${nums(s.b, s.c, s.rb, s.rc)}${cantHtml(s)}
-    ${s.why ? whyHtml(s, 230) : said ? `<p class="say"><b>${said[0]}:</b> «${esc(said[1].length > 230 ? said[1].slice(0, 228) + "…" : said[1])}»</p>` : ""}
+    ${bars(s.b, s.c)}${nums(s.b, s.c, s.rb, s.rc, s.rnote)}${cantHtml(s)}
+    ${s.whyNet ? whyHtml(s, 230, true, s.whyNet, t.whyNet) : ""}${s.why ? whyHtml(s, 230) : said ? `<p class="say"><b>${said[0]}:</b> «${esc(said[1].length > 230 ? said[1].slice(0, 228) + "…" : said[1])}»</p>` : ""}
     <div class="open">${s.kind === "fn" ? Wd().open(V.groups.filter((x) => x.code[0] === s.f.code).length) : t.openLine} <span aria-hidden="true">→</span></div>`;
   peek.hidden = false; placePeek();
 }
@@ -596,7 +596,7 @@ function fnCard(f) {
   const t = T[lang];
   return `<article class="card" data-y="${mode === "pct" ? f.pct : f.c25 - f.p25}" data-key="f${f.code}">
     <header><i>${f.code}</i><h3>${esc(L(f.name))}</h3><b class="dv ${side(f.pct)}">${sgn(f.pct, 1)}%</b></header>
-    ${bars(f.p25, f.c25)}${nums(f.p25, f.c25, f.rp25, f.rc25)}
+    ${bars(f.p25, f.c25)}${nums(f.p25, f.c25, f.rp25, f.rc25, f.rnote)}
     <button class="more" data-fn="${f.code}">${Wd().open(V.groups.filter((x) => x.code[0] === f.code).length)} <span aria-hidden="true">→</span></button>
   </article>`;
 }
@@ -843,7 +843,7 @@ function pagesOf(s) {
 function renderFocus(from) {
   const s = focus.s, f = s.f, t = T[lang], fresh = focusEl.hidden;
   const meaning = s.kind === "fn" ? V.groups.filter((g) => g.code[0] === f.code).map((g) => groupCard(g)) : [groupCard(groupOf(s.code), s.code), fnCard(f)];
-  const context = s.kind === "fn" ? [f.trend ? trendCard(f) : "", f.facts?.length ? factsCard(f) : "", sourcesCard(f.code, !!f.trend)] : [s.cant ? `<article class="card ctx" data-key="cant"><header><h3>${t.cantSay}</h3></header>${cantHtml(s, true)}</article>` : "", s.why ? `<article class="card ctx" data-key="why"><header><h3>${t.why}</h3></header>${whyHtml(s, Infinity, false)}</article>` : "", sayCard(s), sourcesCard(s.code, false)];
+  const context = s.kind === "fn" ? [f.trend ? trendCard(f) : "", f.facts?.length ? factsCard(f) : "", sourcesCard(f.code, !!f.trend)] : [s.whyNet ? `<article class="card ctx" data-key="whynet"><header><h3>${t.whyNet}</h3></header>${whyHtml(s, Infinity, false, s.whyNet)}</article>` : "", s.cant ? `<article class="card ctx" data-key="cant"><header><h3>${t.cantSay}</h3></header>${cantHtml(s, true)}</article>` : "", s.why ? `<article class="card ctx" data-key="why"><header><h3>${t.why}</h3></header>${whyHtml(s, Infinity, false)}</article>` : "", sayCard(s), sourcesCard(s.code, false)];
   const orbR = Math.round(34 + 46 * Math.sqrt(Math.min(1, s.c / 90)));
   focusEl.style.setProperty("--hue", f.hue);
   focusEl.innerHTML = `<div class="f-dim"></div>
@@ -955,7 +955,7 @@ function writeTable() {
   rows.sort((a, b) => none(a) - none(b) || (() => { const x = val(a), y = val(b); return (typeof x === "string" ? x.localeCompare(y) : x - y) * sortDir; })());
   const el = document.getElementById("table");
   el.innerHTML = `<table><caption class="sr">${t.tableCap}</caption><thead><tr>${cols.map((c, i) => `<th aria-sort="${i === sortKey ? (sortDir > 0 ? "ascending" : "descending") : "none"}"><button data-k="${i}">${c}${i >= 3 && i <= 6 ? ` <small>(${t.mio})</small>` : ""}${i === 6 ? ` <span class="why-mark" title="${esc(t.netTip)}">?</span>` : ""}${i === sortKey ? (sortDir > 0 ? " ↑" : " ↓") : ""}</button></th>`).join("")}</tr></thead><tbody>
-    ${rows.map((s) => `<tr data-code="${s.code}" tabindex="0" class="${none(s) ? "empty" : ""}"><td>${s.code}</td><td>${esc(L(s.f.name))}</td><td>${esc(L(s.label))}${cantTag(s)}${s.why ? ` <span class="why-mark" title="${t.why}">?</span>` : ""}</td><td>${n(s.b, 2)}</td><td>${n(s.c, 2)}</td><td>${sgn(s.c - s.b, 2)}</td><td>${net(s) == null ? t.netNA : sgn(net(s), 2)}</td><td>${none(s) ? t.noSpend : s.p == null ? t.notBudget : s.only === "budget" ? "−100%" : `${sgn(s.p, 1)}%`}</td></tr>`).join("")}</tbody></table><p class="small tbl-note">${esc(t.cantNote)}</p>`;
+    ${rows.map((s) => `<tr data-code="${s.code}" tabindex="0" class="${none(s) ? "empty" : ""}"><td>${s.code}</td><td>${esc(L(s.f.name))}</td><td>${esc(L(s.label))}${cantTag(s)}${s.why || s.whyNet ? ` <span class="why-mark" title="${t.why}">?</span>` : ""}</td><td>${n(s.b, 2)}</td><td>${n(s.c, 2)}</td><td>${sgn(s.c - s.b, 2)}</td><td>${net(s) == null ? t.netNA : sgn(net(s), 2)}</td><td>${none(s) ? t.noSpend : s.p == null ? t.notBudget : s.only === "budget" ? "−100%" : `${sgn(s.p, 1)}%`}</td></tr>`).join("")}</tbody></table><p class="small tbl-note">${esc(t.cantNote)}</p>`;
   el.querySelectorAll("th button").forEach((b) => (b.onclick = () => { const k = +b.dataset.k; sortDir = k === sortKey ? -sortDir : k > 2 ? -1 : 1; sortKey = k; writeTable(); el.querySelector(`th button[data-k="${k}"]`).focus(); }));
   const go = (tr) => { const s = stars.find((x) => x.kind === "line" && x.code === tr.dataset.code); if (!s) return; toggleTable(false); select(s, false); flyTo(s.az, s.alt, Math.min(fov, SLICE * 1.6)); cv.focus(); };
   el.querySelectorAll("tr[data-code]").forEach((tr) => { tr.onclick = () => go(tr); tr.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(tr); } }; });

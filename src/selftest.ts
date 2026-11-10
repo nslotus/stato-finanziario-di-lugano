@@ -49,6 +49,7 @@ const CASES: Case[] = [
   { what: "one word of a City quote changed", touches: [DATA], fail: [17],
     plant: () => editJs(DATA, "CIELO", (o) => { const q = [...o.D.lines, ...o.D.org.lines].flatMap((l: Json) => l.why?.quotes ?? [])[0]; q.it = q.it.replace(/[A-Za-z]{7,}/, "cambiata"); }) },
   { what: "a cantonal tag's account amount changed by one franc", touches: [DATA], fail: [17], plant: () => editJs(DATA, "CIELO", (o) => { for (const c of ["512", "522", "532"]) line(o, c).cant.accounts[0].chf += 1; }) },
+  { what: "a large net gap's note removed (910 Imposte)", touches: [DATA], fail: [17], plant: () => editJs(DATA, "CIELO", (o) => { delete line(o, "910").whyNet; }) },
   { what: "an English name missing", touches: [DATA], fail: [9], plant: () => editJs(DATA, "CIELO", (o) => { delete o.EN[Object.keys(o.EN)[0]]; }) },
   { what: "a source's fingerprint not matching the archived file", touches: [MANIFEST], fail: [1], plant: () => editJson(MANIFEST, (o) => { const a = Array.isArray(o) ? o : o.files; a[0].sha256 = "0".repeat(64); }) },
   { what: "a pinned upstream file whose URL names another commit", touches: [MANIFEST], fail: [3],

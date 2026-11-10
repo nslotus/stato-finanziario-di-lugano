@@ -260,13 +260,17 @@ async function main() {
   const fnData = (uscite.chart as { data: { key: string; value: number; star?: string }[] }).data;
   const bf = await bilancioFunzioni(src, new Map(fnData.map((d) => [d.key, d.value])));
   // money in, money out and the total move to the 2025 accounts (spending by type, pp. 41–56), the year the sky shows
-  led.finish2025(await nature2025(readPdf, F.c25), (key) => bf.series.get(key)!.c25, F.c25);
+  const nat25 = await nature2025(readPdf, F.c25);
+  led.finish2025(nat25, (key) => bf.series.get(key)!.c25, F.c25);
+  // revenue by function, with the budgeted tax yield on line 910, must equal the accounts' revenue totals (p. 50)
+  for (const [k, by, tot] of [["budget", bf.revenue.rp25, nat25.revenue.p25], ["actual", bf.revenue.rc25, nat25.revenue.c25]] as const)
+    if (Math.abs(by * 1e6 - tot) > 1) throw new Error(`DATA CHECK FAILED: ${k} revenue by function ${by * 1e6} vs the accounts' total ${tot}`);
   for (const d of fnData) {
     if (!d.star) continue;
     const a = stars.find((x) => x.id === d.star)!;
     a.detail = [...(a.detail ?? []), bf.detail(d.key, `var(--${a.constellation})`)];
   }
-  writeFileSync("catalog/funzioni.json", JSON.stringify({ series: Object.fromEntries(bf.series), totals: bf.totals, amend: bf.amendText, source: bf.source, lines25: bf.lines25, groups25: bf.groups25, linesSource: bf.linesSource, p26Source: bf.p26Source, revenue: bf.revenue }, null, 1) + "\n");
+  writeFileSync("catalog/funzioni.json", JSON.stringify({ series: Object.fromEntries(bf.series), totals: bf.totals, amend: bf.amendText, source: bf.source, lines25: bf.lines25, groups25: bf.groups25, linesSource: bf.linesSource, p26Source: bf.p26Source, revenue: bf.revenue, gettito: bf.gettito, gettitoSource: bf.gettitoSource }, null, 1) + "\n");
 
   // the same 2025 budget against actual by the City's organisation, with its explanations; must add up to the same total
   const org = await dicasteri(src);

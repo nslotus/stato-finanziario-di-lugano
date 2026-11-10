@@ -353,6 +353,21 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
         if (reader === pdfjs) quotes++;
       }
     }
+    // the net notes: the rule recomputed here (net gap ≥ CHF 1 million or 25% of the net budget; with a cost note, only
+    // where revenue itself moved by CHF 1 million, or by 25% and at least CHF 0.1 million), and every quote on its page
+    let nets = 0;
+    for (const [view, list] of [["fn", D.lines], ["org", D.org.lines]] as const) for (const l of list) {
+      const has = l.rp25 != null && l.rc25 != null, n = has ? (l.c25 - l.rc25) - (l.p25 - l.rp25) : 0, nb = l.p25 - l.rp25, dr = l.rc25 - l.rp25;
+      const want = has && Math.abs(n) > 1e-9 && (Math.abs(n) >= 1 || !nb || Math.abs(n / nb) >= 0.25) && (!big(l) || Math.abs(dr) >= 1 || (Math.abs(dr) >= 0.1 && (!l.rp25 || Math.abs(dr / l.rp25) >= 0.25)));
+      if (want !== !!l.whyNet) { bad.push(`${view} ${l.code}: ${l.whyNet ? "net note on a line the rule does not pick" : "large net gap without a net note"}`); continue; }
+      if (!l.whyNet) continue;
+      nets++;
+      for (const q of l.whyNet.quotes) for (const reader of [pdfjs, pypdf]) {
+        const page = bare((await reader.read(q.file.replace(/^sources\//, ""), [q.page]))[q.page]?.text ?? "");
+        let at = 0;
+        for (const piece of q.it.split("…").map(bare).filter(Boolean)) { const k = page.indexOf(piece, at); if (k < 0) { bad.push(`${view} ${l.code} (net): "${q.it.slice(0, 40)}…" not on ${q.file} p. ${q.page} (${reader.name})`); break; } at = k + piece.length; }
+      }
+    }
     // "cantonale" and "consortile": each group's quotes and account amounts on their pages, and the share recomputed here (≥ 90%)
     const seen = new Set<string>(); let cants = 0;
     for (const l of D.lines.filter((x: any) => x.cant)) {
@@ -374,7 +389,7 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
       }
     }
     if (bad.length) fail(bad.join("; "));
-    return `${lines} lines with a gap of CHF 1 million or 25%, each with its note; ${quotes} quotes found on their pages by both readers; ${cants} cantonal and consortium groups, each quote and amount on its page`;
+    return `${lines} lines with a gap of CHF 1 million or 25%, each with its note; ${quotes} quotes found on their pages by both readers; ${nets} lines with a large net gap, each with its note; ${cants} cantonal and consortium groups, each quote and amount on its page`;
   });
   const w = Math.max(...results.map((r) => r.name.length));
   for (const r of results) console.log(`${r.ok ? "PASS" : "FAIL"}  ${String(r.n).padStart(2)}  ${r.name.padEnd(w)}  ${r.detail}`);

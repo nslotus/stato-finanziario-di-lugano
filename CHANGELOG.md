@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- Reviewer's notes on the net gap:
+  - Line 910 Imposte showed a net gap of −286.47, because the budget's table by function leaves out the CHF 258.0
+    million tax yield (p. 40) that the accounts book on 910. The yield is now added to 910's budget revenue, and
+    budget revenue by function equals the approved budget's printed total, 473'506'270, to the franc. 910's net gap
+    is now −28.47: tax windfalls, mostly from commodity-trading and shipping companies (pp. 14, 58).
+  - Every large net gap now has its "Perché? Ricavi e netto", by the same ±1 million / ±25% rule: 17 lines. Among
+    them: 720 wastewater, where CHF 4.45 million of sewer charges were credited back to AIL after a 2023 double
+    payment (p. 163); 969, a CHF 10.84 million book revaluation of the former Castagneto care home (p. 53).
+  - Every card explains "Netto" in a visible line, not only in a tooltip.
 - A "consortile" tag next to "cantonale" marks lines paid to consortia of municipalities in which the City has a
   share of votes and costs: 162 civil protection, 422 Croce Verde, 741 river works (2025 accounts, p. 33 and p. 47).
   The same rule applies: the cited accounts must make up at least 90% of the line. Wastewater (720) is 78%, so it is

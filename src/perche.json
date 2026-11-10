@@ -1,5 +1,5 @@
 {
- "_about": "Perché? For every 2025 spending line whose actual is at least CHF 1 million or 25% away from its budget: what the City says about it, quoted verbatim with its page (checked by npm run verify, check 17), or the pages read where it says nothing. 'computed' is what this repository found itself, never the City's words. Quotes cut with '…'; no personal names. Research drafted with an AI assistant; every quote is matched against its page by check 17, and the computed notes were checked by hand against the cited pages.",
+ "_about": "Perché? For every 2025 spending line whose actual is at least CHF 1 million or 25% away from its budget: what the City says about it, quoted verbatim with its page (checked by npm run verify, check 17), or the pages read where it says nothing. 'computed' is what this repository found itself, never the City's words. Quotes cut with '…'; no personal names. Research drafted with an AI assistant; every quote is matched against its page by check 17, and the computed notes were checked by hand against the cited pages. 'net' holds the same kind of notes for lines whose net gap (cost gap less revenue gap) is large: at least CHF 1 million or 25% of the net budget, where revenue itself moved or the line has no cost note.",
  "lines": {
   "fn 710": {
    "status": "quote",
@@ -437,6 +437,356 @@
    "searched": {
     "it": "consuntivo 2025, pp. 202–203.",
     "en": "2025 accounts, pp. 202–203."
+   }
+  }
+ },
+ "net": {
+  "fn 341": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 207,
+     "it": "Si sono anche realizzati maggiori ricavi in tutte le classi, soprattutto grazie agli aggiornamenti tariffali delle strutture sportive."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 208,
+     "it": "Gli introiti supplementari derivano principalmente dalla quota annua del corrispettivo di CHF 50'000.--, prevista dal contratto stipulato con la Federazione Banche Raiffeisen Ticino e Moesano per la concessione dei diritti di denominazione del Palazzetto dello Sport."
+    }
+   ],
+   "en": "\"Revenue was higher in all classes, above all thanks to the updated fees for the sports facilities.\" \"The extra income comes mainly from the annual CHF 50,000 payment under the contract with the Federazione Banche Raiffeisen Ticino e Moesano for the naming rights of the Palazzetto dello Sport.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 207–211 (Divisione Sport).",
+    "en": "2025 accounts, pp. 207–211 (Sport division)."
+   },
+   "computed": {
+    "it": "la Divisione Sport spiega +0.51 dei +0.53 milioni di ricavi in più (p. 207); i costi sono stati 0.73 milioni sotto il preventivo, senza un commento che li leghi a questa voce.",
+    "en": "the Sport division accounts for +0.51 of the +0.53 million of extra revenue (p. 207); costs were 0.73 million below budget, with no comment tying them to this line."
+   }
+  },
+  "fn 632": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 130,
+     "it": "Il risultato d’esercizio dell’aeroporto è sostanzialmente in linea con il preventivo ma in leggera flessione rispetto al C2024. L’aumento dei costi è stato completamente bilanciato da maggiori introiti."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 54,
+     "it": "46309900 Sussidio UFAC per costi Skyguide 6 598 074.08 5 460 000.00 1 138 074.08 Aeroporto: maggiori sussidi a seguito dei maggiori costi sostenuti (vedi conto 31309990)"
+    }
+   ],
+   "en": "\"The airport's operating result is broadly in line with the budget … The cost increase was fully offset by higher income.\" Account 46309900, federal (FOCA) subsidy for Skyguide costs: CHF 6,598,074.08 against 5,460,000.00 budgeted: \"higher subsidies because of the higher costs incurred\".",
+   "searched": {
+    "it": "consuntivo 2025, pp. 54 e 130.",
+    "en": "2025 accounts, pp. 54 and 130."
+   },
+   "computed": {
+    "it": "ricavi +1.56 milioni, di cui +1.14 di sussidio federale per Skyguide (p. 54); lo scarto netto è −0.04.",
+    "en": "revenue +1.56 million, of which +1.14 is the federal Skyguide subsidy (p. 54); the net gap is −0.04."
+   }
+  },
+  "fn 720": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 163,
+     "it": "42400300 “Tassa d’uso canalizzazioni” – La minor entrata di oltre CHF 4.4 milioni, è dovuta alle motivazioni riportate di seguito. Nel 2024 si è passati da un sistema di riversamento delle tasse di canalizzazione da parte di AIL alla Città basato su acconti e conguagli, ad un sistema di rendicontazione trimestrale"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 163,
+     "it": "Al momento dell'emissione dei conguagli ai clienti relativi all'anno 2023, il sistema non ha gestito correttamente l'attribuzione contabile degli acconti versati, ciò che ne ha generato un doppio riversamento alla Città. Nel 2025 si è quindi proceduto al riaccredito ad AIL degli acconti versati in doppio."
+    }
+   ],
+   "en": "Sewer use charge (account 42400300): \"the shortfall of more than CHF 4.4 million\" has these causes. In 2024 AIL moved from passing the sewer charges on to the City through advances and balancing payments to quarterly reporting of the charges actually billed. \"When the balancing bills for 2023 were issued to customers, the system did not book the advances already paid correctly, so they were passed on to the City twice. In 2025 the advances paid twice were therefore credited back to AIL.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 52, 153 e 159–163.",
+    "en": "2025 accounts, pp. 52, 153 and 159–163."
+   },
+   "computed": {
+    "it": "la tassa d'uso delle canalizzazioni ha reso 2.04 milioni contro 6.49 a preventivo (−4.45, p. 52), quasi tutto lo scarto dei ricavi della voce (−4.52). Per questo la voce, sotto il preventivo nei costi (−1.67), è sopra nel netto (+2.85).",
+    "en": "the sewer use charge brought in CHF 2.04 million against 6.49 budgeted (−4.45, p. 52), almost all of the line's revenue gap (−4.52). This is why the line, below budget on cost (−1.67), is above it net (+2.85)."
+   }
+  },
+  "fn 769": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 224,
+     "it": "Come detto in precedenza, il Contributo FER (46310100) ha avuto maggiori incassi per CHF 94'586"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 230,
+     "it": "In crescita per contro i prelievi dal fondo (CHF +376'682.20 rispetto al P2025 e CHF +297'938.20 rispetto al C2024) in particolare per la copertura delle spese per il sovvenzionamento degli abbonamenti annuali Arcobaleno."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 215,
+     "it": "Maggiori ricavi per 29’004.55 dovuti essenzialmente ad una stima prudente dei ricavi nel preventivo 2025"
+    }
+   ],
+   "en": "\"The FER contribution (46310100) brought in CHF 94,586 more.\" \"Withdrawals from the fund rose (CHF +376,682.20 against the 2025 budget and CHF +297,938.20 against the 2024 accounts), mainly to pay for the subsidies on annual Arcobaleno passes.\" Bike sharing: \"revenue was higher by 29,004.55, mainly because revenue was estimated prudently in the 2025 budget.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 54–55, 215, 222–230.",
+    "en": "2025 accounts, pp. 54–55, 215, 222–230."
+   },
+   "computed": {
+    "it": "i tre importi spiegano tutto lo scarto dei ricavi (+0.50 milioni): l'attribuzione alla voce è dedotta dagli importi, la Città non la indica.",
+    "en": "the three amounts account for the whole revenue gap (+0.50 million): their attribution to this line is inferred from the amounts; the City does not state it."
+   }
+  },
+  "fn 850": {
+   "status": "not_found",
+   "quotes": [],
+   "en": "",
+   "searched": {
+    "it": "consuntivo 2025, pp. 123–124, 213–217 e 239: nessun centro o commento corrisponde agli importi della voce.",
+    "en": "2025 accounts, pp. 123–124, 213–217 and 239: no centre or comment matches the line's amounts."
+   },
+   "computed": {
+    "it": "lo scarto netto (−0.76 milioni) viene dai costi (−0.73), non dai ricavi.",
+    "en": "the net gap (−0.76 million) comes from costs (−0.73), not revenue."
+   }
+  },
+  "fn 910": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 14,
+     "it": "Tra i più marcati scostamenti sottostanti questa evoluzione segnaliamo le maggiori sopravvenienze di imposta sia di persone fisiche che giuridiche per CHF 23.3 mio"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 58,
+     "it": "Questa significativa variazione è in gran parte giustificata da decisioni di tassazione di imprese operanti nel settore del “trading” di materie prime e dello “shipping” che hanno beneficiato di condizioni di mercato eccezionali negli anni di esercizio 2022-2024."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 14,
+     "it": "Ulteriori incrementi di CHF 6.3 mio si sono registrati per imposte supplettorie, imposte alla fonte e imposte speciali."
+    }
+   ],
+   "en": "\"Among the largest deviations … higher tax windfalls (late assessments) from both individuals and companies, CHF 23.3 million.\" \"This large change is mostly explained by tax assessments of companies in commodity trading and shipping, which enjoyed exceptional market conditions in the financial years 2022–2024.\" \"A further CHF 6.3 million came from supplementary taxes, withholding taxes and special taxes.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 14, 38, 40, 50, 57–59 e 127.",
+    "en": "2025 accounts, pp. 14, 38, 40, 50, 57–59 and 127."
+   },
+   "computed": {
+    "it": "il gettito (258 milioni) è stato quello previsto; i 27.6 milioni di ricavi in più sono sopravvenienze e altre imposte.",
+    "en": "the tax yield (258 million) was as budgeted; the 27.6 million of extra revenue are windfalls and other taxes."
+   }
+  },
+  "fn 961": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 128,
+     "it": "Alle entrate – gruppo 44 “ricavi finanziari” - segnaliamo in particolare i maggiori introiti per piazzamenti di liquidità a breve termine (CHF +937'333.33 rispetto al P2025), finalizzati alla parziale copertura degli interessi generati dall’emissione anticipata di un bond nel mese di novembre 2024"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 127,
+     "it": "In ascesa gli interessi di mora su crediti d’imposta – gruppo 44 “ricavi finanziari” (CHF +686'769.84 rispetto al P2025"
+    }
+   ],
+   "en": "\"On the revenue side, group 44 'financial revenue', we note in particular higher income from short-term cash placements (CHF +937,333.33 against the 2025 budget), meant to partly cover the interest on a bond issued early, in November 2024.\" \"Default interest on tax receivables rose (CHF +686,769.84 against the 2025 budget).\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 14, 53, 127 e 128.",
+    "en": "2025 accounts, pp. 14, 53, 127 and 128."
+   },
+   "computed": {
+    "it": "le due voci commentate spiegano 1.62 dei 2.02 milioni di ricavi in più; il resto non è commentato.",
+    "en": "the two items commented on explain 1.62 of the 2.02 million of extra revenue; the rest is not commented on."
+   }
+  },
+  "fn 969": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 53,
+     "it": "44430000 Rivalutazioni di immobili dei BP 10 837 401.00 10 837 401.00 Trasferimento dei mappali ex Casa anziani Castagneto dai beni amministrativi ai beni patrimoniali e conseguente rivalutazione secondo i criteri MCA2."
+    }
+   ],
+   "en": "Account 44430000, revaluation of financial-asset property, CHF 10,837,401.00, not budgeted: \"the plots of the former Castagneto care home were moved from administrative to financial assets and then revalued under the MCA2 rules.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 14, 53 e 129–130.",
+    "en": "2025 accounts, pp. 14, 53 and 129–130."
+   },
+   "computed": {
+    "it": "è una rivalutazione contabile, non un incasso: 10.84 dei 10.85 milioni di ricavi della voce.",
+    "en": "it is a book revaluation, not cash received: 10.84 of the line's 10.85 million of revenue."
+   }
+  },
+  "fn 970": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 224,
+     "it": "si segnala il mancato incasso dei CHF 70'000 per la ridistribuzione della tassa sul CO2: a partire dal 2025, i gestori con impegno di riduzione a livello federale sono esentati dalla tassa sul CO 2 ed esclusi dalla relativa ridistribuzione."
+    }
+   ],
+   "en": "\"We note that the CHF 70,000 from the redistribution of the CO2 levy was not received: from 2025, operators with a reduction commitment at federal level are exempt from the CO2 levy and excluded from its redistribution.\" The redistribution was postponed to 2026.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 54–55, 224, 310 e 345.",
+    "en": "2025 accounts, pp. 54–55, 224, 310 and 345."
+   }
+  },
+  "org 1214": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 96,
+     "it": "La voce spese di trasferimento, scostamento CHF +80'667.70 (+8.45%), deve essere letta unitamente alla voce Ricavi CHF +344'465.82 (+16.87%); a fronte, infatti, di maggiori entrate per il rilascio di documenti (Carte di Identità e Passaporti) vi è stato contestualmente un maggiore importo da riversare."
+    }
+   ],
+   "en": "\"Transfer spending, gap CHF +80,667.70 (+8.45%), has to be read together with revenue, CHF +344,465.82 (+16.87%): higher income from issuing documents (identity cards and passports) came with a larger amount to pass on.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 52 e 96.",
+    "en": "2025 accounts, pp. 52 and 96."
+   }
+  },
+  "org 1231": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 116,
+     "it": "La variazione del 18.38% alla voce Regalie e concessioni (41) è riconducibile al meccanismo contabile legato alla Convenzione tra la Città di Lugano e la Società Generale di Affissione (SGA)."
+    }
+   ],
+   "en": "\"The 18.38% change in royalties and concessions (41) comes from the accounting mechanism of the agreement between the City of Lugano and the Società Generale di Affissione (SGA)\": the services are invoiced both ways, so cost and revenue rise together.",
+   "searched": {
+    "it": "consuntivo 2025, pp. 51 e 116.",
+    "en": "2025 accounts, pp. 51 and 116."
+   }
+  },
+  "org 2010": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 14,
+     "it": "Tra i più marcati scostamenti sottostanti questa evoluzione segnaliamo le maggiori sopravvenienze di imposta sia di persone fisiche che giuridiche per CHF 23.3 mio"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 58,
+     "it": "Questa significativa variazione è in gran parte giustificata da decisioni di tassazione di imprese operanti nel settore del “trading” di materie prime e dello “shipping” che hanno beneficiato di condizioni di mercato eccezionali negli anni di esercizio 2022-2024."
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 14,
+     "it": "Ulteriori incrementi di CHF 6.3 mio si sono registrati per imposte supplettorie, imposte alla fonte e imposte speciali."
+    }
+   ],
+   "en": "\"Among the largest deviations … higher tax windfalls (late assessments) from both individuals and companies, CHF 23.3 million.\" \"This large change is mostly explained by tax assessments of companies in commodity trading and shipping, which enjoyed exceptional market conditions in the financial years 2022–2024.\" \"A further CHF 6.3 million came from supplementary taxes, withholding taxes and special taxes.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 14, 50, 57–59 e 127.",
+    "en": "2025 accounts, pp. 14, 50, 57–59 and 127."
+   },
+   "computed": {
+    "it": "i ricavi qui sono senza il gettito di 258 milioni, come nella tabella per dicastero (p. 40).",
+    "en": "revenue here excludes the 258 million tax yield, as in the department table (p. 40)."
+   }
+  },
+  "org 2020": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 128,
+     "it": "Alle entrate – gruppo 44 “ricavi finanziari” - segnaliamo in particolare i maggiori introiti per piazzamenti di liquidità a breve termine (CHF +937'333.33 rispetto al P2025), finalizzati alla parziale copertura degli interessi generati dall’emissione anticipata di un bond nel mese di novembre 2024"
+    }
+   ],
+   "en": "\"On the revenue side, group 44 'financial revenue', we note in particular higher income from short-term cash placements (CHF +937,333.33 against the 2025 budget), meant to partly cover the interest on a bond issued early, in November 2024.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 14, 53 e 128.",
+    "en": "2025 accounts, pp. 14, 53 and 128."
+   },
+   "computed": {
+    "it": "la voce commentata spiega 0.94 dei 1.34 milioni di ricavi in più; il resto non è commentato.",
+    "en": "the item commented on explains 0.94 of the 1.34 million of extra revenue; the rest is not commented on."
+   }
+  },
+  "org 2023": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 130,
+     "it": "Ai ricavi segnaliamo l’importante variazione rispetto al P2025 del gruppo 44 “ricavi finanziari”, derivante dal trasferimento dai beni amministrativi ai beni patrimoniali dell’ex Casa anziani Castagneto (MM 11885, Ris. C.C. 30.06.2025), che ne ha comportato la rivalutazione"
+    }
+   ],
+   "en": "\"On the revenue side we note the large change against the 2025 budget in group 44 'financial revenue', from moving the former Castagneto care home from administrative to financial assets (MM 11885, Council resolution 30.06.2025), which led to its revaluation\" (CHF 10.8 million).",
+   "searched": {
+    "it": "consuntivo 2025, pp. 14, 53 e 129–130.",
+    "en": "2025 accounts, pp. 14, 53 and 129–130."
+   },
+   "computed": {
+    "it": "la rivalutazione (10.84 milioni) è contabile, non un incasso; i costi del centro salgono soprattutto per il delcredere di 4.16 milioni (vedi il «Perché?» dei costi).",
+    "en": "the revaluation (10.84 million) is a book entry, not cash; the centre's costs rise mainly because of the 4.16 million allowance for doubtful receivables (see the cost \"Why?\")."
+   }
+  },
+  "org 4011": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 163,
+     "it": "42400300 “Tassa d’uso canalizzazioni” – La minor entrata di oltre CHF 4.4 milioni, è dovuta alle motivazioni riportate di seguito. Nel 2024 si è passati da un sistema di riversamento delle tasse di canalizzazione da parte di AIL alla Città basato su acconti e conguagli, ad un sistema di rendicontazione trimestrale"
+    },
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 163,
+     "it": "Al momento dell'emissione dei conguagli ai clienti relativi all'anno 2023, il sistema non ha gestito correttamente l'attribuzione contabile degli acconti versati, ciò che ne ha generato un doppio riversamento alla Città. Nel 2025 si è quindi proceduto al riaccredito ad AIL degli acconti versati in doppio."
+    }
+   ],
+   "en": "Sewer use charge (account 42400300): \"the shortfall of more than CHF 4.4 million\" has these causes. In 2024 AIL moved from passing the sewer charges on to the City through advances and balancing payments to quarterly reporting of the charges actually billed. \"When the balancing bills for 2023 were issued to customers, the system did not book the advances already paid correctly, so they were passed on to the City twice. In 2025 the advances paid twice were therefore credited back to AIL.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 52, 153 e 159–163.",
+    "en": "2025 accounts, pp. 52, 153 and 159–163."
+   }
+  },
+  "org 6211": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 215,
+     "it": "Maggiori ricavi per 29’004.55 dovuti essenzialmente ad una stima prudente dei ricavi nel preventivo 2025"
+    }
+   ],
+   "en": "\"Revenue was higher by 29,004.55, mainly because revenue was estimated prudently in the 2025 budget.\"",
+   "searched": {
+    "it": "consuntivo 2025, p. 215.",
+    "en": "2025 accounts, p. 215."
+   }
+  },
+  "org 7910": {
+   "status": "quote",
+   "quotes": [
+    {
+     "file": "sources/city-consuntivo-2025-messaggio.pdf",
+     "page": 230,
+     "it": "In crescita per contro i prelievi dal fondo (CHF +376'682.20 rispetto al P2025 e CHF +297'938.20 rispetto al C2024) in particolare per la copertura delle spese per il sovvenzionamento degli abbonamenti annuali Arcobaleno."
+    }
+   ],
+   "en": "\"Withdrawals from the fund rose (CHF +376,682.20 against the 2025 budget and CHF +297,938.20 against the 2024 accounts), mainly to pay for the subsidies on annual Arcobaleno passes.\"",
+   "searched": {
+    "it": "consuntivo 2025, pp. 54 e 228–230.",
+    "en": "2025 accounts, pp. 54 and 228–230."
    }
   }
  }

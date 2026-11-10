@@ -782,7 +782,7 @@
    "label": "Imposte",
    "p25": 4.7,
    "c25": 3.83899539,
-   "rp25": 95.22,
+   "rp25": 353.22,
    "rc25": 380.83365555,
    "pagesP": 223,
    "pagesC": 239
@@ -1160,7 +1160,7 @@
    "label": "Imposte",
    "p25": 4.7,
    "c25": 3.83899539,
-   "rp25": 95.22,
+   "rp25": 353.22,
    "rc25": 380.83365555
   },
   {
@@ -1263,11 +1263,21 @@
     "rc25": 2.2625058
    },
    "f9": {
-    "rp25": 124.82542,
+    "rp25": 382.82542,
     "rc25": 423.62677976
    }
   },
-  "rp25": 215.50627,
+  "rp25": 473.50627,
   "rc25": 514.42532679
+ },
+ "gettito": {
+  "c25": 258,
+  "p25": 258
+ },
+ "gettitoSource": {
+  "file": "sources/city-consuntivo-2025-messaggio.pdf",
+  "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
+  "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
+  "locator": "p. 40: 'Gettito', budgeted tax yield added to line 910's budget revenue"
  }
 }

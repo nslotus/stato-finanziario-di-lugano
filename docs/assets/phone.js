@@ -293,8 +293,8 @@
         <p class="eyebrow">${Wd().slice} ${s.f.code} · ${esc(L(s.f.name))}${g && g.code !== s.code ? ` · ${g.code} ${esc(tr(g.label))}` : ""}</p>
         <h2 id="sh-h"><i>${s.code}</i>${esc(L(s.label))}${cantTag(s)}</h2>
         <div class="dev ${side(s.p)}">${devText(s)}<small>${s.p == null || s.only ? "" : onBudget(s) ? (mode === "chf" ? t.onLineChf : t.onLine) : s.p >= 0 ? t.over : t.under}</small></div>
-        ${bars(s.b, s.c)}${nums(s.b, s.c, s.rb, s.rc)}${cantHtml(s)}
-        ${s.why ? whyHtml(s, 420) : own ? `<p class="say"><b>${own[0]}</b>«${esc(own[1].length > 420 ? own[1].slice(0, 418) + "…" : own[1])}»</p>` : ""}
+        ${bars(s.b, s.c)}${nums(s.b, s.c, s.rb, s.rc, s.rnote)}${cantHtml(s)}
+        ${s.whyNet ? whyHtml(s, 420, true, s.whyNet, T[lang].whyNet) : ""}${s.why ? whyHtml(s, 420) : own ? `<p class="say"><b>${own[0]}</b>«${esc(own[1].length > 420 ? own[1].slice(0, 418) + "…" : own[1])}»</p>` : ""}
         ${pagesOf(s)}
         <details class="mini"><summary>${t.sources}</summary>${srcHtml(V.source, view === "fn" ? s.code : null)}</details>
         <button class="ph-cta" data-full>${P().full} →</button>

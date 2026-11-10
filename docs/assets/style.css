@@ -105,6 +105,7 @@ img { max-width: 100%; }
   .bars .ba { background: color-mix(in srgb, var(--hue) 75%, white); }
   .nums { margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
   .l-net { display: block; color: var(--muted); font-weight: 400; }
+  .net-line { margin: 4px 0 0; color: var(--muted); font-size: 11.5px; line-height: 1.4; }
   .nums div { display: grid; gap: 1px; }
   .nums dt { font-size: 11px; color: var(--muted); }
   .nums dd { margin: 0; font: 500 14px/1.2 var(--sans); }
