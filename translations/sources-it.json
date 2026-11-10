@@ -137,11 +137,8 @@
   "plan.budget": "plan.budget",
   "pp. 12–13: capacity and cost ceiling": "pp. 12–13: capienza e tetto dei costi",
   "pp. 214–215–216: 'Preventivo 2027 Gestione corrente – Ripartizione funzionale', column COSTI": "pp. 214–215–216: 'Preventivo 2027 Gestione corrente – Ripartizione funzionale', colonna COSTI",
-  "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', column COSTI, row by code": "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', colonna COSTI, riga per codice",
   "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale', column COSTI": "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale', colonna COSTI",
-  "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', column COSTI, row by code": "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', colonna COSTI, riga per codice",
   "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale', column COSTI": "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale', colonna COSTI",
-  "pp. 87–232: tables by division and centro di responsabilità (Consuntivo 2025, Preventivo 2025, Differenza; row 3 'Spese'), and the 'Osservazioni sulle principali variazioni rispetto al preventivo 2025'": "pp. 87–232: tabelle per divisione e centro di responsabilità (Consuntivo 2025, Preventivo 2025, Differenza; riga 3 'Spese') e le 'Osservazioni sulle principali variazioni rispetto al preventivo 2025'",
   "pp.58–59, Tabella 1 'dettaglio personale di ruolo (unità e stipendi lordi) suddiviso secondo dicastero e centro di costo'": "pp. 58–59, Tabella 1 'dettaglio personale di ruolo (unità e stipendi lordi) suddiviso secondo dicastero e centro di costo'",
   "pp.61–62, Tabella 1a 'dettaglio personale non di ruolo (unità e stipendi lordi) suddiviso secondo dicastero e centro di costo'": "pp. 61–62, Tabella 1a 'dettaglio personale non di ruolo (unità e stipendi lordi) suddiviso secondo dicastero e centro di costo'",
   "press release, p. 1–3": "comunicato stampa, pp. 1–3",
@@ -279,7 +276,10 @@
   "p. 50: '4 RICAVI' and '400'/'401' rows, columns Consuntivo 2025 and Consuntivo 2024": "p. 50: righe '4 RICAVI' e '400'/'401', colonne Consuntivo 2025 e Consuntivo 2024",
   "p. 21: 'TOTALE SPESE CORRENTI', column Preventivo 2026": "p. 21: 'TOTALE SPESE CORRENTI', colonna Preventivo 2026",
   "p. 12: 'spese effettive totali' (summary of the 2025 accounts)": "p. 12: 'spese effettive totali' (sintesi del consuntivo 2025)",
-  "p. 175: 'incidenti stradali ... con un totale di 641' (in the text only)": "p. 175: 'incidenti stradali ... con un totale di 641' (solo nel testo)"
+  "p. 175: 'incidenti stradali ... con un totale di 641' (in the text only)": "p. 175: 'incidenti stradali ... con un totale di 641' (solo nel testo)",
+  "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', columns COSTI and RICAVI, row by code": "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', colonne COSTI e RICAVI, riga per codice",
+  "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', columns COSTI and RICAVI, row by code": "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', colonne COSTI e RICAVI, riga per codice",
+  "pp. 87–232: tables by division and centro di responsabilità (Consuntivo 2025, Preventivo 2025, Differenza; rows 3 'Spese' and 4 'Ricavi'), and the 'Osservazioni sulle principali variazioni rispetto al preventivo 2025'": "pp. 87–232: tabelle per divisione e centro di responsabilità (Consuntivo 2025, Preventivo 2025, Differenza; righe 3 'Spese' e 4 'Ricavi') e le 'Osservazioni sulle principali variazioni rispetto al preventivo 2025'"
  },
  "publishers": {
   "AIL SA, Rapporto annuale integrato 2025": "AIL SA, Rapporto annuale integrato 2025",

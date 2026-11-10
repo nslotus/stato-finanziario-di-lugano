@@ -38,3 +38,17 @@ export function attachWhy(view: "fn" | "org", lines: { code: string; p25: number
   if (bad.length) throw new Error(`perche.json: ${bad.join("; ")}`);
   return used.size;
 }
+
+// "cantonale": lines whose amount the Canton sets or calculates (src/cantonale.json). A group of lines is tagged only
+// when its cited accounts make up at least 90% of the lines' 2025 actual (and no more than all of it)
+export type Cant = { lines: string[]; accounts: { name: string; chf: number; file: string; page: number }[]; basis: Text; quotes: Quote[]; share?: number };
+export function attachCant(lines: { code: string; c25: number; cant?: Cant }[]) {
+  const groups: Cant[] = JSON.parse(readFileSync("src/cantonale.json", "utf8")).groups;
+  for (const g of groups) {
+    const ls = g.lines.map((c) => lines.find((l) => l.code === c) ?? (() => { throw new Error(`cantonale.json: no line ${c}`); })());
+    const spent = ls.reduce((t, l) => t + l.c25 * 1e6, 0), cited = g.accounts.reduce((t, a) => t + a.chf, 0), share = cited / spent;
+    if (share < 0.9 || share > 1.0001) throw new Error(`cantonale.json: lines ${g.lines.join("+")}: the cited accounts are ${(share * 100).toFixed(1)}% of the lines' actual`);
+    for (const l of ls) l.cant = { ...g, share };
+  }
+  return groups.length;
+}

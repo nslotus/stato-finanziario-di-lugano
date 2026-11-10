@@ -7,7 +7,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { CENTRE, DEPT, GROUP } from "./personale-names";
 import { readPdf } from "./adapters/pdf";
 import { splitSite } from "./sitedata";
-import { attachWhy, loadWhy } from "./perche";
+import { attachCant, attachWhy, loadWhy } from "./perche";
 
 const cat = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
 const star = (id: string) => cat.stars.find((s: any) => s.id === id) ?? (() => { throw new Error(`star ${id} missing`); })();
@@ -194,6 +194,7 @@ let cupola: any;
   const groups = FUN.groups25 ?? (() => { throw new Error("cupola: funzioni.json has no groups25; run npm run build"); })();
   for (const l of lines) if (l.code.length === 3 && !groups.some((g: any) => g.code === l.code.slice(0, 2))) throw new Error(`cupola: line ${l.code} has no group`);
   const fns = story.fn.map((f: any) => ({ key: f.key, code: f.code, name: f.name, account: f.account, hue: f.hue, p25: f.trend.p25, c25: f.trend.c25, pct: f.trend.pct,
+    rp25: FUN.revenue.fn[f.key].rp25, rc25: FUN.revenue.fn[f.key].rc25,
     trend: { c23: f.trend.c23, c24: f.trend.c24, p25: f.trend.p25, c25: f.trend.c25, p27: f.trend.p27 },
     facts: story.moons.filter((m: any) => m.fn === f.key && !m.id.startsWith("personale.")).map((m: any) => ({ label: m.label, about: m.about, value: m.value, unit: m.unit, digits: m.digits, year: m.year, source: m.source })) }));
   for (const f of fns) {
@@ -206,10 +207,10 @@ let cupola: any;
   const pctOf = (b: number, c: number) => (b ? ((c - b) / b) * 100 : 0);
   const org = {
     slices: ORG.depts.map((d: any) => ({ key: `d${d.n}`, code: String(d.n), name: { it: d.name, en: d.name }, account: { it: `Dicastero ${d.n} – ${d.name}`, en: `Department ${d.n} – ${d.name}` },
-      hue: DEPT_HUE[d.n - 1], p25: d.p25, c25: d.c25, pct: pctOf(d.p25, d.c25), trend: null, facts: [] })),
-    groups: ORG.depts.flatMap((d: any) => d.divisions.map((v: any) => ({ code: v.code, label: v.name.replace(/^CONTRIBUTI DEL DICASTERO .*/, "Contributi del dicastero"), p25: v.p25, c25: v.c25, text: v.text, page: v.page }))),
+      hue: DEPT_HUE[d.n - 1], p25: d.p25, c25: d.c25, rp25: d.rp25, rc25: d.rc25, pct: pctOf(d.p25, d.c25), trend: null, facts: [] })),
+    groups: ORG.depts.flatMap((d: any) => d.divisions.map((v: any) => ({ code: v.code, label: v.name.replace(/^CONTRIBUTI DEL DICASTERO .*/, "Contributi del dicastero"), p25: v.p25, c25: v.c25, rp25: v.rp25, rc25: v.rc25, text: v.text, page: v.page }))),
     lines: ORG.depts.flatMap((d: any) => d.divisions.flatMap((v: any) => (v.centres.length ? v.centres : [v]).filter((c: any) => c.c25 || c.p25)
-      .map((c: any) => ({ code: c.code, label: c.name.replace(/^CONTRIBUTI DEL DICASTERO .*/, "Contributi del dicastero"), p25: c.p25, c25: c.c25, text: c.text ?? [], kind: c.kind, page: c.page })))),
+      .map((c: any) => ({ code: c.code, label: c.name.replace(/^CONTRIBUTI DEL DICASTERO .*/, "Contributi del dicastero"), p25: c.p25, c25: c.c25, rp25: c.rp25, rc25: c.rc25, text: c.text ?? [], kind: c.kind, page: c.page })))),
     source: ORG.source, note: ORG.note,
   };
   const orgTotal = org.lines.reduce((t: number, l: any) => t + l.c25, 0);
@@ -218,6 +219,7 @@ let cupola: any;
   // "Perché?": the City's reason for every large gap, or the pages read where it gives none (src/perche.json)
   const notes = loadWhy();
   console.log(`perché: ${attachWhy("fn", lines, notes)} lines by function, ${attachWhy("org", org.lines, notes)} by department`);
+  console.log(`cantonale: ${attachCant(lines)} groups of lines by function`);
   // the headline's budget is the one the Council approved: the departments' budgets add up to it
   if (Math.abs(org.slices.reduce((s: number, d: any) => s + d.p25, 0) - FUN.totals.approved25) > 0.0001) throw new Error("cupola: departments' budgets do not add up to the approved budget");
   cupola = { fns, lines, groups, budget25: FUN.totals.approved25, amend: FUN.amend, linesSource: FUN.linesSource, trendSource: FUN.source, org, manifest };

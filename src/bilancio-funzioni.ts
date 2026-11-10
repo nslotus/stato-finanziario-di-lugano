@@ -123,26 +123,33 @@ export async function bilancioFunzioni(src: Src, ledger2024: Map<string, number>
   const lines25 = codes25.map((code) => {
     const a = c25.lines.get(code), b = p25.lines.get(code);
     if (a && b && a.label.toLowerCase() !== b.label.toLowerCase()) console.log(`  note: line ${code} label differs: '${b.label}' (budget) vs '${a.label}' (actual)`);
-    return { code, label: (a ?? b)!.label, p25: b ? mio(b.c) : 0, c25: a ? mio(a.c) : 0, pagesP: b?.page ?? null, pagesC: a?.page ?? null };
+    // revenue (RICAVI) from the same rows, so that a gap can be read net of what the line earns
+    return { code, label: (a ?? b)!.label, p25: b ? mio(b.c) : 0, c25: a ? mio(a.c) : 0, rp25: b ? mio(b.r) : 0, rc25: a ? mio(a.r) : 0, pagesP: b?.page ?? null, pagesC: a?.page ?? null };
   });
   for (const f of FUNCTIONS) {
     const inF = lines25.filter((l) => l.code[0] === f);
     close(inF.reduce((t, l) => t + l.c25, 0), mio(c25.fn.get(f)!.c), `2025 actual: lines add up to function ${f}`, 0.0001);
     close(inF.reduce((t, l) => t + l.p25, 0), mio(p25.fn.get(f)!.c), `2025 budget: lines add up to function ${f}`, 0.0001);
+    close(inF.reduce((t, l) => t + l.rc25, 0), mio(c25.fn.get(f)!.r), `2025 actual revenue: lines add up to function ${f}`, 0.0001);
+    close(inF.reduce((t, l) => t + l.rp25, 0), mio(p25.fn.get(f)!.r), `2025 budget revenue: lines add up to function ${f}`, 0.0001);
   }
+  close(lines25.reduce((t, l) => t + l.rc25, 0), mio(c25.total.r), "2025 actual revenue: lines add up to the total", 0.0001);
+  close(lines25.reduce((t, l) => t + l.rp25, 0), mio(p25.total.r), "2025 budget revenue: lines add up to the total", 0.0001);
   // the two-digit groups the lines belong to, matched by code
   const codes2 = [...new Set([...c25.lines.keys(), ...p25.lines.keys()].filter((c) => c.length === 2))].sort();
-  const groups25 = codes2.map((code) => { const a = c25.lines.get(code), b = p25.lines.get(code); return { code, label: (a ?? b)!.label, p25: b ? mio(b.c) : 0, c25: a ? mio(a.c) : 0 }; });
+  const groups25 = codes2.map((code) => { const a = c25.lines.get(code), b = p25.lines.get(code); return { code, label: (a ?? b)!.label, p25: b ? mio(b.c) : 0, c25: a ? mio(a.c) : 0, rp25: b ? mio(b.r) : 0, rc25: a ? mio(a.r) : 0 }; });
   for (const g of groups25) {
     const kids = lines25.filter((l) => l.code.startsWith(g.code));
     if (!kids.length) fail(`2025 group ${g.code} has no lines`);
     close(kids.reduce((t, l) => t + l.c25, 0), g.c25, `2025 actual: lines add up to group ${g.code}`, 0.0001);
     close(kids.reduce((t, l) => t + l.p25, 0), g.p25, `2025 budget: lines add up to group ${g.code}`, 0.0001);
+    close(kids.reduce((t, l) => t + l.rc25, 0), g.rc25, `2025 actual revenue: lines add up to group ${g.code}`, 0.0001);
+    close(kids.reduce((t, l) => t + l.rp25, 0), g.rp25, `2025 budget revenue: lines add up to group ${g.code}`, 0.0001);
   }
   const only = (x: "p25" | "c25") => lines25.filter((l) => (x === "p25" ? l.c25 === 0 && l.p25 !== 0 : l.p25 === 0 && l.c25 !== 0)).map((l) => l.code);
   console.log(`2025 lines: ${lines25.length} (${only("p25").length} budget only: ${only("p25").join(", ") || "none"}; ${only("c25").length} actual only: ${only("c25").join(", ") || "none"})`);
-  const linesSource = [src(F.p25, `pp. ${PAGES.p25.join("–")}: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', column COSTI, row by code`),
-    src(F.c25, `pp. ${PAGES.c25.join("–")}: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', column COSTI, row by code`)];
+  const linesSource = [src(F.p25, `pp. ${PAGES.p25.join("–")}: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', columns COSTI and RICAVI, row by code`),
+    src(F.c25, `pp. ${PAGES.c25.join("–")}: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', columns COSTI and RICAVI, row by code`)];
   // the 2026 budget's total, from the 2027 budget message (no table by function is published for 2026): its row also
   // prints the 2027 budget and the 2025 actual, which must equal the functional tables'
   const tot27 = (await readPdf(BUDGET27_MSG, [PAGES.p27total])).pages[PAGES.p27total - 1];
@@ -150,10 +157,11 @@ export async function bilancioFunzioni(src: Src, ledger2024: Map<string, number>
   close(num(tr[1]), p27.total.c, "2027 budget: total row vs functional table");
   close(num(tr[4]), c25.total.c, "2025 actual: 2027 message's total row vs functional table");
   const budget26 = num(tr[2]);
+  const revenue = { fn: Object.fromEntries(FUNCTIONS.map((f) => [`f${f}`, { rp25: mio(p25.fn.get(f)!.r), rc25: mio(c25.fn.get(f)!.r) }])), rp25: mio(p25.total.r), rc25: mio(c25.total.r) };
   const totals = { c23: [...c23.values()].reduce((t, v) => t + v, 0), c24: mio(actual24), p25: mio(p25.total.c), approved25: mio(approved25), c25: mio(c25.total.c), p26: mio(budget26), p27: mio(p27.total.c) };
   console.log(`functions by year: ${FUNCTIONS.map((f) => { const s = series.get(`f${f}`)!; return `${f} ${sign(s.pct)}%`; }).join(" · ")} · total ${totals.c25.toFixed(2)} vs ${totals.p25.toFixed(2)}`);
   const p26Source = src(BUDGET27_MSG, `p. ${PAGES.p27total}: 'TOTALE SPESE CORRENTI', column Preventivo 2026`);
-  return { series, detail, totals, amendText, source, lines25, groups25, linesSource, p26Source };
+  return { series, detail, totals, amendText, source, lines25, groups25, linesSource, p26Source, revenue };
 }
 
 export const BILANCIO_FUNZIONI_ORIGINS: Record<string, { url: string; publisher: string }> = {

@@ -157,6 +157,8 @@ calendario degli interessi delle obbligazioni (calcolato dalle loro condizioni).
 | Consuntivo 2025 | I conti finali nel messaggio della Città sul consuntivo 2025 (aprile 2026). |
 | Spesa | Le spese totali del consuntivo della Città (gruppo 3): CHF 490.7 milioni nel 2025, contro CHF 497.5 milioni del preventivo approvato. La sintesi della Città e la tabella preventivo-consuntivo danno le spese operative (CHF 473.6 milioni), che escludono le spese finanziarie (13.8, soprattutto interessi) e gli addebiti interni tra servizi (3.3). Il titolo della Città, «spese effettive totali» di CHF 487.4 milioni (contro 494.2 preventivati), sono le spese totali senza gli addebiti interni. I confronti con gli altri comuni usano lo stesso totale per il 2024 (CHF 485.1 milioni). Il preventivo 2026 è pubblicato solo come totale (CHF 505.7 milioni, messaggio sul preventivo 2027), non per funzione. |
 | Scarto | Consuntivo − preventivo, in milioni di franchi, e (consuntivo − preventivo) ÷ preventivo in percentuale. |
+| Scarto netto | Lo scarto dei costi meno quello dei ricavi: (costi effettivi − ricavi effettivi) − (costi preventivati − ricavi preventivati). I ricavi sono la colonna RICAVI delle stesse righe delle tabelle per funzione, o la riga 4 della tabella di ogni centro nella vista per dicastero; la costruzione controlla che le voci diano i loro gruppi, le funzioni e il totale, e i centri la loro divisione e il dicastero. Il centro 2010 (Imposte comunali) conta il gettito di CHF 258.0 milioni nei ricavi effettivi ma non nel preventivo; viene tolto, come nella tabella per dicastero (consuntivo 2025, p. 40). L'aviazione (632), per esempio: costi +1.52, netto −0.04. |
+| Cantonale | Una voce porta il segno «cantonale» quando un documento citato dice che il Cantone ne fissa o calcola l'importo, e i conti citati sono almeno il 90% della voce (`src/cantonale.json`): 412, 421, 512, 522, 532 e 930. Le altre voci non lo portano perché la Città non pubblica la spesa per base legale (dati mancanti #2), non perché siano una scelta del Municipio. Le voci condivise con altri comuni tramite consorzi (162, 422, 720, 741) non portano il segno. |
 | Perché? | Ogni voce il cui consuntivo si scosta dal preventivo di almeno CHF 1 milione o del 25% (24 voci: 12 per funzione, 12 per dicastero) ha una nota in `src/perche.json`: le parole della Città, citate con la loro pagina, oppure, dove la Città non dà una ragione, le pagine lette. Ciò che questo repository ha trovato da sé (per esempio che la voce 710 Approvvigionamento idrico contiene un delcredere di CHF 4.16 milioni sui crediti d'imposta) è segnato «calcolato qui, non dalla Città». |
 | Per abitante | Diviso per i 63'629 abitanti permanenti di Lugano al 31 dicembre 2024 (definizione federale), la base che il Cantone usa per tutti i 106 comuni. La Città pubblica conteggi propri più alti (64'430 nel suo registro; 68'507 includendo i residenti secondari); non sono usati perché non esistono per gli altri comuni. Per abitante non significa per contribuente. |
 | Rango | La posizione di Lugano fra i 106 comuni ticinesi, 1 = valore più alto, con la mediana. I ranghi confrontano solo il Ticino. Le cifre sono classificate solo dove un confronto ha senso per un abitante; il metodo di ogni cifra dice quando non lo è. |
@@ -238,7 +240,7 @@ effettivamente trovata.
 | 14 | I dicasteri sulla pagina | ogni centro di responsabilità e divisione con una tabella propria: la riga 3 (spese) della sua tabella nel consuntivo 2025, letta attraverso l'aritmetica stampata della riga; ogni dicastero e divisione: la sua riga nella tabella riassuntiva del dicastero, dalle intestazioni delle colonne | CHF 0.006; l'aritmetica della riga CHF 0.015 e 0.01 punti percentuali |
 | 15 | Secondo lettore | i controlli 8 e 13 di nuovo con pypdf; per la tabella, i costi trovati solo dall'aritmetica di ogni riga | come i controlli 8 e 13 |
 | 16 | Anni | ogni frase dei capitoli del quadro (introduzioni, didascalie dei grafici, note, le note sul debito e la nota sulla spesa totale per anno) che dà un importo ne indica l'anno, in italiano e in inglese | esatta |
-| 17 | Perché? | ogni voce oltre la soglia ha una nota e nessun'altra ne ha; ogni citazione è stampata sulla pagina citata, lettera per lettera, trovata da pdf.js e da pypdf | esatta |
+| 17 | Perché? | ogni voce oltre la soglia ha una nota e nessun'altra ne ha; ogni citazione è stampata sulla pagina citata, lettera per lettera, trovata da pdf.js e da pypdf; lo stesso per i segni «cantonale», i cui importi devono essere stampati sulle loro pagine e coprire almeno il 90% delle voci | esatta |
 
 Il controllo 14 riporta ciò che trova nella fonte così come stampata: nel centro 4101 (Servizi generali, divisione 41
 Polizia) le due differenze stampate non si ricalcolano dagli importi stampati (entrambe differiscono di CHF 16.97, come se
@@ -247,7 +249,7 @@ nuovi centri senza colonna 2024 (1213, 1214, 1230, 1231, 1232, 1401) l'aritmetic
 controllo 14 le accetta entrambe, e decide il controllo 4: i preventivi dei centri devono sommare al preventivo della loro
 divisione, che il controllo 14 legge dalla tabella riassuntiva stampata.
 
-**I controlli fallirebbero?** `npm run verify:selftest`, eseguito anche da GitHub Actions, inserisce 23 errori noti uno alla
+**I controlli fallirebbero?** `npm run verify:selftest`, eseguito anche da GitHub Actions, inserisce 24 errori noti uno alla
 volta e richiede che falliscano i controlli attesi: il preventivo di una voce sbagliato di CHF 1'000; il consuntivo di una
 voce letto dalla colonna dei ricavi; i consuntivi di due voci scambiati all'interno di una funzione (le somme del controllo
 4 passano ancora; i controlli 13 e 15 falliscono); un centro di responsabilità sbagliato di CHF 10; il preventivo di un
@@ -255,7 +257,7 @@ dicastero sbagliato di CHF 1'000; il preventivo di un nuovo centro letto nell'al
 controllo 14 passa; il controllo 4 fallisce); una cifra sbagliata di un'unità, sulla sua pagina e attraverso le sue pagine
 (675 incidenti stradali letti come 676); una parte di un elenco stampato letta male insieme al suo totale; un rango
 sbagliato di uno; una differenza stampata, il rango del Cantone, un nome inglese o un'indicazione di fonte italiana,
-l'impronta di una fonte e un commit a monte modificati; un importo nel quadro senza il suo anno; la nota di un grande scarto tolta; una parola di una citazione della Città cambiata; un file estraneo in `sources/`; una chiave di accesso o il nome di un collaboratore dai metadati di un PDF in un file; una cifra modificata in `METHOD.md` ma non in questo file. I
+l'impronta di una fonte e un commit a monte modificati; un importo nel quadro senza il suo anno; la nota di un grande scarto tolta; una parola di una citazione della Città cambiata; l'importo di un conto cantonale cambiato di un franco; un file estraneo in `sources/`; una chiave di accesso o il nome di un collaboratore dai metadati di un PDF in un file; una cifra modificata in `METHOD.md` ma non in questo file. I
 file del repository sono ripristinati dopo ogni caso.
 
 Il controllo 15 e il test dei controlli richiedono Python 3 con pypdf, fissato tramite impronta in

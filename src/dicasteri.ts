@@ -12,7 +12,7 @@ import { F as BF } from "./bilancio-funzioni";
 
 type Src = (file: string, locator: string) => Source;
 const FILE = BF.c25;
-const PAGES = { from: 87, to: 232, deptTable: 233 };
+const PAGES = { from: 87, to: 232, deptTable: 233, deptYield: 40 };
 // the department names as the City writes them in its department table (proper case)
 const DEPTS = ["Istituzioni", "Consulenza e gestione", "Immobili", "Sicurezza e spazi urbani", "Formazione, Socialità e Sostegno", "Cultura, Sport ed Eventi", "Sviluppo territoriale"];
 const MONEY = /^-?\d{1,3}(?:’\d{3})*\.\d\d$/;
@@ -79,7 +79,7 @@ function amounts(its: Item[], cut: number, where: string): Row | null {
 
 export async function dicasteri(src: Src) {
   const list = Array.from({ length: PAGES.to - PAGES.from + 1 }, (_, i) => PAGES.from + i);
-  const { items, pages } = await readPdf(FILE, [...list, PAGES.deptTable]);
+  const { items, pages } = await readPdf(FILE, [...list, PAGES.deptTable, PAGES.deptYield]);
   if (!/DICASTERO 1 – ISTITUZIONI/.test(pages[PAGES.from - 1])) fail(`${FILE} p. ${PAGES.from}: department 1 does not start here`);
 
   // lines in reading order
@@ -179,28 +179,51 @@ export async function dicasteri(src: Src) {
         return { code: c.code, name: c.name, kind: c.kind, page: c.page, c25: mio(s.a), p25: mio(s.b), rc25: r ? mio(r.a) : 0, rp25: r ? mio(r.b) : 0, text: c.text };
       });
       let s = spend(v.table, `${FILE} p. ${v.page}, division ${v.code}`);
+      // a table without a revenue row has no revenue; a division without a table has unknown revenue
+      const rv = v.table ? v.table.rows.get("4") ?? { a: 0, b: 0, d: 0 } : null;
       const sumC = { a: centres.reduce((t, c) => t + c.c25 * 1e6, 0), b: centres.reduce((t, c) => t + c.p25 * 1e6, 0) };
       if (s && centres.length && REMAINDER.includes(v.code)) {
         // the message has no centre table for part of this division: show the rest as one labelled remainder
         const rest = { a: s.a - sumC.a, b: s.b - sumC.b };
         if (rest.a < 0.05 && rest.b < 0.05) fail(`${FILE}: division ${v.code} no longer has a remainder; remove it from REMAINDER`);
-        centres.push({ code: `${v.code}··`, name: "Resto della divisione, senza tabella per centro nel messaggio", kind: "remainder", page: v.page, c25: mio(rest.a), p25: mio(rest.b), rc25: 0, rp25: 0, text: [] });
+        // its revenue is the division's less its centres', where the division prints revenue; otherwise unknown
+        const rr = rv ? { a: rv.a / 1e6 - centres.reduce((t, c) => t + c.rc25, 0), b: rv.b / 1e6 - centres.reduce((t, c) => t + c.rp25, 0) } : null;
+        centres.push({ code: `${v.code}··`, name: "Resto della divisione, senza tabella per centro nel messaggio", kind: "remainder", page: v.page, c25: mio(rest.a), p25: mio(rest.b), rc25: rr ? rr.a : null as unknown as number, rp25: rr ? rr.b : null as unknown as number, text: [] });
         notes.push(`division ${v.code}: CHF ${(rest.a / 1e6).toFixed(2)} mio actual (${(rest.b / 1e6).toFixed(2)} budget) not broken down by centre in the message`);
-      } else if (s && centres.length) { close(sumC.a, s.a, `${FILE}: centres add up to division ${v.code} (actual)`, 0.05 * centres.length); close(sumC.b, s.b, `${FILE}: centres add up to division ${v.code} (budget)`, 0.05 * centres.length); }
+      } else if (s && centres.length) {
+        close(sumC.a, s.a, `${FILE}: centres add up to division ${v.code} (actual)`, 0.05 * centres.length); close(sumC.b, s.b, `${FILE}: centres add up to division ${v.code} (budget)`, 0.05 * centres.length);
+        if (rv) { close(centres.reduce((t, c) => t + c.rc25 * 1e6, 0), rv.a, `${FILE}: centres' revenue adds up to division ${v.code} (actual)`, 0.05 * centres.length); close(centres.reduce((t, c) => t + c.rp25 * 1e6, 0), rv.b, `${FILE}: centres' revenue adds up to division ${v.code} (budget)`, 0.05 * centres.length); }
+      }
       if (!s) { if (!centres.length) fail(`${FILE}: division ${v.code} has neither a table nor centres`); s = { a: sumC.a, b: sumC.b, d: sumC.a - sumC.b }; }
-      const r = v.table?.rows.get("4");
+      const r = rv;
       return { code: v.code, name: v.name, kind: v.kind, page: v.page, c25: mio(s.a), p25: mio(s.b), rc25: r ? mio(r.a) : null, rp25: r ? mio(r.b) : null, text: v.text, centres };
     });
     const row = deptRow(d.name), c25 = divisions.reduce((t, v) => t + v.c25, 0), p25 = divisions.reduce((t, v) => t + v.p25, 0);
-    return { n: d.n, name: d.name, page: d.page, c25, p25, printed: { c25: mio(row[0]), p25: mio(row[2]) }, divisions };
+    // the department table prints revenue (without the tax yield) next to spending: actual row[1], budget row[3]
+    return { n: d.n, name: d.name, page: d.page, c25, p25, rc25: mio(row[1]), rp25: mio(row[3]), printed: { c25: mio(row[0]), p25: mio(row[2]) }, divisions };
   });
   for (const d of out) close(d.c25, d.printed.c25, `department ${d.n} ${d.name}: divisions vs department table (actual)`, 0.0001);
+  // the tax yield: the department table prints department 2's revenue "senza gettito" and the yield apart (p. 40);
+  // centre 2010's own table counts the yield in its actual revenue but not in its budget. Taken out of that centre,
+  // every department's centres must add up to the department table's revenue, actual and budget
+  const yieldRow = pages[PAGES.deptYield - 1].match(new RegExp(`Gettito (${M}) (${M})`)) ?? fail(`${FILE} p. ${PAGES.deptYield}: 'Gettito' row missing`);
+  const gettito = mio(num(yieldRow[1]));
+  if (Math.abs(num(yieldRow[1]) - num(yieldRow[2])) > 0.005) fail(`${FILE} p. ${PAGES.deptYield}: the tax yield differs between actual and budget`);
+  const c2010 = out[1].divisions.flatMap((v) => v.centres).find((c) => c.code === "2010") ?? fail("centre 2010 (Imposte comunali) missing");
+  c2010.rc25 -= gettito;
+  const units = (d: (typeof out)[number]) => d.divisions.flatMap((v) => (v.centres.length ? v.centres : [v as any]));
+  for (const d of out) {
+    const us = units(d), a = us.reduce((t, c) => t + (c.rc25 ?? NaN), 0), b = us.reduce((t, c) => t + (c.rp25 ?? NaN), 0);
+    close(a, d.rc25, `department ${d.n}: centres' revenue vs department table (actual)`, 0.0001);
+    close(b, d.rp25, `department ${d.n}: centres' revenue vs department table (budget)`, 0.0001);
+  }
+  notes.push(`centre 2010: the tax yield of CHF ${gettito.toFixed(1)} mio is taken out of its actual revenue, as in the department table (p. ${PAGES.deptYield})`);
   const total = out.reduce((t, d) => t + d.c25, 0);
   console.log(`departments 2025: ${out.map((d) => `${d.n} ${d.c25.toFixed(2)} (${d.divisions.length} div, ${d.divisions.reduce((t, v) => t + v.centres.length, 0)} centres)`).join(" · ")} · total ${total.toFixed(2)}`);
   for (const d of out) { const diff = d.p25 - d.printed.p25; if (Math.abs(diff) > 0.0001) console.log(`  note: department ${d.n}: divisions' budget ${d.p25.toFixed(4)} vs department table ${d.printed.p25.toFixed(4)} (${(diff * 1e6).toFixed(2)} CHF)`); }
   const texts = out.flatMap((d) => d.divisions.flatMap((v) => [v.text.length, ...v.centres.map((c) => c.text.length)]));
   console.log(`  explanations: ${texts.filter((k) => k > 0).length} of ${texts.length} units have text, ${texts.reduce((t, k) => t + k, 0)} paragraphs`);
-  const source = [src(FILE, `pp. ${PAGES.from}–${PAGES.to}: tables by division and centro di responsabilità (Consuntivo 2025, Preventivo 2025, Differenza; row 3 'Spese'), and the 'Osservazioni sulle principali variazioni rispetto al preventivo 2025'`),
+  const source = [src(FILE, `pp. ${PAGES.from}–${PAGES.to}: tables by division and centro di responsabilità (Consuntivo 2025, Preventivo 2025, Differenza; rows 3 'Spese' and 4 'Ricavi'), and the 'Osservazioni sulle principali variazioni rispetto al preventivo 2025'`),
     src(FILE, `p. ${PAGES.deptTable}: department table (totals by dicastero)`)];
   const note: Text = { it: "Tabelle e testi della Città per dicastero, divisione e centro di responsabilità. Le cifre comprendono gli addebiti interni (gruppo 39), come la tabella per funzione.", en: "The City's tables and texts by department, division and cost centre. The figures include internal charges (group 39), like the functional table." };
   for (const k of KNOWN) if (!k.seen) fail(`${FILE}: known inconsistency at ${k.where} not found; check the source`);

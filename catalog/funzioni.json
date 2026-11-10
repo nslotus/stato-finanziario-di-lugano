@@ -142,6 +142,8 @@
    "label": "Legislativo",
    "p25": 0.9783955,
    "c25": 0.9272756999999999,
+   "rp25": 0.0174,
+   "rc25": 0.0127136,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -150,6 +152,8 @@
    "label": "Esecutivo",
    "p25": 1.70106,
    "c25": 1.4015398000000001,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -158,6 +162,8 @@
    "label": "Amministrazione delle finanze e delle contribuzioni",
    "p25": 5.59608,
    "c25": 5.26567366,
+   "rp25": 0.6055,
+   "rc25": 0.67052487,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -166,6 +172,8 @@
    "label": "Servizi generali, altro",
    "p25": 32.50728902,
    "c25": 29.3133864,
+   "rp25": 3.7523107,
+   "rc25": 3.75707474,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -174,6 +182,8 @@
    "label": "Immobili amministrativi, non menzionati altrove (n. m. a.)",
    "p25": 7.4710713,
    "c25": 7.26414541,
+   "rp25": 3.6261767999999996,
+   "rc25": 3.62170523,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -182,6 +192,8 @@
    "label": "Polizia",
    "p25": 26.7494945,
    "c25": 25.36260984,
+   "rp25": 6.737,
+   "rc25": 7.2900705199999996,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -190,6 +202,8 @@
    "label": "Potere giudiziario",
    "p25": 0.042,
    "c25": 0.04057065,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -198,6 +212,8 @@
    "label": "Diritto generale",
    "p25": 12.2222556,
    "c25": 12.70940304,
+   "rp25": 7.7409,
+   "rc25": 8.858584050000001,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -206,6 +222,8 @@
    "label": "Vigili del fuoco",
    "p25": 6.558385,
    "c25": 6.2600158,
+   "rp25": 3.09776,
+   "rc25": 3.0191604900000004,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -214,6 +232,8 @@
    "label": "Difesa militare",
    "p25": 0.28,
    "c25": 0.20898235,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -222,6 +242,8 @@
    "label": "Protezione civile",
    "p25": 2.18,
    "c25": 1.96206243,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -230,6 +252,8 @@
    "label": "Scuola dell'infanzia",
    "p25": 9.249262,
    "c25": 9.1066128,
+   "rp25": 1.237,
+   "rc25": 1.2208330600000001,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -238,6 +262,8 @@
    "label": "Scuola elementare",
    "p25": 19.803980600000003,
    "c25": 19.402312379999998,
+   "rp25": 2.7932,
+   "rc25": 2.73510784,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -246,6 +272,8 @@
    "label": "Scuola media",
    "p25": 0.17,
    "c25": 0.12084,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -254,6 +282,8 @@
    "label": "Edifici scolastici",
    "p25": 12.7689935,
    "c25": 12.24486059,
+   "rp25": 0.8121459,
+   "rc25": 0.7700934899999999,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -262,6 +292,8 @@
    "label": "Scuola dell'obbligo, n. m. a.",
    "p25": 13.1341896,
    "c25": 12.39189942,
+   "rp25": 1.78671,
+   "rc25": 1.73260352,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -270,6 +302,8 @@
    "label": "Scuole universitarie",
    "p25": 0.63,
    "c25": 0.63,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -278,6 +312,8 @@
    "label": "Formazione, n. m. a.",
    "p25": 0.230835,
    "c25": 0.22426447,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -286,6 +322,8 @@
    "label": "Musei e arti figurative",
    "p25": 9.1405788,
    "c25": 8.911127550000002,
+   "rp25": 0.084996,
+   "rc25": 0.08478053999999999,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -294,6 +332,8 @@
    "label": "Patrimonio storico e culturale",
    "p25": 0.3683141,
    "c25": 0.35787967,
+   "rp25": 0.006222,
+   "rc25": 0.00634103,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -302,6 +342,8 @@
    "label": "Biblioteche",
    "p25": 0.081335,
    "c25": 0.07984621,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -310,6 +352,8 @@
    "label": "Concerti e teatri",
    "p25": 10.9487221,
    "c25": 10.49205924,
+   "rp25": 0.299262,
+   "rc25": 0.36643174,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -318,6 +362,8 @@
    "label": "Cultura, n. m. a.",
    "p25": 11.21725,
    "c25": 10.9236302,
+   "rp25": 3.21681,
+   "rc25": 3.4721491600000003,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -326,6 +372,8 @@
    "label": "Film e cinema",
    "p25": 0.083835,
    "c25": 0.08341447,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -334,6 +382,8 @@
    "label": "Sport",
    "p25": 12.969034,
    "c25": 12.24028568,
+   "rp25": 2.84258,
+   "rc25": 3.3770925,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -342,6 +392,8 @@
    "label": "Tempo libero",
    "p25": 9.6927772,
    "c25": 9.20895919,
+   "rp25": 0.6121,
+   "rc25": 0.6091857199999999,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -350,6 +402,8 @@
    "label": "Chiese e affari religiosi",
    "p25": 0.42476,
    "c25": 0.421508,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -358,6 +412,8 @@
    "label": "Case medicalizzate, di riposo e di cura",
    "p25": 38.7736125,
    "c25": 39.44588409000001,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 221,
    "pagesC": 238
   },
@@ -366,6 +422,8 @@
    "label": "Cure ambulatoriali",
    "p25": 20.5287925,
    "c25": 21.31315709,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -374,6 +432,8 @@
    "label": "Servizi di salvataggio",
    "p25": 1.27,
    "c25": 1.25686145,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -382,6 +442,8 @@
    "label": "Prevenzione di alcool e di droghe",
    "p25": 0.360584,
    "c25": 0.34929090999999995,
+   "rp25": 0.06216,
+   "rc25": 0.08224476,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -390,6 +452,8 @@
    "label": "Servizio medico scolastico",
    "p25": 0.64445,
    "c25": 0.59152589,
+   "rp25": 0.17,
+   "rc25": 0.20731695,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -398,6 +462,8 @@
    "label": "Riduzioni dei premi",
    "p25": 23.01,
    "c25": 25.35362395,
+   "rp25": 0.152,
+   "rc25": 0.09802,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -406,6 +472,8 @@
    "label": "Prestazioni complementari all'AI",
    "p25": 5.31,
    "c25": 5.8508363,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -414,6 +482,8 @@
    "label": "Assicurazione per la vecchiaia e per i superstiti AVS",
    "p25": 0.594744,
    "c25": 0.59946076,
+   "rp25": 0.13008,
+   "rc25": 0.1123579,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -422,6 +492,8 @@
    "label": "Prestazioni complementari AVS",
    "p25": 7.08,
    "c25": 7.80111506,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -430,6 +502,8 @@
    "label": "Prestazioni per pensionati",
    "p25": 0.48429,
    "c25": 0.4534712,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -438,6 +512,8 @@
    "label": "Altre prestazioni per gli anziani",
    "p25": 0.05,
    "c25": 0.05,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 238
   },
@@ -446,6 +522,8 @@
    "label": "Protezione dei giovani",
    "p25": 1.20325,
    "c25": 1.10042092,
+   "rp25": 0.133,
+   "rc25": 0.16860498000000002,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -454,6 +532,8 @@
    "label": "Prestazioni a famiglie",
    "p25": 6.2292325,
    "c25": 6.11472339,
+   "rp25": 1.285,
+   "rc25": 1.4008196000000002,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -462,6 +542,8 @@
    "label": "Aiuto economico",
    "p25": 6.62981,
    "c25": 6.1394588,
+   "rp25": 0.126,
+   "rc25": 0.12273555,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -470,6 +552,8 @@
    "label": "Assistenza, n. m. a.",
    "p25": 4.499927,
    "c25": 3.6489181299999998,
+   "rp25": 0.45276,
+   "rc25": 0.47199027000000005,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -478,6 +562,8 @@
    "label": "Azioni d'aiuto in Svizzera",
    "p25": 0.03,
    "c25": 0.025,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -486,6 +572,8 @@
    "label": "Azioni d'aiuto all'estero",
    "p25": 0.04,
    "c25": 0.04,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -494,6 +582,8 @@
    "label": "Strade cantonali",
    "p25": 0.053,
    "c25": 0.0536426,
+   "rp25": 0.165,
+   "rc25": 0.1807743,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -502,6 +592,8 @@
    "label": "Strade comunali",
    "p25": 26.324498600000002,
    "c25": 24.94598435,
+   "rp25": 10.723981,
+   "rc25": 10.912319960000001,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -510,6 +602,8 @@
    "label": "Strade private",
    "p25": 0.102,
    "c25": 0.10759802,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -518,6 +612,8 @@
    "label": "Traffico regionale e d'agglomerato",
    "p25": 17.4153,
    "c25": 16.6817395,
+   "rp25": 0.0306,
+   "rc25": 0.03077,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -526,6 +622,8 @@
    "label": "Trasporti pubblici, n. m. a.",
    "p25": 1.136,
    "c25": 1.3085552,
+   "rp25": 0.029,
+   "rc25": 0.0464327,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -534,6 +632,8 @@
    "label": "Navigazione",
    "p25": 0.654266,
    "c25": 0.62653644,
+   "rp25": 1.1204,
+   "rc25": 1.1459473,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -542,6 +642,8 @@
    "label": "Aviazione e astronautica",
    "p25": 13.50141,
    "c25": 15.024314689999999,
+   "rp25": 13.3503,
+   "rc25": 14.915073900000001,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -550,6 +652,8 @@
    "label": "Altri sistemi di trasporto",
    "p25": 0.425,
    "c25": 0.417,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -558,6 +662,8 @@
    "label": "Approvvigionamento idrico",
    "p25": 0.29524,
    "c25": 4.4395162,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -566,6 +672,8 @@
    "label": "Eliminazione delle acque di scarico",
    "p25": 10.49558,
    "c25": 8.82326272,
+   "rp25": 7.117,
+   "rc25": 2.59706232,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -574,6 +682,8 @@
    "label": "Gestione dei rifiuti",
    "p25": 9.54572,
    "c25": 9.27904213,
+   "rp25": 9.37972,
+   "rc25": 9.11868447,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -582,6 +692,8 @@
    "label": "Opere di sistemazione dei corsi d'acqua",
    "p25": 1.412,
    "c25": 1.34554258,
+   "rp25": 0,
+   "rc25": 0,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -590,6 +702,8 @@
    "label": "Protezione dell'aria e del clima",
    "p25": 0.54600218,
    "c25": 0.46226282,
+   "rp25": 0.44768359999999996,
+   "rc25": 0.38081140999999996,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -598,6 +712,8 @@
    "label": "Altri tipi di lotta contro l'inqui",
    "p25": 3.23461,
    "c25": 3.0589063199999997,
+   "rp25": 3.776,
+   "rc25": 4.27627275,
    "pagesP": 222,
    "pagesC": 239
   },
@@ -606,6 +722,8 @@
    "label": "Cimitero e sepoltura",
    "p25": 1.090262,
    "c25": 1.02903805,
+   "rp25": 0.464,
+   "rc25": 0.42141575,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -614,6 +732,8 @@
    "label": "Protezione dell'ambiente",
    "p25": 1.6120929,
    "c25": 1.5192869599999999,
+   "rp25": 0.044694,
+   "rc25": 0.03117753,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -622,6 +742,8 @@
    "label": "Pianificazione del territorio",
    "p25": 3.123676,
    "c25": 2.83345818,
+   "rp25": 0.093618,
+   "rc25": 0.21075676000000002,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -630,6 +752,8 @@
    "label": "Turismo",
    "p25": 2.266969,
    "c25": 2.2232811,
+   "rp25": 0.26306,
+   "rc25": 0.33032151,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -638,6 +762,8 @@
    "label": "Industria, artigianato e commercio",
    "p25": 3.104376,
    "c25": 2.3781051200000003,
+   "rp25": 0.26822,
+   "rc25": 0.30370829,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -646,6 +772,8 @@
    "label": "Elettricità",
    "p25": 0,
    "c25": 0,
+   "rp25": 1.6285,
+   "rc25": 1.628476,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -654,6 +782,8 @@
    "label": "Imposte",
    "p25": 4.7,
    "c25": 3.83899539,
+   "rp25": 95.22,
+   "rc25": 380.83365555,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -662,6 +792,8 @@
    "label": "Perequazione finanziaria e compensazione degli oneri",
    "p25": 29.6,
    "c25": 31.989963,
+   "rp25": 0.388,
+   "rc25": 0.388,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -670,6 +802,8 @@
    "label": "Partecipazioni ad entrate del Cantone",
    "p25": 0,
    "c25": 0,
+   "rp25": 3.1685,
+   "rc25": 3.45886227,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -678,6 +812,8 @@
    "label": "Interessi",
    "p25": 12.17088,
    "c25": 12.20736299,
+   "rp25": 17.87897,
+   "rc25": 19.90244573,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -686,6 +822,8 @@
    "label": "Immobili dei beni patrimoniali",
    "p25": 1.88449,
    "c25": 1.5290557,
+   "rp25": 7.24605,
+   "rc25": 7.4163828700000005,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -694,6 +832,8 @@
    "label": "Beni patrimoniali, n. m. a.",
    "p25": 0.002,
    "c25": 0.0062121400000000005,
+   "rp25": 0.002,
+   "rc25": 10.84756434,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -702,6 +842,8 @@
    "label": "Ridistribuzioni di tasse legate al CO2",
    "p25": 0,
    "c25": 0,
+   "rp25": 0.0705,
+   "rc25": 0,
    "pagesP": 223,
    "pagesC": 239
   },
@@ -710,6 +852,8 @@
    "label": "Voci non ripartite",
    "p25": 28.76524,
    "c25": 26.87283479,
+   "rp25": 0.8514,
+   "rc25": 0.779869,
    "pagesP": 223,
    "pagesC": 239
   }
@@ -719,259 +863,345 @@
    "code": "01",
    "label": "Legislativo ed Esecutivo",
    "p25": 2.6794555,
-   "c25": 2.3288155
+   "c25": 2.3288155,
+   "rp25": 0.0174,
+   "rc25": 0.0127136
   },
   {
    "code": "02",
    "label": "Servizi generali",
    "p25": 45.57444032,
-   "c25": 41.84320547
+   "c25": 41.84320547,
+   "rp25": 7.9839875,
+   "rc25": 8.04930484
   },
   {
    "code": "11",
    "label": "Sicurezza pubblica",
    "p25": 26.7494945,
-   "c25": 25.36260984
+   "c25": 25.36260984,
+   "rp25": 6.737,
+   "rc25": 7.2900705199999996
   },
   {
    "code": "12",
    "label": "Giustizia",
    "p25": 0.042,
-   "c25": 0.04057065
+   "c25": 0.04057065,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "14",
    "label": "Altre questioni giuridiche",
    "p25": 12.2222556,
-   "c25": 12.70940304
+   "c25": 12.70940304,
+   "rp25": 7.7409,
+   "rc25": 8.858584050000001
   },
   {
    "code": "15",
    "label": "Vigili del fuoco",
    "p25": 6.558385,
-   "c25": 6.2600158
+   "c25": 6.2600158,
+   "rp25": 3.09776,
+   "rc25": 3.0191604900000004
   },
   {
    "code": "16",
    "label": "Difesa",
    "p25": 2.46,
-   "c25": 2.17104478
+   "c25": 2.17104478,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "21",
    "label": "Scuola dell'obbligo",
    "p25": 55.126425700000006,
-   "c25": 53.266525189999996
+   "c25": 53.266525189999996,
+   "rp25": 6.6290559,
+   "rc25": 6.45863791
   },
   {
    "code": "27",
    "label": "Università",
    "p25": 0.63,
-   "c25": 0.63
+   "c25": 0.63,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "29",
    "label": "Rimanente settore della formazione",
    "p25": 0.230835,
-   "c25": 0.22426447
+   "c25": 0.22426447,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "31",
    "label": "Patrimonio culturale",
    "p25": 9.508892900000001,
-   "c25": 9.26900722
+   "c25": 9.26900722,
+   "rp25": 0.091218,
+   "rc25": 0.09112157000000001
   },
   {
    "code": "32",
    "label": "Cultura, altro",
    "p25": 22.2473071,
-   "c25": 21.49553564
+   "c25": 21.49553564,
+   "rp25": 3.516072,
+   "rc25": 3.8385808999999997
   },
   {
    "code": "33",
    "label": "Media",
    "p25": 0.083835,
-   "c25": 0.08341447
+   "c25": 0.08341447,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "34",
    "label": "Sport e tempo libero",
    "p25": 22.6618112,
-   "c25": 21.44924488
+   "c25": 21.44924488,
+   "rp25": 3.45468,
+   "rc25": 3.98627822
   },
   {
    "code": "35",
    "label": "Chiese e affari religiosi",
    "p25": 0.42476,
-   "c25": 0.421508
+   "c25": 0.421508,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "41",
    "label": "Ospedali e case di cura",
    "p25": 38.7736125,
-   "c25": 39.44588409000001
+   "c25": 39.44588409000001,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "42",
    "label": "Cure ambulatoriali",
    "p25": 21.7987925,
-   "c25": 22.57001854
+   "c25": 22.57001854,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "43",
    "label": "Prevenzione della salute",
    "p25": 1.005034,
-   "c25": 0.9408168
+   "c25": 0.9408168,
+   "rp25": 0.23216,
+   "rc25": 0.28956171
   },
   {
    "code": "51",
    "label": "Malattia e infortunio",
    "p25": 23.01,
-   "c25": 25.35362395
+   "c25": 25.35362395,
+   "rp25": 0.152,
+   "rc25": 0.09802
   },
   {
    "code": "52",
    "label": "Invalidità",
    "p25": 5.31,
-   "c25": 5.8508363
+   "c25": 5.8508363,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "53",
    "label": "Vecchiaia + Superstiti",
    "p25": 8.209034,
-   "c25": 8.90404702
+   "c25": 8.90404702,
+   "rp25": 0.13008,
+   "rc25": 0.1123579
   },
   {
    "code": "54",
    "label": "Famiglia e gioventù",
    "p25": 7.4324825,
-   "c25": 7.21514432
+   "c25": 7.21514432,
+   "rp25": 1.418,
+   "rc25": 1.56942457
   },
   {
    "code": "57",
    "label": "Aiuto sociale e settore dell'asilo",
    "p25": 11.129737,
-   "c25": 9.78837693
+   "c25": 9.78837693,
+   "rp25": 0.57876,
+   "rc25": 0.59472582
   },
   {
    "code": "59",
    "label": "Previdenza sociale, n. m. a.",
    "p25": 0.07,
-   "c25": 0.065
+   "c25": 0.065,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "61",
    "label": "Circolazione stradale",
    "p25": 26.479498600000003,
-   "c25": 25.107224969999997
+   "c25": 25.107224969999997,
+   "rp25": 10.888981,
+   "rc25": 11.093094259999999
   },
   {
    "code": "62",
    "label": "Trasporti pubblici",
    "p25": 18.5513,
-   "c25": 17.9902947
+   "c25": 17.9902947,
+   "rp25": 0.0596,
+   "rc25": 0.0772027
   },
   {
    "code": "63",
    "label": "Trasporti, altro",
    "p25": 14.580676,
-   "c25": 16.06785113
+   "c25": 16.06785113,
+   "rp25": 14.4707,
+   "rc25": 16.0610212
   },
   {
    "code": "71",
    "label": "Approvvigionamento idrico",
    "p25": 0.29524,
-   "c25": 4.4395162
+   "c25": 4.4395162,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "72",
    "label": "Eliminazione delle acque di scarico",
    "p25": 10.49558,
-   "c25": 8.82326272
+   "c25": 8.82326272,
+   "rp25": 7.117,
+   "rc25": 2.59706232
   },
   {
    "code": "73",
    "label": "Gestione dei rifiuti",
    "p25": 9.54572,
-   "c25": 9.27904213
+   "c25": 9.27904213,
+   "rp25": 9.37972,
+   "rc25": 9.11868447
   },
   {
    "code": "74",
    "label": "Ripari",
    "p25": 1.412,
-   "c25": 1.34554258
+   "c25": 1.34554258,
+   "rp25": 0,
+   "rc25": 0
   },
   {
    "code": "76",
    "label": "Lotta contro l'inquinamento ambientale",
    "p25": 3.7806121800000003,
-   "c25": 3.52116914
+   "c25": 3.52116914,
+   "rp25": 4.223683599999999,
+   "rc25": 4.65708416
   },
   {
    "code": "77",
    "label": "Altri tipi di protezione dell'ambiente",
    "p25": 2.7023549,
-   "c25": 2.5483250099999997
+   "c25": 2.5483250099999997,
+   "rp25": 0.508694,
+   "rc25": 0.45259328000000004
   },
   {
    "code": "79",
    "label": "Pianificazione del territorio",
    "p25": 3.123676,
-   "c25": 2.83345818
+   "c25": 2.83345818,
+   "rp25": 0.093618,
+   "rc25": 0.21075676000000002
   },
   {
    "code": "84",
    "label": "Turismo",
    "p25": 2.266969,
-   "c25": 2.2232811
+   "c25": 2.2232811,
+   "rp25": 0.26306,
+   "rc25": 0.33032151
   },
   {
    "code": "85",
    "label": "Industria, artigianato e commercio",
    "p25": 3.104376,
-   "c25": 2.3781051200000003
+   "c25": 2.3781051200000003,
+   "rp25": 0.26822,
+   "rc25": 0.30370829
   },
   {
    "code": "87",
    "label": "Combustibili ed energia",
    "p25": 0,
-   "c25": 0
+   "c25": 0,
+   "rp25": 1.6285,
+   "rc25": 1.628476
   },
   {
    "code": "91",
    "label": "Imposte",
    "p25": 4.7,
-   "c25": 3.83899539
+   "c25": 3.83899539,
+   "rp25": 95.22,
+   "rc25": 380.83365555
   },
   {
    "code": "93",
    "label": "Perequazione finanziaria e compensazione degli oneri",
    "p25": 29.6,
-   "c25": 31.989963
+   "c25": 31.989963,
+   "rp25": 0.388,
+   "rc25": 0.388
   },
   {
    "code": "95",
    "label": "Altre partecipazioni",
    "p25": 0,
-   "c25": 0
+   "c25": 0,
+   "rp25": 3.1685,
+   "rc25": 3.45886227
   },
   {
    "code": "96",
    "label": "Gestione del patrimonio e del debito",
    "p25": 14.05737,
-   "c25": 13.74263083
+   "c25": 13.74263083,
+   "rp25": 25.12702,
+   "rc25": 38.166392939999994
   },
   {
    "code": "97",
    "label": "Ridistribuzioni",
    "p25": 0,
-   "c25": 0
+   "c25": 0,
+   "rp25": 0.0705,
+   "rc25": 0
   },
   {
    "code": "99",
    "label": "Voci non ripartite",
    "p25": 28.76524,
-   "c25": 26.87283479
+   "c25": 26.87283479,
+   "rp25": 0.8514,
+   "rc25": 0.779869
   }
  ],
  "linesSource": [
@@ -979,13 +1209,13 @@
    "file": "sources/city-preventivo-2025-messaggio.pdf",
    "url": "https://www.lugano.ch/dam/jcr:e41cc168-7d55-48fe-ae68-48517ff418aa/messaggio-preventivo-2025.pdf",
    "publisher": "Città di Lugano, Messaggio municipale no. 12068, Preventivo 2025",
-   "locator": "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', column COSTI, row by code"
+   "locator": "pp. 221–222–223: 'Preventivo 2025 Gestione corrente – ripartizione funzionale a 3 cifre', columns COSTI and RICAVI, row by code"
   },
   {
    "file": "sources/city-consuntivo-2025-messaggio.pdf",
    "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
    "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
-   "locator": "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', column COSTI, row by code"
+   "locator": "pp. 238–239: 'Consuntivo 2025 Gestione corrente – Ripartizione funzionale a 3 cifre', columns COSTI and RICAVI, row by code"
   }
  ],
  "p26Source": {
@@ -993,5 +1223,51 @@
   "url": "https://www.lugano.ch/dam/jcr:5b2703d5-bf4c-446d-85d9-20bfdc2b2fc6/Messaggio%20generale_Preventivo%202027.pdf",
   "publisher": "Città di Lugano, Preventivo 2027 municipal message",
   "locator": "p. 21: 'TOTALE SPESE CORRENTI', column Preventivo 2026"
+ },
+ "revenue": {
+  "fn": {
+   "f0": {
+    "rp25": 8.0013875,
+    "rc25": 8.06201843
+   },
+   "f1": {
+    "rp25": 17.57566,
+    "rc25": 19.16781506
+   },
+   "f2": {
+    "rp25": 6.6290559,
+    "rc25": 6.45863791
+   },
+   "f3": {
+    "rp25": 7.06197,
+    "rc25": 7.9159806900000005
+   },
+   "f4": {
+    "rp25": 0.23216,
+    "rc25": 0.28956171
+   },
+   "f5": {
+    "rp25": 2.27884,
+    "rc25": 2.37452829
+   },
+   "f6": {
+    "rp25": 25.419281,
+    "rc25": 27.23131816
+   },
+   "f7": {
+    "rp25": 21.322715600000002,
+    "rc25": 17.03618099
+   },
+   "f8": {
+    "rp25": 2.15978,
+    "rc25": 2.2625058
+   },
+   "f9": {
+    "rp25": 124.82542,
+    "rc25": 423.62677976
+   }
+  },
+  "rp25": 215.50627,
+  "rc25": 514.42532679
  }
 }

@@ -248,15 +248,16 @@
       <input id="ph-q" class="ph-search" type="search" autocomplete="off" placeholder="${esc(p.search)}" aria-label="${esc(p.search)}" value="${esc(query)}">
       <div class="seg ph-seg" role="group" aria-label="${esc(p.sortBy)}">${p.sorts.map((x, i) => `<button data-sort="${i}" aria-pressed="${i === sortBy}">${x}</button>`).join("")}</div>
       <ol class="ph-list" id="ph-list"></ol>
+      <p class="small">${esc(t.cantNote)}</p>
     </section>`;
   }
   const fold = (s) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
   function drawList() {
     const t = T[lang], q = fold(query.trim());
     const rows = stars.filter((s) => s.kind === "line" && (s.b || s.c) && (!q || s.code.startsWith(q) || fold(L(s.label)).includes(q) || fold(L(s.f.name)).includes(q)))
-      .sort([(a, b) => Math.abs(b.c - b.b) - Math.abs(a.c - a.b), (a, b) => b.c - a.c, (a, b) => a.code.localeCompare(b.code)][sortBy]);
-    document.getElementById("ph-list").innerHTML = rows.length ? rows.map((s) => `<li><button class="ph-li" data-go="${kOf()}/${s.code}"><span class="l-c">${s.code}</span><span class="l-n">${esc(L(s.label))}<small>${esc(L(s.f.name))}</small></span>
-      <span class="l-v">${n(s.c, 2)}<small class="${s.c >= s.b ? "ph-up" : "ph-down"}">${sgn(s.c - s.b, 2)}</small></span></button></li>`).join("") : `<li class="small">${P().none}</li>`;
+      .sort([(a, b) => Math.abs(b.c - b.b) - Math.abs(a.c - a.b), (a, b) => Math.abs(netOf(b.b, b.c, b.rb, b.rc) ?? 0) - Math.abs(netOf(a.b, a.c, a.rb, a.rc) ?? 0), (a, b) => b.c - a.c, (a, b) => a.code.localeCompare(b.code)][sortBy]);
+    document.getElementById("ph-list").innerHTML = rows.length ? rows.map((s) => `<li><button class="ph-li" data-go="${kOf()}/${s.code}"><span class="l-c">${s.code}</span><span class="l-n">${esc(L(s.label))}${cantTag(s)}<small>${esc(L(s.f.name))}</small></span>
+      <span class="l-v">${n(s.c, 2)}<small class="${s.c >= s.b ? "ph-up" : "ph-down"}">${sgn(s.c - s.b, 2)}</small>${(() => { const v = netOf(s.b, s.c, s.rb, s.rc); return v == null ? "" : `<small class="l-net">${t.net} ${sgn(v, 2)}</small>`; })()}</span></button></li>`).join("") : `<li class="small">${P().none}</li>`;
     for (const b of main.querySelectorAll("[data-sort]")) b.setAttribute("aria-pressed", String(+b.dataset.sort === sortBy));
     document.getElementById("ph-list").setAttribute("aria-label", `${t.table}: ${t.mio}`);
   }
@@ -290,9 +291,9 @@
       <div class="sh-card${fresh ? " in" : ""}" role="dialog" aria-modal="true" aria-labelledby="sh-h" tabindex="-1">
         <div class="sh-grip" aria-hidden="true"></div><button class="sh-x" data-close aria-label="${t.close}">×</button>
         <p class="eyebrow">${Wd().slice} ${s.f.code} · ${esc(L(s.f.name))}${g && g.code !== s.code ? ` · ${g.code} ${esc(tr(g.label))}` : ""}</p>
-        <h2 id="sh-h"><i>${s.code}</i>${esc(L(s.label))}</h2>
+        <h2 id="sh-h"><i>${s.code}</i>${esc(L(s.label))}${cantTag(s)}</h2>
         <div class="dev ${side(s.p)}">${devText(s)}<small>${s.p == null || s.only ? "" : onBudget(s) ? (mode === "chf" ? t.onLineChf : t.onLine) : s.p >= 0 ? t.over : t.under}</small></div>
-        ${bars(s.b, s.c)}${nums(s.b, s.c)}
+        ${bars(s.b, s.c)}${nums(s.b, s.c, s.rb, s.rc)}${cantHtml(s)}
         ${s.why ? whyHtml(s, 420) : own ? `<p class="say"><b>${own[0]}</b>«${esc(own[1].length > 420 ? own[1].slice(0, 418) + "…" : own[1])}»</p>` : ""}
         ${pagesOf(s)}
         <details class="mini"><summary>${t.sources}</summary>${srcHtml(V.source, view === "fn" ? s.code : null)}</details>

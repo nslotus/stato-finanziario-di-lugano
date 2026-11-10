@@ -6,6 +6,8 @@
    "page": 87,
    "c25": 20.394357579999998,
    "p25": 22.791909999999998,
+   "rc25": 5.12982829,
+   "rp25": 4.2429,
    "printed": {
     "c25": 20.394357579999998,
     "p25": 22.79191
@@ -303,8 +305,8 @@
      "page": 118,
      "c25": 0,
      "p25": 0,
-     "rc25": null,
-     "rp25": null,
+     "rc25": 0,
+     "rp25": 0,
      "text": [],
      "centres": [
       {
@@ -378,8 +380,8 @@
      "page": 123,
      "c25": 1.01949586,
      "p25": 1.60909,
-     "rc25": null,
-     "rp25": null,
+     "rc25": 0,
+     "rp25": 0,
      "text": [
       "Nel corso del 2025, l’Ufficio Sviluppo economico ha pianificato, organizzato, coordinato e sostenuto diverse attività di promozione economica finalizzate alla crescita della Città. Sfruttando in particolare la visibilità generata da Lugano Plan B, gli sforzi si sono concentrati sull’attrazione di imprese nei settori dell’innovazione digitale e della tecnologia finanziaria, contribuendo così a rafforzare il posizionamento di Lugano quale polo dell’innovazione tra il Nord e il Sud delle Alpi. Particolare attenzione è stata inoltre dedicata alla promozione di Lugano presso soggetti in grado di generare un elevato indotto economico, attraverso la partecipazione a eventi mirati, con l’obiettivo di accrescere la visibilità della Città quale destinazione ideale e di ampliare la rete di contatti con consulenti attivi in diversi Paesi. Nel 2025 il circuito di fidelizzazione MyLugano e l’utilizzo del token di pagamento “LVGA” hanno registrato un’ulteriore crescita, ampliando progressivamente lo spettro delle attività coinvolte. Questo sviluppo ha generato benefici per le PMI locali e ha rappresentato, più in generale, un efficace volano per evidenziare l’apertura di Lugano verso le nuove tecnologie. A seguito della riorganizzazione intervenuta nel corso dell’anno, i rapporti tra la Città e i Patriziati – così come, ad esempio, l’organizzazione di eventi che coinvolgono gli enti patriziali – sono ora di competenza dell’Ufficio Quartieri. Nella seconda parte dell’anno, l’Ufficio Sviluppo economico ha partecipato, insieme al Servizio verde pubblico e alla Divisione Pianificazione, ambiente e energia, mobilità ai lavori preliminari finalizzati all’avvio della fase di preparazione del dossier di candidatura del parco naturale regionale del Camoghé.",
       "Rispetto al P25 si registra una diminuzione delle spese per il personale pari a circa CHF 100'000.--. Tale riduzione è riconducibile, da un lato, al posticipo della copertura di una posizione vacante, avvenuta soltanto nella seconda metà dell’anno e, dall’altro, alla ricollocazione di un collaboratore amministrativo (0.5 FTE), ora assegnato all’Ufficio Quartieri e incaricato delle relazioni con i Patriziati. Anche il gruppo 31 chiude il 2025 con una minor spesa rispetto al preventivo, in linea con l’anno precedente, dovuta principalmente a minori spese sostenute nell’ambito dei nuovi progetti e a minori spese per consulenti esterni, periti, esperti."
@@ -434,6 +436,8 @@
    "page": 125,
    "c25": 120.53702374,
    "p25": 116.51051000000001,
+   "rc25": 185.52272059,
+   "rp25": 142.93925,
    "printed": {
     "c25": 120.53702374,
     "p25": 116.51051
@@ -517,7 +521,7 @@
        "page": 127,
        "c25": 3.97515634,
        "p25": 4.9,
-       "rc25": 386.11900046,
+       "rc25": 128.11900046,
        "rp25": 99.68,
        "text": []
       },
@@ -717,6 +721,8 @@
    "page": 139,
    "c25": 12.888898509999999,
    "p25": 13.974891000000001,
+   "rc25": 1.0833228400000001,
+   "rp25": 1.1622,
    "printed": {
     "c25": 12.88889851,
     "p25": 13.974891
@@ -883,6 +889,8 @@
    "page": 151,
    "c25": 86.45613945,
    "p25": 92.372965,
+   "rc25": 37.5855691,
+   "rp25": 41.73003,
    "printed": {
     "c25": 86.45613945000001,
     "p25": 92.372965
@@ -1182,8 +1190,8 @@
        "page": 151,
        "c25": 9.118684469999998,
        "p25": 9.37972,
-       "rc25": 0,
-       "rp25": 0,
+       "rc25": 9.118684469999998,
+       "rp25": 9.379719999999999,
        "text": []
       }
      ]
@@ -1385,6 +1393,8 @@
    "page": 187,
    "c25": 175.92102808,
    "p25": 173.89096999999998,
+   "rc25": 10.50948906,
+   "rp25": 10.3764,
    "printed": {
     "c25": 175.92102808,
     "p25": 173.89097
@@ -1660,6 +1670,8 @@
    "page": 205,
    "c25": 45.640312030000004,
    "p25": 47.404966,
+   "rc25": 10.19637731,
+   "rp25": 8.9968,
    "printed": {
     "c25": 45.640312030000004,
     "p25": 47.404966
@@ -1917,6 +1929,8 @@
    "page": 221,
    "c25": 28.852650479999998,
    "p25": 30.552991,
+   "rc25": 6.3980196,
+   "rp25": 6.05869,
    "printed": {
     "c25": 28.85265048,
     "p25": 30.552991
@@ -2021,7 +2035,7 @@
    "file": "sources/city-consuntivo-2025-messaggio.pdf",
    "url": "https://www.lugano.ch/dam/jcr:ba72012d-214d-44e7-b29c-f94db736fe98/20260423-consuntivo-2025-messaggio.pdf",
    "publisher": "Città di Lugano, Messaggio municipale no. 12700, Consuntivo 2025 (23 aprile 2026)",
-   "locator": "pp. 87–232: tables by division and centro di responsabilità (Consuntivo 2025, Preventivo 2025, Differenza; row 3 'Spese'), and the 'Osservazioni sulle principali variazioni rispetto al preventivo 2025'"
+   "locator": "pp. 87–232: tables by division and centro di responsabilità (Consuntivo 2025, Preventivo 2025, Differenza; rows 3 'Spese' and 4 'Ricavi'), and the 'Osservazioni sulle principali variazioni rispetto al preventivo 2025'"
   },
   {
    "file": "sources/city-consuntivo-2025-messaggio.pdf",

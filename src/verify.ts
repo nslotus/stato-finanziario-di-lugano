@@ -18,7 +18,7 @@
 //  15. second reader checks 8 and 13 again with pypdf, a separate PDF reader, finding columns by arithmetic alone
 //  16. years        every sentence of the overview that gives an amount names its year (or date)
 //  17. perché       every line whose actual is CHF 1 million or 25% away from its budget has a note, and every quote
-//                   in it is printed on its cited page, found by pdf.js and by pypdf
+//                   in it is printed on its cited page, found by pdf.js and by pypdf; the same for the cantonal tags
 // npm run verify:selftest plants known errors and requires the right checks to fail (src/selftest.ts).
 
 import { createHash } from "node:crypto";
@@ -353,8 +353,28 @@ const catalog = JSON.parse(readFileSync("catalog/stars.json", "utf8"));
         if (reader === pdfjs) quotes++;
       }
     }
+    // "cantonale": each group's quotes and account amounts on their pages, and the share recomputed here (≥ 90%)
+    const seen = new Set<string>(); let cants = 0;
+    for (const l of D.lines.filter((x: any) => x.cant)) {
+      const c = l.cant, key = c.lines.join("+");
+      if (seen.has(key)) continue; seen.add(key); cants++;
+      const spent = c.lines.reduce((t: number, code: string) => t + (D.lines.find((x: any) => x.code === code)?.c25 ?? NaN) * 1e6, 0);
+      const cited = c.accounts.reduce((t: number, a: any) => t + a.chf, 0);
+      if (!(cited / spent >= 0.9 && cited / spent <= 1.0001)) bad.push(`cantonale ${key}: cited accounts are ${(100 * cited / spent).toFixed(1)}% of the lines`);
+      for (const reader of [pdfjs, pypdf]) {
+        for (const a of c.accounts) {
+          const page = ((await reader.read(a.file.replace(/^sources\//, ""), [a.page]))[a.page]?.text ?? "").replace(/[^0-9]/g, "");
+          if (!page.includes(a.chf.toFixed(2).replace(/[^0-9]/g, ""))) bad.push(`cantonale ${key}: ${a.chf} not on ${a.file} p. ${a.page} (${reader.name})`);
+        }
+        for (const q of c.quotes) {
+          const page = bare((await reader.read(q.file.replace(/^sources\//, ""), [q.page]))[q.page]?.text ?? "");
+          let at = 0;
+          for (const piece of q.it.split("…").map(bare).filter(Boolean)) { const k = page.indexOf(piece, at); if (k < 0) { bad.push(`cantonale ${key}: "${q.it.slice(0, 40)}…" not on ${q.file} p. ${q.page} (${reader.name})`); break; } at = k + piece.length; }
+        }
+      }
+    }
     if (bad.length) fail(bad.join("; "));
-    return `${lines} lines with a gap of CHF 1 million or 25%, each with its note; ${quotes} quotes found on their pages by both readers`;
+    return `${lines} lines with a gap of CHF 1 million or 25%, each with its note; ${quotes} quotes found on their pages by both readers; ${cants} cantonal groups, each quote and amount on its page`;
   });
   const w = Math.max(...results.map((r) => r.name.length));
   for (const r of results) console.log(`${r.ok ? "PASS" : "FAIL"}  ${String(r.n).padStart(2)}  ${r.name.padEnd(w)}  ${r.detail}`);

@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- Net gap and cantonal lines. Every card now shows the net gap (the cost gap less the revenue gap) next to the cost
+  gap. The table and the phone list can sort by it. Aviation (632), +1.52 on cost, is −0.04 net: its revenue rose
+  as much. Wastewater (720) is the other way round: −1.67 on cost, +2.85 net, because its revenue fell. The revenue
+  is the RICAVI column of the same tables and row 4 of each centre's table. Centre 2010's actual revenue includes
+  the tax yield and its budget does not, so the yield is taken out, as in the department table.
+- Lines whose amount the Canton sets or calculates carry a small "cantonale" tag: 412, 421, 512, 522, 532 and 930.
+  Each tag shows the basis and the documents' own words. A line is tagged only when the cited accounts make up at
+  least 90% of it. For 930 the note says that 1.5 of its +2.39 gap was the City's own choice. A legend says that
+  untagged lines are not necessarily the Municipio's choice, since the City does not publish spending by legal
+  basis. Check 17 now also finds each cantonal quote and account amount on its page.
 - Reviewer's notes:
   - The page is now called "Lugano: spesa 2025 rispetto al preventivo" (EN "Lugano: 2025 spending against budget");
     the sky keeps the name *Cielo del preventivo* as the explore mode.
